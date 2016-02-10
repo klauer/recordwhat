@@ -1,0 +1,386 @@
+field	type	asl	initial	promptgroup	prompt	special	pp	interest	base	size	extra	menu
+ACKS	DBF_MENU				"Alarm Ack Severity"	SPC_NOMOD		2				menuAlarmSevr
+ACKT	DBF_MENU		"YES"	GUI_ALARMS	"Alarm Ack Transient"	SPC_NOMOD		2				menuYesNo
+ASG	DBF_STRING			GUI_COMMON	"Access Security Group"	SPC_AS				29		
+ASP	DBF_NOACCESS				"Access Security Pvt"	SPC_NOMOD		4			"struct asgMember *asp"	
+BKPT	DBF_NOACCESS				"Break Point"	SPC_NOMOD		1			"char bkpt"	
+CNT	DBF_MENU				"Count"	SPC_MOD	TRUE	1				scalerCNT
+CONT	DBF_MENU				"OneShot/AutoCount"	SPC_MOD	TRUE	1				scalerCONT
+COUT	DBF_OUTLINK			GUI_COMMON	"CNT Output"	SPC_MOD		1				
+COUTP	DBF_OUTLINK			GUI_COMMON	"CNT Output Prompt"	SPC_MOD		1				
+D1	DBF_MENU		"1"	GUI_COMMON	"Count Direction 1"			1				scalerD1
+D10	DBF_MENU			GUI_COMMON	"Count Direction 10"			1				scalerD1
+D11	DBF_MENU			GUI_COMMON	"Count Direction 11"			1				scalerD1
+D12	DBF_MENU			GUI_COMMON	"Count Direction 12"			1				scalerD1
+D13	DBF_MENU			GUI_COMMON	"Count Direction 13"			1				scalerD1
+D14	DBF_MENU			GUI_COMMON	"Count Direction 14"			1				scalerD1
+D15	DBF_MENU			GUI_COMMON	"Count Direction 15"			1				scalerD1
+D16	DBF_MENU			GUI_COMMON	"Count Direction 16"			1				scalerD1
+D17	DBF_MENU			GUI_COMMON	"Count Direction 17"			1				scalerD1
+D18	DBF_MENU			GUI_COMMON	"Count Direction 18"			1				scalerD1
+D19	DBF_MENU			GUI_COMMON	"Count Direction 19"			1				scalerD1
+D2	DBF_MENU			GUI_COMMON	"Count Direction 2"			1				scalerD1
+D20	DBF_MENU			GUI_COMMON	"Count Direction 20"			1				scalerD1
+D21	DBF_MENU			GUI_COMMON	"Count Direction 21"			1				scalerD1
+D22	DBF_MENU			GUI_COMMON	"Count Direction 22"			1				scalerD1
+D23	DBF_MENU			GUI_COMMON	"Count Direction 23"			1				scalerD1
+D24	DBF_MENU			GUI_COMMON	"Count Direction 24"			1				scalerD1
+D25	DBF_MENU			GUI_COMMON	"Count Direction 25"			1				scalerD1
+D26	DBF_MENU			GUI_COMMON	"Count Direction 26"			1				scalerD1
+D27	DBF_MENU			GUI_COMMON	"Count Direction 27"			1				scalerD1
+D28	DBF_MENU			GUI_COMMON	"Count Direction 28"			1				scalerD1
+D29	DBF_MENU			GUI_COMMON	"Count Direction 29"			1				scalerD1
+D3	DBF_MENU			GUI_COMMON	"Count Direction 3"			1				scalerD1
+D30	DBF_MENU			GUI_COMMON	"Count Direction 30"			1				scalerD1
+D31	DBF_MENU			GUI_COMMON	"Count Direction 31"			1				scalerD1
+D32	DBF_MENU			GUI_COMMON	"Count Direction 32"			1				scalerD1
+D33	DBF_MENU			GUI_COMMON	"Count Direction 33"			1				scalerD1
+D34	DBF_MENU			GUI_COMMON	"Count Direction 34"			1				scalerD1
+D35	DBF_MENU			GUI_COMMON	"Count Direction 35"			1				scalerD1
+D36	DBF_MENU			GUI_COMMON	"Count Direction 36"			1				scalerD1
+D37	DBF_MENU			GUI_COMMON	"Count Direction 37"			1				scalerD1
+D38	DBF_MENU			GUI_COMMON	"Count Direction 38"			1				scalerD1
+D39	DBF_MENU			GUI_COMMON	"Count Direction 39"			1				scalerD1
+D4	DBF_MENU			GUI_COMMON	"Count Direction 4"			1				scalerD1
+D40	DBF_MENU			GUI_COMMON	"Count Direction 40"			1				scalerD1
+D41	DBF_MENU			GUI_COMMON	"Count Direction 41"			1				scalerD1
+D42	DBF_MENU			GUI_COMMON	"Count Direction 42"			1				scalerD1
+D43	DBF_MENU			GUI_COMMON	"Count Direction 43"			1				scalerD1
+D44	DBF_MENU			GUI_COMMON	"Count Direction 44"			1				scalerD1
+D45	DBF_MENU			GUI_COMMON	"Count Direction 45"			1				scalerD1
+D46	DBF_MENU			GUI_COMMON	"Count Direction 46"			1				scalerD1
+D47	DBF_MENU			GUI_COMMON	"Count Direction 47"			1				scalerD1
+D48	DBF_MENU			GUI_COMMON	"Count Direction 48"			1				scalerD1
+D49	DBF_MENU			GUI_COMMON	"Count Direction 49"			1				scalerD1
+D5	DBF_MENU			GUI_COMMON	"Count Direction 5"			1				scalerD1
+D50	DBF_MENU			GUI_COMMON	"Count Direction 50"			1				scalerD1
+D51	DBF_MENU			GUI_COMMON	"Count Direction 51"			1				scalerD1
+D52	DBF_MENU			GUI_COMMON	"Count Direction 52"			1				scalerD1
+D53	DBF_MENU			GUI_COMMON	"Count Direction 53"			1				scalerD1
+D54	DBF_MENU			GUI_COMMON	"Count Direction 54"			1				scalerD1
+D55	DBF_MENU			GUI_COMMON	"Count Direction 55"			1				scalerD1
+D56	DBF_MENU			GUI_COMMON	"Count Direction 56"			1				scalerD1
+D57	DBF_MENU			GUI_COMMON	"Count Direction 57"			1				scalerD1
+D58	DBF_MENU			GUI_COMMON	"Count Direction 58"			1				scalerD1
+D59	DBF_MENU			GUI_COMMON	"Count Direction 59"			1				scalerD1
+D6	DBF_MENU			GUI_COMMON	"Count Direction 6"			1				scalerD1
+D60	DBF_MENU			GUI_COMMON	"Count Direction 60"			1				scalerD1
+D61	DBF_MENU			GUI_COMMON	"Count Direction 61"			1				scalerD1
+D62	DBF_MENU			GUI_COMMON	"Count Direction 62"			1				scalerD1
+D63	DBF_MENU			GUI_COMMON	"Count Direction 63"			1				scalerD1
+D64	DBF_MENU			GUI_COMMON	"Count Direction 64"			1				scalerD1
+D7	DBF_MENU			GUI_COMMON	"Count Direction 7"			1				scalerD1
+D8	DBF_MENU			GUI_COMMON	"Count Direction 8"			1				scalerD1
+D9	DBF_MENU			GUI_COMMON	"Count Direction 9"			1				scalerD1
+DESC	DBF_STRING			GUI_COMMON	"Descriptor"					41		
+DISA	DBF_SHORT				"Disable"							
+DISP	DBF_UCHAR				"Disable putField"							
+DISS	DBF_MENU			GUI_SCAN	"Disable Alarm Sevrty"			1				menuAlarmSevr
+DISV	DBF_SHORT		"1"	GUI_SCAN	"Disable Value"							
+DLY	DBF_FLOAT			GUI_COMMON	"Delay"							
+DLY1	DBF_FLOAT			GUI_COMMON	"Auto-mode Delay"							
+DPVT	DBF_NOACCESS				"Device Private"	SPC_NOMOD		4			"void             *dpvt"	
+DSET	DBF_NOACCESS				"DSET address"	SPC_NOMOD		4			"struct dset      *dset"	
+DTYP	DBF_DEVICE			GUI_LINKS	"Device Type"			1				
+EGU	DBF_STRING			GUI_COMMON	"Units Name"			1		16		
+EVNT	DBF_SHORT			GUI_SCAN	"Event Number"	SPC_SCAN		1				
+FLNK	DBF_FWDLINK			GUI_LINKS	"Forward Process Link"			1				
+FREQ	DBF_DOUBLE			GUI_COMMON	"Time base freq"			1				
+G1	DBF_MENU		"1"	GUI_COMMON	"Gate Control 1"	SPC_MOD		1				scalerG1
+G10	DBF_MENU			GUI_COMMON	"Gate Control 10"	SPC_MOD		1				scalerG1
+G11	DBF_MENU			GUI_COMMON	"Gate Control 11"	SPC_MOD		1				scalerG1
+G12	DBF_MENU			GUI_COMMON	"Gate Control 12"	SPC_MOD		1				scalerG1
+G13	DBF_MENU			GUI_COMMON	"Gate Control 13"	SPC_MOD		1				scalerG1
+G14	DBF_MENU			GUI_COMMON	"Gate Control 14"	SPC_MOD		1				scalerG1
+G15	DBF_MENU			GUI_COMMON	"Gate Control 15"	SPC_MOD		1				scalerG1
+G16	DBF_MENU			GUI_COMMON	"Gate Control 16"	SPC_MOD		1				scalerG1
+G17	DBF_MENU			GUI_COMMON	"Gate Control 17"	SPC_MOD		1				scalerG1
+G18	DBF_MENU			GUI_COMMON	"Gate Control 18"	SPC_MOD		1				scalerG1
+G19	DBF_MENU			GUI_COMMON	"Gate Control 19"	SPC_MOD		1				scalerG1
+G2	DBF_MENU			GUI_COMMON	"Gate Control 2"	SPC_MOD		1				scalerG1
+G20	DBF_MENU			GUI_COMMON	"Gate Control 20"	SPC_MOD		1				scalerG1
+G21	DBF_MENU			GUI_COMMON	"Gate Control 21"	SPC_MOD		1				scalerG1
+G22	DBF_MENU			GUI_COMMON	"Gate Control 22"	SPC_MOD		1				scalerG1
+G23	DBF_MENU			GUI_COMMON	"Gate Control 23"	SPC_MOD		1				scalerG1
+G24	DBF_MENU			GUI_COMMON	"Gate Control 24"	SPC_MOD		1				scalerG1
+G25	DBF_MENU			GUI_COMMON	"Gate Control 25"	SPC_MOD		1				scalerG1
+G26	DBF_MENU			GUI_COMMON	"Gate Control 26"	SPC_MOD		1				scalerG1
+G27	DBF_MENU			GUI_COMMON	"Gate Control 27"	SPC_MOD		1				scalerG1
+G28	DBF_MENU			GUI_COMMON	"Gate Control 28"	SPC_MOD		1				scalerG1
+G29	DBF_MENU			GUI_COMMON	"Gate Control 29"	SPC_MOD		1				scalerG1
+G3	DBF_MENU			GUI_COMMON	"Gate Control 3"	SPC_MOD		1				scalerG1
+G30	DBF_MENU			GUI_COMMON	"Gate Control 30"	SPC_MOD		1				scalerG1
+G31	DBF_MENU			GUI_COMMON	"Gate Control 31"	SPC_MOD		1				scalerG1
+G32	DBF_MENU			GUI_COMMON	"Gate Control 32"	SPC_MOD		1				scalerG1
+G33	DBF_MENU			GUI_COMMON	"Gate Control"	SPC_MOD		1				scalerG1
+G34	DBF_MENU			GUI_COMMON	"Gate Control"	SPC_MOD		1				scalerG1
+G35	DBF_MENU			GUI_COMMON	"Gate Control"	SPC_MOD		1				scalerG1
+G36	DBF_MENU			GUI_COMMON	"Gate Control"	SPC_MOD		1				scalerG1
+G37	DBF_MENU			GUI_COMMON	"Gate Control"	SPC_MOD		1				scalerG1
+G38	DBF_MENU			GUI_COMMON	"Gate Control"	SPC_MOD		1				scalerG1
+G39	DBF_MENU			GUI_COMMON	"Gate Control"	SPC_MOD		1				scalerG1
+G4	DBF_MENU			GUI_COMMON	"Gate Control 4"	SPC_MOD		1				scalerG1
+G40	DBF_MENU			GUI_COMMON	"Gate Control"	SPC_MOD		1				scalerG1
+G41	DBF_MENU			GUI_COMMON	"Gate Control"	SPC_MOD		1				scalerG1
+G42	DBF_MENU			GUI_COMMON	"Gate Control"	SPC_MOD		1				scalerG1
+G43	DBF_MENU			GUI_COMMON	"Gate Control"	SPC_MOD		1				scalerG1
+G44	DBF_MENU			GUI_COMMON	"Gate Control"	SPC_MOD		1				scalerG1
+G45	DBF_MENU			GUI_COMMON	"Gate Control"	SPC_MOD		1				scalerG1
+G46	DBF_MENU			GUI_COMMON	"Gate Control"	SPC_MOD		1				scalerG1
+G47	DBF_MENU			GUI_COMMON	"Gate Control"	SPC_MOD		1				scalerG1
+G48	DBF_MENU			GUI_COMMON	"Gate Control"	SPC_MOD		1				scalerG1
+G49	DBF_MENU			GUI_COMMON	"Gate Control"	SPC_MOD		1				scalerG1
+G5	DBF_MENU			GUI_COMMON	"Gate Control 5"	SPC_MOD		1				scalerG1
+G50	DBF_MENU			GUI_COMMON	"Gate Control"	SPC_MOD		1				scalerG1
+G51	DBF_MENU			GUI_COMMON	"Gate Control"	SPC_MOD		1				scalerG1
+G52	DBF_MENU			GUI_COMMON	"Gate Control"	SPC_MOD		1				scalerG1
+G53	DBF_MENU			GUI_COMMON	"Gate Control"	SPC_MOD		1				scalerG1
+G54	DBF_MENU			GUI_COMMON	"Gate Control"	SPC_MOD		1				scalerG1
+G55	DBF_MENU			GUI_COMMON	"Gate Control"	SPC_MOD		1				scalerG1
+G56	DBF_MENU			GUI_COMMON	"Gate Control"	SPC_MOD		1				scalerG1
+G57	DBF_MENU			GUI_COMMON	"Gate Control"	SPC_MOD		1				scalerG1
+G58	DBF_MENU			GUI_COMMON	"Gate Control"	SPC_MOD		1				scalerG1
+G59	DBF_MENU			GUI_COMMON	"Gate Control"	SPC_MOD		1				scalerG1
+G6	DBF_MENU			GUI_COMMON	"Gate Control 6"	SPC_MOD		1				scalerG1
+G60	DBF_MENU			GUI_COMMON	"Gate Control"	SPC_MOD		1				scalerG1
+G61	DBF_MENU			GUI_COMMON	"Gate Control"	SPC_MOD		1				scalerG1
+G62	DBF_MENU			GUI_COMMON	"Gate Control"	SPC_MOD		1				scalerG1
+G63	DBF_MENU			GUI_COMMON	"Gate Control"	SPC_MOD		1				scalerG1
+G64	DBF_MENU			GUI_COMMON	"Gate Control"	SPC_MOD		1				scalerG1
+G7	DBF_MENU			GUI_COMMON	"Gate Control 7"	SPC_MOD		1				scalerG1
+G8	DBF_MENU			GUI_COMMON	"Gate Control 8"	SPC_MOD		1				scalerG1
+G9	DBF_MENU			GUI_COMMON	"Gate Control 9"	SPC_MOD		1				scalerG1
+LCNT	DBF_UCHAR				"Lock Count"	SPC_NOMOD		2				
+LSET	DBF_NOACCESS				"Lock Set"	SPC_NOMOD		4			"struct lockRecord *lset"	
+MLIS	DBF_NOACCESS				"Monitor List"	SPC_NOMOD		4			"ELLLIST          mlis"	
+MLOK	DBF_NOACCESS				"Monitor lock"	SPC_NOMOD		4			"epicsMutexId     mlok"	
+NAME	DBF_STRING				"Record Name"	SPC_NOMOD				61		
+NCH	DBF_SHORT				"Number of Channels"	SPC_NOMOD		1				
+NM1	DBF_STRING			GUI_COMMON	"Scaler 1 name"			1		16		
+NM10	DBF_STRING			GUI_COMMON	"Scaler 10 name"			1		16		
+NM11	DBF_STRING			GUI_COMMON	"Scaler 11 name"			1		16		
+NM12	DBF_STRING			GUI_COMMON	"Scaler 12 name"			1		16		
+NM13	DBF_STRING			GUI_COMMON	"Scaler 13 name"			1		16		
+NM14	DBF_STRING			GUI_COMMON	"Scaler 14 name"			1		16		
+NM15	DBF_STRING			GUI_COMMON	"Scaler 15 name"			1		16		
+NM16	DBF_STRING			GUI_COMMON	"Scaler 16 name"			1		16		
+NM17	DBF_STRING			GUI_COMMON	"Scaler 17 name"			1		16		
+NM18	DBF_STRING			GUI_COMMON	"Scaler 18 name"			1		16		
+NM19	DBF_STRING			GUI_COMMON	"Scaler 19 name"			1		16		
+NM2	DBF_STRING			GUI_COMMON	"Scaler 2 name"			1		16		
+NM20	DBF_STRING			GUI_COMMON	"Scaler 20 name"			1		16		
+NM21	DBF_STRING			GUI_COMMON	"Scaler 21 name"			1		16		
+NM22	DBF_STRING			GUI_COMMON	"Scaler 22 name"			1		16		
+NM23	DBF_STRING			GUI_COMMON	"Scaler 23 name"			1		16		
+NM24	DBF_STRING			GUI_COMMON	"Scaler 24 name"			1		16		
+NM25	DBF_STRING			GUI_COMMON	"Scaler 25 name"			1		16		
+NM26	DBF_STRING			GUI_COMMON	"Scaler 26 name"			1		16		
+NM27	DBF_STRING			GUI_COMMON	"Scaler 27 name"			1		16		
+NM28	DBF_STRING			GUI_COMMON	"Scaler 28 name"			1		16		
+NM29	DBF_STRING			GUI_COMMON	"Scaler 29 name"			1		16		
+NM3	DBF_STRING			GUI_COMMON	"Scaler 3 name"			1		16		
+NM30	DBF_STRING			GUI_COMMON	"Scaler 30 name"			1		16		
+NM31	DBF_STRING			GUI_COMMON	"Scaler 31 name"			1		16		
+NM32	DBF_STRING			GUI_COMMON	"Scaler 32 name"			1		16		
+NM33	DBF_STRING			GUI_COMMON	"Scaler name"			1		16		
+NM34	DBF_STRING			GUI_COMMON	"Scaler name"			1		16		
+NM35	DBF_STRING			GUI_COMMON	"Scaler name"			1		16		
+NM36	DBF_STRING			GUI_COMMON	"Scaler name"			1		16		
+NM37	DBF_STRING			GUI_COMMON	"Scaler name"			1		16		
+NM38	DBF_STRING			GUI_COMMON	"Scaler name"			1		16		
+NM39	DBF_STRING			GUI_COMMON	"Scaler name"			1		16		
+NM4	DBF_STRING			GUI_COMMON	"Scaler 4 name"			1		16		
+NM40	DBF_STRING			GUI_COMMON	"Scaler name"			1		16		
+NM41	DBF_STRING			GUI_COMMON	"Scaler name"			1		16		
+NM42	DBF_STRING			GUI_COMMON	"Scaler name"			1		16		
+NM43	DBF_STRING			GUI_COMMON	"Scaler name"			1		16		
+NM44	DBF_STRING			GUI_COMMON	"Scaler name"			1		16		
+NM45	DBF_STRING			GUI_COMMON	"Scaler name"			1		16		
+NM46	DBF_STRING			GUI_COMMON	"Scaler name"			1		16		
+NM47	DBF_STRING			GUI_COMMON	"Scaler name"			1		16		
+NM48	DBF_STRING			GUI_COMMON	"Scaler name"			1		16		
+NM49	DBF_STRING			GUI_COMMON	"Scaler name"			1		16		
+NM5	DBF_STRING			GUI_COMMON	"Scaler 5 name"			1		16		
+NM50	DBF_STRING			GUI_COMMON	"Scaler name"			1		16		
+NM51	DBF_STRING			GUI_COMMON	"Scaler name"			1		16		
+NM52	DBF_STRING			GUI_COMMON	"Scaler name"			1		16		
+NM53	DBF_STRING			GUI_COMMON	"Scaler name"			1		16		
+NM54	DBF_STRING			GUI_COMMON	"Scaler name"			1		16		
+NM55	DBF_STRING			GUI_COMMON	"Scaler name"			1		16		
+NM56	DBF_STRING			GUI_COMMON	"Scaler name"			1		16		
+NM57	DBF_STRING			GUI_COMMON	"Scaler name"			1		16		
+NM58	DBF_STRING			GUI_COMMON	"Scaler name"			1		16		
+NM59	DBF_STRING			GUI_COMMON	"Scaler name"			1		16		
+NM6	DBF_STRING			GUI_COMMON	"Scaler 6 name"			1		16		
+NM60	DBF_STRING			GUI_COMMON	"Scaler name"			1		16		
+NM61	DBF_STRING			GUI_COMMON	"Scaler name"			1		16		
+NM62	DBF_STRING			GUI_COMMON	"Scaler name"			1		16		
+NM63	DBF_STRING			GUI_COMMON	"Scaler name"			1		16		
+NM64	DBF_STRING			GUI_COMMON	"Scaler name"			1		16		
+NM7	DBF_STRING			GUI_COMMON	"Scaler 7 name"			1		16		
+NM8	DBF_STRING			GUI_COMMON	"Scaler 8 name"			1		16		
+NM9	DBF_STRING			GUI_COMMON	"Scaler 9 name"			1		16		
+NSEV	DBF_MENU				"New Alarm Severity"	SPC_NOMOD		2				menuAlarmSevr
+NSTA	DBF_MENU				"New Alarm Status"	SPC_NOMOD		2				menuAlarmStat
+OUT	DBF_OUTLINK			GUI_COMMON	"Output Specification"	SPC_NOMOD		1				
+PACT	DBF_UCHAR				"Record active"	SPC_NOMOD		1				
+PCNT	DBF_MENU				"Prev Count"	SPC_NOMOD		1				scalerCNT
+PHAS	DBF_SHORT			GUI_SCAN	"Scan Phase"	SPC_SCAN		1				
+PINI	DBF_MENU			GUI_SCAN	"Process at iocInit"			1				menuPini
+PPN	DBF_NOACCESS				"addr of PUTNOTIFY"	SPC_NOMOD		4			"struct putNotify *ppn"	
+PPNR	DBF_NOACCESS				"pputNotifyRecord"	SPC_NOMOD		4			"struct putNotifyRecord *ppnr"	
+PR1	DBF_ULONG			GUI_COMMON	"Preset 1"	SPC_MOD		1				
+PR10	DBF_ULONG			GUI_COMMON	"Preset 10"	SPC_MOD		1				
+PR11	DBF_ULONG			GUI_COMMON	"Preset 11"	SPC_MOD		1				
+PR12	DBF_ULONG			GUI_COMMON	"Preset 12"	SPC_MOD		1				
+PR13	DBF_ULONG			GUI_COMMON	"Preset 13"	SPC_MOD		1				
+PR14	DBF_ULONG			GUI_COMMON	"Preset 14"	SPC_MOD		1				
+PR15	DBF_ULONG			GUI_COMMON	"Preset 15"	SPC_MOD		1				
+PR16	DBF_ULONG			GUI_COMMON	"Preset 16"	SPC_MOD		1				
+PR17	DBF_ULONG			GUI_COMMON	"Preset 17"	SPC_MOD		1				
+PR18	DBF_ULONG			GUI_COMMON	"Preset 18"	SPC_MOD		1				
+PR19	DBF_ULONG			GUI_COMMON	"Preset 19"	SPC_MOD		1				
+PR2	DBF_ULONG			GUI_COMMON	"Preset 2"	SPC_MOD		1				
+PR20	DBF_ULONG			GUI_COMMON	"Preset 20"	SPC_MOD		1				
+PR21	DBF_ULONG			GUI_COMMON	"Preset 21"	SPC_MOD		1				
+PR22	DBF_ULONG			GUI_COMMON	"Preset 22"	SPC_MOD		1				
+PR23	DBF_ULONG			GUI_COMMON	"Preset 23"	SPC_MOD		1				
+PR24	DBF_ULONG			GUI_COMMON	"Preset 24"	SPC_MOD		1				
+PR25	DBF_ULONG			GUI_COMMON	"Preset 25"	SPC_MOD		1				
+PR26	DBF_ULONG			GUI_COMMON	"Preset 26"	SPC_MOD		1				
+PR27	DBF_ULONG			GUI_COMMON	"Preset 27"	SPC_MOD		1				
+PR28	DBF_ULONG			GUI_COMMON	"Preset 28"	SPC_MOD		1				
+PR29	DBF_ULONG			GUI_COMMON	"Preset 29"	SPC_MOD		1				
+PR3	DBF_ULONG			GUI_COMMON	"Preset 3"	SPC_MOD		1				
+PR30	DBF_ULONG			GUI_COMMON	"Preset 30"	SPC_MOD		1				
+PR31	DBF_ULONG			GUI_COMMON	"Preset 31"	SPC_MOD		1				
+PR32	DBF_ULONG			GUI_COMMON	"Preset 32"	SPC_MOD		1				
+PR33	DBF_ULONG			GUI_COMMON	"Preset"	SPC_MOD		1				
+PR34	DBF_ULONG			GUI_COMMON	"Preset"	SPC_MOD		1				
+PR35	DBF_ULONG			GUI_COMMON	"Preset"	SPC_MOD		1				
+PR36	DBF_ULONG			GUI_COMMON	"Preset"	SPC_MOD		1				
+PR37	DBF_ULONG			GUI_COMMON	"Preset"	SPC_MOD		1				
+PR38	DBF_ULONG			GUI_COMMON	"Preset"	SPC_MOD		1				
+PR39	DBF_ULONG			GUI_COMMON	"Preset"	SPC_MOD		1				
+PR4	DBF_ULONG			GUI_COMMON	"Preset 4"	SPC_MOD		1				
+PR40	DBF_ULONG			GUI_COMMON	"Preset"	SPC_MOD		1				
+PR41	DBF_ULONG			GUI_COMMON	"Preset"	SPC_MOD		1				
+PR42	DBF_ULONG			GUI_COMMON	"Preset"	SPC_MOD		1				
+PR43	DBF_ULONG			GUI_COMMON	"Preset"	SPC_MOD		1				
+PR44	DBF_ULONG			GUI_COMMON	"Preset"	SPC_MOD		1				
+PR45	DBF_ULONG			GUI_COMMON	"Preset"	SPC_MOD		1				
+PR46	DBF_ULONG			GUI_COMMON	"Preset"	SPC_MOD		1				
+PR47	DBF_ULONG			GUI_COMMON	"Preset"	SPC_MOD		1				
+PR48	DBF_ULONG			GUI_COMMON	"Preset"	SPC_MOD		1				
+PR49	DBF_ULONG			GUI_COMMON	"Preset"	SPC_MOD		1				
+PR5	DBF_ULONG			GUI_COMMON	"Preset 5"	SPC_MOD		1				
+PR50	DBF_ULONG			GUI_COMMON	"Preset"	SPC_MOD		1				
+PR51	DBF_ULONG			GUI_COMMON	"Preset"	SPC_MOD		1				
+PR52	DBF_ULONG			GUI_COMMON	"Preset"	SPC_MOD		1				
+PR53	DBF_ULONG			GUI_COMMON	"Preset"	SPC_MOD		1				
+PR54	DBF_ULONG			GUI_COMMON	"Preset"	SPC_MOD		1				
+PR55	DBF_ULONG			GUI_COMMON	"Preset"	SPC_MOD		1				
+PR56	DBF_ULONG			GUI_COMMON	"Preset"	SPC_MOD		1				
+PR57	DBF_ULONG			GUI_COMMON	"Preset"	SPC_MOD		1				
+PR58	DBF_ULONG			GUI_COMMON	"Preset"	SPC_MOD		1				
+PR59	DBF_ULONG			GUI_COMMON	"Preset"	SPC_MOD		1				
+PR6	DBF_ULONG			GUI_COMMON	"Preset 6"	SPC_MOD		1				
+PR60	DBF_ULONG			GUI_COMMON	"Preset"	SPC_MOD		1				
+PR61	DBF_ULONG			GUI_COMMON	"Preset"	SPC_MOD		1				
+PR62	DBF_ULONG			GUI_COMMON	"Preset"	SPC_MOD		1				
+PR63	DBF_ULONG			GUI_COMMON	"Preset"	SPC_MOD		1				
+PR64	DBF_ULONG			GUI_COMMON	"Preset"	SPC_MOD		1				
+PR7	DBF_ULONG			GUI_COMMON	"Preset 7"	SPC_MOD		1				
+PR8	DBF_ULONG			GUI_COMMON	"Preset 8"	SPC_MOD		1				
+PR9	DBF_ULONG			GUI_COMMON	"Preset 9"	SPC_MOD		1				
+PREC	DBF_SHORT			GUI_COMMON	"Display Precision"			1				
+PRIO	DBF_MENU			GUI_SCAN	"Scheduling Priority"	SPC_SCAN		1				menuPriority
+PROC	DBF_UCHAR				"Force Processing"		TRUE	3				
+PUTF	DBF_UCHAR				"dbPutField process"	SPC_NOMOD		1				
+RAT1	DBF_FLOAT			GUI_COMMON	"Auto Display Rate (Hz.)"	SPC_MOD						
+RATE	DBF_FLOAT		"10"	GUI_COMMON	"Display Rate (Hz.)"	SPC_MOD						
+RDES	DBF_NOACCESS				"Address of dbRecordType"	SPC_NOMOD		4			"struct dbRecordType *rdes"	
+RPRO	DBF_UCHAR				"Reprocess "	SPC_NOMOD		1				
+RPVT	DBF_NOACCESS				"Record Private"	SPC_NOMOD		4		4	"void *rpvt"	
+RSET	DBF_NOACCESS				"Address of RSET"	SPC_NOMOD		4			"struct rset      *rset"	
+S1	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S10	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S11	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S12	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S13	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S14	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S15	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S16	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S17	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S18	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S19	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S2	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S20	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S21	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S22	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S23	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S24	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S25	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S26	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S27	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S28	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S29	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S3	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S30	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S31	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S32	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S33	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S34	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S35	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S36	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S37	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S38	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S39	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S4	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S40	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S41	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S42	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S43	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S44	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S45	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S46	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S47	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S48	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S49	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S5	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S50	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S51	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S52	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S53	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S54	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S55	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S56	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S57	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S58	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S59	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S6	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S60	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S61	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S62	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S63	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S64	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S7	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S8	DBF_ULONG				"Count"	SPC_NOMOD		1				
+S9	DBF_ULONG				"Count"	SPC_NOMOD		1				
+SCAN	DBF_MENU			GUI_SCAN	"Scan Mechanism"	SPC_SCAN		1				menuScan
+SDIS	DBF_INLINK			GUI_SCAN	"Scanning Disable"			1				
+SEVR	DBF_MENU		"INVALID"		"Alarm Severity"	SPC_NOMOD						menuAlarmSevr
+SPVT	DBF_NOACCESS				"Scan Private"	SPC_NOMOD		4			"struct scan_element *spvt"	
+SS	DBF_SHORT				"Scaler state"	SPC_NOMOD		4				
+STAT	DBF_MENU		"UDF"		"Alarm Status"	SPC_NOMOD						menuAlarmStat
+T	DBF_DOUBLE				"Timer"	SPC_NOMOD		1				
+TIME	DBF_NOACCESS				"Time"	SPC_NOMOD		2			"epicsTimeStamp   time"	
+TP	DBF_DOUBLE			GUI_COMMON	"Time Preset"	SPC_MOD		1				
+TP1	DBF_DOUBLE		"1"	GUI_COMMON	"Time Preset"	SPC_MOD		1				
+TPRO	DBF_UCHAR				"Trace Processing"							
+TSE	DBF_SHORT			GUI_SCAN	"Time Stamp Event"			1				
+TSEL	DBF_INLINK			GUI_SCAN	"Time Stamp Link"			1				
+UDF	DBF_UCHAR		"1"	GUI_COMMON	"Undefined"		TRUE	1				
+US	DBF_SHORT				"User state"	SPC_NOMOD		4				
+VAL	DBF_DOUBLE				"Result"							
+VERS	DBF_FLOAT				"Code Version"	SPC_NOMOD						

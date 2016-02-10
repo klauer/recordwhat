@@ -1,0 +1,120 @@
+field	type	asl	initial	promptgroup	prompt	special	pp	interest	base	size	extra	menu
+ACKS	DBF_MENU				"Alarm Ack Severity"	SPC_NOMOD		2				menuAlarmSevr
+ACKT	DBF_MENU		"YES"	GUI_ALARMS	"Alarm Ack Transient"	SPC_NOMOD		2				menuYesNo
+ACMD	DBF_MENU			GUI_OUTPUT	"Addressed command"		TRUE	2				gpibACMD
+ADDR	DBF_LONG		"0"	GUI_INPUTS	"asyn address"	SPC_MOD		1				
+AINP	DBF_STRING				"Input (response) string"	SPC_NOMOD		1		40		
+AOUT	DBF_STRING			GUI_OUTPUT	"Output (command) string"		TRUE	1		40		
+AQR	DBF_UCHAR				"Abort queueRequest"	SPC_MOD		4				
+ASG	DBF_STRING			GUI_COMMON	"Access Security Group"	SPC_AS				29		
+ASP	DBF_NOACCESS				"Access Security Pvt"	SPC_NOMOD		4			"struct asgMember *asp"	
+AUCT	DBF_MENU			GUI_INPUTS	"Autoconnect"	SPC_MOD		1				asynAUTOCONNECT
+BAUD	DBF_MENU			GUI_INPUTS	"Baud rate"	SPC_MOD		2				serialBAUD
+BINP	DBF_CHAR	ASL0			"Input binary data"	SPC_DBADDR						
+BKPT	DBF_NOACCESS				"Break Point"	SPC_NOMOD		1			"char bkpt"	
+BOUT	DBF_CHAR				"Output binary data"	SPC_DBADDR	TRUE	1				
+CNCT	DBF_MENU			GUI_INPUTS	"Connect/Disconnect"	SPC_MOD		1				asynCONNECT
+DBIT	DBF_MENU			GUI_INPUTS	"Data bits"	SPC_MOD		2				serialDBIT
+DESC	DBF_STRING			GUI_COMMON	"Descriptor"					41		
+DISA	DBF_SHORT				"Disable"							
+DISP	DBF_UCHAR				"Disable putField"							
+DISS	DBF_MENU			GUI_SCAN	"Disable Alarm Sevrty"			1				menuAlarmSevr
+DISV	DBF_SHORT		"1"	GUI_SCAN	"Disable Value"							
+DPVT	DBF_NOACCESS				"Device Private"	SPC_NOMOD		4			"void             *dpvt"	
+DRVINFO	DBF_STRING		""	GUI_INPUTS	"Driver info string"	SPC_MOD		2		40		
+DSET	DBF_NOACCESS				"DSET address"	SPC_NOMOD		4			"struct dset      *dset"	
+DTYP	DBF_DEVICE			GUI_LINKS	"Device Type"			1				
+ENBL	DBF_MENU			GUI_INPUTS	"Enable/Disable"	SPC_MOD		1				asynENABLE
+EOMR	DBF_MENU				"EOM reason"	SPC_NOMOD		1				asynEOMREASON
+ERRS	DBF_NOACCESS				"Error string"	SPC_DBADDR		4			"char *errs"	
+EVNT	DBF_SHORT			GUI_SCAN	"Event Number"	SPC_SCAN		1				
+F64INP	DBF_DOUBLE				"asynFloat64 input"	SPC_NOMOD		2				
+F64IV	DBF_LONG				"asynFloat64 is valid"			2				
+F64OUT	DBF_DOUBLE			GUI_OUTPUT	"asynFloat64 output"		TRUE	2				
+FCTL	DBF_MENU			GUI_INPUTS	"Flow control"	SPC_MOD		2				serialFCTL
+FLNK	DBF_FWDLINK			GUI_LINKS	"Forward Process Link"			1				
+GPIBIV	DBF_LONG				"asynGPIB is valid"			2				
+I32INP	DBF_LONG				"asynInt32 input"	SPC_NOMOD		2				
+I32IV	DBF_LONG				"asynInt32 is valid"			2				
+I32OUT	DBF_LONG			GUI_OUTPUT	"asynInt32 output"		TRUE	2				
+IEOS	DBF_STRING			GUI_INPUTS	"Input Delimiter"	SPC_MOD		1		40		
+IFACE	DBF_MENU			GUI_INPUTS	"Interface"	SPC_MOD		2				asynINTERFACE
+IFMT	DBF_MENU			GUI_INPUTS	"Input format"			1				asynFMT
+IMAX	DBF_LONG		"80"	GUI_INPUTS	"Max. size of input array"	SPC_NOMOD		1				
+IPTR	DBF_NOACCESS				"Input buffer pointer"	SPC_NOMOD		4		4	"void *iptr"	
+IXANY	DBF_MENU			GUI_INPUTS	"XON=any character"	SPC_MOD		2				serialIX
+IXOFF	DBF_MENU			GUI_INPUTS	"Input XON/XOFF"	SPC_MOD		2				serialIX
+IXON	DBF_MENU			GUI_INPUTS	"Output XON/XOFF"	SPC_MOD		2				serialIX
+LBAUD	DBF_LONG			GUI_INPUTS	"Baud rate"	SPC_MOD		2				
+LCNT	DBF_UCHAR				"Lock Count"	SPC_NOMOD		2				
+LSET	DBF_NOACCESS				"Lock Set"	SPC_NOMOD		4			"struct lockRecord *lset"	
+MCTL	DBF_MENU			GUI_INPUTS	"Modem control"	SPC_MOD		2				serialMCTL
+MLIS	DBF_NOACCESS				"Monitor List"	SPC_NOMOD		4			"ELLLIST          mlis"	
+MLOK	DBF_NOACCESS				"Monitor lock"	SPC_NOMOD		4			"epicsMutexId     mlok"	
+NAME	DBF_STRING				"Record Name"	SPC_NOMOD				61		
+NAWT	DBF_LONG				"Number of bytes actually written"			1				
+NORD	DBF_LONG				"Number of bytes read"	SPC_NOMOD		1				
+NOWT	DBF_LONG		"80"	GUI_OUTPUT	"Number of bytes to write"			1				
+NRRD	DBF_LONG			GUI_INPUTS	"Number of bytes to read"			1				
+NSEV	DBF_MENU				"New Alarm Severity"	SPC_NOMOD		2				menuAlarmSevr
+NSTA	DBF_MENU				"New Alarm Status"	SPC_NOMOD		2				menuAlarmStat
+OCTETIV	DBF_LONG				"asynOctet is valid"			2				
+OEOS	DBF_STRING			GUI_OUTPUT	"Output delimiter"	SPC_MOD		1		40		
+OFMT	DBF_MENU			GUI_OUTPUT	"Output format"			1				asynFMT
+OMAX	DBF_LONG		"80"	GUI_OUTPUT	"Max. size of output array"	SPC_NOMOD		1				
+OPTIONIV	DBF_LONG				"asynOption is valid"			2				
+OPTR	DBF_NOACCESS				"Output buffer pointer"	SPC_NOMOD		4			"void *optr"	
+PACT	DBF_UCHAR				"Record active"	SPC_NOMOD		1				
+PCNCT	DBF_MENU				"Port Connect/Disconnect"	SPC_MOD		2				asynCONNECT
+PHAS	DBF_SHORT			GUI_SCAN	"Scan Phase"	SPC_SCAN		1				
+PINI	DBF_MENU			GUI_SCAN	"Process at iocInit"			1				menuPini
+PORT	DBF_STRING		""	GUI_INPUTS	"asyn port"	SPC_MOD		1		40		
+PPN	DBF_NOACCESS				"addr of PUTNOTIFY"	SPC_NOMOD		4			"struct putNotify *ppn"	
+PPNR	DBF_NOACCESS				"pputNotifyRecord"	SPC_NOMOD		4			"struct putNotifyRecord *ppnr"	
+PRIO	DBF_MENU			GUI_SCAN	"Scheduling Priority"	SPC_SCAN		1				menuPriority
+PROC	DBF_UCHAR				"Force Processing"		TRUE	3				
+PRTY	DBF_MENU			GUI_INPUTS	"Parity"	SPC_MOD		2				serialPRTY
+PUTF	DBF_UCHAR				"dbPutField process"	SPC_NOMOD		1				
+RDES	DBF_NOACCESS				"Address of dbRecordType"	SPC_NOMOD		4			"struct dbRecordType *rdes"	
+REASON	DBF_LONG				"asynUser->reason"	SPC_MOD		2				
+RPRO	DBF_UCHAR				"Reprocess "	SPC_NOMOD		1				
+RSET	DBF_NOACCESS				"Address of RSET"	SPC_NOMOD		4			"struct rset      *rset"	
+SBIT	DBF_MENU			GUI_INPUTS	"Stop bits"	SPC_MOD		2				serialSBIT
+SCAN	DBF_MENU			GUI_SCAN	"Scan Mechanism"	SPC_SCAN		1				menuScan
+SDIS	DBF_INLINK			GUI_SCAN	"Scanning Disable"			1				
+SEVR	DBF_MENU		"INVALID"		"Alarm Severity"	SPC_NOMOD						menuAlarmSevr
+SPR	DBF_UCHAR				"Serial poll response"	SPC_NOMOD		2				
+SPVT	DBF_NOACCESS				"Scan Private"	SPC_NOMOD		4			"struct scan_element *spvt"	
+STAT	DBF_MENU		"UDF"		"Alarm Status"	SPC_NOMOD						menuAlarmStat
+TB0	DBF_MENU			GUI_DISPLAY	"Trace error"	SPC_MOD		1				asynTRACE
+TB1	DBF_MENU			GUI_DISPLAY	"Trace IO device"	SPC_MOD		1				asynTRACE
+TB2	DBF_MENU			GUI_DISPLAY	"Trace IO filter"	SPC_MOD		1				asynTRACE
+TB3	DBF_MENU			GUI_DISPLAY	"Trace IO driver"	SPC_MOD		1				asynTRACE
+TB4	DBF_MENU			GUI_DISPLAY	"Trace flow"	SPC_MOD		1				asynTRACE
+TB5	DBF_MENU			GUI_DISPLAY	"Trace warning"	SPC_MOD		1				asynTRACE
+TFIL	DBF_STRING			GUI_DISPLAY	"Trace IO file"	SPC_MOD		1		40		
+TIB0	DBF_MENU			GUI_DISPLAY	"Trace IO ASCII"	SPC_MOD		1				asynTRACE
+TIB1	DBF_MENU			GUI_DISPLAY	"Trace IO escape"	SPC_MOD		1				asynTRACE
+TIB2	DBF_MENU			GUI_DISPLAY	"Trace IO hex"	SPC_MOD		1				asynTRACE
+TIME	DBF_NOACCESS				"Time"	SPC_NOMOD		2			"epicsTimeStamp   time"	
+TINB0	DBF_MENU			GUI_DISPLAY	"Trace Info Time"	SPC_MOD		1				asynTRACE
+TINB1	DBF_MENU			GUI_DISPLAY	"Trace Info Port"	SPC_MOD		1				asynTRACE
+TINB2	DBF_MENU			GUI_DISPLAY	"Trace Info Source"	SPC_MOD		1				asynTRACE
+TINB3	DBF_MENU			GUI_DISPLAY	"Trace Info Thread"	SPC_MOD		1				asynTRACE
+TINM	DBF_LONG			GUI_DISPLAY	"Trace Info mask"	SPC_MOD		1				
+TINP	DBF_STRING	ASL0			"Translated input string"	SPC_NOMOD		1		40		
+TIOM	DBF_LONG			GUI_DISPLAY	"Trace I/O mask"	SPC_MOD		1				
+TMOD	DBF_MENU			GUI_INPUTS	"Transaction mode"			1				asynTMOD
+TMOT	DBF_DOUBLE		"1.0"	GUI_INPUTS	"Timeout (sec)"			1				
+TMSK	DBF_LONG			GUI_DISPLAY	"Trace mask"	SPC_MOD		1				
+TPRO	DBF_UCHAR				"Trace Processing"							
+TSE	DBF_SHORT			GUI_SCAN	"Time Stamp Event"			1				
+TSEL	DBF_INLINK			GUI_SCAN	"Time Stamp Link"			1				
+TSIZ	DBF_LONG			GUI_DISPLAY	"Trace IO truncate size"	SPC_MOD		1				
+UCMD	DBF_MENU			GUI_OUTPUT	"Universal command"		TRUE	2				gpibUCMD
+UDF	DBF_UCHAR		"1"	GUI_COMMON	"Undefined"		TRUE	1				
+UI32INP	DBF_ULONG				"asynUInt32Digital input"	SPC_NOMOD		2				
+UI32IV	DBF_LONG				"asynUInt32Digital is valid"			2				
+UI32MASK	DBF_ULONG		"0xffffffff"	GUI_OUTPUT	"asynUInt32Digital mask"	SPC_MOD		2				
+UI32OUT	DBF_ULONG			GUI_OUTPUT	"asynUInt32Digital output"		TRUE	2				
+VAL	DBF_LONG	ASL0			"Value field (unused)"			4				

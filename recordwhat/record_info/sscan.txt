@@ -1,0 +1,998 @@
+field	type	asl	initial	promptgroup	prompt	special	pp	interest	base	size	extra	menu
+A1CD	DBF_FLOAT	ASL0	1.0	GUI_INPUTS	"A1 Cmnd"	SPC_MOD		1				
+A1NV	DBF_MENU				"A1  PV Status"	SPC_NOMOD		1				sscanP1NV
+A1PV	DBF_STRING	ASL0		GUI_CALC	"Array-read trigger 1 PV Name"	SPC_MOD		1		40		
+AAWAIT	DBF_MENU			GUI_INPUTS	"AutoWait for data-storage client"							sscanNOYES
+ACKS	DBF_MENU				"Alarm Ack Severity"	SPC_NOMOD		2				menuAlarmSevr
+ACKT	DBF_MENU		"YES"	GUI_ALARMS	"Alarm Ack Transient"	SPC_NOMOD		2				menuYesNo
+ACQM	DBF_MENU	ASL0	"NORMAL"	GUI_COMMON	"Acquisition mode"	SPC_MOD		1				sscanACQM
+ACQT	DBF_MENU	ASL0	"SCALAR"	GUI_COMMON	"Acquisition type"	SPC_MOD		1				sscanACQT
+ALRT	DBF_UCHAR				"Operator Alert"	SPC_NOMOD						
+ASCD	DBF_FLOAT	ASL0	1.0	GUI_INPUTS	"After Scan Cmnd"	SPC_MOD		1				
+ASG	DBF_STRING			GUI_COMMON	"Access Security Group"	SPC_AS				29		
+ASNV	DBF_MENU				"After Scan PV Status"	SPC_NOMOD		1				sscanP1NV
+ASP	DBF_NOACCESS				"Access Security Pvt"	SPC_NOMOD		4			"struct asgMember *asp"	
+ASPV	DBF_STRING	ASL0		GUI_CALC	"After Scan   PV Name"	SPC_MOD		1		40		
+ASWAIT	DBF_MENU	ASL0	"Wait"	GUI_INPUTS	"Wait for completion?"			1				sscanLINKWAIT
+ATIME	DBF_FLOAT	ASL0		GUI_INPUTS	"Array post time period"	SPC_MOD		1				
+AWAIT	DBF_SHORT				"Waiting for data-storage client"	SPC_MOD						
+AWCT	DBF_SHORT				"Auto WCNT"	SPC_MOD						
+BCPT	DBF_LONG				"Bufferred Current Point"	SPC_NOMOD		1				
+BKPT	DBF_NOACCESS				"Break Point"	SPC_NOMOD		1			"char bkpt"	
+BSCD	DBF_FLOAT	ASL0	1.0	GUI_INPUTS	"Before Scan Cmnd"	SPC_MOD		1				
+BSNV	DBF_MENU				"BeforeScan PV Status"	SPC_NOMOD		1				sscanP1NV
+BSPV	DBF_STRING	ASL0		GUI_CALC	"Before Scan  PV Name"	SPC_MOD		1		40		
+BSWAIT	DBF_MENU	ASL0	"Wait"	GUI_INPUTS	"Wait for completion?"			1				sscanLINKWAIT
+BUSY	DBF_UCHAR				"Scan in progress"	SPC_NOMOD						
+CMND	DBF_MENU	ASL0			"Command Field"	SPC_MOD		1				sscanCMND
+COPYTO	DBF_LONG			GUI_COMMON	"Copy Last Pt Thru"			1				
+CPT	DBF_LONG				"Current Point"	SPC_NOMOD		1				
+D01CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d01ca"	
+D01CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D01DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d01da"	
+D01EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D01HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D01LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D01LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D01NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D01NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D01PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D01PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D02CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d02ca"	
+D02CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D02DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d02da"	
+D02EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D02HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D02LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D02LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D02NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D02NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D02PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D02PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D03CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d03ca"	
+D03CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D03DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d03da"	
+D03EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D03HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D03LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D03LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D03NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D03NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D03PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D03PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D04CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d04ca"	
+D04CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D04DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d04da"	
+D04EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D04HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D04LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D04LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D04NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D04NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D04PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D04PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D05CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d05ca"	
+D05CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D05DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d05da"	
+D05EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D05HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D05LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D05LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D05NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D05NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D05PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D05PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D06CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d06ca"	
+D06CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D06DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d06da"	
+D06EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D06HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D06LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D06LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D06NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D06NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D06PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D06PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D07CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d07ca"	
+D07CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D07DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d07da"	
+D07EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D07HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D07LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D07LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D07NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D07NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D07PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D07PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D08CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d08ca"	
+D08CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D08DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d08da"	
+D08EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D08HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D08LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D08LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D08NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D08NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D08PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D08PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D09CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d09ca"	
+D09CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D09DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d09da"	
+D09EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D09HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D09LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D09LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D09NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D09NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D09PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D09PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D10CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d10ca"	
+D10CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D10DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d10da"	
+D10EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D10HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D10LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D10LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D10NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D10NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D10PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D10PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D11CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d11ca"	
+D11CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D11DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d11da"	
+D11EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D11HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D11LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D11LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D11NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D11NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D11PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D11PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D12CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d12ca"	
+D12CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D12DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d12da"	
+D12EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D12HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D12LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D12LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D12NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D12NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D12PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D12PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D13CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d13ca"	
+D13CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D13DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d13da"	
+D13EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D13HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D13LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D13LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D13NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D13NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D13PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D13PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D14CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d14ca"	
+D14CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D14DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d14da"	
+D14EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D14HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D14LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D14LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D14NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D14NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D14PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D14PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D15CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d15ca"	
+D15CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D15DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d15da"	
+D15EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D15HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D15LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D15LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D15NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D15NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D15PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D15PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D16CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d16ca"	
+D16CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D16DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d16da"	
+D16EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D16HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D16LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D16LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D16NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D16NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D16PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D16PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D17CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d17ca"	
+D17CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D17DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d17da"	
+D17EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D17HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D17LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D17LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D17NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D17NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D17PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D17PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D18CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d18ca"	
+D18CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D18DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d18da"	
+D18EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D18HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D18LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D18LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D18NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D18NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D18PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D18PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D19CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d19ca"	
+D19CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D19DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d19da"	
+D19EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D19HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D19LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D19LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D19NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D19NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D19PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D19PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D20CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d20ca"	
+D20CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D20DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d20da"	
+D20EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D20HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D20LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D20LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D20NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D20NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D20PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D20PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D21CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d21ca"	
+D21CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D21DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d21da"	
+D21EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D21HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D21LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D21LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D21NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D21NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D21PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D21PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D22CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d22ca"	
+D22CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D22DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d22da"	
+D22EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D22HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D22LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D22LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D22NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D22NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D22PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D22PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D23CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d23ca"	
+D23CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D23DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d23da"	
+D23EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D23HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D23LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D23LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D23NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D23NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D23PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D23PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D24CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d24ca"	
+D24CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D24DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d24da"	
+D24EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D24HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D24LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D24LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D24NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D24NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D24PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D24PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D25CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d25ca"	
+D25CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D25DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d25da"	
+D25EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D25HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D25LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D25LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D25NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D25NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D25PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D25PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D26CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d26ca"	
+D26CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D26DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d26da"	
+D26EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D26HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D26LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D26LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D26NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D26NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D26PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D26PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D27CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d27ca"	
+D27CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D27DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d27da"	
+D27EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D27HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D27LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D27LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D27NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D27NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D27PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D27PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D28CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d28ca"	
+D28CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D28DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d28da"	
+D28EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D28HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D28LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D28LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D28NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D28NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D28PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D28PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D29CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d29ca"	
+D29CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D29DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d29da"	
+D29EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D29HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D29LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D29LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D29NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D29NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D29PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D29PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D30CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d30ca"	
+D30CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D30DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d30da"	
+D30EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D30HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D30LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D30LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D30NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D30NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D30PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D30PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D31CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d31ca"	
+D31CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D31DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d31da"	
+D31EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D31HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D31LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D31LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D31NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D31NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D31PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D31PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D32CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d32ca"	
+D32CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D32DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d32da"	
+D32EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D32HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D32LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D32LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D32NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D32NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D32PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D32PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D33CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d33ca"	
+D33CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D33DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d33da"	
+D33EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D33HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D33LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D33LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D33NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D33NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D33PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D33PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D34CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d34ca"	
+D34CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D34DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d34da"	
+D34EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D34HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D34LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D34LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D34NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D34NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D34PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D34PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D35CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d35ca"	
+D35CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D35DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d35da"	
+D35EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D35HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D35LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D35LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D35NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D35NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D35PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D35PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D36CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d36ca"	
+D36CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D36DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d36da"	
+D36EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D36HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D36LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D36LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D36NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D36NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D36PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D36PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D37CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d37ca"	
+D37CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D37DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d37da"	
+D37EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D37HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D37LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D37LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D37NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D37NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D37PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D37PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D38CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d38ca"	
+D38CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D38DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d38da"	
+D38EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D38HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D38LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D38LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D38NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D38NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D38PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D38PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D39CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d39ca"	
+D39CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D39DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d39da"	
+D39EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D39HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D39LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D39LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D39NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D39NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D39PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D39PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D40CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d40ca"	
+D40CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D40DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d40da"	
+D40EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D40HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D40LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D40LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D40NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D40NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D40PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D40PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D41CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d41ca"	
+D41CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D41DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d41da"	
+D41EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D41HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D41LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D41LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D41NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D41NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D41PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D41PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D42CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d42ca"	
+D42CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D42DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d42da"	
+D42EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D42HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D42LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D42LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D42NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D42NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D42PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D42PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D43CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d43ca"	
+D43CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D43DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d43da"	
+D43EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D43HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D43LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D43LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D43NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D43NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D43PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D43PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D44CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d44ca"	
+D44CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D44DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d44da"	
+D44EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D44HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D44LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D44LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D44NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D44NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D44PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D44PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D45CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d45ca"	
+D45CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D45DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d45da"	
+D45EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D45HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D45LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D45LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D45NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D45NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D45PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D45PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D46CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d46ca"	
+D46CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D46DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d46da"	
+D46EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D46HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D46LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D46LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D46NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D46NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D46PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D46PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D47CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d47ca"	
+D47CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D47DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d47da"	
+D47EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D47HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D47LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D47LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D47NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D47NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D47PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D47PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D48CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d48ca"	
+D48CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D48DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d48da"	
+D48EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D48HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D48LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D48LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D48NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D48NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D48PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D48PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D49CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d49ca"	
+D49CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D49DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d49da"	
+D49EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D49HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D49LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D49LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D49NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D49NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D49PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D49PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D50CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d50ca"	
+D50CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D50DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d50da"	
+D50EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D50HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D50LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D50LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D50NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D50NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D50PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D50PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D51CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d51ca"	
+D51CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D51DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d51da"	
+D51EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D51HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D51LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D51LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D51NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D51NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D51PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D51PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D52CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d52ca"	
+D52CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D52DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d52da"	
+D52EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D52HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D52LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D52LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D52NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D52NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D52PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D52PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D53CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d53ca"	
+D53CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D53DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d53da"	
+D53EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D53HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D53LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D53LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D53NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D53NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D53PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D53PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D54CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d54ca"	
+D54CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D54DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d54da"	
+D54EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D54HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D54LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D54LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D54NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D54NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D54PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D54PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D55CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d55ca"	
+D55CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D55DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d55da"	
+D55EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D55HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D55LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D55LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D55NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D55NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D55PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D55PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D56CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d56ca"	
+D56CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D56DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d56da"	
+D56EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D56HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D56LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D56LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D56NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D56NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D56PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D56PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D57CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d57ca"	
+D57CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D57DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d57da"	
+D57EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D57HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D57LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D57LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D57NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D57NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D57PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D57PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D58CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d58ca"	
+D58CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D58DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d58da"	
+D58EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D58HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D58LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D58LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D58NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D58NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D58PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D58PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D59CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d59ca"	
+D59CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D59DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d59da"	
+D59EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D59HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D59LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D59LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D59NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D59NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D59PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D59PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D60CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d60ca"	
+D60CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D60DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d60da"	
+D60EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D60HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D60LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D60LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D60NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D60NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D60PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D60PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D61CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d61ca"	
+D61CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D61DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d61da"	
+D61EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D61HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D61LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D61LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D61NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D61NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D61PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D61PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D62CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d62ca"	
+D62CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D62DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d62da"	
+D62EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D62HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D62LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D62LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D62NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D62NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D62PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D62PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D63CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d63ca"	
+D63CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D63DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d63da"	
+D63EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D63HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D63LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D63LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D63NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D63NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D63PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D63PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D64CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d64ca"	
+D64CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D64DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d64da"	
+D64EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D64HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D64LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D64LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D64NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D64NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D64PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D64PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D65CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d65ca"	
+D65CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D65DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d65da"	
+D65EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D65HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D65LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D65LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D65NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D65NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D65PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D65PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D66CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d66ca"	
+D66CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D66DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d66da"	
+D66EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D66HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D66LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D66LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D66NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D66NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D66PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D66PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D67CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d67ca"	
+D67CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D67DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d67da"	
+D67EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D67HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D67LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D67LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D67NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D67NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D67PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D67PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D68CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d68ca"	
+D68CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D68DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d68da"	
+D68EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D68HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D68LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D68LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D68NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D68NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D68PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D68PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D69CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d69ca"	
+D69CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D69DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d69da"	
+D69EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D69HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D69LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D69LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D69NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D69NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D69PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D69PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+D70CA	DBF_NOACCESS	ASL0			"Current Data Array"	SPC_DBADDR				4	"float *          d70ca"	
+D70CV	DBF_FLOAT	ASL0			"Current Value"	SPC_NOMOD		1				
+D70DA	DBF_NOACCESS	ASL0			"Data Array"	SPC_DBADDR				4	"float *          d70da"	
+D70EU	DBF_STRING	ASL0		GUI_COMPRESS	"Engineering Units"			1		16		
+D70HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"High Oper Range"			1				
+D70LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"Low  Oper Range"			1				
+D70LV	DBF_FLOAT	ASL0			"Last Value Posted"	SPC_NOMOD		1				
+D70NE	DBF_ULONG	ASL0			"# of Elements/Pt"	SPC_NOMOD		1				
+D70NV	DBF_MENU				"PV Status"	SPC_NOMOD		1				sscanP1NV
+D70PR	DBF_SHORT	ASL0		GUI_HIST	"Display Precision"			1				
+D70PV	DBF_STRING	ASL0		GUI_CALC	"Detector PV Name"	SPC_MOD		1		40		
+DATA	DBF_SHORT				"Scan data ready"	SPC_NOMOD						
+DDLY	DBF_FLOAT	ASL0		GUI_INPUTS	"Detector-settling delay"	SPC_MOD		1				
+DESC	DBF_STRING			GUI_COMMON	"Descriptor"					41		
+DISA	DBF_SHORT				"Disable"							
+DISP	DBF_UCHAR				"Disable putField"							
+DISS	DBF_MENU			GUI_SCAN	"Disable Alarm Sevrty"			1				menuAlarmSevr
+DISV	DBF_SHORT		"1"	GUI_SCAN	"Disable Value"							
+DPT	DBF_LONG				"Desired Point"	119		1				
+DPVT	DBF_NOACCESS				"Device Private"	SPC_NOMOD		4			"void             *dpvt"	
+DSET	DBF_NOACCESS				"DSET address"	SPC_NOMOD		4			"struct dset      *dset"	
+DSTATE	DBF_MENU	ASL0		GUI_COMMON	"Data state"	SPC_NOMOD		1				sscanDSTATE
+DTYP	DBF_DEVICE			GUI_LINKS	"Device Type"			1				
+EVNT	DBF_SHORT			GUI_SCAN	"Event Number"	SPC_SCAN		1				
+EXSC	DBF_SHORT	ASL0			"Execute Scan"	SPC_MOD	TRUE	1				
+FAZE	DBF_MENU	ASL0			"Scan phase"	SPC_NOMOD		1				sscanFAZE
+FFO	DBF_MENU	ASL0		GUI_OUTPUT	"Freeze Flag Override"	117		1				sscanFFO
+FLNK	DBF_FWDLINK			GUI_LINKS	"Forward Process Link"			1				
+FPTS	DBF_MENU	ASL0	"FREEZE"	GUI_OUTPUT	"Freeze Num of Points"	118		1				sscanFPTS
+KILL	DBF_UCHAR				"Abort right now"	SPC_NOMOD						
+LCNT	DBF_UCHAR				"Lock Count"	SPC_NOMOD		2				
+LPAU	DBF_MENU	ASL0	"GO"		"Last value of Go/Pause"	SPC_NOMOD						sscanPAUS
+LSET	DBF_NOACCESS				"Lock Set"	SPC_NOMOD		4			"struct lockRecord *lset"	
+MLIS	DBF_NOACCESS				"Monitor List"	SPC_NOMOD		4			"ELLLIST          mlis"	
+MLOK	DBF_NOACCESS				"Monitor lock"	SPC_NOMOD		4			"epicsMutexId     mlok"	
+MPTS	DBF_LONG		"100"	GUI_LINKS	"Max # of Points"	SPC_NOMOD		1				
+NAME	DBF_STRING				"Record Name"	SPC_NOMOD				61		
+NPTS	DBF_LONG	ASL0	"100"	GUI_LINKS	"Number of Points"	116		1				
+NSEV	DBF_MENU				"New Alarm Severity"	SPC_NOMOD		2				menuAlarmSevr
+NSTA	DBF_MENU				"New Alarm Status"	SPC_NOMOD		2				menuAlarmStat
+P1AR	DBF_MENU	ASL0		GUI_OUTPUT	"P1 Absolute/Relative"			1				sscanP1AR
+P1CA	DBF_NOACCESS	ASL0			"P1 Current Readback Array"	SPC_DBADDR				4	"double *         p1ca"	
+P1CP	DBF_DOUBLE	ASL0		GUI_INPUTS	"P1 Center Position"	114		1				
+P1CV	DBF_DOUBLE				"P1 Current Value"	SPC_NOMOD		1				
+P1DV	DBF_DOUBLE				"P1 Desired Value"	SPC_MOD		1				
+P1EP	DBF_DOUBLE	ASL0		GUI_INPUTS	"P1 End Position"	113		1				
+P1EU	DBF_STRING	ASL0		GUI_COMPRESS	"P1 Engineering Units"			1		16		
+P1FC	DBF_MENU	ASL0		GUI_OUTPUT	"P1 Freeze Center Pos"	118		1				sscanFPTS
+P1FE	DBF_MENU	ASL0		GUI_OUTPUT	"P1 Freeze End Pos"	118		1				sscanFPTS
+P1FI	DBF_MENU	ASL0		GUI_OUTPUT	"P1 Freeze Step Inc"	118		1				sscanFPTS
+P1FS	DBF_MENU	ASL0		GUI_OUTPUT	"P1 Freeze Start Pos"	118		1				sscanFPTS
+P1FW	DBF_MENU	ASL0		GUI_OUTPUT	"P1 Freeze Width"	118		1				sscanFPTS
+P1HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"P1 High Oper Range"			1				
+P1LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"P1 Low  Oper Range"			1				
+P1LV	DBF_DOUBLE				"P1 Last Value Posted"	SPC_NOMOD		1				
+P1NV	DBF_MENU				"P1  PV Status"	SPC_NOMOD		1				sscanP1NV
+P1PA	DBF_NOACCESS	ASL0			"P1 Step Array"	SPC_DBADDR				4	"double *         p1pa"	
+P1PP	DBF_DOUBLE				"P1 Previous Position"	SPC_NOMOD		1				
+P1PR	DBF_SHORT	ASL0		GUI_HIST	"P1 Display Precision"			1				
+P1PV	DBF_STRING	ASL0		GUI_CALC	"Positioner 1 PV Name"	SPC_MOD		1		40		
+P1RA	DBF_NOACCESS	ASL0			"P1 Readback Array"	SPC_DBADDR				4	"double *         p1ra"	
+P1SI	DBF_DOUBLE	ASL0		GUI_INPUTS	"P1 Step Increment"	112		1				
+P1SM	DBF_MENU	ASL0		GUI_OUTPUT	"P1 Step Mode"	120		1				sscanP1SM
+P1SP	DBF_DOUBLE	ASL0		GUI_INPUTS	"P1 Start Position"	111		1				
+P1WD	DBF_DOUBLE	ASL0		GUI_INPUTS	"P1 Scan Width"	115		1				
+P2AR	DBF_MENU	ASL0		GUI_OUTPUT	"P2 Absolute/Relative"			1				sscanP1AR
+P2CA	DBF_NOACCESS	ASL0			"P2 Current Readback Array"	SPC_DBADDR				4	"double *         p2ca"	
+P2CP	DBF_DOUBLE	ASL0		GUI_INPUTS	"P2 Center Position"	114		1				
+P2CV	DBF_DOUBLE				"P2 Current Value"	SPC_NOMOD		1				
+P2DV	DBF_DOUBLE				"P2 Desired Value"	SPC_MOD		1				
+P2EP	DBF_DOUBLE	ASL0		GUI_INPUTS	"P2 End Position"	113		1				
+P2EU	DBF_STRING	ASL0		GUI_COMPRESS	"P2 Engineering Units"			1		16		
+P2FC	DBF_MENU	ASL0		GUI_OUTPUT	"P2 Freeze Center Pos"	118		1				sscanFPTS
+P2FE	DBF_MENU	ASL0		GUI_OUTPUT	"P2 Freeze End Pos"	118		1				sscanFPTS
+P2FI	DBF_MENU	ASL0		GUI_OUTPUT	"P2 Freeze Step Inc"	118		1				sscanFPTS
+P2FS	DBF_MENU	ASL0		GUI_OUTPUT	"P2 Freeze Start Pos"	118		1				sscanFPTS
+P2FW	DBF_MENU	ASL0		GUI_OUTPUT	"P2 Freeze Width"	118		1				sscanFPTS
+P2HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"P2 High Oper Range"			1				
+P2LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"P2 Low  Oper Range"			1				
+P2LV	DBF_DOUBLE				"P2 Last Value Posted"	SPC_NOMOD		1				
+P2NV	DBF_MENU				"P2  PV Status"	SPC_NOMOD		1				sscanP1NV
+P2PA	DBF_NOACCESS	ASL0			"P2 Step Array"	SPC_DBADDR				4	"double *         p2pa"	
+P2PP	DBF_DOUBLE				"P2 Previous Position"	SPC_NOMOD		1				
+P2PR	DBF_SHORT	ASL0		GUI_HIST	"P2 Display Precision"			1				
+P2PV	DBF_STRING	ASL0		GUI_CALC	"Positioner 2 PV Name"	SPC_MOD		1		40		
+P2RA	DBF_NOACCESS	ASL0			"P2 Readback Array"	SPC_DBADDR				4	"double *         p2ra"	
+P2SI	DBF_DOUBLE	ASL0		GUI_INPUTS	"P2 Step Increment"	112		1				
+P2SM	DBF_MENU	ASL0		GUI_OUTPUT	"P2 Step Mode"	120		1				sscanP1SM
+P2SP	DBF_DOUBLE	ASL0		GUI_INPUTS	"P2 Start Position"	111		1				
+P2WD	DBF_DOUBLE	ASL0		GUI_INPUTS	"P2 Scan Width"	115		1				
+P3AR	DBF_MENU	ASL0		GUI_OUTPUT	"P3 Absolute/Relative"			1				sscanP1AR
+P3CA	DBF_NOACCESS	ASL0			"P3 Current Readback Array"	SPC_DBADDR				4	"double *         p3ca"	
+P3CP	DBF_DOUBLE	ASL0		GUI_INPUTS	"P3 Center Position"	114		1				
+P3CV	DBF_DOUBLE				"P3 Current Value"	SPC_NOMOD		1				
+P3DV	DBF_DOUBLE				"P3 Desired Value"	SPC_MOD		1				
+P3EP	DBF_DOUBLE	ASL0		GUI_INPUTS	"P3 End Position"	113		1				
+P3EU	DBF_STRING	ASL0		GUI_COMPRESS	"P3 Engineering Units"			1		16		
+P3FC	DBF_MENU	ASL0		GUI_OUTPUT	"P3 Freeze Center Pos"	118		1				sscanFPTS
+P3FE	DBF_MENU	ASL0		GUI_OUTPUT	"P3 Freeze End Pos"	118		1				sscanFPTS
+P3FI	DBF_MENU	ASL0		GUI_OUTPUT	"P3 Freeze Step Inc"	118		1				sscanFPTS
+P3FS	DBF_MENU	ASL0		GUI_OUTPUT	"P3 Freeze Start Pos"	118		1				sscanFPTS
+P3FW	DBF_MENU	ASL0		GUI_OUTPUT	"P3 Freeze Width"	118		1				sscanFPTS
+P3HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"P3 High Oper Range"			1				
+P3LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"P3 Low  Oper Range"			1				
+P3LV	DBF_DOUBLE				"P3 Last Value Posted"	SPC_NOMOD		1				
+P3NV	DBF_MENU				"P3  PV Status"	SPC_NOMOD		1				sscanP1NV
+P3PA	DBF_NOACCESS	ASL0			"P3 Step Array"	SPC_DBADDR				4	"double *         p3pa"	
+P3PP	DBF_DOUBLE				"P3 Previous Position"	SPC_NOMOD		1				
+P3PR	DBF_SHORT	ASL0		GUI_HIST	"P3 Display Precision"			1				
+P3PV	DBF_STRING	ASL0		GUI_CALC	"Positioner 3 PV Name"	SPC_MOD		1		40		
+P3RA	DBF_NOACCESS	ASL0			"P3 Readback Array"	SPC_DBADDR				4	"double *         p3ra"	
+P3SI	DBF_DOUBLE	ASL0		GUI_INPUTS	"P3 Step Increment"	112		1				
+P3SM	DBF_MENU	ASL0		GUI_OUTPUT	"P3 Step Mode"	120		1				sscanP1SM
+P3SP	DBF_DOUBLE	ASL0		GUI_INPUTS	"P3 Start Position"	111		1				
+P3WD	DBF_DOUBLE	ASL0		GUI_INPUTS	"P3 Scan Width"	115		1				
+P4AR	DBF_MENU	ASL0		GUI_OUTPUT	"P4 Absolute/Relative"			1				sscanP1AR
+P4CA	DBF_NOACCESS	ASL0			"P4 Current Readback Array"	SPC_DBADDR				4	"double *         p4ca"	
+P4CP	DBF_DOUBLE	ASL0		GUI_INPUTS	"P4 Center Position"	114		1				
+P4CV	DBF_DOUBLE				"P4 Current Value"	SPC_NOMOD		1				
+P4DV	DBF_DOUBLE				"P4 Desired Value"	SPC_MOD		1				
+P4EP	DBF_DOUBLE	ASL0		GUI_INPUTS	"P4 End Position"	113		1				
+P4EU	DBF_STRING	ASL0		GUI_COMPRESS	"P4 Engineering Units"			1		16		
+P4FC	DBF_MENU	ASL0		GUI_OUTPUT	"P4 Freeze Center Pos"	118		1				sscanFPTS
+P4FE	DBF_MENU	ASL0		GUI_OUTPUT	"P4 Freeze End Pos"	118		1				sscanFPTS
+P4FI	DBF_MENU	ASL0		GUI_OUTPUT	"P4 Freeze Step Inc"	118		1				sscanFPTS
+P4FS	DBF_MENU	ASL0		GUI_OUTPUT	"P4 Freeze Start Pos"	118		1				sscanFPTS
+P4FW	DBF_MENU	ASL0		GUI_OUTPUT	"P4 Freeze Width"	118		1				sscanFPTS
+P4HR	DBF_DOUBLE	ASL0		GUI_CONVERT	"P4 High Oper Range"			1				
+P4LR	DBF_DOUBLE	ASL0		GUI_CONVERT	"P4 Low  Oper Range"			1				
+P4LV	DBF_DOUBLE				"P4 Last Value Posted"	SPC_NOMOD		1				
+P4NV	DBF_MENU				"P4  PV Status"	SPC_NOMOD		1				sscanP1NV
+P4PA	DBF_NOACCESS	ASL0			"P4 Step Array"	SPC_DBADDR				4	"double *         p4pa"	
+P4PP	DBF_DOUBLE				"P4 Previous Position"	SPC_NOMOD		1				
+P4PR	DBF_SHORT	ASL0		GUI_HIST	"P4 Display Precision"			1				
+P4PV	DBF_STRING	ASL0		GUI_CALC	"Positioner 4 PV Name"	SPC_MOD		1		40		
+P4RA	DBF_NOACCESS	ASL0			"P4 Readback Array"	SPC_DBADDR				4	"double *         p4ra"	
+P4SI	DBF_DOUBLE	ASL0		GUI_INPUTS	"P4 Step Increment"	112		1				
+P4SM	DBF_MENU	ASL0		GUI_OUTPUT	"P4 Step Mode"	120		1				sscanP1SM
+P4SP	DBF_DOUBLE	ASL0		GUI_INPUTS	"P4 Start Position"	111		1				
+P4WD	DBF_DOUBLE	ASL0		GUI_INPUTS	"P4 Scan Width"	115		1				
+PACT	DBF_UCHAR				"Record active"	SPC_NOMOD		1				
+PASM	DBF_MENU	ASL0		GUI_OUTPUT	"After Scan Mode"			1				sscanPASM
+PAUS	DBF_MENU	ASL0	"GO"		"Go/Pause control"	SPC_MOD		1				sscanPAUS
+PCPT	DBF_LONG				"Point ofLast Posting"	SPC_NOMOD		1				
+PDLY	DBF_FLOAT	ASL0		GUI_INPUTS	"Positioner-settling delay"	SPC_MOD		1				
+PHAS	DBF_SHORT			GUI_SCAN	"Scan Phase"	SPC_SCAN		1				
+PINI	DBF_MENU			GUI_SCAN	"Process at iocInit"			1				menuPini
+PPN	DBF_NOACCESS				"addr of PUTNOTIFY"	SPC_NOMOD		4			"struct putNotify *ppn"	
+PPNR	DBF_NOACCESS				"pputNotifyRecord"	SPC_NOMOD		4			"struct putNotifyRecord *ppnr"	
+PRIO	DBF_MENU			GUI_SCAN	"Scheduling Priority"	SPC_SCAN		1				menuPriority
+PROC	DBF_UCHAR				"Force Processing"		TRUE	3				
+PUTF	DBF_UCHAR				"dbPutField process"	SPC_NOMOD		1				
+PXSC	DBF_UCHAR				"Previous XScan"	SPC_NOMOD						
+R1CV	DBF_DOUBLE				"P1 Readback Value"	SPC_NOMOD		1				
+R1DL	DBF_DOUBLE	ASL0		GUI_INPUTS	"P1 Readback Delta"			1				
+R1LV	DBF_DOUBLE				"P1 Rdbk Last Val Pst"	SPC_NOMOD		1				
+R1NV	DBF_MENU				"R1  PV Status"	SPC_NOMOD		1				sscanP1NV
+R1PV	DBF_STRING	ASL0		GUI_CALC	"P1 Readback  PV Name"	SPC_MOD		1		40		
+R2CV	DBF_DOUBLE				"P2 Readback Value"	SPC_NOMOD		1				
+R2DL	DBF_DOUBLE	ASL0		GUI_INPUTS	"P2 Readback Delta"			1				
+R2LV	DBF_DOUBLE				"P2 Rdbk Last Val Pst"	SPC_NOMOD		1				
+R2NV	DBF_MENU				"R2  PV Status"	SPC_NOMOD		1				sscanP1NV
+R2PV	DBF_STRING	ASL0		GUI_CALC	"P2 Readback  PV Name"	SPC_MOD		1		40		
+R3CV	DBF_DOUBLE				"P3 Readback Value"	SPC_NOMOD		1				
+R3DL	DBF_DOUBLE	ASL0		GUI_INPUTS	"P3 Readback Delta"			1				
+R3LV	DBF_DOUBLE				"P3 Rdbk Last Val Pst"	SPC_NOMOD		1				
+R3NV	DBF_MENU				"R3  PV Status"	SPC_NOMOD		1				sscanP1NV
+R3PV	DBF_STRING	ASL0		GUI_CALC	"P3 Readback  PV Name"	SPC_MOD		1		40		
+R4CV	DBF_DOUBLE				"P4 Readback Value"	SPC_NOMOD		1				
+R4DL	DBF_DOUBLE	ASL0		GUI_INPUTS	"P4 Readback Delta"			1				
+R4LV	DBF_DOUBLE				"P4 Rdbk Last Val Pst"	SPC_NOMOD		1				
+R4NV	DBF_MENU				"R4  PV Status"	SPC_NOMOD		1				sscanP1NV
+R4PV	DBF_STRING	ASL0		GUI_CALC	"P4 Readback  PV Name"	SPC_MOD		1		40		
+RDES	DBF_NOACCESS				"Address of dbRecordType"	SPC_NOMOD		4			"struct dbRecordType *rdes"	
+RDLY	DBF_FLOAT	ASL0		GUI_INPUTS	"Pause resume delay"	SPC_MOD		1				
+REFD	DBF_SHORT		"1"		"Reference detector"	SPC_MOD						
+RPRO	DBF_UCHAR				"Reprocess "	SPC_NOMOD		1				
+RPVT	DBF_NOACCESS				"Ptr to Pvt Struct"	SPC_NOMOD		4		4	"void *           rpvt"	
+RSET	DBF_NOACCESS				"Address of RSET"	SPC_NOMOD		4			"struct rset      *rset"	
+SCAN	DBF_MENU			GUI_SCAN	"Scan Mechanism"	SPC_SCAN		1				menuScan
+SDIS	DBF_INLINK			GUI_SCAN	"Scanning Disable"			1				
+SEVR	DBF_MENU		"INVALID"		"Alarm Severity"	SPC_NOMOD						menuAlarmSevr
+SMSG	DBF_STRING				"Record State Msg"			1		40		
+SPVT	DBF_NOACCESS				"Scan Private"	SPC_NOMOD		4			"struct scan_element *spvt"	
+STAT	DBF_MENU		"UDF"		"Alarm Status"	SPC_NOMOD						menuAlarmStat
+T1CD	DBF_FLOAT	ASL0	1.0	GUI_INPUTS	"T1 Cmnd"	SPC_MOD		1				
+T1NV	DBF_MENU				"T1  PV Status"	SPC_NOMOD		1				sscanP1NV
+T1PV	DBF_STRING	ASL0		GUI_CALC	"Trigger 1    PV Name"	SPC_MOD		1		40		
+T2CD	DBF_FLOAT	ASL0	1.0	GUI_INPUTS	"T2 Cmnd"	SPC_MOD		1				
+T2NV	DBF_MENU				"T2  PV Status"	SPC_NOMOD		1				sscanP1NV
+T2PV	DBF_STRING	ASL0		GUI_CALC	"Trigger 2    PV Name"	SPC_MOD		1		40		
+T3CD	DBF_FLOAT	ASL0	1.0	GUI_INPUTS	"T3 Cmnd"	SPC_MOD		1				
+T3NV	DBF_MENU				"T3  PV Status"	SPC_NOMOD		1				sscanP1NV
+T3PV	DBF_STRING	ASL0		GUI_CALC	"Trigger 3    PV Name"	SPC_MOD		1		40		
+T4CD	DBF_FLOAT	ASL0	1.0	GUI_INPUTS	"T4 Cmnd"	SPC_MOD		1				
+T4NV	DBF_MENU				"T4  PV Status"	SPC_NOMOD		1				sscanP1NV
+T4PV	DBF_STRING	ASL0		GUI_CALC	"Trigger 4    PV Name"	SPC_MOD		1		40		
+TIME	DBF_NOACCESS				"Time"	SPC_NOMOD		2			"epicsTimeStamp   time"	
+TLAP	DBF_NOACCESS				"Time of Last Array Posting"	SPC_NOMOD		2			"epicsTimeStamp   tlap"	
+TOLP	DBF_NOACCESS				"Time of Last Posting"	SPC_NOMOD		2			"epicsTimeStamp   tolp"	
+TPRO	DBF_UCHAR				"Trace Processing"							
+TSE	DBF_SHORT			GUI_SCAN	"Time Stamp Event"			1				
+TSEL	DBF_INLINK			GUI_SCAN	"Time Stamp Link"			1				
+UDF	DBF_UCHAR		"1"	GUI_COMMON	"Undefined"		TRUE	1				
+VAL	DBF_DOUBLE				"Value Field"							
+VERS	DBF_DOUBLE		"3"		"Code Version"	SPC_NOMOD						
+WAIT	DBF_SHORT				"Wait for client(s)"	SPC_MOD						
+WCNT	DBF_SHORT				"Wait count)"	SPC_NOMOD						
+WTNG	DBF_SHORT				"Waiting for client(s)"	SPC_NOMOD						
+XSC	DBF_SHORT				"Internal execScan"	SPC_NOMOD		1				

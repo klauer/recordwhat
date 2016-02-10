@@ -1,0 +1,109 @@
+field	type	asl	initial	promptgroup	prompt	special	pp	interest	base	size	extra	menu
+ACKS	DBF_MENU				"Alarm Ack Severity"	SPC_NOMOD		2				menuAlarmSevr
+ACKT	DBF_MENU		"YES"	GUI_ALARMS	"Alarm Ack Transient"	SPC_NOMOD		2				menuYesNo
+ASG	DBF_STRING			GUI_COMMON	"Access Security Group"	SPC_AS				29		
+ASP	DBF_NOACCESS				"Access Security Pvt"	SPC_NOMOD		4			"struct asgMember *asp"	
+BKPT	DBF_NOACCESS				"Break Point"	SPC_NOMOD		1			"char bkpt"	
+COSV	DBF_MENU			GUI_MBB	"Change of State Svr"		TRUE	1				menuAlarmSevr
+DESC	DBF_STRING			GUI_COMMON	"Descriptor"					41		
+DISA	DBF_SHORT				"Disable"							
+DISP	DBF_UCHAR				"Disable putField"							
+DISS	DBF_MENU			GUI_SCAN	"Disable Alarm Sevrty"			1				menuAlarmSevr
+DISV	DBF_SHORT		"1"	GUI_SCAN	"Disable Value"							
+DPVT	DBF_NOACCESS				"Device Private"	SPC_NOMOD		4			"void             *dpvt"	
+DSET	DBF_NOACCESS				"DSET address"	SPC_NOMOD		4			"struct dset      *dset"	
+DTYP	DBF_DEVICE			GUI_LINKS	"Device Type"			1				
+EIST	DBF_STRING			GUI_BITS2	"Eight String"	SPC_MOD	TRUE	1		26		
+EISV	DBF_MENU			GUI_BITS2	"State Eight Severity"		TRUE	1				menuAlarmSevr
+EIVL	DBF_ULONG			GUI_BITS2	"Eight Value"	SPC_MOD	TRUE	1	HEX			
+ELST	DBF_STRING			GUI_BITS2	"Eleven String"	SPC_MOD	TRUE	1		26		
+ELSV	DBF_MENU			GUI_BITS2	"State Eleven Severity"		TRUE	1				menuAlarmSevr
+ELVL	DBF_ULONG			GUI_BITS2	"Eleven Value"	SPC_MOD	TRUE	1	HEX			
+EVNT	DBF_SHORT			GUI_SCAN	"Event Number"	SPC_SCAN		1				
+FFST	DBF_STRING			GUI_BITS2	"Fifteen String"	SPC_MOD	TRUE	1		26		
+FFSV	DBF_MENU			GUI_BITS2	"State Fifteen Severity"		TRUE	1				menuAlarmSevr
+FFVL	DBF_ULONG			GUI_BITS2	"Fifteen Value"	SPC_MOD	TRUE	1	HEX			
+FLNK	DBF_FWDLINK			GUI_LINKS	"Forward Process Link"			1				
+FRST	DBF_STRING			GUI_BITS1	"Four String"	SPC_MOD	TRUE	1		26		
+FRSV	DBF_MENU			GUI_BITS1	"State Four Severity"		TRUE	1				menuAlarmSevr
+FRVL	DBF_ULONG			GUI_BITS1	"Four Value"	SPC_MOD	TRUE	1	HEX			
+FTST	DBF_STRING			GUI_BITS2	"Fourteen String"	SPC_MOD	TRUE	1		26		
+FTSV	DBF_MENU			GUI_BITS2	"State Fourteen Sevr"		TRUE	1				menuAlarmSevr
+FTVL	DBF_ULONG			GUI_BITS2	"Fourteen Value"	SPC_MOD	TRUE	1	HEX			
+FVST	DBF_STRING			GUI_BITS1	"Five String"	SPC_MOD	TRUE	1		26		
+FVSV	DBF_MENU			GUI_BITS1	"State Five Severity"		TRUE	1				menuAlarmSevr
+FVVL	DBF_ULONG			GUI_BITS1	"Five Value"	SPC_MOD	TRUE	1	HEX			
+INP	DBF_INLINK			GUI_MBB	"Input Specification"			1				
+LALM	DBF_USHORT				"Last Value Alarmed"	SPC_NOMOD		3				
+LCNT	DBF_UCHAR				"Lock Count"	SPC_NOMOD		2				
+LSET	DBF_NOACCESS				"Lock Set"	SPC_NOMOD		4			"struct lockRecord *lset"	
+MASK	DBF_ULONG				"Hardware Mask"	SPC_NOMOD		1				
+MLIS	DBF_NOACCESS				"Monitor List"	SPC_NOMOD		4			"ELLLIST          mlis"	
+MLOK	DBF_NOACCESS				"Monitor lock"	SPC_NOMOD		4			"epicsMutexId     mlok"	
+MLST	DBF_USHORT				"Last Value Monitored"	SPC_NOMOD		3				
+NAME	DBF_STRING				"Record Name"	SPC_NOMOD				61		
+NIST	DBF_STRING			GUI_BITS2	"Nine String"	SPC_MOD	TRUE	1		26		
+NISV	DBF_MENU			GUI_BITS2	"State Nine Severity"		TRUE	1				menuAlarmSevr
+NIVL	DBF_ULONG			GUI_BITS2	"Nine Value"	SPC_MOD	TRUE	1	HEX			
+NOBT	DBF_SHORT			GUI_MBB	"Number of Bits"	SPC_NOMOD		1				
+NSEV	DBF_MENU				"New Alarm Severity"	SPC_NOMOD		2				menuAlarmSevr
+NSTA	DBF_MENU				"New Alarm Status"	SPC_NOMOD		2				menuAlarmStat
+ONST	DBF_STRING			GUI_BITS1	"One String"	SPC_MOD	TRUE	1		26		
+ONSV	DBF_MENU			GUI_BITS1	"State One Severity"		TRUE	1				menuAlarmSevr
+ONVL	DBF_ULONG			GUI_BITS1	"One Value"	SPC_MOD	TRUE	1	HEX			
+ORAW	DBF_ULONG				"Prev Raw Value"	SPC_NOMOD		3				
+PACT	DBF_UCHAR				"Record active"	SPC_NOMOD		1				
+PHAS	DBF_SHORT			GUI_SCAN	"Scan Phase"	SPC_SCAN		1				
+PINI	DBF_MENU			GUI_SCAN	"Process at iocInit"			1				menuPini
+PPN	DBF_NOACCESS				"addr of PUTNOTIFY"	SPC_NOMOD		4			"struct putNotify *ppn"	
+PPNR	DBF_NOACCESS				"pputNotifyRecord"	SPC_NOMOD		4			"struct putNotifyRecord *ppnr"	
+PRIO	DBF_MENU			GUI_SCAN	"Scheduling Priority"	SPC_SCAN		1				menuPriority
+PROC	DBF_UCHAR				"Force Processing"		TRUE	3				
+PUTF	DBF_UCHAR				"dbPutField process"	SPC_NOMOD		1				
+RDES	DBF_NOACCESS				"Address of dbRecordType"	SPC_NOMOD		4			"struct dbRecordType *rdes"	
+RPRO	DBF_UCHAR				"Reprocess "	SPC_NOMOD		1				
+RSET	DBF_NOACCESS				"Address of RSET"	SPC_NOMOD		4			"struct rset      *rset"	
+RVAL	DBF_ULONG				"Raw Value"		TRUE					
+SCAN	DBF_MENU			GUI_SCAN	"Scan Mechanism"	SPC_SCAN		1				menuScan
+SDEF	DBF_SHORT				"States Defined"	SPC_NOMOD		3				
+SDIS	DBF_INLINK			GUI_SCAN	"Scanning Disable"			1				
+SEVR	DBF_MENU		"INVALID"		"Alarm Severity"	SPC_NOMOD						menuAlarmSevr
+SHFT	DBF_USHORT			GUI_MBB	"Shift"			1				
+SIML	DBF_INLINK			GUI_MBB	"Sim Mode Location"			1				
+SIMM	DBF_MENU				"Simulation Mode"			1				menuSimm
+SIMS	DBF_MENU			GUI_MBB	"Sim mode Alarm Svrty"			2				menuAlarmSevr
+SIOL	DBF_INLINK			GUI_MBB	"Sim Input Specifctn"			1				
+SPVT	DBF_NOACCESS				"Scan Private"	SPC_NOMOD		4			"struct scan_element *spvt"	
+STAT	DBF_MENU		"UDF"		"Alarm Status"	SPC_NOMOD						menuAlarmStat
+SVAL	DBF_ULONG				"Simulation Value"							
+SVST	DBF_STRING			GUI_BITS1	"Seven String"	SPC_MOD	TRUE	1		26		
+SVSV	DBF_MENU			GUI_BITS1	"State Seven Severity"		TRUE	1				menuAlarmSevr
+SVVL	DBF_ULONG			GUI_BITS1	"Seven Value"	SPC_MOD	TRUE	1	HEX			
+SXST	DBF_STRING			GUI_BITS1	"Six String"	SPC_MOD	TRUE	1		26		
+SXSV	DBF_MENU			GUI_BITS1	"State Six Severity"		TRUE	1				menuAlarmSevr
+SXVL	DBF_ULONG			GUI_BITS1	"Six Value"	SPC_MOD	TRUE	1	HEX			
+TEST	DBF_STRING			GUI_BITS2	"Ten String"	SPC_MOD	TRUE	1		26		
+TESV	DBF_MENU			GUI_BITS2	"State Ten Severity"		TRUE	1				menuAlarmSevr
+TEVL	DBF_ULONG			GUI_BITS2	"Ten Value"	SPC_MOD	TRUE	1	HEX			
+THST	DBF_STRING			GUI_BITS1	"Three String"	SPC_MOD	TRUE	1		26		
+THSV	DBF_MENU			GUI_BITS1	"State Three Severity"		TRUE	1				menuAlarmSevr
+THVL	DBF_ULONG			GUI_BITS1	"Three Value"	SPC_MOD	TRUE	1	HEX			
+TIME	DBF_NOACCESS				"Time"	SPC_NOMOD		2			"epicsTimeStamp   time"	
+TPRO	DBF_UCHAR				"Trace Processing"							
+TSE	DBF_SHORT			GUI_SCAN	"Time Stamp Event"			1				
+TSEL	DBF_INLINK			GUI_SCAN	"Time Stamp Link"			1				
+TTST	DBF_STRING			GUI_BITS2	"Thirteen String"	SPC_MOD	TRUE	1		26		
+TTSV	DBF_MENU			GUI_BITS2	"State Thirteen Sevr"		TRUE	1				menuAlarmSevr
+TTVL	DBF_ULONG			GUI_BITS2	"Thirteen Value"	SPC_MOD	TRUE	1	HEX			
+TVST	DBF_STRING			GUI_BITS2	"Twelve String"	SPC_MOD	TRUE	1		26		
+TVSV	DBF_MENU			GUI_BITS2	"State Twelve Severity"		TRUE	1				menuAlarmSevr
+TVVL	DBF_ULONG			GUI_BITS2	"Twelve Value"	SPC_MOD	TRUE	1	HEX			
+TWST	DBF_STRING			GUI_BITS1	"Two String"	SPC_MOD	TRUE	1		26		
+TWSV	DBF_MENU			GUI_BITS1	"State Two Severity"		TRUE	1				menuAlarmSevr
+TWVL	DBF_ULONG			GUI_BITS1	"Two Value"	SPC_MOD	TRUE	1	HEX			
+UDF	DBF_UCHAR		"1"	GUI_COMMON	"Undefined"		TRUE	1				
+UNSV	DBF_MENU			GUI_MBB	"Unknown State Severity"		TRUE	1				menuAlarmSevr
+VAL	DBF_ENUM	ASL0		GUI_INPUTS	"Current Value"		TRUE					
+ZRST	DBF_STRING			GUI_BITS1	"Zero String"	SPC_MOD	TRUE	1		26		
+ZRSV	DBF_MENU			GUI_BITS1	"State Zero Severity"		TRUE	1				menuAlarmSevr
+ZRVL	DBF_ULONG			GUI_BITS1	"Zero Value"	SPC_MOD	TRUE	1	HEX			

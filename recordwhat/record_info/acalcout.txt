@@ -1,0 +1,180 @@
+field	type	asl	initial	promptgroup	prompt	special	pp	interest	base	size	extra	menu
+A	DBF_DOUBLE				"Value of Input A"		TRUE					
+AA	DBF_NOACCESS	ASL0			"Value of array input"	SPC_DBADDR	TRUE				"double *aa"	
+ACKS	DBF_MENU				"Alarm Ack Severity"	SPC_NOMOD		2				menuAlarmSevr
+ACKT	DBF_MENU		"YES"	GUI_ALARMS	"Alarm Ack Transient"	SPC_NOMOD		2				menuYesNo
+ADEL	DBF_DOUBLE			GUI_DISPLAY	"Archive Deadband"			1				
+ALST	DBF_DOUBLE				"Last Value Archived"	SPC_NOMOD		3				
+AMASK	DBF_ULONG				"Array mod"	SPC_NOMOD		1				
+ASG	DBF_STRING			GUI_COMMON	"Access Security Group"	SPC_AS				29		
+ASP	DBF_NOACCESS				"Access Security Pvt"	SPC_NOMOD		4			"struct asgMember *asp"	
+AVAL	DBF_NOACCESS	ASL0			"Array Value"	SPC_DBADDR	TRUE				"double *aval"	
+B	DBF_DOUBLE				"Value of Input B"		TRUE					
+BB	DBF_NOACCESS	ASL0			"Value of array input"	SPC_DBADDR	TRUE				"double *bb"	
+BKPT	DBF_NOACCESS				"Break Point"	SPC_NOMOD		1			"char bkpt"	
+C	DBF_DOUBLE				"Value of Input C"		TRUE					
+CACT	DBF_UCHAR				"Calc active"	SPC_NOMOD		1				
+CALC	DBF_STRING			GUI_CALC	"Calculation"	SPC_MOD	TRUE			80		
+CC	DBF_NOACCESS	ASL0			"Value of array input"	SPC_DBADDR	TRUE				"double *cc"	
+CLCV	DBF_LONG				"CALC Valid"			1				
+CSTAT	DBF_LONG				"Calc status"	SPC_NOMOD		1				
+D	DBF_DOUBLE				"Value of Input D"		TRUE					
+DD	DBF_NOACCESS	ASL0			"Value of array input"	SPC_DBADDR	TRUE				"double *dd"	
+DESC	DBF_STRING			GUI_COMMON	"Descriptor"					41		
+DISA	DBF_SHORT				"Disable"							
+DISP	DBF_UCHAR				"Disable putField"							
+DISS	DBF_MENU			GUI_SCAN	"Disable Alarm Sevrty"			1				menuAlarmSevr
+DISV	DBF_SHORT		"1"	GUI_SCAN	"Disable Value"							
+DLYA	DBF_USHORT	ASL0			"Output Delay Active"	SPC_NOMOD						
+DOPT	DBF_MENU			GUI_CALC	"Output Data Opt"			1				acalcoutDOPT
+DPVT	DBF_NOACCESS				"Device Private"	SPC_NOMOD		4			"void             *dpvt"	
+DSET	DBF_NOACCESS				"DSET address"	SPC_NOMOD		4			"struct dset      *dset"	
+DTYP	DBF_DEVICE			GUI_LINKS	"Device Type"			1				
+E	DBF_DOUBLE				"Value of Input E"		TRUE					
+EE	DBF_NOACCESS	ASL0			"Value of array input"	SPC_DBADDR	TRUE				"double *ee"	
+EGU	DBF_STRING			GUI_DISPLAY	"Units Name"			1		16		
+EVNT	DBF_SHORT			GUI_SCAN	"Event Number"	SPC_SCAN		1				
+F	DBF_DOUBLE				"Value of Input F"		TRUE					
+FF	DBF_NOACCESS	ASL0			"Value of array input"	SPC_DBADDR	TRUE				"double *ff"	
+FLNK	DBF_FWDLINK			GUI_LINKS	"Forward Process Link"			1				
+G	DBF_DOUBLE				"Value of Input G"		TRUE					
+GG	DBF_NOACCESS	ASL0			"Value of array input"	SPC_DBADDR	TRUE				"double *gg"	
+H	DBF_DOUBLE				"Value of Input H"		TRUE					
+HH	DBF_NOACCESS	ASL0			"Value of array input"	SPC_DBADDR	TRUE				"double *hh"	
+HHSV	DBF_MENU			GUI_ALARMS	"Hihi Severity"		TRUE	1				menuAlarmSevr
+HIGH	DBF_DOUBLE			GUI_ALARMS	"High Alarm Limit"		TRUE	1				
+HIHI	DBF_DOUBLE			GUI_ALARMS	"Hihi Alarm Limit"		TRUE	1				
+HOPR	DBF_DOUBLE			GUI_DISPLAY	"High Operating Rng"			1				
+HSV	DBF_MENU			GUI_ALARMS	"High Severity"		TRUE	1				menuAlarmSevr
+HYST	DBF_DOUBLE			GUI_ALARMS	"Alarm Deadband"			1				
+I	DBF_DOUBLE				"Value of Input I"		TRUE					
+IAAV	DBF_MENU		"1"		"INAA PV Status"	SPC_NOMOD		1				acalcoutINAV
+IBBV	DBF_MENU		"1"		"INBB PV Status"	SPC_NOMOD		1				acalcoutINAV
+ICCV	DBF_MENU		"1"		"INCC PV Status"	SPC_NOMOD		1				acalcoutINAV
+IDDV	DBF_MENU		"1"		"INDD PV Status"	SPC_NOMOD		1				acalcoutINAV
+IEEV	DBF_MENU		"1"		"INEE PV Status"	SPC_NOMOD		1				acalcoutINAV
+IFFV	DBF_MENU		"1"		"INFF PV Status"	SPC_NOMOD		1				acalcoutINAV
+IGGV	DBF_MENU		"1"		"INGG PV Status"	SPC_NOMOD		1				acalcoutINAV
+IHHV	DBF_MENU		"1"		"INHH PV Status"	SPC_NOMOD		1				acalcoutINAV
+II	DBF_NOACCESS	ASL0			"Value of array input"	SPC_DBADDR	TRUE				"double *ii"	
+IIIV	DBF_MENU		"1"		"INII PV Status"	SPC_NOMOD		1				acalcoutINAV
+IJJV	DBF_MENU		"1"		"INJJ PV Status"	SPC_NOMOD		1				acalcoutINAV
+IKKV	DBF_MENU		"1"		"INKK PV Status"	SPC_NOMOD		1				acalcoutINAV
+ILLV	DBF_MENU		"1"		"INLL PV Status"	SPC_NOMOD		1				acalcoutINAV
+INAA	DBF_INLINK			GUI_CALC	"Array input AA"	SPC_MOD		1				
+INAV	DBF_MENU		"1"		"INPA PV Status"	SPC_NOMOD		1				acalcoutINAV
+INBB	DBF_INLINK			GUI_CALC	"Array input BB"	SPC_MOD		1				
+INBV	DBF_MENU		"1"		"INPB PV Status"	SPC_NOMOD		1				acalcoutINAV
+INCC	DBF_INLINK			GUI_CALC	"Array input CC"	SPC_MOD		1				
+INCV	DBF_MENU		"1"		"INPC PV Status"	SPC_NOMOD		1				acalcoutINAV
+INDD	DBF_INLINK			GUI_CALC	"Array input DD"	SPC_MOD		1				
+INDV	DBF_MENU		"1"		"INPD PV Status"	SPC_NOMOD		1				acalcoutINAV
+INEE	DBF_INLINK			GUI_CALC	"Array input EE"	SPC_MOD		1				
+INEV	DBF_MENU		"1"		"INPE PV Status"	SPC_NOMOD		1				acalcoutINAV
+INFF	DBF_INLINK			GUI_CALC	"Array input FF"	SPC_MOD		1				
+INFV	DBF_MENU		"1"		"INPF PV Status"	SPC_NOMOD		1				acalcoutINAV
+INGG	DBF_INLINK			GUI_CALC	"Array input GG"	SPC_MOD		1				
+INGV	DBF_MENU		"1"		"INPG PV Status"	SPC_NOMOD		1				acalcoutINAV
+INHH	DBF_INLINK			GUI_CALC	"Array input HH"	SPC_MOD		1				
+INHV	DBF_MENU		"1"		"INPH PV Status"	SPC_NOMOD		1				acalcoutINAV
+INII	DBF_INLINK			GUI_CALC	"Array input II"	SPC_MOD		1				
+INIV	DBF_MENU		"1"		"INPI PV Status"	SPC_NOMOD		1				acalcoutINAV
+INJJ	DBF_INLINK			GUI_CALC	"Array input JJ"	SPC_MOD		1				
+INJV	DBF_MENU		"1"		"INPJ PV Status"	SPC_NOMOD		1				acalcoutINAV
+INKK	DBF_INLINK			GUI_CALC	"Array input KK"	SPC_MOD		1				
+INKV	DBF_MENU		"1"		"INPK PV Status"	SPC_NOMOD		1				acalcoutINAV
+INLL	DBF_INLINK			GUI_CALC	"Array input LL"	SPC_MOD		1				
+INLV	DBF_MENU		"1"		"INPL PV Status"	SPC_NOMOD		1				acalcoutINAV
+INPA	DBF_INLINK			GUI_CALC	"Input A"	SPC_MOD		1				
+INPB	DBF_INLINK			GUI_CALC	"Input B"	SPC_MOD		1				
+INPC	DBF_INLINK			GUI_CALC	"Input C"	SPC_MOD		1				
+INPD	DBF_INLINK			GUI_CALC	"Input D"	SPC_MOD		1				
+INPE	DBF_INLINK			GUI_CALC	"Input E"	SPC_MOD		1				
+INPF	DBF_INLINK			GUI_CALC	"Input F"	SPC_MOD		1				
+INPG	DBF_INLINK			GUI_CALC	"Input G"	SPC_MOD		1				
+INPH	DBF_INLINK			GUI_CALC	"Input H"	SPC_MOD		1				
+INPI	DBF_INLINK			GUI_CALC	"Input I"	SPC_MOD		1				
+INPJ	DBF_INLINK			GUI_CALC	"Input J"	SPC_MOD		1				
+INPK	DBF_INLINK			GUI_CALC	"Input K"	SPC_MOD		1				
+INPL	DBF_INLINK			GUI_CALC	"Input L"	SPC_MOD		1				
+IVOA	DBF_MENU			GUI_OUTPUT	"INVALID output action"			2				menuIvoa
+IVOV	DBF_DOUBLE			GUI_OUTPUT	"INVALID output value"			2				
+J	DBF_DOUBLE				"Value of Input J"		TRUE					
+JJ	DBF_NOACCESS	ASL0			"Value of array input"	SPC_DBADDR	TRUE				"double *jj"	
+K	DBF_DOUBLE				"Value of Input K"		TRUE					
+KK	DBF_NOACCESS	ASL0			"Value of array input"	SPC_DBADDR	TRUE				"double *kk"	
+L	DBF_DOUBLE				"Value of Input L"		TRUE					
+LALM	DBF_DOUBLE				"Last Value Alarmed"	SPC_NOMOD		3				
+LCNT	DBF_UCHAR				"Lock Count"	SPC_NOMOD		2				
+LL	DBF_NOACCESS	ASL0			"Value of array input"	SPC_DBADDR	TRUE				"double *ll"	
+LLSV	DBF_MENU			GUI_ALARMS	"Lolo Severity"		TRUE	1				menuAlarmSevr
+LOLO	DBF_DOUBLE			GUI_ALARMS	"Lolo Alarm Limit"		TRUE	1				
+LOPR	DBF_DOUBLE			GUI_DISPLAY	"Low Operating Range"			1				
+LOW	DBF_DOUBLE			GUI_ALARMS	"Low Alarm Limit"		TRUE	1				
+LSET	DBF_NOACCESS				"Lock Set"	SPC_NOMOD		4			"struct lockRecord *lset"	
+LSV	DBF_MENU			GUI_ALARMS	"Low Severity"		TRUE	1				menuAlarmSevr
+MDEL	DBF_DOUBLE			GUI_DISPLAY	"Monitor Deadband"			1				
+MLIS	DBF_NOACCESS				"Monitor List"	SPC_NOMOD		4			"ELLLIST          mlis"	
+MLOK	DBF_NOACCESS				"Monitor lock"	SPC_NOMOD		4			"epicsMutexId     mlok"	
+MLST	DBF_DOUBLE				"Last Val Monitored"	SPC_NOMOD		3				
+NAME	DBF_STRING				"Record Name"	SPC_NOMOD				61		
+NELM	DBF_ULONG		"1"	GUI_WAVE	"Number of Elements"	SPC_NOMOD		1				
+NEWM	DBF_ULONG	ASL0			"new array value mask"	SPC_NOMOD						
+NSEV	DBF_MENU				"New Alarm Severity"	SPC_NOMOD		2				menuAlarmSevr
+NSTA	DBF_MENU				"New Alarm Status"	SPC_NOMOD		2				menuAlarmStat
+NUSE	DBF_ULONG		"0"	GUI_WAVE	"# elem's in use"	SPC_MOD	TRUE	1				
+OAV	DBF_NOACCESS	ASL0			"Output array value"	SPC_DBADDR	TRUE				"double *oav"	
+OCAL	DBF_STRING			GUI_CALC	"Output Calculation"	SPC_MOD	TRUE			80		
+OCLV	DBF_LONG				"OCAL Valid"			1				
+ODLY	DBF_DOUBLE	ASL0		GUI_ALARMS	"Output Execute Delay"			1				
+OEVT	DBF_USHORT	ASL0		GUI_CLOCK	"Event To Issue"							
+OOPT	DBF_MENU			GUI_CALC	"Output Execute Opt"			1				acalcoutOOPT
+ORPC	DBF_NOACCESS				"Reverse Polish OCalc"	SPC_NOMOD		4			"unsigned char orpc[282]"	
+OUT	DBF_OUTLINK			GUI_OUTPUT	"Output Link"	SPC_MOD		1				
+OUTV	DBF_MENU				"OUT PV Status"	SPC_NOMOD		1				acalcoutINAV
+OVAL	DBF_DOUBLE	ASL0			"Output Value"							
+PA	DBF_DOUBLE				"Prev Value of A"	SPC_NOMOD		3				
+PAA	DBF_NOACCESS	ASL0			"Prev Val of array input"						"double *paa"	
+PACT	DBF_UCHAR				"Record active"	SPC_NOMOD		1				
+PAVL	DBF_NOACCESS	ASL0			"Prev. Array Value"		TRUE				"double *pavl"	
+PB	DBF_DOUBLE				"Prev Value of B"	SPC_NOMOD		3				
+PC	DBF_DOUBLE				"Prev Value of C"	SPC_NOMOD		3				
+PD	DBF_DOUBLE				"Prev Value of D"	SPC_NOMOD		3				
+PE	DBF_DOUBLE				"Prev Value of E"	SPC_NOMOD		3				
+PF	DBF_DOUBLE				"Prev Value of F"	SPC_NOMOD		3				
+PG	DBF_DOUBLE				"Prev Value of G"	SPC_NOMOD		3				
+PH	DBF_DOUBLE				"Prev Value of H"	SPC_NOMOD		3				
+PHAS	DBF_SHORT			GUI_SCAN	"Scan Phase"	SPC_SCAN		1				
+PI	DBF_DOUBLE				"Prev Value of I"	SPC_NOMOD		3				
+PINI	DBF_MENU			GUI_SCAN	"Process at iocInit"			1				menuPini
+PJ	DBF_DOUBLE				"Prev Value of J"	SPC_NOMOD		3				
+PK	DBF_DOUBLE				"Prev Value of K"	SPC_NOMOD		3				
+PL	DBF_DOUBLE				"Prev Value of L"	SPC_NOMOD		3				
+POAV	DBF_NOACCESS	ASL0			"Output array value"		TRUE				"double *poav"	
+POVL	DBF_DOUBLE	ASL0			"Prev Value of OVAL"							
+PPN	DBF_NOACCESS				"addr of PUTNOTIFY"	SPC_NOMOD		4			"struct putNotify *ppn"	
+PPNR	DBF_NOACCESS				"pputNotifyRecord"	SPC_NOMOD		4			"struct putNotifyRecord *ppnr"	
+PREC	DBF_SHORT			GUI_DISPLAY	"Display Precision"			1				
+PRIO	DBF_MENU			GUI_SCAN	"Scheduling Priority"	SPC_SCAN		1				menuPriority
+PROC	DBF_UCHAR				"Force Processing"		TRUE	3				
+PUTF	DBF_UCHAR				"dbPutField process"	SPC_NOMOD		1				
+PVAL	DBF_DOUBLE				"Previous Value"							
+RDES	DBF_NOACCESS				"Address of dbRecordType"	SPC_NOMOD		4			"struct dbRecordType *rdes"	
+RPCL	DBF_NOACCESS				"Reverse Polish Calc"	SPC_NOMOD		4			"unsigned char rpcl[282]"	
+RPRO	DBF_UCHAR				"Reprocess "	SPC_NOMOD		1				
+RPVT	DBF_NOACCESS				"Record Private"	SPC_NOMOD		4		4	"void *rpvt"	
+RSET	DBF_NOACCESS				"Address of RSET"	SPC_NOMOD		4			"struct rset      *rset"	
+SCAN	DBF_MENU			GUI_SCAN	"Scan Mechanism"	SPC_SCAN		1				menuScan
+SDIS	DBF_INLINK			GUI_SCAN	"Scanning Disable"			1				
+SEVR	DBF_MENU		"INVALID"		"Alarm Severity"	SPC_NOMOD						menuAlarmSevr
+SIZE	DBF_MENU				"Array size reported to clients"			1				acalcoutSIZE
+SPVT	DBF_NOACCESS				"Scan Private"	SPC_NOMOD		4			"struct scan_element *spvt"	
+STAT	DBF_MENU		"UDF"		"Alarm Status"	SPC_NOMOD						menuAlarmStat
+TIME	DBF_NOACCESS				"Time"	SPC_NOMOD		2			"epicsTimeStamp   time"	
+TPRO	DBF_UCHAR				"Trace Processing"							
+TSE	DBF_SHORT			GUI_SCAN	"Time Stamp Event"			1				
+TSEL	DBF_INLINK			GUI_SCAN	"Time Stamp Link"			1				
+UDF	DBF_UCHAR		"1"	GUI_COMMON	"Undefined"		TRUE	1				
+VAL	DBF_DOUBLE	ASL0			"Result"							
+VERS	DBF_DOUBLE		"1"		"Code Version"	SPC_NOMOD						
+WAIT	DBF_MENU				"Wait for completion?"			1				acalcoutWAIT

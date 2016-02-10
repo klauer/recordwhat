@@ -1,0 +1,126 @@
+field	type	asl	initial	promptgroup	prompt	special	pp	interest	base	size	extra	menu
+ACKS	DBF_MENU				"Alarm Ack Severity"	SPC_NOMOD		2				menuAlarmSevr
+ACKT	DBF_MENU		"YES"	GUI_ALARMS	"Alarm Ack Transient"	SPC_NOMOD		2				menuYesNo
+ASG	DBF_STRING			GUI_COMMON	"Access Security Group"	SPC_AS				29		
+ASP	DBF_NOACCESS				"Access Security Pvt"	SPC_NOMOD		4			"struct asgMember *asp"	
+BKPT	DBF_NOACCESS				"Break Point"	SPC_NOMOD		1			"char bkpt"	
+CGAP	DBF_DOUBLE				"Convectron-A Pressure"	SPC_NOMOD						
+CGBP	DBF_DOUBLE				"Convectron-B Pressure"	SPC_NOMOD						
+CHGC	DBF_USHORT				"Changed Control"	SPC_NOMOD						
+DESC	DBF_STRING			GUI_COMMON	"Descriptor"					41		
+DGSR	DBF_MENU				"Degas Read"	SPC_NOMOD						vsOFFON
+DGSS	DBF_MENU			GUI_BITS1	"Degas Set"	SPC_MOD	TRUE	1				vsOFFON
+DISA	DBF_SHORT				"Disable"							
+DISP	DBF_UCHAR				"Disable putField"							
+DISS	DBF_MENU			GUI_SCAN	"Disable Alarm Sevrty"			1				menuAlarmSevr
+DISV	DBF_SHORT		"1"	GUI_SCAN	"Disable Value"							
+DPVT	DBF_NOACCESS				"Device Private"	SPC_NOMOD		4			"void             *dpvt"	
+DSET	DBF_NOACCESS				"DSET address"	SPC_NOMOD		4			"struct dset      *dset"	
+DTYP	DBF_DEVICE			GUI_LINKS	"Device Type"			1				
+ERR	DBF_SHORT		"5"		"Controller Err Cnt"	SPC_MOD		1				
+EVNT	DBF_SHORT			GUI_SCAN	"Event Number"	SPC_SCAN		1				
+FLNK	DBF_FWDLINK			GUI_LINKS	"Forward Process Link"			1				
+FLTR	DBF_MENU				"Fault Read"	SPC_NOMOD						vsOFFON
+HALR	DBF_FLOAT		"3"	GUI_PULSE	"CGA Log10 High Display"			1				
+HAPR	DBF_FLOAT		"1000"	GUI_OUTPUT	"CGA Pres High Display"			1				
+HBLR	DBF_FLOAT		"3"	GUI_SUB	"CGB Log10 High Display"			1				
+HBPR	DBF_FLOAT		"1000"	GUI_SEQ2	"CGB Pres High Display"			1				
+HHSV	DBF_MENU			GUI_DISPLAY	"IG Hihi Severity"		TRUE	1				menuAlarmSevr
+HIGH	DBF_FLOAT		"1e-07"	GUI_DISPLAY	"IG High Alarm"		TRUE	1				
+HIHI	DBF_FLOAT		"1e-06"	GUI_DISPLAY	"IG Hihi Alarm"		TRUE	1				
+HLPR	DBF_FLOAT		"-4"	GUI_LINKS	"IG Log10 High Display"			1				
+HOPR	DBF_FLOAT		"0.0001"	GUI_HIST	"IG Pres High Display"			1				
+HSV	DBF_MENU			GUI_DISPLAY	"IG High Severity"		TRUE	1				menuAlarmSevr
+HYST	DBF_DOUBLE			GUI_DISPLAY	"IG Alarm Deadband"			1				
+IG1R	DBF_MENU				"Ion Gauge 1 Read"	SPC_NOMOD						vsOFFON
+IG1S	DBF_MENU			GUI_ALARMS	"Ion Gauge 1 Set"	SPC_MOD	TRUE	1				vsOFFON
+IG2R	DBF_MENU				"Ion Gauge 2 Read"	SPC_NOMOD						vsOFFON
+IG2S	DBF_MENU			GUI_ALARMS	"Ion Gauge 2 Set"	SPC_MOD	TRUE	1				vsOFFON
+INP	DBF_INLINK			GUI_COMMON	"Device Specification"	SPC_NOMOD		1				
+LALM	DBF_DOUBLE				"IG Last Value Alarmed"	SPC_NOMOD		3				
+LALR	DBF_FLOAT		"-4"	GUI_SELECT	"CGA Log10 Low Display"			1				
+LAPR	DBF_FLOAT		"0.0001"	GUI_PID	"CGA Pres Low Display"			1				
+LBLR	DBF_FLOAT		"-4"	GUI_TIMER	"CGB Log10 Low Display"			1				
+LBPR	DBF_FLOAT		"0.0001"	GUI_SEQ3	"CGB Pres Low Display"			1				
+LCAP	DBF_DOUBLE				"Conv-A Log10 Pressure"	SPC_NOMOD						
+LCBP	DBF_DOUBLE				"Conv-B Log10 Pressure"	SPC_NOMOD						
+LCNT	DBF_UCHAR				"Lock Count"	SPC_NOMOD		2				
+LLPR	DBF_FLOAT		"-12"	GUI_MBB	"IG Log10 Low Display"			1				
+LLSV	DBF_MENU			GUI_DISPLAY	"IG Lolo Severity"		TRUE	1				menuAlarmSevr
+LOLO	DBF_FLOAT		"1e-12"	GUI_DISPLAY	"IG Lolo Alarm"		TRUE	1				
+LOPR	DBF_FLOAT		"1e-12"	GUI_INPUTS	"IG Pres Low Display"			1				
+LOW	DBF_FLOAT		"2e-12"	GUI_DISPLAY	"IG Low Alarm"		TRUE	1				
+LPRS	DBF_DOUBLE				"IG Log10 Pressure"	SPC_NOMOD						
+LSET	DBF_NOACCESS				"Lock Set"	SPC_NOMOD		4			"struct lockRecord *lset"	
+LSV	DBF_MENU			GUI_DISPLAY	"IG Low Severity"		TRUE	1				menuAlarmSevr
+MLIS	DBF_NOACCESS				"Monitor List"	SPC_NOMOD		4			"ELLLIST          mlis"	
+MLOK	DBF_NOACCESS				"Monitor lock"	SPC_NOMOD		4			"epicsMutexId     mlok"	
+NAME	DBF_STRING				"Record Name"	SPC_NOMOD				61		
+NSEV	DBF_MENU				"New Alarm Severity"	SPC_NOMOD		2				menuAlarmSevr
+NSTA	DBF_MENU				"New Alarm Status"	SPC_NOMOD		2				menuAlarmStat
+PACT	DBF_UCHAR				"Record active"	SPC_NOMOD		1				
+PCGA	DBF_DOUBLE				"prev Conv-A Pres"	SPC_NOMOD						
+PCGB	DBF_DOUBLE				"prev Conv-B Pres"	SPC_NOMOD						
+PDGS	DBF_MENU				"prev Degas"	SPC_NOMOD						vsOFFON
+PDSS	DBF_MENU				"prev Degas"	SPC_NOMOD						vsOFFON
+PFLT	DBF_MENU				"prev Fault"	SPC_NOMOD						vsOFFON
+PHAS	DBF_SHORT			GUI_SCAN	"Scan Phase"	SPC_SCAN		1				
+PI1S	DBF_MENU				"prev Ion Gauge 1"	SPC_NOMOD						vsOFFON
+PI2S	DBF_MENU				"prev Ion Gauge 2"	SPC_NOMOD						vsOFFON
+PIG1	DBF_MENU				"prev Ion Gauge 1"	SPC_NOMOD						vsOFFON
+PIG2	DBF_MENU				"prev Ion Gauge 2"	SPC_NOMOD						vsOFFON
+PINI	DBF_MENU			GUI_SCAN	"Process at iocInit"			1				menuPini
+PLCA	DBF_DOUBLE				"prev Conv-A Log10 Pres"	SPC_NOMOD						
+PLCB	DBF_DOUBLE				"prev Conv-B Log10 Pres"	SPC_NOMOD						
+PLPE	DBF_DOUBLE				"prev IG Log10 Pres"	SPC_NOMOD						
+PPN	DBF_NOACCESS				"addr of PUTNOTIFY"	SPC_NOMOD		4			"struct putNotify *ppn"	
+PPNR	DBF_NOACCESS				"pputNotifyRecord"	SPC_NOMOD		4			"struct putNotifyRecord *ppnr"	
+PPRE	DBF_DOUBLE				"prev Gauge Pres"	SPC_NOMOD						
+PRES	DBF_DOUBLE				"Gauge Pressure"	SPC_NOMOD						
+PRIO	DBF_MENU			GUI_SCAN	"Scheduling Priority"	SPC_SCAN		1				menuPriority
+PROC	DBF_UCHAR				"Force Processing"		TRUE	3				
+PS1R	DBF_DOUBLE				"prev SP1 Readback"	SPC_NOMOD						
+PS1S	DBF_DOUBLE				"prev SP1 Set"	SPC_NOMOD						
+PS2R	DBF_DOUBLE				"prev SP2 Readback"	SPC_NOMOD						
+PS2S	DBF_DOUBLE				"prev SP2 Set"	SPC_NOMOD						
+PS3R	DBF_DOUBLE				"prev SP3 Readback"	SPC_NOMOD						
+PS3S	DBF_DOUBLE				"prev SP3 Set"	SPC_NOMOD						
+PS4R	DBF_DOUBLE				"prev SP4 Readback"	SPC_NOMOD						
+PS4S	DBF_DOUBLE				"prev SP4 Set"	SPC_NOMOD						
+PSP1	DBF_MENU				"prev Set Point 1"	SPC_NOMOD						vsOFFON
+PSP2	DBF_MENU				"prev Set Point 2"	SPC_NOMOD						vsOFFON
+PSP3	DBF_MENU				"prev Set Point 3"	SPC_NOMOD						vsOFFON
+PSP4	DBF_MENU				"prev Set Point 4"	SPC_NOMOD						vsOFFON
+PSP5	DBF_MENU				"prev Set Point 5"	SPC_NOMOD						vsOFFON
+PSP6	DBF_MENU				"prev Set Point 6"	SPC_NOMOD						vsOFFON
+PUTF	DBF_UCHAR				"dbPutField process"	SPC_NOMOD		1				
+PVAL	DBF_DOUBLE				"prev Gauge Pres"	SPC_NOMOD						
+RDES	DBF_NOACCESS				"Address of dbRecordType"	SPC_NOMOD		4			"struct dbRecordType *rdes"	
+RPRO	DBF_UCHAR				"Reprocess "	SPC_NOMOD		1				
+RSET	DBF_NOACCESS				"Address of RSET"	SPC_NOMOD		4			"struct rset      *rset"	
+SCAN	DBF_MENU			GUI_SCAN	"Scan Mechanism"	SPC_SCAN		1				menuScan
+SDIS	DBF_INLINK			GUI_SCAN	"Scanning Disable"			1				
+SEVR	DBF_MENU		"INVALID"		"Alarm Severity"	SPC_NOMOD						menuAlarmSevr
+SP1	DBF_MENU				"Set Point 1"	SPC_NOMOD						vsOFFON
+SP1R	DBF_DOUBLE				"SP 1 Readback"	SPC_NOMOD						
+SP1S	DBF_DOUBLE				"SP 1 Setpoint Set"	SPC_MOD	TRUE					
+SP2	DBF_MENU				"Set Point 2"	SPC_NOMOD						vsOFFON
+SP2R	DBF_DOUBLE				"SP 2 Readback"	SPC_NOMOD						
+SP2S	DBF_DOUBLE				"SP 2 Setpoint Set"	SPC_MOD	TRUE					
+SP3	DBF_MENU				"Set Point 3"	SPC_NOMOD						vsOFFON
+SP3R	DBF_DOUBLE				"SP 3 Readback"	SPC_NOMOD						
+SP3S	DBF_DOUBLE				"SP 3 Setpoint Set"	SPC_MOD	TRUE					
+SP4	DBF_MENU				"Set Point 4"	SPC_NOMOD						vsOFFON
+SP4R	DBF_DOUBLE				"SP 4 Readback"	SPC_NOMOD						
+SP4S	DBF_DOUBLE				"SP 4 Setpoint Set"	SPC_MOD	TRUE					
+SP5	DBF_MENU				"Set Point 5"	SPC_NOMOD						vsOFFON
+SP6	DBF_MENU				"Set Point 6"	SPC_NOMOD						vsOFFON
+SPVT	DBF_NOACCESS				"Scan Private"	SPC_NOMOD		4			"struct scan_element *spvt"	
+STAT	DBF_MENU		"UDF"		"Alarm Status"	SPC_NOMOD						menuAlarmStat
+TIME	DBF_NOACCESS				"Time"	SPC_NOMOD		2			"epicsTimeStamp   time"	
+TPRO	DBF_UCHAR				"Trace Processing"							
+TSE	DBF_SHORT			GUI_SCAN	"Time Stamp Event"			1				
+TSEL	DBF_INLINK			GUI_SCAN	"Time Stamp Link"			1				
+TYPE	DBF_MENU				"Controller Type"	SPC_MOD		1				vsTYPE
+UDF	DBF_UCHAR		"1"	GUI_COMMON	"Undefined"		TRUE	1				
+VAL	DBF_DOUBLE				"Gauge Pressure"	SPC_NOMOD						

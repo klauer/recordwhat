@@ -1,0 +1,212 @@
+field	type	asl	initial	promptgroup	prompt	special	pp	interest	base	size	extra	menu
+A	DBF_DOUBLE			GUI_COMMON	"Value of A"	SPC_MOD	TRUE					
+ACKS	DBF_MENU				"Alarm Ack Severity"	SPC_NOMOD		2				menuAlarmSevr
+ACKT	DBF_MENU		"YES"	GUI_ALARMS	"Alarm Ack Transient"	SPC_NOMOD		2				menuYesNo
+ASG	DBF_STRING			GUI_COMMON	"Access Security Group"	SPC_AS				29		
+ASP	DBF_NOACCESS				"Access Security Pvt"	SPC_NOMOD		4			"struct asgMember *asp"	
+B	DBF_DOUBLE			GUI_COMMON	"Value of B"	SPC_MOD	TRUE					
+BKPT	DBF_NOACCESS				"Break Point"	SPC_NOMOD		1			"char bkpt"	
+C	DBF_DOUBLE			GUI_COMMON	"Value of C"	SPC_MOD	TRUE					
+CAV	DBF_LONG				"CALC Invalid"			1				
+CBV	DBF_LONG				"CALC Invalid"			1				
+CCV	DBF_LONG				"CALC Invalid"			1				
+CDV	DBF_LONG				"CALC Invalid"			1				
+CEV	DBF_LONG				"CALC Invalid"			1				
+CFV	DBF_LONG				"CALC Invalid"			1				
+CGV	DBF_LONG				"CALC Invalid"			1				
+CHV	DBF_LONG				"CALC Invalid"			1				
+CIV	DBF_LONG				"CALC Invalid"			1				
+CJV	DBF_LONG				"CALC Invalid"			1				
+CKV	DBF_LONG				"CALC Invalid"			1				
+CLCA	DBF_STRING			GUI_COMMON	"Calculation A"	SPC_MOD				120		
+CLCB	DBF_STRING			GUI_COMMON	"Calculation B"	SPC_MOD				120		
+CLCC	DBF_STRING			GUI_COMMON	"Calculation C"	SPC_MOD				120		
+CLCD	DBF_STRING			GUI_COMMON	"Calculation D"	SPC_MOD				120		
+CLCE	DBF_STRING			GUI_COMMON	"Calculation E"	SPC_MOD				120		
+CLCF	DBF_STRING			GUI_COMMON	"Calculation F"	SPC_MOD				120		
+CLCG	DBF_STRING			GUI_COMMON	"Calculation G"	SPC_MOD				120		
+CLCH	DBF_STRING			GUI_COMMON	"Calculation H"	SPC_MOD				120		
+CLCI	DBF_STRING			GUI_COMMON	"Calculation I"	SPC_MOD				120		
+CLCJ	DBF_STRING			GUI_COMMON	"Calculation J"	SPC_MOD				120		
+CLCK	DBF_STRING			GUI_COMMON	"Calculation K"	SPC_MOD				120		
+CLCL	DBF_STRING			GUI_COMMON	"Calculation L"	SPC_MOD				120		
+CLCM	DBF_STRING			GUI_COMMON	"Calculation M"	SPC_MOD				120		
+CLCN	DBF_STRING			GUI_COMMON	"Calculation N"	SPC_MOD				120		
+CLCO	DBF_STRING			GUI_COMMON	"Calculation O"	SPC_MOD				120		
+CLCP	DBF_STRING			GUI_COMMON	"Calculation P"	SPC_MOD				120		
+CLV	DBF_LONG				"CALC Invalid"			1				
+CMTA	DBF_STRING			GUI_COMMON	"Comment A"					39		
+CMTB	DBF_STRING			GUI_COMMON	"Comment B"					39		
+CMTC	DBF_STRING			GUI_COMMON	"Comment C"					39		
+CMTD	DBF_STRING			GUI_COMMON	"Comment D"					39		
+CMTE	DBF_STRING			GUI_COMMON	"Comment E"					39		
+CMTF	DBF_STRING			GUI_COMMON	"Comment F"					39		
+CMTG	DBF_STRING			GUI_COMMON	"Comment G"					39		
+CMTH	DBF_STRING			GUI_COMMON	"Comment H"					39		
+CMTI	DBF_STRING			GUI_COMMON	"Comment I"					39		
+CMTJ	DBF_STRING			GUI_COMMON	"Comment J"					39		
+CMTK	DBF_STRING			GUI_COMMON	"Comment K"					39		
+CMTL	DBF_STRING			GUI_COMMON	"Comment L"					39		
+CMTM	DBF_STRING			GUI_COMMON	"Comment M"					39		
+CMTN	DBF_STRING			GUI_COMMON	"Comment N"					39		
+CMTO	DBF_STRING			GUI_COMMON	"Comment O"					39		
+CMTP	DBF_STRING			GUI_COMMON	"Comment P"					39		
+CMV	DBF_LONG				"CALC Invalid"			1				
+CNV	DBF_LONG				"CALC Invalid"			1				
+COPT	DBF_MENU		"Conditional"	GUI_COMMON	"Calc option"			1				transformCOPT
+COV	DBF_LONG				"CALC Invalid"			1				
+CPV	DBF_LONG				"CALC Invalid"			1				
+D	DBF_DOUBLE			GUI_COMMON	"Value of D"	SPC_MOD	TRUE					
+DESC	DBF_STRING			GUI_COMMON	"Descriptor"					41		
+DISA	DBF_SHORT				"Disable"							
+DISP	DBF_UCHAR				"Disable putField"							
+DISS	DBF_MENU			GUI_SCAN	"Disable Alarm Sevrty"			1				menuAlarmSevr
+DISV	DBF_SHORT		"1"	GUI_SCAN	"Disable Value"							
+DPVT	DBF_NOACCESS				"Device Private"	SPC_NOMOD		4			"void             *dpvt"	
+DSET	DBF_NOACCESS				"DSET address"	SPC_NOMOD		4			"struct dset      *dset"	
+DTYP	DBF_DEVICE			GUI_LINKS	"Device Type"			1				
+E	DBF_DOUBLE			GUI_COMMON	"Value of E"	SPC_MOD	TRUE					
+EGU	DBF_STRING			GUI_COMMON	"Units Name"			1		16		
+EVNT	DBF_SHORT			GUI_SCAN	"Event Number"	SPC_SCAN		1				
+F	DBF_DOUBLE			GUI_COMMON	"Value of F"	SPC_MOD	TRUE					
+FLNK	DBF_FWDLINK			GUI_LINKS	"Forward Process Link"			1				
+G	DBF_DOUBLE			GUI_COMMON	"Value of G"	SPC_MOD	TRUE					
+H	DBF_DOUBLE			GUI_COMMON	"Value of H"	SPC_MOD	TRUE					
+I	DBF_DOUBLE			GUI_COMMON	"Value of I"	SPC_MOD	TRUE					
+IAV	DBF_MENU		"1"		"Input link valid"	SPC_NOMOD		1				transformIAV
+IBV	DBF_MENU		"1"		"Input link valid"	SPC_NOMOD		1				transformIAV
+ICV	DBF_MENU		"1"		"Input link valid"	SPC_NOMOD		1				transformIAV
+IDV	DBF_MENU		"1"		"Input link valid"	SPC_NOMOD		1				transformIAV
+IEV	DBF_MENU		"1"		"Input link valid"	SPC_NOMOD		1				transformIAV
+IFV	DBF_MENU		"1"		"Input link valid"	SPC_NOMOD		1				transformIAV
+IGV	DBF_MENU		"1"		"Input link valid"	SPC_NOMOD		1				transformIAV
+IHV	DBF_MENU		"1"		"Input link valid"	SPC_NOMOD		1				transformIAV
+IIV	DBF_MENU		"1"		"Input link valid"	SPC_NOMOD		1				transformIAV
+IJV	DBF_MENU		"1"		"Input link valid"	SPC_NOMOD		1				transformIAV
+IKV	DBF_MENU		"1"		"Input link valid"	SPC_NOMOD		1				transformIAV
+ILV	DBF_MENU		"1"		"Input link valid"	SPC_NOMOD		1				transformIAV
+IMV	DBF_MENU		"1"		"Input link valid"	SPC_NOMOD		1				transformIAV
+INPA	DBF_INLINK			GUI_COMMON	"Input A"	SPC_MOD		1				
+INPB	DBF_INLINK			GUI_COMMON	"Input B"	SPC_MOD		1				
+INPC	DBF_INLINK			GUI_COMMON	"Input C"	SPC_MOD		1				
+INPD	DBF_INLINK			GUI_COMMON	"Input D"	SPC_MOD		1				
+INPE	DBF_INLINK			GUI_COMMON	"Input E"	SPC_MOD		1				
+INPF	DBF_INLINK			GUI_COMMON	"Input F"	SPC_MOD		1				
+INPG	DBF_INLINK			GUI_COMMON	"Input G"	SPC_MOD		1				
+INPH	DBF_INLINK			GUI_COMMON	"Input H"	SPC_MOD		1				
+INPI	DBF_INLINK			GUI_COMMON	"Input I"	SPC_MOD		1				
+INPJ	DBF_INLINK			GUI_COMMON	"Input J"	SPC_MOD		1				
+INPK	DBF_INLINK			GUI_COMMON	"Input K"	SPC_MOD		1				
+INPL	DBF_INLINK			GUI_COMMON	"Input L"	SPC_MOD		1				
+INPM	DBF_INLINK			GUI_COMMON	"Input M"	SPC_MOD		1				
+INPN	DBF_INLINK			GUI_COMMON	"Input N"	SPC_MOD		1				
+INPO	DBF_INLINK			GUI_COMMON	"Input O"	SPC_MOD		1				
+INPP	DBF_INLINK			GUI_COMMON	"Input P"	SPC_MOD		1				
+INV	DBF_MENU		"1"		"Input link valid"	SPC_NOMOD		1				transformIAV
+IOV	DBF_MENU		"1"		"Input link valid"	SPC_NOMOD		1				transformIAV
+IPV	DBF_MENU		"1"		"Input link valid"	SPC_NOMOD		1				transformIAV
+IVLA	DBF_MENU		"0"	GUI_COMMON	"Invalid link action"			1				transformIVLA
+J	DBF_DOUBLE			GUI_COMMON	"Value of J"	SPC_MOD	TRUE					
+K	DBF_DOUBLE			GUI_COMMON	"Value of K"	SPC_MOD	TRUE					
+L	DBF_DOUBLE			GUI_COMMON	"Value of L"	SPC_MOD	TRUE					
+LA	DBF_DOUBLE				"Prev Value of A"	SPC_NOMOD		3				
+LB	DBF_DOUBLE				"Prev Value of B"	SPC_NOMOD		3				
+LC	DBF_DOUBLE				"Prev Value of C"	SPC_NOMOD		3				
+LCNT	DBF_UCHAR				"Lock Count"	SPC_NOMOD		2				
+LD	DBF_DOUBLE				"Prev Value of D"	SPC_NOMOD		3				
+LE	DBF_DOUBLE				"Prev Value of E"	SPC_NOMOD		3				
+LF	DBF_DOUBLE				"Prev Value of F"	SPC_NOMOD		3				
+LG	DBF_DOUBLE				"Prev Value of G"	SPC_NOMOD		3				
+LH	DBF_DOUBLE				"Prev Value of H"	SPC_NOMOD		3				
+LI	DBF_DOUBLE				"Prev Value of I"	SPC_NOMOD		3				
+LJ	DBF_DOUBLE				"Prev Value of J"	SPC_NOMOD		3				
+LK	DBF_DOUBLE				"Prev Value of K"	SPC_NOMOD		3				
+LL	DBF_DOUBLE				"Prev Value of L"	SPC_NOMOD		3				
+LM	DBF_DOUBLE				"Prev Value of M"	SPC_NOMOD		3				
+LN	DBF_DOUBLE				"Prev Value of N"	SPC_NOMOD		3				
+LO	DBF_DOUBLE				"Prev Value of O"	SPC_NOMOD		3				
+LP	DBF_DOUBLE				"Prev Value of P"	SPC_NOMOD		3				
+LSET	DBF_NOACCESS				"Lock Set"	SPC_NOMOD		4			"struct lockRecord *lset"	
+M	DBF_DOUBLE			GUI_COMMON	"Value of M"	SPC_MOD	TRUE					
+MAP	DBF_SHORT			GUI_COMMON	"Input bitmap"			3				
+MLIS	DBF_NOACCESS				"Monitor List"	SPC_NOMOD		4			"ELLLIST          mlis"	
+MLOK	DBF_NOACCESS				"Monitor lock"	SPC_NOMOD		4			"epicsMutexId     mlok"	
+N	DBF_DOUBLE			GUI_COMMON	"Value of N"	SPC_MOD	TRUE					
+NAME	DBF_STRING				"Record Name"	SPC_NOMOD				61		
+NSEV	DBF_MENU				"New Alarm Severity"	SPC_NOMOD		2				menuAlarmSevr
+NSTA	DBF_MENU				"New Alarm Status"	SPC_NOMOD		2				menuAlarmStat
+O	DBF_DOUBLE			GUI_COMMON	"Value of O"	SPC_MOD	TRUE					
+OAV	DBF_MENU		"1"		"Output link valid"	SPC_NOMOD		1				transformIAV
+OBV	DBF_MENU		"1"		"Output link valid"	SPC_NOMOD		1				transformIAV
+OCV	DBF_MENU		"1"		"Output link valid"	SPC_NOMOD		1				transformIAV
+ODV	DBF_MENU		"1"		"Output link valid"	SPC_NOMOD		1				transformIAV
+OEV	DBF_MENU		"1"		"Output link valid"	SPC_NOMOD		1				transformIAV
+OFV	DBF_MENU		"1"		"Output link valid"	SPC_NOMOD		1				transformIAV
+OGV	DBF_MENU		"1"		"Output link valid"	SPC_NOMOD		1				transformIAV
+OHV	DBF_MENU		"1"		"Output link valid"	SPC_NOMOD		1				transformIAV
+OIV	DBF_MENU		"1"		"Output link valid"	SPC_NOMOD		1				transformIAV
+OJV	DBF_MENU		"1"		"Output link valid"	SPC_NOMOD		1				transformIAV
+OKV	DBF_MENU		"1"		"Output link valid"	SPC_NOMOD		1				transformIAV
+OLV	DBF_MENU		"1"		"Output link valid"	SPC_NOMOD		1				transformIAV
+OMV	DBF_MENU		"1"		"Output link valid"	SPC_NOMOD		1				transformIAV
+ONV	DBF_MENU		"1"		"Output link valid"	SPC_NOMOD		1				transformIAV
+OOV	DBF_MENU		"1"		"Output link valid"	SPC_NOMOD		1				transformIAV
+OPV	DBF_MENU		"1"		"Output link valid"	SPC_NOMOD		1				transformIAV
+OUTA	DBF_OUTLINK			GUI_COMMON	"Output A"	SPC_MOD		1				
+OUTB	DBF_OUTLINK			GUI_COMMON	"Output B"	SPC_MOD		1				
+OUTC	DBF_OUTLINK			GUI_COMMON	"Output C"	SPC_MOD		1				
+OUTD	DBF_OUTLINK			GUI_COMMON	"Output D"	SPC_MOD		1				
+OUTE	DBF_OUTLINK			GUI_COMMON	"Output E"	SPC_MOD		1				
+OUTF	DBF_OUTLINK			GUI_COMMON	"Output F"	SPC_MOD		1				
+OUTG	DBF_OUTLINK			GUI_COMMON	"Output G"	SPC_MOD		1				
+OUTH	DBF_OUTLINK			GUI_COMMON	"Output H"	SPC_MOD		1				
+OUTI	DBF_OUTLINK			GUI_COMMON	"Output I"	SPC_MOD		1				
+OUTJ	DBF_OUTLINK			GUI_COMMON	"Output J"	SPC_MOD		1				
+OUTK	DBF_OUTLINK			GUI_COMMON	"Output K"	SPC_MOD		1				
+OUTL	DBF_OUTLINK			GUI_COMMON	"Output L"	SPC_MOD		1				
+OUTM	DBF_OUTLINK			GUI_COMMON	"Output M"	SPC_MOD		1				
+OUTN	DBF_OUTLINK			GUI_COMMON	"Output N"	SPC_MOD		1				
+OUTO	DBF_OUTLINK			GUI_COMMON	"Output O"	SPC_MOD		1				
+OUTP	DBF_OUTLINK			GUI_COMMON	"Output P"	SPC_MOD		1				
+P	DBF_DOUBLE			GUI_COMMON	"Value of P"	SPC_MOD	TRUE					
+PACT	DBF_UCHAR				"Record active"	SPC_NOMOD		1				
+PHAS	DBF_SHORT			GUI_SCAN	"Scan Phase"	SPC_SCAN		1				
+PINI	DBF_MENU			GUI_SCAN	"Process at iocInit"			1				menuPini
+PPN	DBF_NOACCESS				"addr of PUTNOTIFY"	SPC_NOMOD		4			"struct putNotify *ppn"	
+PPNR	DBF_NOACCESS				"pputNotifyRecord"	SPC_NOMOD		4			"struct putNotifyRecord *ppnr"	
+PREC	DBF_SHORT			GUI_COMMON	"Display Precision"			1				
+PRIO	DBF_MENU			GUI_SCAN	"Scheduling Priority"	SPC_SCAN		1				menuPriority
+PROC	DBF_UCHAR				"Force Processing"		TRUE	3				
+PUTF	DBF_UCHAR				"dbPutField process"	SPC_NOMOD		1				
+RDES	DBF_NOACCESS				"Address of dbRecordType"	SPC_NOMOD		4			"struct dbRecordType *rdes"	
+RPCA	DBF_NOACCESS				"Postfix Calc A"	SPC_NOMOD		4			"unsigned char rpca[SCALC_INFIX_TO_POSTFIX_SIZE(120)]"	
+RPCB	DBF_NOACCESS				"Postfix Calc B"	SPC_NOMOD		4			"unsigned char rpcb[SCALC_INFIX_TO_POSTFIX_SIZE(120)]"	
+RPCC	DBF_NOACCESS				"Postfix Calc C"	SPC_NOMOD		4			"unsigned char rpcc[SCALC_INFIX_TO_POSTFIX_SIZE(120)]"	
+RPCD	DBF_NOACCESS				"Postfix Calc D"	SPC_NOMOD		4			"unsigned char rpcd[SCALC_INFIX_TO_POSTFIX_SIZE(120)]"	
+RPCE	DBF_NOACCESS				"Postfix Calc E"	SPC_NOMOD		4			"unsigned char rpce[SCALC_INFIX_TO_POSTFIX_SIZE(120)]"	
+RPCF	DBF_NOACCESS				"Postfix Calc F"	SPC_NOMOD		4			"unsigned char rpcf[SCALC_INFIX_TO_POSTFIX_SIZE(120)]"	
+RPCG	DBF_NOACCESS				"Postfix Calc G"	SPC_NOMOD		4			"unsigned char rpcg[SCALC_INFIX_TO_POSTFIX_SIZE(120)]"	
+RPCH	DBF_NOACCESS				"Postfix Calc H"	SPC_NOMOD		4			"unsigned char rpch[SCALC_INFIX_TO_POSTFIX_SIZE(120)]"	
+RPCI	DBF_NOACCESS				"Postfix Calc I"	SPC_NOMOD		4			"unsigned char rpci[SCALC_INFIX_TO_POSTFIX_SIZE(120)]"	
+RPCJ	DBF_NOACCESS				"Postfix Calc J"	SPC_NOMOD		4			"unsigned char rpcj[SCALC_INFIX_TO_POSTFIX_SIZE(120)]"	
+RPCK	DBF_NOACCESS				"Postfix Calc K"	SPC_NOMOD		4			"unsigned char rpck[SCALC_INFIX_TO_POSTFIX_SIZE(120)]"	
+RPCL	DBF_NOACCESS				"Postfix Calc L"	SPC_NOMOD		4			"unsigned char rpcl[SCALC_INFIX_TO_POSTFIX_SIZE(120)]"	
+RPCM	DBF_NOACCESS				"Postfix Calc M"	SPC_NOMOD		4			"unsigned char rpcm[SCALC_INFIX_TO_POSTFIX_SIZE(120)]"	
+RPCN	DBF_NOACCESS				"Postfix Calc N"	SPC_NOMOD		4			"unsigned char rpcn[SCALC_INFIX_TO_POSTFIX_SIZE(120)]"	
+RPCO	DBF_NOACCESS				"Postfix Calc O"	SPC_NOMOD		4			"unsigned char rpco[SCALC_INFIX_TO_POSTFIX_SIZE(120)]"	
+RPCP	DBF_NOACCESS				"Postfix Calc P"	SPC_NOMOD		4			"unsigned char rpcp[SCALC_INFIX_TO_POSTFIX_SIZE(120)]"	
+RPRO	DBF_UCHAR				"Reprocess "	SPC_NOMOD		1				
+RPVT	DBF_NOACCESS				"Record Private"	SPC_NOMOD		4		4	"void *         rpvt"	
+RSET	DBF_NOACCESS				"Address of RSET"	SPC_NOMOD		4			"struct rset      *rset"	
+SCAN	DBF_MENU			GUI_SCAN	"Scan Mechanism"	SPC_SCAN		1				menuScan
+SDIS	DBF_INLINK			GUI_SCAN	"Scanning Disable"			1				
+SEVR	DBF_MENU		"INVALID"		"Alarm Severity"	SPC_NOMOD						menuAlarmSevr
+SPVT	DBF_NOACCESS				"Scan Private"	SPC_NOMOD		4			"struct scan_element *spvt"	
+STAT	DBF_MENU		"UDF"		"Alarm Status"	SPC_NOMOD						menuAlarmStat
+TIME	DBF_NOACCESS				"Time"	SPC_NOMOD		2			"epicsTimeStamp   time"	
+TPRO	DBF_UCHAR				"Trace Processing"							
+TSE	DBF_SHORT			GUI_SCAN	"Time Stamp Event"			1				
+TSEL	DBF_INLINK			GUI_SCAN	"Time Stamp Link"			1				
+UDF	DBF_UCHAR		"1"	GUI_COMMON	"Undefined"		TRUE	1				
+VAL	DBF_DOUBLE				"Result"							
+VERS	DBF_FLOAT		"1"		"Code Version"	SPC_NOMOD						

@@ -1,0 +1,101 @@
+field	type	asl	initial	promptgroup	prompt	special	pp	interest	base	size	extra	menu
+A	DBF_DOUBLE				"Value of Input A"		TRUE					
+ACKS	DBF_MENU				"Alarm Ack Severity"	SPC_NOMOD		2				menuAlarmSevr
+ACKT	DBF_MENU		"YES"	GUI_ALARMS	"Alarm Ack Transient"	SPC_NOMOD		2				menuYesNo
+ADEL	DBF_DOUBLE			GUI_DISPLAY	"Archive Deadband"			1				
+ALST	DBF_DOUBLE				"Last Value Archived"	SPC_NOMOD		3				
+ASG	DBF_STRING			GUI_COMMON	"Access Security Group"	SPC_AS				29		
+ASP	DBF_NOACCESS				"Access Security Pvt"	SPC_NOMOD		4			"struct asgMember *asp"	
+B	DBF_DOUBLE				"Value of Input B"		TRUE					
+BKPT	DBF_NOACCESS				"Break Point"	SPC_NOMOD		1			"char bkpt"	
+C	DBF_DOUBLE				"Value of Input C"		TRUE					
+CALC	DBF_STRING		"0"	GUI_CALC	"Calculation"	SPC_CALC	TRUE			80		
+D	DBF_DOUBLE				"Value of Input D"		TRUE					
+DESC	DBF_STRING			GUI_COMMON	"Descriptor"					41		
+DISA	DBF_SHORT				"Disable"							
+DISP	DBF_UCHAR				"Disable putField"							
+DISS	DBF_MENU			GUI_SCAN	"Disable Alarm Sevrty"			1				menuAlarmSevr
+DISV	DBF_SHORT		"1"	GUI_SCAN	"Disable Value"							
+DPVT	DBF_NOACCESS				"Device Private"	SPC_NOMOD		4			"void             *dpvt"	
+DSET	DBF_NOACCESS				"DSET address"	SPC_NOMOD		4			"struct dset      *dset"	
+DTYP	DBF_DEVICE			GUI_LINKS	"Device Type"			1				
+E	DBF_DOUBLE				"Value of Input E"		TRUE					
+EGU	DBF_STRING			GUI_DISPLAY	"Units Name"			1		16		
+EVNT	DBF_SHORT			GUI_SCAN	"Event Number"	SPC_SCAN		1				
+F	DBF_DOUBLE				"Value of Input F"		TRUE					
+FLNK	DBF_FWDLINK			GUI_LINKS	"Forward Process Link"			1				
+G	DBF_DOUBLE				"Value of Input G"		TRUE					
+H	DBF_DOUBLE				"Value of Input H"		TRUE					
+HHSV	DBF_MENU			GUI_ALARMS	"Hihi Severity"		TRUE	1				menuAlarmSevr
+HIGH	DBF_DOUBLE			GUI_ALARMS	"High Alarm Limit"		TRUE	1				
+HIHI	DBF_DOUBLE			GUI_ALARMS	"Hihi Alarm Limit"		TRUE	1				
+HOPR	DBF_DOUBLE			GUI_DISPLAY	"High Operating Rng"			1				
+HSV	DBF_MENU			GUI_ALARMS	"High Severity"		TRUE	1				menuAlarmSevr
+HYST	DBF_DOUBLE			GUI_ALARMS	"Alarm Deadband"			1				
+I	DBF_DOUBLE				"Value of Input I"		TRUE					
+INPA	DBF_INLINK			GUI_CALC	"Input A"			1				
+INPB	DBF_INLINK			GUI_CALC	"Input B"			1				
+INPC	DBF_INLINK			GUI_CALC	"Input C"			1				
+INPD	DBF_INLINK			GUI_CALC	"Input D"			1				
+INPE	DBF_INLINK			GUI_CALC	"Input E"			1				
+INPF	DBF_INLINK			GUI_CALC	"Input F"			1				
+INPG	DBF_INLINK			GUI_CALC	"Input G"			1				
+INPH	DBF_INLINK			GUI_CALC	"Input H"			1				
+INPI	DBF_INLINK			GUI_CALC	"Input I"			1				
+INPJ	DBF_INLINK			GUI_CALC	"Input J"			1				
+INPK	DBF_INLINK			GUI_CALC	"Input K"			1				
+INPL	DBF_INLINK			GUI_CALC	"Input L"			1				
+J	DBF_DOUBLE				"Value of Input J"		TRUE					
+K	DBF_DOUBLE				"Value of Input K"		TRUE					
+L	DBF_DOUBLE				"Value of Input L"		TRUE					
+LA	DBF_DOUBLE				"Prev Value of A"	SPC_NOMOD		3				
+LALM	DBF_DOUBLE				"Last Value Alarmed"	SPC_NOMOD		3				
+LB	DBF_DOUBLE				"Prev Value of B"	SPC_NOMOD		3				
+LC	DBF_DOUBLE				"Prev Value of C"	SPC_NOMOD		3				
+LCNT	DBF_UCHAR				"Lock Count"	SPC_NOMOD		2				
+LD	DBF_DOUBLE				"Prev Value of D"	SPC_NOMOD		3				
+LE	DBF_DOUBLE				"Prev Value of E"	SPC_NOMOD		3				
+LF	DBF_DOUBLE				"Prev Value of F"	SPC_NOMOD		3				
+LG	DBF_DOUBLE				"Prev Value of G"	SPC_NOMOD		3				
+LH	DBF_DOUBLE				"Prev Value of H"	SPC_NOMOD		3				
+LI	DBF_DOUBLE				"Prev Value of I"	SPC_NOMOD		3				
+LJ	DBF_DOUBLE				"Prev Value of J"	SPC_NOMOD		3				
+LK	DBF_DOUBLE				"Prev Value of K"	SPC_NOMOD		3				
+LL	DBF_DOUBLE				"Prev Value of L"	SPC_NOMOD		3				
+LLSV	DBF_MENU			GUI_ALARMS	"Lolo Severity"		TRUE	1				menuAlarmSevr
+LOLO	DBF_DOUBLE			GUI_ALARMS	"Lolo Alarm Limit"		TRUE	1				
+LOPR	DBF_DOUBLE			GUI_DISPLAY	"Low Operating Range"			1				
+LOW	DBF_DOUBLE			GUI_ALARMS	"Low Alarm Limit"		TRUE	1				
+LSET	DBF_NOACCESS				"Lock Set"	SPC_NOMOD		4			"struct lockRecord *lset"	
+LSV	DBF_MENU			GUI_ALARMS	"Low Severity"		TRUE	1				menuAlarmSevr
+MDEL	DBF_DOUBLE			GUI_DISPLAY	"Monitor Deadband"			1				
+MLIS	DBF_NOACCESS				"Monitor List"	SPC_NOMOD		4			"ELLLIST          mlis"	
+MLOK	DBF_NOACCESS				"Monitor lock"	SPC_NOMOD		4			"epicsMutexId     mlok"	
+MLST	DBF_DOUBLE				"Last Val Monitored"	SPC_NOMOD		3				
+NAME	DBF_STRING				"Record Name"	SPC_NOMOD				61		
+NSEV	DBF_MENU				"New Alarm Severity"	SPC_NOMOD		2				menuAlarmSevr
+NSTA	DBF_MENU				"New Alarm Status"	SPC_NOMOD		2				menuAlarmStat
+PACT	DBF_UCHAR				"Record active"	SPC_NOMOD		1				
+PHAS	DBF_SHORT			GUI_SCAN	"Scan Phase"	SPC_SCAN		1				
+PINI	DBF_MENU			GUI_SCAN	"Process at iocInit"			1				menuPini
+PPN	DBF_NOACCESS				"addr of PUTNOTIFY"	SPC_NOMOD		4			"struct putNotify *ppn"	
+PPNR	DBF_NOACCESS				"pputNotifyRecord"	SPC_NOMOD		4			"struct putNotifyRecord *ppnr"	
+PREC	DBF_SHORT			GUI_DISPLAY	"Display Precision"			1				
+PRIO	DBF_MENU			GUI_SCAN	"Scheduling Priority"	SPC_SCAN		1				menuPriority
+PROC	DBF_UCHAR				"Force Processing"		TRUE	3				
+PUTF	DBF_UCHAR				"dbPutField process"	SPC_NOMOD		1				
+RDES	DBF_NOACCESS				"Address of dbRecordType"	SPC_NOMOD		4			"struct dbRecordType *rdes"	
+RPCL	DBF_NOACCESS				"Reverse Polish Calc"	SPC_NOMOD		4			"char     rpcl[INFIX_TO_POSTFIX_SIZE(80)]"	
+RPRO	DBF_UCHAR				"Reprocess "	SPC_NOMOD		1				
+RSET	DBF_NOACCESS				"Address of RSET"	SPC_NOMOD		4			"struct rset      *rset"	
+SCAN	DBF_MENU			GUI_SCAN	"Scan Mechanism"	SPC_SCAN		1				menuScan
+SDIS	DBF_INLINK			GUI_SCAN	"Scanning Disable"			1				
+SEVR	DBF_MENU		"INVALID"		"Alarm Severity"	SPC_NOMOD						menuAlarmSevr
+SPVT	DBF_NOACCESS				"Scan Private"	SPC_NOMOD		4			"struct scan_element *spvt"	
+STAT	DBF_MENU		"UDF"		"Alarm Status"	SPC_NOMOD						menuAlarmStat
+TIME	DBF_NOACCESS				"Time"	SPC_NOMOD		2			"epicsTimeStamp   time"	
+TPRO	DBF_UCHAR				"Trace Processing"							
+TSE	DBF_SHORT			GUI_SCAN	"Time Stamp Event"			1				
+TSEL	DBF_INLINK			GUI_SCAN	"Time Stamp Link"			1				
+UDF	DBF_UCHAR		"1"	GUI_COMMON	"Undefined"		TRUE	1				
+VAL	DBF_DOUBLE	ASL0			"Result"							
