@@ -59,3 +59,13 @@ class RecordBase(Device):
             for attr, md in cls.field_metadata():
                 if md.type in epics_type:
                     yield attr
+
+    @classmethod
+    def attr_to_field(cls, attr):
+        return cls._sig_attrs[attr].suffix.lstrip('.')
+
+    @classmethod
+    def field_to_attr(cls, field):
+        for attr, cpt in cls._sig_attrs.items():
+            if cpt.suffix.lstrip('.') == field:
+                return attr
