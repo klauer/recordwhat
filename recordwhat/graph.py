@@ -35,6 +35,16 @@ def get_link_str(link_str):
 
 
 def graph_links(*starting_records):
+    '''Create a graphviz digraph of record links
+
+    All starting records will be included, along with any other records that
+    are linked to from there.
+
+    Parameters
+    ----------
+    *starting_records : str
+        Record names
+    '''
     node_id = 0
     nodes = {}
     graph = gv.Digraph(format='svg')
