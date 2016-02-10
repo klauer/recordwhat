@@ -1,6 +1,7 @@
 from ophyd import (Device, EpicsSignal, EpicsSignalRO,
                    Component as Cpt)
 from .record_info import load_info_file
+from collections import OrderedDict
 
 
 class RecordBase(Device):
@@ -47,3 +48,14 @@ class RecordBase(Device):
             suffix = cpt.suffix.lstrip('.')
             if suffix in field_to_md:
                 yield attr, field_to_md[suffix]
+
+    @classmethod
+    def attrs_of_type(cls, epics_type):
+        if isinstance(epics_type, str):
+            for attr, md in cls.field_metadata():
+                if md.type == epics_type:
+                    yield attr
+        else:
+            for attr, md in cls.field_metadata():
+                if md.type in epics_type:
+                    yield attr

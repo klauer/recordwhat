@@ -12,6 +12,11 @@ print()
 # or ask for *all* the values
 print(rec.get())
 
+# poke around with field metadata
 metadata = dict(rec.field_metadata())
 print('description field type', metadata['description'].type)
 print('derivative gain metadata', metadata['derivative_gain'])
+
+print('in links', list(rec.attrs_of_type('DBF_INLINK')))
+print('all links', list(rec.attrs_of_type(['DBF_INLINK', 'DBF_OUTLINK',
+                                           'DBF_FWDLINK'])))

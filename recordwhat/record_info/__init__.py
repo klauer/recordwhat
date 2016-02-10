@@ -51,7 +51,6 @@ def load_info_file(record_type, *, data_path=None):
         if infotype is None:
             infotype = namedtuple('FieldInfoTuple', list(sorted(info.keys())))
 
-        field = info['field']
         if 'DBF_NOACCESS' in info['type']:
             continue
 
@@ -60,3 +59,6 @@ def load_info_file(record_type, *, data_path=None):
 
     _cache[cache_key] = ret
     return ret
+
+
+link_types = ['DBF_INLINK', 'DBF_OUTLINK', 'DBF_FWDLINK']
