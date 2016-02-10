@@ -34,13 +34,13 @@ def get_link_str(link_str):
     return link_str
 
 
-def graph_links(starting_record):
+def graph_links(*starting_records):
     node_id = 0
     nodes = {}
     graph = gv.Digraph(format='svg')
 
     checked = []
-    records_to_check = [get_record_by_name(starting_record)]
+    records_to_check = [get_record_by_name(rec) for rec in starting_records]
 
     while records_to_check:
         rec = records_to_check.pop()
