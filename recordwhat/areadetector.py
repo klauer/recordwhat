@@ -4,152 +4,42 @@ import subprocess
 from ophyd import AreaDetector
 from ophyd.areadetector.plugins import (PluginBase, get_areadetector_plugin,
                                         ProcessPlugin)
+from .util import grep_pvs
 
 
-class DetectorNode:
-    def __init__(self, det, port_name):
-        self.plugin = det
-        self.port_name = port_name
-        self.children = []
-
-    def __repr__(self):
-        # hack because I don't have the proper prefix yet
-        return '{}(port_name={!r})'.format(self.plugin.__class__.__name__,
-                                           self.port_name)
+logger = logging.getLogger(__name__)
 
 
-class PluginNode:
-    def __init__(self, plugin, parent=None):
-        self.plugin = plugin
-        self.parent = parent
-        self.children = []
+def get_plugins_by_prefix(det_prefix, *, path=None, **kwargs):
+    '''Grep a list of pvs for a detector prefix; get all plugin instances'''
+    # Grep the pv list directory for things with the areadetector prefix
+    pvs = grep_pvs('^{}.*EnableCallbacks$'.format(det_prefix),
+                   path=path, **kwargs)
 
-    @property
-    def port_name(self):
-        return self.plugin.port_name.get()
-
-    def __repr__(self):
-        return '{}(port_name={!r})'.format(self.plugin.__class__.__name__,
-                                           self.port_name)
+    # Strip off EnableCallbacks
+    pvs = [pv.split('EnableCallbacks')[0]
+           for pv in pvs]
+    return get_plugins_by_prefix_list(pvs)
 
 
-class PluginTree:
-    def __init__(self):
-        self.roots = []
-        self.source_ports = {}
-        self.port_to_plugin = {}
-        self.waiting = {}  # waiting for parent :(
-
-    def done(self):
-        # assume all waiting nodes are top-level detectors
-        for port_name, children in self.waiting.items():
-            parent = DetectorNode(AreaDetector('todo', name=port_name), port_name)
-            for child_plugin in children:
-                child_plugin.parent = parent
-                parent.children.append(child_plugin)
-            self.roots.append(parent)
-
-        self.waiting = {}
-
-    def get_paths(self):
-        def iter_children(plugin, parent_nodes):
-            if not plugin.children:
-                yield parent_nodes
-            else:
-                for child in plugin.children:
-                    yield from iter_children(child, parent_nodes + [child])
-
-        for plugin in self.top_level:
-            for path in iter_children(plugin, [plugin]):
-                yield [node.plugin for node in path]
-
-    @property
-    def top_level(self):
-        for port_name, plugin in self.waiting.items():
-            yield from plugin
-
-        for plugin in self.roots:
-            yield plugin
-
-    def __iter__(self):
-        def iter_children(plugin):
-            yield plugin
-            for plugin in plugin.children:
-                yield from iter_children(plugin)
-
-        for plugin in self.top_level:
-            yield from iter_children(plugin)
-
-    def add(self, plugin):
-        port_name = plugin.port_name.get()
-        if port_name is None:
-            raise ValueError('Plugin not connected')
-
-        node = PluginNode(plugin)
-        self.port_to_plugin[port_name] = node
-
-        if port_name in self.waiting:
-            for child_plugin in self.waiting[port_name]:
-                child_plugin.parent = node
-                node.children.append(child_plugin)
-            del self.waiting[port_name]
-
-        source_port = plugin.nd_array_port.get()
-        self.source_ports[plugin] = source_port
-
+def get_plugins_by_prefix_list(prefixes):
+    '''Grep a list of pvs for a detector prefix; get all plugin instances'''
+    for prefix in prefixes:
         try:
-            parent = self.port_to_plugin[source_port]
-        except KeyError:
-            if source_port not in self.waiting:
-                self.waiting[source_port] = []
-
-            self.waiting[source_port].append(node)
-        else:
-            parent.children.append(node)
-            node.parent = parent
-
-
-def grep_pvs(prefix, path='/cf-update/*.dbl', suffix='EnableCallbacks',
-             grep_tool='/bin/grep', ignore_exceptions=True):
-    expr = '^{}.*{}$'.format(prefix, suffix)
-    command = '{} -he "{}" {}'.format(grep_tool, expr, path)
-
-    try:
-        stdout = subprocess.check_output(command, stderr=subprocess.DEVNULL, shell=True)
-    except subprocess.CalledProcessError as ex:
-        # some permissions errors in /cf-update
-        if not ignore_exceptions:
-            raise
-        stdout = ex.output
-
-    stdout = stdout.decode('ascii')
-    for match in stdout.split('\n'):
-        match = match.strip()
-        if match:
-            yield match[:-len(suffix)]
-
-
-def get_plugins_by_prefix(det_prefix, verbose=True):
-    for prefix in grep_pvs(det_prefix):
-        try:
-            # Try to guess the plugin-type by regular expression
+            # Try to get the plugin type
             plugin = get_areadetector_plugin(prefix)
-        except ValueError:
-            # Or give up and just give a generic plugin
-            plugin = PluginBase(prefix)
+        except ValueError as ex:
+            # Or give up
+            logger.debug('Get plugin failed', exc_info=ex)
         else:
-            plugin._name = plugin.port_name.get()
+            plugin.wait_for_connection()
             yield plugin
-
-
-def make_port_tree(plugins):
-    tree = PluginTree()
-    for plugin in plugins:
-        tree.add(plugin)
-    return tree
 
 
 def check_plugin(plugin):
+    '''Plugin information that might be noteworthy'''
+
+    # TODO unnused, probably can be removed
     blocking = plugin.blocking_callbacks.get()
     if blocking:
         yield ('Blocking', plugin.blocking_callbacks)
@@ -168,40 +58,32 @@ def check_plugin(plugin):
                    ''.format(n_filter), plugin.num_filter)
 
 
-def sup_ad(prefix):
-    plugins = list(get_plugins_by_prefix(prefix))
-    for plugin in plugins:
-        port = plugin.port_name.get()
-        source_port = plugin.nd_array_port.get()
-        print('Plugin: {} Port: {!r} Source: {!r}'
-              ''.format(plugin, port, source_port))
+def get_port_dictionary(plugins):
+    '''Given a list of plugin, get all ports mapped to plugins'''
+    return {plugin.port_name.get(): plugin
+            for plugin in plugins}
 
-    plugin_map = make_port_tree(plugins)
-    plugin_map.done()
-    for i, path in enumerate(plugin_map.get_paths()):
-        print('- Port chain #{}'.format(i))
-        for plugin in path:
-            if not isinstance(plugin, AreaDetector):
-                if plugin.blocking_callbacks.get():
-                    print(' [blocking] ', end='')
 
-            print(' ->', plugin.name, end='')
+def graph_ports_by_prefix(prefix):
+    '''Convenience function, given prefix return a port graph
 
-        print()
-        for plugin in path:
-            if isinstance(plugin, AreaDetector):
-                continue
+    This first greps the default database list directory, gets the port
+    mapping dictionary, then generates the graph.
 
-            notes = list(check_plugin(plugin))
-            if notes:
-                print('* Plugin {}:'.format(plugin))
-                for note, signal in notes:
-                    print('\t{} = {}: {}'.format(signal.pvname,
-                                                 signal.get(), note))
+    Parameters
+    ----------
+    prefix : str
+        The detector prefix
 
-        # for plugin in path:
-        #     print(plugin, end=' -> ')
-        # print()
+    Returns
+    -------
+    graph : graphviz.Digraph
+    '''
+    from .graph import port_graph
+
+    plugins = get_plugins_by_prefix(prefix)
+    ad_ports = get_port_dictionary(plugins)
+    return port_graph(ad_ports)
 
 
 if __name__ == '__main__':
@@ -213,4 +95,10 @@ if __name__ == '__main__':
     except IndexError:
         prefix = 'XF:03IDC-ES{Tpx:1}'
 
-    sup_ad(prefix)
+    try:
+        save_to = sys.argv[2]
+    except IndexError:
+        save_to = 'ad_ports'
+
+    graph = graph_ports_by_prefix(prefix)
+    print('Saved to', graph.render(save_to))

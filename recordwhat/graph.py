@@ -34,7 +34,7 @@ def get_link_str(link_str):
     return link_str
 
 
-def graph_links(*starting_records):
+def graph_links(*starting_records, graph=None):
     '''Create a graphviz digraph of record links
 
     All starting records will be included, along with any other records that
@@ -44,10 +44,18 @@ def graph_links(*starting_records):
     ----------
     *starting_records : str
         Record names
+    graph : graphviz.Graph, optional
+        Graph instance to use. New one created if not specified.
+
+    Returns
+    -------
+    graph : graphviz.Graph
     '''
     node_id = 0
     nodes = {}
-    graph = gv.Digraph(format='svg')
+
+    if graph is None:
+        graph = gv.Digraph(format='svg')
 
     checked = []
     records_to_check = [get_record_by_name(rec) for rec in starting_records]
@@ -93,5 +101,34 @@ def graph_links(*starting_records):
                 srcl, destl = destl, srcl
 
             graph.edge(src, dest, label='{}/{}'.format(srcl, destl))
+
+    return graph
+
+
+def port_graph(ad_ports, *, graph=None):
+    '''Create a graphviz graph from an areadetector port dictionary
+
+    Parameters
+    ----------
+    ad_ports : dict
+        Dictionary of port name to areaDetector plugin instance
+    graph : graphviz.Graph, optional
+        Graph instance to use. New one created if not specified.
+
+    Returns
+    -------
+    graph : graphviz.Graph
+    '''
+
+
+    if graph is None:
+        graph = gv.Digraph(format='svg')
+
+    for port, plugin in ad_ports.items():
+        graph.node(port, label='{}\n{}'.format(plugin.prefix, port))
+
+    for dest_port, plugin in ad_ports.items():
+        source_port = plugin.nd_array_port.get()
+        graph.edge(source_port, dest_port)
 
     return graph

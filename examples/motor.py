@@ -34,7 +34,4 @@ graph = graph_links('XF:31IDA-OP{Tbl-Ax:FakeMtr}-SP_')
 #                     'XF:03IDC-ES{SPod:1}BusyMoving_',
 #                     )
 
-
-
-
 print('rendered graph to', graph.render('test'))
