@@ -1,0 +1,51 @@
+from ophyd import (EpicsSignal, EpicsSignalRO, Component as Cpt)
+
+from .. import (RecordBase, _register_record_type)
+
+
+@_register_record_type('scanparm')
+class ScanparmRecord(RecordBase):
+    _rtyp = 'scanparm'
+    alarm_status = Cpt(EpicsSignalRO, '.STAT')
+    code_version = Cpt(EpicsSignalRO, '.VERS')
+    last_stepsize = Cpt(EpicsSignalRO, '.LSTP')
+    maxpts = Cpt(EpicsSignalRO, '.MP')
+    scanactive = Cpt(EpicsSignalRO, '.ACT')
+    stepsize = Cpt(EpicsSignalRO, '.STEP')
+
+    # - common
+    aft_outlink = Cpt(EpicsSignalRO, '.OAFT')
+    aqt_outlink = Cpt(EpicsSignalRO, '.OAQT')
+    ar_outlink = Cpt(EpicsSignalRO, '.OAR')
+    after = Cpt(EpicsSignal, '.AFT')
+    d1pv_outlink = Cpt(EpicsSignalRO, '.ODPV')
+    detpvname = Cpt(EpicsSignal, '.DPV')
+    ep_outlink = Cpt(EpicsSignalRO, '.OEP')
+    go_outlink = Cpt(EpicsSignalRO, '.OGO')
+    inlink = Cpt(EpicsSignalRO, '.IACT')
+    load_outlink = Cpt(EpicsSignalRO, '.OLOAD')
+    mp_inlink = Cpt(EpicsSignalRO, '.IMP')
+    np_outlink = Cpt(EpicsSignalRO, '.ONP')
+    p1pv_outlink = Cpt(EpicsSignalRO, '.OPPV')
+    pre_write_outlink = Cpt(EpicsSignalRO, '.OPRE')
+    positionerpvname = Cpt(EpicsSignal, '.PPV')
+    r1pv_outlink = Cpt(EpicsSignalRO, '.ORPV')
+    readbackpvname = Cpt(EpicsSignal, '.RPV')
+    sc_outlink = Cpt(EpicsSignalRO, '.OSC')
+    sm_outlink = Cpt(EpicsSignalRO, '.OSM')
+    sp_outlink = Cpt(EpicsSignalRO, '.OSP')
+    stepmode = Cpt(EpicsSignal, '.SM')
+    t1pv_outlink = Cpt(EpicsSignalRO, '.OTPV')
+    trigpvname = Cpt(EpicsSignal, '.TPV')
+    absrel = Cpt(EpicsSignal, '.AR')
+
+    # - display
+    acquire_time = Cpt(EpicsSignal, '.AQT')
+    display_precision = Cpt(EpicsSignal, '.PREC')
+    endpos = Cpt(EpicsSignal, '.EP')
+    go = Cpt(EpicsSignal, '.GO')
+    load = Cpt(EpicsSignal, '.LOAD')
+    pre_write_command = Cpt(EpicsSignal, '.PRE')
+    startcmd = Cpt(EpicsSignal, '.SC')
+    startpos = Cpt(EpicsSignal, '.SP')
+    npts = Cpt(EpicsSignal, '.NP')

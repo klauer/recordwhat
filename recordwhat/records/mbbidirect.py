@@ -1,0 +1,41 @@
+from ophyd import (EpicsSignal, EpicsSignalRO, Component as Cpt)
+
+from .. import (RecordBase, _register_record_type)
+
+
+@_register_record_type('mbbiDirect')
+class MbbidirectRecord(RecordBase):
+    _rtyp = 'mbbiDirect'
+    alarm_status = Cpt(EpicsSignalRO, '.STAT')
+    bit_0 = Cpt(EpicsSignal, '.B0')
+    bit_1 = Cpt(EpicsSignal, '.B1')
+    bit_2 = Cpt(EpicsSignal, '.B2')
+    bit_3 = Cpt(EpicsSignal, '.B3')
+    bit_4 = Cpt(EpicsSignal, '.B4')
+    bit_5 = Cpt(EpicsSignal, '.B5')
+    bit_6 = Cpt(EpicsSignal, '.B6')
+    bit_7 = Cpt(EpicsSignal, '.B7')
+    bit_8 = Cpt(EpicsSignal, '.B8')
+    bit_9 = Cpt(EpicsSignal, '.B9')
+    bit_a = Cpt(EpicsSignal, '.BA')
+    bit_b = Cpt(EpicsSignal, '.BB')
+    bit_c = Cpt(EpicsSignal, '.BC')
+    bit_d = Cpt(EpicsSignal, '.BD')
+    bit_e = Cpt(EpicsSignal, '.BE')
+    bit_f = Cpt(EpicsSignal, '.BF')
+    hardware_mask = Cpt(EpicsSignalRO, '.MASK')
+    last_value_alarmed = Cpt(EpicsSignalRO, '.LALM')
+    last_value_monitored = Cpt(EpicsSignalRO, '.MLST')
+    prev_raw_value = Cpt(EpicsSignalRO, '.ORAW')
+    raw_value = Cpt(EpicsSignal, '.RVAL')
+    simulation_mode = Cpt(EpicsSignal, '.SIMM')
+    simulation_value = Cpt(EpicsSignal, '.SVAL')
+    states_defined = Cpt(EpicsSignalRO, '.SDEF')
+
+    # - mbb
+    input_specification = Cpt(EpicsSignal, '.INP')
+    number_of_bits = Cpt(EpicsSignalRO, '.NOBT')
+    shift = Cpt(EpicsSignal, '.SHFT')
+    sim_input_specifctn = Cpt(EpicsSignal, '.SIOL')
+    sim_mode_location = Cpt(EpicsSignal, '.SIML')
+    sim_mode_alarm_svrty = Cpt(EpicsSignal, '.SIMS')
