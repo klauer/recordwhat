@@ -1,0 +1,65 @@
+digraph {
+	STATS4 [label="XF:03IDC-ES{Tpx:1}Stats4:
+STATS4"]
+	FileTIFF1 [label="XF:03IDC-ES{Tpx:1}TIFF1:
+FileTIFF1"]
+	FileNexus1 [label="XF:03IDC-ES{Tpx:1}Nexus1:
+FileNexus1"]
+	ROI3 [label="XF:03IDC-ES{Tpx:1}ROI3:
+ROI3"]
+	ROI4 [label="XF:03IDC-ES{Tpx:1}ROI4:
+ROI4"]
+	STATS5 [label="XF:03IDC-ES{Tpx:1}Stats5:
+STATS5"]
+	STATS1 [label="XF:03IDC-ES{Tpx:1}Stats1:
+STATS1"]
+	CC1 [label="XF:03IDC-ES{Tpx:1}CC1:
+CC1"]
+	FileMagick1 [label="XF:03IDC-ES{Tpx:1}Magick1:
+FileMagick1"]
+	TRANS1 [label="XF:03IDC-ES{Tpx:1}Trans1:
+TRANS1"]
+	FileHDF1 [label="XF:03IDC-ES{Tpx:1}HDF1:
+FileHDF1"]
+	OVER1 [label="XF:03IDC-ES{Tpx:1}Over1:
+OVER1"]
+	ROI2 [label="XF:03IDC-ES{Tpx:1}ROI2:
+ROI2"]
+	FileJPEG1 [label="XF:03IDC-ES{Tpx:1}JPEG1:
+FileJPEG1"]
+	PROC1 [label="XF:03IDC-ES{Tpx:1}Proc1:
+PROC1"]
+	FileNetCDF1 [label="XF:03IDC-ES{Tpx:1}netCDF1:
+FileNetCDF1"]
+	STATS3 [label="XF:03IDC-ES{Tpx:1}Stats3:
+STATS3"]
+	STATS2 [label="XF:03IDC-ES{Tpx:1}Stats2:
+STATS2"]
+	Image1 [label="XF:03IDC-ES{Tpx:1}image1:
+Image1"]
+	ROI1 [label="XF:03IDC-ES{Tpx:1}ROI1:
+ROI1"]
+	CC2 [label="XF:03IDC-ES{Tpx:1}CC2:
+CC2"]
+		ROI4 -> STATS4
+		TRANS1 -> FileTIFF1
+		TIM -> FileNexus1
+		TIM -> ROI3
+		TIM -> ROI4
+		TIM -> STATS5
+		ROI1 -> STATS1
+		TIM -> CC1
+		TIM -> FileMagick1
+		PROC1 -> TRANS1
+		TIM -> FileHDF1
+		TIM -> OVER1
+		TIM -> ROI2
+		TIM -> FileJPEG1
+		TIM -> PROC1
+		TIM -> FileNetCDF1
+		ROI3 -> STATS3
+		ROI2 -> STATS2
+		TRANS1 -> Image1
+		TIM -> ROI1
+		TIM -> CC2
+}
