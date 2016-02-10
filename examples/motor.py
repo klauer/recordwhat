@@ -11,3 +11,7 @@ print()
 
 # or ask for *all* the values
 print(rec.get())
+
+metadata = dict(rec.field_metadata())
+print('description field type', metadata['description'].type)
+print('derivative gain metadata', metadata['derivative_gain'])

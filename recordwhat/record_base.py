@@ -1,5 +1,6 @@
 from ophyd import (Device, EpicsSignal, EpicsSignalRO,
                    Component as Cpt)
+from .record_info import load_info_file
 
 
 class RecordBase(Device):
@@ -33,3 +34,16 @@ class RecordBase(Device):
     time_stamp_event_link = Cpt(EpicsSignal, '.TSEL')
     val_undefined = Cpt(EpicsSignal, '.UDF')
     value = Cpt(EpicsSignal, '.VAL')
+
+    @classmethod
+    def field_metadata(cls):
+        if not hasattr(cls, '_rtyp'):
+            raise ValueError('No associated record type')
+
+        rtyp = cls._rtyp
+
+        field_to_md = load_info_file(rtyp)
+        for attr, cpt in cls._sig_attrs.items():
+            suffix = cpt.suffix.lstrip('.')
+            if suffix in field_to_md:
+                yield attr, field_to_md[suffix]
