@@ -24,7 +24,7 @@ from ophyd import (Device, EpicsSignal, EpicsSignalRO,
 record_header = '''\
 from ophyd import (EpicsSignal, EpicsSignalRO, Component as Cpt)
 
-from ..record_base import RecordBase
+from .. import (RecordBase, _register_record_type)
 
 '''
 
@@ -93,8 +93,9 @@ def load_wiki_derived(fn):
                    )
 
 
-def generate(cls, info_gen, super_='Device', skip_attrs=None, skip_fields={},
-             test_record=None, include_docs=False, include_header=True):
+def generate(cls, info_gen, *, super_='Device', skip_attrs=None,
+             skip_fields={}, test_record=None, include_docs=False,
+             include_header=True, record_type=None):
 
     if skip_attrs is None:
         skip_attrs = {}
@@ -103,7 +104,11 @@ def generate(cls, info_gen, super_='Device', skip_attrs=None, skip_fields={},
         skip_fields = {}
 
     if include_header:
+        if record_type is not None:
+            yield "@_register_record_type('{}')".format(record_type)
         yield 'class {cls}({super}):'.format(cls=cls, super=super_)
+        if record_type is not None:
+            yield "    _rtyp = '{}'".format(record_type)
 
     group = None
 
@@ -115,11 +120,19 @@ def generate(cls, info_gen, super_='Device', skip_attrs=None, skip_fields={},
         if info['field'] in skip_fields:
             continue
 
+        if attr == '':
+            attr = info['field'].lower()
+
         if attr in attrs:
             # TODO sometime the short desc isn't enough for a unique attr name
             #      so tag on the field name if necessary
-            info['attr_name'] = attr = '_'.join((attr, info['field'].lower()))
+            if not attr:
+                info['attr_name'] = info['field'].lower()
+            else:
+                info['attr_name'] = '_'.join((attr, info['field'].lower()))
+            attr = info['attr_name']
 
+        info['attr_name'] = attr
         attrs[attr] = info
 
         if info['group'] and info['group'] != group:
@@ -184,13 +197,15 @@ def generate_all(info_path=record_info_path, dest_path=record_source_path):
         if rtyp in ('all', ):
             continue
 
-        source_fn = os.path.join(dest_path, rtyp + '.py')
+        python_fn = (rtyp + '.py').lower()
+        source_fn = os.path.join(dest_path, python_fn)
         print('-- {} -> {} --'.format(fn, source_fn))
         with open(source_fn, 'wt', encoding='utf-8') as f:
             print(record_header, file=f)
             rec = rtyp.capitalize() + 'Record'
             for line in generate(rec, load_dbd_derived(fn),
-                                 super_='RecordBase', skip_fields=base_fields):
+                                 super_='RecordBase', skip_fields=base_fields,
+                                 record_type=rtyp):
                 print(line, file=f)
 
 
