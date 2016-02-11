@@ -58,11 +58,13 @@ def graph_links(*starting_records, graph=None):
         graph = gv.Digraph(format='svg')
 
     checked = []
-    records_to_check = [get_record_by_name(rec) for rec in starting_records]
+    records_to_check = list(starting_records)
 
     while records_to_check:
-        rec = records_to_check.pop()
+        rec = get_record_by_name(records_to_check.pop())
         checked.append(rec.prefix)
+
+        logger.debug('--- record %s ---', rec.prefix)
 
         for attr, link_str in get_all_record_links(rec).items():
             try:
@@ -72,16 +74,16 @@ def graph_links(*starting_records, graph=None):
 
             inlink = (attr in list(rec.attrs_of_type('DBF_INLINK')))
 
-            logger.debug('attr %s link str %s', attr, link_str)
+            logger.debug('checking attribute %s (link = %s)', attr, link_str)
             if '.' in link_str:
                 link_rec, link_field = link_str.split('.')
             else:
                 link_rec, link_field = link_str, 'VAL'
 
-            link_rec = get_record_by_name(link_rec)
-            if link_rec.prefix not in checked:
+            if (link_rec not in checked and link_rec not in records_to_check):
                 records_to_check.append(link_rec)
 
+            link_rec = get_record_by_name(link_rec)
             for _rec in [rec, link_rec]:
                 if _rec.prefix not in nodes:
                     node_id += 1
@@ -91,7 +93,6 @@ def graph_links(*starting_records, graph=None):
                                  nodes[_rec.prefix])
 
             link_attr = link_rec.field_to_attr(link_field)
-            logger.debug('edge %s -> %s', rec.prefix, link_rec.prefix)
 
             src, dest = nodes[rec.prefix], nodes[link_rec.prefix]
             srcl, destl = attr, link_attr
@@ -99,6 +100,9 @@ def graph_links(*starting_records, graph=None):
             if inlink:
                 src, dest = dest, src
                 srcl, destl = destl, srcl
+                logger.debug('New edge %s -> %s', link_rec.prefix, rec.prefix)
+            else:
+                logger.debug('New edge %s -> %s', rec.prefix, link_rec.prefix)
 
             graph.edge(src, dest, label='{}/{}'.format(srcl, destl))
 
