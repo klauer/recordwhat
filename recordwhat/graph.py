@@ -77,6 +77,8 @@ def graph_links(*starting_records, graph=None):
             logger.debug('checking attribute %s (link = %s)', attr, link_str)
             if '.' in link_str:
                 link_rec, link_field = link_str.split('.')
+            elif attr == 'forward_link':
+                link_rec, link_field = link_str, 'PROC'
             else:
                 link_rec, link_field = link_str, 'VAL'
 
@@ -89,7 +91,7 @@ def graph_links(*starting_records, graph=None):
                     node_id += 1
                     nodes[_rec.prefix] = str(node_id)
                     graph.node(nodes[_rec.prefix], label=_rec.prefix)
-                    logger.debug('created node %s (%s)', _rec.prefix,
+                    logger.debug('Created node %s (%s)', _rec.prefix,
                                  nodes[_rec.prefix])
 
             link_attr = link_rec.field_to_attr(link_field)
@@ -104,7 +106,7 @@ def graph_links(*starting_records, graph=None):
             else:
                 logger.debug('New edge %s -> %s', rec.prefix, link_rec.prefix)
 
-            graph.edge(src, dest, label='{}/{}'.format(srcl, destl))
+            graph.edge(src, dest, taillabel=srcl, headlabel=destl)
 
     return graph
 
