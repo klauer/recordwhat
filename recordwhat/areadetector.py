@@ -32,7 +32,6 @@ def get_plugins_by_prefix_list(prefixes):
             # Or give up
             logger.debug('Get plugin failed', exc_info=ex)
         else:
-            plugin.wait_for_connection()
             yield plugin
 
 
