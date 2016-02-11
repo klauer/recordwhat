@@ -64,6 +64,6 @@ MotorRecordTuple(alarm_acknowledge_severity=0, alarm_acknowledge_transient=1,
 
 Requires
 --------
-* ophyd
 * Python 3.4+
+* ophyd
 * pyepics
