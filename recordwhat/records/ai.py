@@ -41,13 +41,13 @@ class AiRecord(RecordBase):
     # - display
     archive_deadband = Cpt(EpicsSignal, '.ADEL')
     display_precision = Cpt(EpicsSignal, '.PREC')
-    engineering_units = Cpt(EpicsSignal, '.EGU')
+    engineering_units = Cpt(EpicsSignal, '.EGU$')
     high_operating_range = Cpt(EpicsSignal, '.HOPR')
     low_operating_range = Cpt(EpicsSignal, '.LOPR')
     monitor_deadband = Cpt(EpicsSignal, '.MDEL')
 
     # - inputs
-    input_specification = Cpt(EpicsSignal, '.INP')
-    sim_input_specifctn = Cpt(EpicsSignal, '.SIOL')
-    sim_mode_location = Cpt(EpicsSignal, '.SIML')
+    input_specification = Cpt(EpicsSignal, '.INP$')
+    sim_input_specifctn = Cpt(EpicsSignal, '.SIOL$')
+    sim_mode_location = Cpt(EpicsSignal, '.SIML$')
     sim_mode_alarm_svrty = Cpt(EpicsSignal, '.SIMS')

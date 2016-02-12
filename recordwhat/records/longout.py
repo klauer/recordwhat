@@ -27,18 +27,18 @@ class LongoutRecord(RecordBase):
     high_operating_range = Cpt(EpicsSignal, '.HOPR')
     low_operating_range = Cpt(EpicsSignal, '.LOPR')
     monitor_deadband = Cpt(EpicsSignal, '.MDEL')
-    units_name = Cpt(EpicsSignal, '.EGU')
+    units_name = Cpt(EpicsSignal, '.EGU$')
 
     # - inputs
-    sim_mode_location = Cpt(EpicsSignal, '.SIML')
-    sim_output_specifctn = Cpt(EpicsSignal, '.SIOL')
+    sim_mode_location = Cpt(EpicsSignal, '.SIML$')
+    sim_output_specifctn = Cpt(EpicsSignal, '.SIOL$')
     sim_mode_alarm_svrty = Cpt(EpicsSignal, '.SIMS')
 
     # - output
-    desired_output_loc = Cpt(EpicsSignal, '.DOL')
+    desired_output_loc = Cpt(EpicsSignal, '.DOL$')
     drive_high_limit = Cpt(EpicsSignal, '.DRVH')
     drive_low_limit = Cpt(EpicsSignal, '.DRVL')
     invalid_output_action = Cpt(EpicsSignal, '.IVOA')
     invalid_output_value = Cpt(EpicsSignal, '.IVOV')
     output_mode_select = Cpt(EpicsSignal, '.OMSL')
-    output_specification = Cpt(EpicsSignal, '.OUT')
+    output_specification = Cpt(EpicsSignal, '.OUT$')

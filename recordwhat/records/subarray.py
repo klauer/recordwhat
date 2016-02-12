@@ -13,10 +13,10 @@ class SubarrayRecord(RecordBase):
     field_type_of_value = Cpt(EpicsSignalRO, '.FTVL')
 
     # - bits1
-    input_specification = Cpt(EpicsSignal, '.INP')
+    input_specification = Cpt(EpicsSignal, '.INP$')
 
     # - bits2
-    engineering_units_name = Cpt(EpicsSignal, '.EGU')
+    engineering_units_name = Cpt(EpicsSignal, '.EGU$')
 
     # - calc
     high_operating_range = Cpt(EpicsSignal, '.HOPR')

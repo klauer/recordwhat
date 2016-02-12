@@ -13,16 +13,16 @@ class WaveformRecord(RecordBase):
 
     # - display
     display_precision = Cpt(EpicsSignal, '.PREC')
-    engineering_units_name = Cpt(EpicsSignal, '.EGU')
+    engineering_units_name = Cpt(EpicsSignal, '.EGU$')
     high_operating_range = Cpt(EpicsSignal, '.HOPR')
     low_operating_range = Cpt(EpicsSignal, '.LOPR')
     post_archive_monitors = Cpt(EpicsSignal, '.APST')
     post_value_monitors = Cpt(EpicsSignal, '.MPST')
 
     # - inputs
-    input_specification = Cpt(EpicsSignal, '.INP')
-    sim_input_specifctn = Cpt(EpicsSignal, '.SIOL')
-    sim_mode_location = Cpt(EpicsSignal, '.SIML')
+    input_specification = Cpt(EpicsSignal, '.INP$')
+    sim_input_specifctn = Cpt(EpicsSignal, '.SIOL$')
+    sim_mode_location = Cpt(EpicsSignal, '.SIML$')
     sim_mode_alarm_svrty = Cpt(EpicsSignal, '.SIMS')
 
     # - wave

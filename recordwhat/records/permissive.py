@@ -11,4 +11,4 @@ class PermissiveRecord(RecordBase):
     wait_flag = Cpt(EpicsSignal, '.WFLG')
 
     # - display
-    button_label = Cpt(EpicsSignal, '.LABL')
+    button_label = Cpt(EpicsSignal, '.LABL$')

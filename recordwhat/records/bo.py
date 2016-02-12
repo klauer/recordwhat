@@ -21,18 +21,18 @@ class BoRecord(RecordBase):
     zero_error_severity = Cpt(EpicsSignal, '.ZSV')
 
     # - display
-    one_name = Cpt(EpicsSignal, '.ONAM')
-    zero_name = Cpt(EpicsSignal, '.ZNAM')
+    one_name = Cpt(EpicsSignal, '.ONAM$')
+    zero_name = Cpt(EpicsSignal, '.ZNAM$')
 
     # - inputs
-    sim_mode_location = Cpt(EpicsSignal, '.SIML')
-    sim_output_specifctn = Cpt(EpicsSignal, '.SIOL')
+    sim_mode_location = Cpt(EpicsSignal, '.SIML$')
+    sim_output_specifctn = Cpt(EpicsSignal, '.SIOL$')
     sim_mode_alarm_svrty = Cpt(EpicsSignal, '.SIMS')
 
     # - output
-    desired_output_loc = Cpt(EpicsSignal, '.DOL')
+    desired_output_loc = Cpt(EpicsSignal, '.DOL$')
     invalid_outpt_action = Cpt(EpicsSignal, '.IVOA')
     invalid_output_value = Cpt(EpicsSignal, '.IVOV')
     output_mode_select = Cpt(EpicsSignal, '.OMSL')
-    output_specification = Cpt(EpicsSignal, '.OUT')
+    output_specification = Cpt(EpicsSignal, '.OUT$')
     seconds_to_hold_high = Cpt(EpicsSignal, '.HIGH')

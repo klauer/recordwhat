@@ -14,10 +14,10 @@ class AaoRecord(RecordBase):
     display_precision = Cpt(EpicsSignal, '.PREC')
 
     # - bits1
-    output_specification = Cpt(EpicsSignal, '.OUT')
+    output_specification = Cpt(EpicsSignal, '.OUT$')
 
     # - bits2
-    engineering_units_name = Cpt(EpicsSignal, '.EGU')
+    engineering_units_name = Cpt(EpicsSignal, '.EGU$')
 
     # - calc
     high_operating_range = Cpt(EpicsSignal, '.HOPR')
@@ -36,8 +36,8 @@ class AaoRecord(RecordBase):
     post_value_monitors = Cpt(EpicsSignal, '.MPST')
 
     # - hist
-    sim_mode_location = Cpt(EpicsSignal, '.SIML')
+    sim_mode_location = Cpt(EpicsSignal, '.SIML$')
 
     # - inputs
-    sim_output_specifctn = Cpt(EpicsSignal, '.SIOL')
+    sim_output_specifctn = Cpt(EpicsSignal, '.SIOL$')
     sim_mode_alarm_svrty = Cpt(EpicsSignal, '.SIMS')

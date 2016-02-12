@@ -38,7 +38,7 @@ class EpidRecord(RecordBase):
     # - display
     archive_deadband = Cpt(EpicsSignal, '.ADEL')
     display_precision = Cpt(EpicsSignal, '.PREC')
-    engineering_units = Cpt(EpicsSignal, '.EGU')
+    engineering_units = Cpt(EpicsSignal, '.EGU$')
     high_drive_limit = Cpt(EpicsSignal, '.DRVH')
     high_operating_range = Cpt(EpicsSignal, '.HOPR')
     low_drive_limit = Cpt(EpicsSignal, '.DRVL')
@@ -46,7 +46,7 @@ class EpidRecord(RecordBase):
     monitor_deadband = Cpt(EpicsSignal, '.MDEL')
 
     # - inputs
-    controlled_value_loc = Cpt(EpicsSignal, '.INP')
+    controlled_value_loc = Cpt(EpicsSignal, '.INP$')
 
     # - pid
     derivative_gain = Cpt(EpicsSignal, '.KD')
@@ -55,10 +55,10 @@ class EpidRecord(RecordBase):
     intergral_gain = Cpt(EpicsSignal, '.KI')
     min_delta_t = Cpt(EpicsSignal, '.MDT')
     output_deadband = Cpt(EpicsSignal, '.ODEL')
-    output_location = Cpt(EpicsSignal, '.OUTL')
+    output_location = Cpt(EpicsSignal, '.OUTL$')
     prev_feedback_on_off = Cpt(EpicsSignal, '.FBOP')
     proportional_gain = Cpt(EpicsSignal, '.KP')
-    readback_trigger = Cpt(EpicsSignal, '.TRIG')
-    setpoint_location = Cpt(EpicsSignal, '.STPL')
+    readback_trigger = Cpt(EpicsSignal, '.TRIG$')
+    setpoint_location = Cpt(EpicsSignal, '.STPL$')
     setpoint_mode_select = Cpt(EpicsSignal, '.SMSL')
     trigger_value = Cpt(EpicsSignal, '.TVAL')

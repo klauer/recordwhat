@@ -71,7 +71,7 @@ class VsRecord(RecordBase):
     degas_set = Cpt(EpicsSignal, '.DGSS')
 
     # - common
-    device_specification = Cpt(EpicsSignalRO, '.INP')
+    device_specification = Cpt(EpicsSignalRO, '.INP$')
 
     # - display
     ig_alarm_deadband = Cpt(EpicsSignal, '.HYST')

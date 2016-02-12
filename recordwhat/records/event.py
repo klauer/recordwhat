@@ -10,7 +10,7 @@ class EventRecord(RecordBase):
     simulation_value = Cpt(EpicsSignal, '.SVAL')
 
     # - inputs
-    input_specification = Cpt(EpicsSignal, '.INP')
-    sim_input_specifctn = Cpt(EpicsSignal, '.SIOL')
-    sim_mode_location = Cpt(EpicsSignal, '.SIML')
+    input_specification = Cpt(EpicsSignal, '.INP$')
+    sim_input_specifctn = Cpt(EpicsSignal, '.SIOL$')
+    sim_mode_location = Cpt(EpicsSignal, '.SIML$')
     sim_mode_alarm_svrty = Cpt(EpicsSignal, '.SIMS')

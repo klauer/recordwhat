@@ -7,7 +7,7 @@ from .. import (RecordBase, _register_record_type)
 class TimestampRecord(RecordBase):
     alarm_status = Cpt(EpicsSignalRO, '.STAT')
     current_raw_value = Cpt(EpicsSignal, '.RVAL')
-    previous_value = Cpt(EpicsSignalRO, '.OVAL')
+    previous_value = Cpt(EpicsSignalRO, '.OVAL$')
 
     # - inputs
     time_stamp_type = Cpt(EpicsSignal, '.TST')

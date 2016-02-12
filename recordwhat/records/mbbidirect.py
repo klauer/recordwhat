@@ -32,9 +32,9 @@ class MbbidirectRecord(RecordBase):
     states_defined = Cpt(EpicsSignalRO, '.SDEF')
 
     # - mbb
-    input_specification = Cpt(EpicsSignal, '.INP')
+    input_specification = Cpt(EpicsSignal, '.INP$')
     number_of_bits = Cpt(EpicsSignalRO, '.NOBT')
     shift = Cpt(EpicsSignal, '.SHFT')
-    sim_input_specifctn = Cpt(EpicsSignal, '.SIOL')
-    sim_mode_location = Cpt(EpicsSignal, '.SIML')
+    sim_input_specifctn = Cpt(EpicsSignal, '.SIOL$')
+    sim_mode_location = Cpt(EpicsSignal, '.SIML$')
     sim_mode_alarm_svrty = Cpt(EpicsSignal, '.SIMS')
