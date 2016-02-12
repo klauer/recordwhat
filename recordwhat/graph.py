@@ -111,7 +111,7 @@ def graph_links(*starting_records, graph=None):
     return graph
 
 
-def port_graph(ad_ports, *, graph=None):
+def port_graph(ad_ports, *, graph=None, enabled_kw=None, disabled_kw=None):
     '''Create a graphviz graph from an areadetector port dictionary
 
     Parameters
@@ -120,21 +120,37 @@ def port_graph(ad_ports, *, graph=None):
         Dictionary of port name to areaDetector plugin instance
     graph : graphviz.Graph, optional
         Graph instance to use. New one created if not specified.
+    enabled_kw : dict, optional
+        graph.edge keywords for an enabled link
+    enabled_kw : dict, optional
+        graph.edge keywords for a disabled link
 
     Returns
     -------
     graph : graphviz.Graph
     '''
 
-
     if graph is None:
         graph = gv.Digraph(format='svg')
+
+    if disabled_kw is None:
+        disabled_kw = dict(color='red')
+
+    if enabled_kw is None:
+        enabled_kw = dict(color='green')
 
     for port, plugin in ad_ports.items():
         graph.node(port, label='{}\n{}'.format(plugin.prefix, port))
 
     for dest_port, plugin in ad_ports.items():
         source_port = plugin.nd_array_port.get()
-        graph.edge(source_port, dest_port)
+        plugin_enabled = plugin.enable.get()
+
+        if plugin_enabled:
+            kw = enabled_kw
+        else:
+            kw = disabled_kw
+
+        graph.edge(source_port, dest_port, **kw)
 
     return graph

@@ -63,11 +63,13 @@ def get_port_dictionary(plugins):
             for plugin in plugins}
 
 
-def graph_ports_by_prefix(prefix):
+def graph_ports_by_prefix(prefix, **kwargs):
     '''Convenience function, given prefix return a port graph
 
     This first greps the default database list directory, gets the port
     mapping dictionary, then generates the graph.
+
+    kwargs are passed onto recordwhat.graph.port_graph.
 
     Parameters
     ----------
@@ -82,7 +84,7 @@ def graph_ports_by_prefix(prefix):
 
     plugins = get_plugins_by_prefix(prefix)
     ad_ports = get_port_dictionary(plugins)
-    return port_graph(ad_ports)
+    return port_graph(ad_ports, **kwargs)
 
 
 if __name__ == '__main__':
