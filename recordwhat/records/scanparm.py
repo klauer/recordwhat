@@ -5,7 +5,6 @@ from .. import (RecordBase, _register_record_type)
 
 @_register_record_type('scanparm')
 class ScanparmRecord(RecordBase):
-    _rtyp = 'scanparm'
     alarm_status = Cpt(EpicsSignalRO, '.STAT')
     code_version = Cpt(EpicsSignalRO, '.VERS')
     last_stepsize = Cpt(EpicsSignalRO, '.LSTP')

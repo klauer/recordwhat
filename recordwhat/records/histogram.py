@@ -5,7 +5,6 @@ from .. import (RecordBase, _register_record_type)
 
 @_register_record_type('histogram')
 class HistogramRecord(RecordBase):
-    _rtyp = 'histogram'
     alarm_status = Cpt(EpicsSignalRO, '.STAT')
     collection_control = Cpt(EpicsSignal, '.CMD')
     collection_status = Cpt(EpicsSignalRO, '.CSTA')

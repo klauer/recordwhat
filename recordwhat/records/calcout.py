@@ -5,7 +5,6 @@ from .. import (RecordBase, _register_record_type)
 
 @_register_record_type('calcout')
 class CalcoutRecord(RecordBase):
-    _rtyp = 'calcout'
     alarm_status = Cpt(EpicsSignalRO, '.STAT')
     calc_valid = Cpt(EpicsSignal, '.CLCV')
     inpa_pv_status = Cpt(EpicsSignalRO, '.INAV')

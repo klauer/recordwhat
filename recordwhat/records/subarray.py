@@ -5,7 +5,6 @@ from .. import (RecordBase, _register_record_type)
 
 @_register_record_type('subArray')
 class SubarrayRecord(RecordBase):
-    _rtyp = 'subArray'
     alarm_status = Cpt(EpicsSignalRO, '.STAT')
     busy_indicator = Cpt(EpicsSignalRO, '.BUSY')
     number_elements_read = Cpt(EpicsSignalRO, '.NORD')

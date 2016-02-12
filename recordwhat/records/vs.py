@@ -5,7 +5,6 @@ from .. import (RecordBase, _register_record_type)
 
 @_register_record_type('vs')
 class VsRecord(RecordBase):
-    _rtyp = 'vs'
     alarm_status = Cpt(EpicsSignalRO, '.STAT')
     changed_control = Cpt(EpicsSignalRO, '.CHGC')
     controller_err_cnt = Cpt(EpicsSignal, '.ERR')

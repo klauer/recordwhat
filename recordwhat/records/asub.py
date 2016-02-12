@@ -5,7 +5,6 @@ from .. import (RecordBase, _register_record_type)
 
 @_register_record_type('aSub')
 class AsubRecord(RecordBase):
-    _rtyp = 'aSub'
     alarm_status = Cpt(EpicsSignalRO, '.STAT')
     num_elements_in_ovla = Cpt(EpicsSignalRO, '.ONVA')
     num_elements_in_ovlb = Cpt(EpicsSignalRO, '.ONVB')

@@ -5,7 +5,6 @@ from .. import (RecordBase, _register_record_type)
 
 @_register_record_type('vme')
 class VmeRecord(RecordBase):
-    _rtyp = 'vme'
     alarm_status = Cpt(EpicsSignalRO, '.STAT')
     status_array = Cpt(EpicsSignal, '.SARR')
 

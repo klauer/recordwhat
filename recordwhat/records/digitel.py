@@ -5,7 +5,6 @@ from .. import (RecordBase, _register_record_type)
 
 @_register_record_type('digitel')
 class DigitelRecord(RecordBase):
-    _rtyp = 'digitel'
     acc_current = Cpt(EpicsSignalRO, '.ACCI')
     acc_power = Cpt(EpicsSignalRO, '.ACCW')
     alarm_status = Cpt(EpicsSignalRO, '.STAT')

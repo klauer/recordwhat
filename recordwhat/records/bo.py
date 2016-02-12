@@ -5,7 +5,6 @@ from .. import (RecordBase, _register_record_type)
 
 @_register_record_type('bo')
 class BoRecord(RecordBase):
-    _rtyp = 'bo'
     alarm_status = Cpt(EpicsSignalRO, '.STAT')
     hardware_mask = Cpt(EpicsSignalRO, '.MASK')
     last_value_alarmed = Cpt(EpicsSignalRO, '.LALM')

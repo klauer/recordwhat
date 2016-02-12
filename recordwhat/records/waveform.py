@@ -5,7 +5,6 @@ from .. import (RecordBase, _register_record_type)
 
 @_register_record_type('waveform')
 class WaveformRecord(RecordBase):
-    _rtyp = 'waveform'
     alarm_status = Cpt(EpicsSignalRO, '.STAT')
     busy_indicator = Cpt(EpicsSignalRO, '.BUSY')
     hash_of_onchange_data = Cpt(EpicsSignal, '.HASH')

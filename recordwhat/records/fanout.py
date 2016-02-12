@@ -5,7 +5,6 @@ from .. import (RecordBase, _register_record_type)
 
 @_register_record_type('fanout')
 class FanoutRecord(RecordBase):
-    _rtyp = 'fanout'
     alarm_status = Cpt(EpicsSignalRO, '.STAT')
     link_selection = Cpt(EpicsSignal, '.SELN')
 

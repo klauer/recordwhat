@@ -5,7 +5,6 @@ from .. import (RecordBase, _register_record_type)
 
 @_register_record_type('sub')
 class SubRecord(RecordBase):
-    _rtyp = 'sub'
     alarm_status = Cpt(EpicsSignalRO, '.STAT')
     last_value_alarmed = Cpt(EpicsSignalRO, '.LALM')
     last_value_archived = Cpt(EpicsSignalRO, '.ALST')

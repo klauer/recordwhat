@@ -5,7 +5,6 @@ from .. import (RecordBase, _register_record_type)
 
 @_register_record_type('epid')
 class EpidRecord(RecordBase):
-    _rtyp = 'epid'
     alarm_status = Cpt(EpicsSignalRO, '.STAT')
     controlled_value = Cpt(EpicsSignalRO, '.CVAL')
     d_component = Cpt(EpicsSignalRO, '.D')

@@ -5,7 +5,6 @@ from .. import (RecordBase, _register_record_type)
 
 @_register_record_type('table')
 class TableRecord(RecordBase):
-    _rtyp = 'table'
     alarm_status = Cpt(EpicsSignalRO, '.STAT')
     code_version = Cpt(EpicsSignalRO, '.VERS')
     monitor_mask = Cpt(EpicsSignalRO, '.MMAP')

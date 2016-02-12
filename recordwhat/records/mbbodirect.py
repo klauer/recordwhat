@@ -5,7 +5,6 @@ from .. import (RecordBase, _register_record_type)
 
 @_register_record_type('mbboDirect')
 class MbbodirectRecord(RecordBase):
-    _rtyp = 'mbboDirect'
     alarm_status = Cpt(EpicsSignalRO, '.STAT')
     hardware_mask = Cpt(EpicsSignalRO, '.MASK')
     last_value_alarmed = Cpt(EpicsSignalRO, '.LALM')

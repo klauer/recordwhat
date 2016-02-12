@@ -5,7 +5,6 @@ from .. import (RecordBase, _register_record_type)
 
 @_register_record_type('acalcout')
 class AcalcoutRecord(RecordBase):
-    _rtyp = 'acalcout'
     alarm_status = Cpt(EpicsSignalRO, '.STAT')
     array_mod = Cpt(EpicsSignalRO, '.AMASK')
     array_size_reported_to_clients = Cpt(EpicsSignal, '.SIZE')

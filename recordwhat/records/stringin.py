@@ -5,7 +5,6 @@ from .. import (RecordBase, _register_record_type)
 
 @_register_record_type('stringin')
 class StringinRecord(RecordBase):
-    _rtyp = 'stringin'
     alarm_status = Cpt(EpicsSignalRO, '.STAT')
     previous_value = Cpt(EpicsSignalRO, '.OVAL')
     simulation_mode = Cpt(EpicsSignal, '.SIMM')

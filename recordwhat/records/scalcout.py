@@ -5,7 +5,6 @@ from .. import (RecordBase, _register_record_type)
 
 @_register_record_type('scalcout')
 class ScalcoutRecord(RecordBase):
-    _rtyp = 'scalcout'
     alarm_status = Cpt(EpicsSignalRO, '.STAT')
     calc_valid = Cpt(EpicsSignal, '.CLCV')
     code_version = Cpt(EpicsSignalRO, '.VERS')

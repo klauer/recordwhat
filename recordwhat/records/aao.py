@@ -5,7 +5,6 @@ from .. import (RecordBase, _register_record_type)
 
 @_register_record_type('aao')
 class AaoRecord(RecordBase):
-    _rtyp = 'aao'
     alarm_status = Cpt(EpicsSignalRO, '.STAT')
     hash_of_onchange_data = Cpt(EpicsSignal, '.HASH')
     number_elements_read = Cpt(EpicsSignalRO, '.NORD')

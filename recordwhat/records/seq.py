@@ -5,7 +5,6 @@ from .. import (RecordBase, _register_record_type)
 
 @_register_record_type('seq')
 class SeqRecord(RecordBase):
-    _rtyp = 'seq'
     alarm_status = Cpt(EpicsSignalRO, '.STAT')
     constant_input_1 = Cpt(EpicsSignal, '.DO1')
     constant_input_10 = Cpt(EpicsSignal, '.DOA')

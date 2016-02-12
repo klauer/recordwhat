@@ -5,7 +5,6 @@ from .. import (RecordBase, _register_record_type)
 
 @_register_record_type('sel')
 class SelRecord(RecordBase):
-    _rtyp = 'sel'
     alarm_status = Cpt(EpicsSignalRO, '.STAT')
     index_value = Cpt(EpicsSignal, '.SELN')
     last_index_monitored = Cpt(EpicsSignalRO, '.NLST')

@@ -5,7 +5,6 @@ from .. import (RecordBase, _register_record_type)
 
 @_register_record_type('mbbiDirect')
 class MbbidirectRecord(RecordBase):
-    _rtyp = 'mbbiDirect'
     alarm_status = Cpt(EpicsSignalRO, '.STAT')
     bit_0 = Cpt(EpicsSignal, '.B0')
     bit_1 = Cpt(EpicsSignal, '.B1')

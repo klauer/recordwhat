@@ -5,7 +5,6 @@ from .. import (RecordBase, _register_record_type)
 
 @_register_record_type('scaler')
 class ScalerRecord(RecordBase):
-    _rtyp = 'scaler'
     alarm_status = Cpt(EpicsSignalRO, '.STAT')
     code_version = Cpt(EpicsSignalRO, '.VERS')
     count = Cpt(EpicsSignal, '.CNT')

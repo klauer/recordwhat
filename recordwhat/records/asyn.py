@@ -5,7 +5,6 @@ from .. import (RecordBase, _register_record_type)
 
 @_register_record_type('asyn')
 class AsynRecord(RecordBase):
-    _rtyp = 'asyn'
     abort_queuerequest = Cpt(EpicsSignal, '.AQR')
     alarm_status = Cpt(EpicsSignalRO, '.STAT')
     eom_reason = Cpt(EpicsSignalRO, '.EOMR')

@@ -5,7 +5,6 @@ from .. import (RecordBase, _register_record_type)
 
 @_register_record_type('sscan')
 class SscanRecord(RecordBase):
-    _rtyp = 'sscan'
     of_elements_pt = Cpt(EpicsSignalRO, '.D01NE')
     of_elements_pt_d02ne = Cpt(EpicsSignalRO, '.D02NE')
     of_elements_pt_d03ne = Cpt(EpicsSignalRO, '.D03NE')

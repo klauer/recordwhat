@@ -5,7 +5,6 @@ from .. import (RecordBase, _register_record_type)
 
 @_register_record_type('mca')
 class McaRecord(RecordBase):
-    _rtyp = 'mca'
     acquiring = Cpt(EpicsSignalRO, '.ACQG')
     actual_counts_in_pregio = Cpt(EpicsSignalRO, '.ACT')
     alarm_status = Cpt(EpicsSignalRO, '.STAT')

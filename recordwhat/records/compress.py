@@ -5,7 +5,6 @@ from .. import (RecordBase, _register_record_type)
 
 @_register_record_type('compress')
 class CompressRecord(RecordBase):
-    _rtyp = 'compress'
     alarm_status = Cpt(EpicsSignalRO, '.STAT')
     compress_value_buffer = Cpt(EpicsSignalRO, '.CVB')
     compressed_array_inx = Cpt(EpicsSignalRO, '.INX')

@@ -5,7 +5,6 @@ from .. import (RecordBase, _register_record_type)
 
 @_register_record_type('longout')
 class LongoutRecord(RecordBase):
-    _rtyp = 'longout'
     alarm_status = Cpt(EpicsSignalRO, '.STAT')
     last_val_monitored = Cpt(EpicsSignalRO, '.MLST')
     last_value_alarmed = Cpt(EpicsSignalRO, '.LALM')

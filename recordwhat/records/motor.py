@@ -5,7 +5,6 @@ from .. import (RecordBase, _register_record_type)
 
 @_register_record_type('motor')
 class MotorRecord(RecordBase):
-    _rtyp = 'motor'
     alarm_status = Cpt(EpicsSignalRO, '.STAT')
     at_home = Cpt(EpicsSignalRO, '.ATHM')
     card_number = Cpt(EpicsSignalRO, '.CARD')

@@ -5,7 +5,6 @@ from .. import (RecordBase, _register_record_type)
 
 @_register_record_type('busy')
 class BusyRecord(RecordBase):
-    _rtyp = 'busy'
     alarm_status = Cpt(EpicsSignalRO, '.STAT')
     last_value_alarmed = Cpt(EpicsSignalRO, '.LALM')
     last_value_monitored = Cpt(EpicsSignalRO, '.MLST')

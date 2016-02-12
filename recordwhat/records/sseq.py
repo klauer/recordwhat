@@ -5,7 +5,6 @@ from .. import (RecordBase, _register_record_type)
 
 @_register_record_type('sseq')
 class SseqRecord(RecordBase):
-    _rtyp = 'sseq'
     ix1 = Cpt(EpicsSignalRO, '.IX1')
     ix2 = Cpt(EpicsSignalRO, '.IX2')
     ix3 = Cpt(EpicsSignalRO, '.IX3')

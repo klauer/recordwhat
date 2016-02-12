@@ -5,7 +5,6 @@ from .. import (RecordBase, _register_record_type)
 
 @_register_record_type('transform')
 class TransformRecord(RecordBase):
-    _rtyp = 'transform'
     alarm_status = Cpt(EpicsSignalRO, '.STAT')
     calc_invalid = Cpt(EpicsSignal, '.CAV')
     calc_invalid_cbv = Cpt(EpicsSignal, '.CBV')
