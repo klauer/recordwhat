@@ -63,6 +63,7 @@ def load_dbd_derived(fn):
                    attr_name=attr_name,
                    doc=prompt,
                    group=group,
+                   type=info['type'],
                    )
 
 
@@ -81,6 +82,7 @@ def load_wiki_derived(fn):
                    attr_name=attr_name,
                    doc=doc,
                    group='',
+                   type=None,
                    )
 
     if 'VAL' not in df:
@@ -90,6 +92,7 @@ def load_wiki_derived(fn):
                    attr_name='value',
                    doc='Record value',
                    group='',
+                   type=None,
                    )
 
 
@@ -107,8 +110,6 @@ def generate(cls, info_gen, *, super_='Device', skip_attrs=None,
         if record_type is not None:
             yield "@_register_record_type('{}')".format(record_type)
         yield 'class {cls}({super}):'.format(cls=cls, super=super_)
-        if record_type is not None:
-            yield "    _rtyp = '{}'".format(record_type)
 
     group = None
 
@@ -139,6 +140,15 @@ def generate(cls, info_gen, *, super_='Device', skip_attrs=None,
             yield ''
             yield '    # - {}'.format(info['group'])
             group = info['group']
+
+        type_ = info['type']
+        if type_ == 'DBF_STRING' or type_ in record_info.link_types:
+            # EPICS originally supported 40 chars for strings, but extended it
+            # at some point, still keeping backward compatibility. So to
+            # request long strings, you have to add a $ at the end of the PV
+            # name...
+            if not info['field'].endswith('$'):
+                info['field'] += '$'
 
         if test_record is not None:
             import epics

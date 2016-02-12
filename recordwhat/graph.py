@@ -1,6 +1,7 @@
 import logging
 from . import get_record_by_name
 from .record_info import link_types
+from ophyd import EpicsSignalRO
 
 import graphviz as gv
 
@@ -106,7 +107,7 @@ def graph_links(*starting_records, graph=None):
             else:
                 logger.debug('New edge %s -> %s', rec.prefix, link_rec.prefix)
 
-            graph.edge(src, dest, taillabel=srcl, headlabel=destl)
+            graph.edge(src, dest, taillabel=srcl, label=destl)
 
     return graph
 

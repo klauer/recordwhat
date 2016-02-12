@@ -3,6 +3,10 @@ from ophyd import (Device, EpicsSignal, EpicsSignalRO,
 from .record_info import load_info_file
 from collections import OrderedDict
 
+def _strip_field(field):
+    '''Strip leading . and optional final modifier $ from a field'''
+    return field.lstrip('.').rstrip('$')
+
 
 class RecordBase(Device):
     alarm_acknowledge_severity = Cpt(EpicsSignalRO, '.ACKS')
@@ -15,9 +19,9 @@ class RecordBase(Device):
     disable_value = Cpt(EpicsSignal, '.DISV')
     device_type = Cpt(EpicsSignal, '.DTYP')
     event_number = Cpt(EpicsSignal, '.EVNT')
-    forward_link = Cpt(EpicsSignal, '.FLNK')
+    forward_link = Cpt(EpicsSignal, '.FLNK$')
     lock_count = Cpt(EpicsSignalRO, '.LCNT')
-    record_name = Cpt(EpicsSignalRO, '.NAME')
+    record_name = Cpt(EpicsSignalRO, '.NAME$')
     new_alarm_severity = Cpt(EpicsSignalRO, '.NSEV')
     new_alarm_status = Cpt(EpicsSignalRO, '.NSTA')
     processing_active = Cpt(EpicsSignalRO, '.PACT')
@@ -28,11 +32,11 @@ class RecordBase(Device):
     dbputfield_process = Cpt(EpicsSignalRO, '.PUTF')
     reprocess = Cpt(EpicsSignalRO, '.RPRO')
     scanning_rate = Cpt(EpicsSignal, '.SCAN')
-    scan_disable_input_link = Cpt(EpicsSignal, '.SDIS')
+    scan_disable_input_link = Cpt(EpicsSignal, '.SDIS$')
     current_alarm_severity = Cpt(EpicsSignalRO, '.SEVR')
     trace_processing = Cpt(EpicsSignal, '.TPRO')
     time_stamp_event = Cpt(EpicsSignal, '.TSE')
-    time_stamp_event_link = Cpt(EpicsSignal, '.TSEL')
+    time_stamp_event_link = Cpt(EpicsSignal, '.TSEL$')
     val_undefined = Cpt(EpicsSignal, '.UDF')
     value = Cpt(EpicsSignal, '.VAL')
 
@@ -45,7 +49,7 @@ class RecordBase(Device):
 
         field_to_md = load_info_file(rtyp)
         for attr, cpt in cls._sig_attrs.items():
-            suffix = cpt.suffix.lstrip('.')
+            suffix = _strip_field(cpt.suffix)
             if suffix in field_to_md:
                 yield attr, field_to_md[suffix]
 
@@ -67,5 +71,6 @@ class RecordBase(Device):
     @classmethod
     def field_to_attr(cls, field):
         for attr, cpt in cls._sig_attrs.items():
-            if cpt.suffix.lstrip('.') == field:
+            suffix = _strip_field(cpt.suffix)
+            if suffix == field:
                 return attr
