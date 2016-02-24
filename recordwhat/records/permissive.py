@@ -1,6 +1,7 @@
-from ophyd import (EpicsSignal, EpicsSignalRO, Component as Cpt)
+from ophyd import (EpicsSignal, EpicsSignalRO)
 
-from .. import (RecordBase, _register_record_type)
+from .. import (RecordBase, _register_record_type,
+                FieldComponent as Cpt)
 
 
 @_register_record_type('permissive')
