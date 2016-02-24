@@ -17,6 +17,8 @@ metadata = dict(rec.field_metadata())
 print('description field type', metadata['description'].type)
 print('derivative gain metadata', metadata['derivative_gain'])
 
+print('description metadata', rec.description.metadata)
+
 print('in links', list(rec.attrs_of_type('DBF_INLINK')))
 print('all links', list(rec.attrs_of_type(['DBF_INLINK', 'DBF_OUTLINK',
                                            'DBF_FWDLINK'])))

@@ -1,44 +1,71 @@
-from ophyd import (Device, EpicsSignal, EpicsSignalRO,
-                   Component as Cpt)
+from ophyd import (Device, EpicsSignal, EpicsSignalRO, Component)
 from .record_info import load_info_file
-from collections import OrderedDict
+
 
 def _strip_field(field):
     '''Strip leading . and optional final modifier $ from a field'''
     return field.lstrip('.').rstrip('$')
 
 
+class FieldComponent(Component):
+    # store the per-class metadata here (class-level)
+    _cls_metadata = {}
+
+    def create_component(self, instance):
+        # called when creating a component instance (i.e., field signal) on a
+        # device instance (record instance)
+        cpt_inst = super().create_component(instance)
+
+        # tack on metadata to the signal instance
+        record_cls = instance.__class__
+        try:
+            metadata = FieldComponent._cls_metadata[record_cls]
+        except KeyError:
+            try:
+                metadata = dict(record_cls.field_metadata())
+            except Exception:
+                metadata = {}
+            else:
+                FieldComponent._cls_metadata[record_cls] = metadata
+
+        cpt_inst.metadata = metadata.get(self.attr, None)
+        return cpt_inst
+
+
+FieldCpt = FieldComponent
+
+
 class RecordBase(Device):
-    alarm_acknowledge_severity = Cpt(EpicsSignalRO, '.ACKS')
-    alarm_acknowledge_transient = Cpt(EpicsSignalRO, '.ACKT')
-    access_security_group = Cpt(EpicsSignal, '.ASG')
-    description = Cpt(EpicsSignal, '.DESC')
-    scan_disable_input_link_value = Cpt(EpicsSignal, '.DISA')
-    disable_putfields = Cpt(EpicsSignal, '.DISP')
-    disable_alarm_severity = Cpt(EpicsSignal, '.DISS')
-    disable_value = Cpt(EpicsSignal, '.DISV')
-    device_type = Cpt(EpicsSignal, '.DTYP')
-    event_number = Cpt(EpicsSignal, '.EVNT')
-    forward_link = Cpt(EpicsSignal, '.FLNK$')
-    lock_count = Cpt(EpicsSignalRO, '.LCNT')
-    record_name = Cpt(EpicsSignalRO, '.NAME$')
-    new_alarm_severity = Cpt(EpicsSignalRO, '.NSEV')
-    new_alarm_status = Cpt(EpicsSignalRO, '.NSTA')
-    processing_active = Cpt(EpicsSignalRO, '.PACT')
-    scan_phase_number = Cpt(EpicsSignal, '.PHAS')
-    process_at_initialization = Cpt(EpicsSignal, '.PINI')
-    priority = Cpt(EpicsSignal, '.PRIO')
-    process_record = Cpt(EpicsSignal, '.PROC')
-    dbputfield_process = Cpt(EpicsSignalRO, '.PUTF')
-    reprocess = Cpt(EpicsSignalRO, '.RPRO')
-    scanning_rate = Cpt(EpicsSignal, '.SCAN')
-    scan_disable_input_link = Cpt(EpicsSignal, '.SDIS$')
-    current_alarm_severity = Cpt(EpicsSignalRO, '.SEVR')
-    trace_processing = Cpt(EpicsSignal, '.TPRO')
-    time_stamp_event = Cpt(EpicsSignal, '.TSE')
-    time_stamp_event_link = Cpt(EpicsSignal, '.TSEL$')
-    val_undefined = Cpt(EpicsSignal, '.UDF')
-    value = Cpt(EpicsSignal, '.VAL')
+    alarm_acknowledge_severity = FieldCpt(EpicsSignalRO, '.ACKS')
+    alarm_acknowledge_transient = FieldCpt(EpicsSignalRO, '.ACKT')
+    access_security_group = FieldCpt(EpicsSignal, '.ASG')
+    description = FieldCpt(EpicsSignal, '.DESC')
+    scan_disable_input_link_value = FieldCpt(EpicsSignal, '.DISA')
+    disable_putfields = FieldCpt(EpicsSignal, '.DISP')
+    disable_alarm_severity = FieldCpt(EpicsSignal, '.DISS')
+    disable_value = FieldCpt(EpicsSignal, '.DISV')
+    device_type = FieldCpt(EpicsSignal, '.DTYP')
+    event_number = FieldCpt(EpicsSignal, '.EVNT')
+    forward_link = FieldCpt(EpicsSignal, '.FLNK$')
+    lock_count = FieldCpt(EpicsSignalRO, '.LCNT')
+    record_name = FieldCpt(EpicsSignalRO, '.NAME$')
+    new_alarm_severity = FieldCpt(EpicsSignalRO, '.NSEV')
+    new_alarm_status = FieldCpt(EpicsSignalRO, '.NSTA')
+    processing_active = FieldCpt(EpicsSignalRO, '.PACT')
+    scan_phase_number = FieldCpt(EpicsSignal, '.PHAS')
+    process_at_initialization = FieldCpt(EpicsSignal, '.PINI')
+    priority = FieldCpt(EpicsSignal, '.PRIO')
+    process_record = FieldCpt(EpicsSignal, '.PROC')
+    dbputfield_process = FieldCpt(EpicsSignalRO, '.PUTF')
+    reprocess = FieldCpt(EpicsSignalRO, '.RPRO')
+    scanning_rate = FieldCpt(EpicsSignal, '.SCAN')
+    scan_disable_input_link = FieldCpt(EpicsSignal, '.SDIS$')
+    current_alarm_severity = FieldCpt(EpicsSignalRO, '.SEVR')
+    trace_processing = FieldCpt(EpicsSignal, '.TPRO')
+    time_stamp_event = FieldCpt(EpicsSignal, '.TSE')
+    time_stamp_event_link = FieldCpt(EpicsSignal, '.TSEL$')
+    val_undefined = FieldCpt(EpicsSignal, '.UDF')
+    value = FieldCpt(EpicsSignal, '.VAL')
 
     @classmethod
     def field_metadata(cls):
