@@ -1,6 +1,6 @@
 # NOTE: 3 record exceed 255 components and are not imported here
 # CPython limitation that there can only be 255 arguments to a function,
-# so NamedTuple creation for devices fails for: mca, scaler, sscan
+# so NamedTuple creation for devices fails for: mca, sscan
 
 from .aai import AaiRecord
 from .aao import AaoRecord
@@ -31,7 +31,7 @@ from .mbbo import MbboRecord
 from .motor import MotorRecord
 from .permissive import PermissiveRecord
 from .scalcout import ScalcoutRecord
-# from .scaler import ScalerRecord
+from .scaler import ScalerRecord
 from .scanparm import ScanparmRecord
 from .sel import SelRecord
 from .seq import SeqRecord

@@ -1,4 +1,5 @@
-from ophyd import (Device, EpicsSignal, EpicsSignalRO, Component)
+from ophyd import (Device, EpicsSignal, EpicsSignalRO, Component,
+                   DynamicDeviceComponent as DDC)
 from .record_info import load_info_file
 
 
@@ -75,8 +76,7 @@ class RecordBase(Device):
         rtyp = cls._rtyp
 
         field_to_md = load_info_file(rtyp)
-        for attr, cpt in cls._sig_attrs.items():
-            suffix = _strip_field(cpt.suffix)
+        for attr, suffix, cpt in cls._record_attr_components():
             if suffix in field_to_md:
                 yield attr, field_to_md[suffix]
 
@@ -96,8 +96,18 @@ class RecordBase(Device):
         return cls._sig_attrs[attr].suffix.lstrip('.')
 
     @classmethod
-    def field_to_attr(cls, field):
+    def _record_attr_components(cls):
         for attr, cpt in cls._sig_attrs.items():
-            suffix = _strip_field(cpt.suffix)
+            if isinstance(cpt, DDC):
+                for sub_attr, (_, suffix, _) in cpt.defn.items():
+                    suffix = _strip_field(suffix)
+                    yield '{}.{}'.format(cpt.attr, sub_attr), suffix, cpt
+            else:
+                suffix = _strip_field(cpt.suffix)
+                yield attr, suffix, cpt
+
+    @classmethod
+    def field_to_attr(cls, field):
+        for attr, suffix, cpt in cls._record_attr_components():
             if suffix == field:
                 return attr
