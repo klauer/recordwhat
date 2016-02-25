@@ -12,12 +12,12 @@ With the help of graphviz
 
 Record in/out/forward link graphing
 -----------------------------------
-![Record link graph example](https://cdn.rawgit.com/klauer/recordwhat/0.1/examples/record_link_graph.svg)
+![Record link graph example](https://cdn.rawgit.com/klauer/recordwhat/0.3/examples/record_link_graph.svg)
 [Source](examples/record_link_graph.py)
 
 AreaDetector port graphing
 --------------------------
-![Port mapping example](https://cdn.rawgit.com/klauer/recordwhat/0.1/examples/ad_ports.svg)
+![Port mapping example](https://cdn.rawgit.com/klauer/recordwhat/0.3/examples/ad_ports.svg)
 [Source](examples/areadetector.py)
 
 Record example

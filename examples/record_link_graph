@@ -1,18 +1,71 @@
 digraph {
-	1 [label="XF:03IDC-ES{SPod:1}Move-Seq_"]
-	2 [label="XF:03IDC-ES{SPod:1}Move-Cmd_"]
-		1 -> 2 [headlabel=value taillabel=output_link_3]
-	3 [label="XF:03IDC-ES{SPod:1}MotionRequest_"]
-		1 -> 3 [headlabel=value taillabel=output_link_1]
-	4 [label="XF:03IDC-ES{SPod:1}BusyMoving_"]
-		1 -> 4 [headlabel=value taillabel=output_link_2]
-		1 -> 3 [headlabel=value taillabel=output_link_4]
-	5 [label="XF:03IDC-ES{SPod:1}Moving-I"]
-	6 [label="XF:03IDC-ES{SPod:1}Moving-I_"]
-		6 -> 5 [headlabel=input_specification taillabel=value]
-	7 [label="XF:03IDC-ES{SPod:1}MovingRaw-I_"]
-		7 -> 6 [headlabel=input_a taillabel=value]
-		3 -> 6 [headlabel=input_b taillabel=value]
-	8 [label="XF:03IDC-ES{SPod:1}Move-Cmd"]
-		8 -> 1 [headlabel=process_record taillabel=forward_link]
+	graph [compound=true]
+		subgraph cluster_1 {
+			graph [label="XF:03IDC-ES{SPod:1}Move-Seq_"]
+				node [shape=record style=filled]
+				graph [rank=same rankdir=TB style=bold]
+				1 [label=output_link_1]
+				3 [label=output_link_2]
+				5 [label=output_link_3]
+				7 [label=output_link_4]
+				14 [label=process_record]
+		}
+			1 -> 3 [style=invis weight=100]
+			3 -> 5 [style=invis weight=100]
+			5 -> 7 [style=invis weight=100]
+			7 -> 14 [style=invis weight=100]
+		subgraph cluster_7 {
+			graph [label="XF:03IDC-ES{SPod:1}MovingRaw-I_"]
+				node [shape=record style=filled]
+				graph [rank=same rankdir=TB style=bold]
+				12 [label=value]
+		}
+		subgraph cluster_3 {
+			graph [label="XF:03IDC-ES{SPod:1}BusyMoving_"]
+				node [shape=record style=filled]
+				graph [rank=same rankdir=TB style=bold]
+				4 [label=value]
+		}
+		subgraph cluster_8 {
+			graph [label="XF:03IDC-ES{SPod:1}Move-Cmd"]
+				node [shape=record style=filled]
+				graph [rank=same rankdir=TB style=bold]
+				13 [label=forward_link]
+		}
+		subgraph cluster_5 {
+			graph [label="XF:03IDC-ES{SPod:1}Moving-I"]
+				node [shape=record style=filled]
+				graph [rank=same rankdir=TB style=bold]
+				8 [label=input_specification]
+		}
+		subgraph cluster_2 {
+			graph [label="XF:03IDC-ES{SPod:1}MotionRequest_"]
+				node [shape=record style=filled]
+				graph [rank=same rankdir=TB style=bold]
+				2 [label=value]
+		}
+		subgraph cluster_4 {
+			graph [label="XF:03IDC-ES{SPod:1}Move-Cmd_"]
+				node [shape=record style=filled]
+				graph [rank=same rankdir=TB style=bold]
+				6 [label=value]
+		}
+		subgraph cluster_6 {
+			graph [label="XF:03IDC-ES{SPod:1}Moving-I_"]
+				node [shape=record style=filled]
+				graph [rank=same rankdir=TB style=bold]
+				9 [label=value]
+				10 [label=input_b]
+				11 [label=input_a]
+		}
+			11 -> 10 [style=invis weight=100]
+			10 -> 9 [style=invis weight=100]
+			1 -> 2 [style=bold]
+			3 -> 4 [style=bold]
+			5 -> 6 [style=bold]
+			7 -> 2 [style=bold]
+			9 -> 8 [color=red style=bold]
+			2 -> 10 [color=red style=bold]
+			12 -> 11 [color=red style=bold]
+			13 -> 14
 }
