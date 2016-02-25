@@ -19,7 +19,10 @@ def links_from_record(rec):
 def get_link_str(link_str):
     if ' ' in link_str:
         # strip off PP/MS/etc (TODO might be useful later)
-        link_str = link_str.split(' ')[0]
+        link_str, additional_info = link_str.split(' ', 1)
+    else:
+        additional_info = ''
+
     if link_str.startswith('@'):
         # TODO asyn/device links
         raise ValueError('asyn link')
@@ -34,7 +37,7 @@ def get_link_str(link_str):
         # 0 or 1 usually and not a string
         raise ValueError('integral link')
 
-    return link_str
+    return link_str, tuple(additional_info.split(' '))
 
 
 def graph_links(*starting_records, graph=None):
@@ -87,7 +90,7 @@ def graph_links(*starting_records, graph=None):
 
 
 LinkInfo = namedtuple('LinkInfo',
-                      'record1 attr1 record2 attr2 type_')
+                      'record1 attr1 record2 attr2 type_ link_info')
 
 
 def find_record_links(*starting_records):
@@ -122,7 +125,7 @@ def find_record_links(*starting_records):
 
         for attr1, link_str in links_from_record(rec1).items():
             try:
-                link_str = get_link_str(link_str)
+                link_str, link_info = get_link_str(link_str)
             except ValueError:
                 continue
 
@@ -146,7 +149,7 @@ def find_record_links(*starting_records):
             attr2 = rec2.field_to_attr(field2)
             li = LinkInfo(record1=rec1, attr1=attr1,
                           record2=rec2, attr2=attr2,
-                          type_=type_)
+                          type_=type_, link_info=link_info)
 
             # logger.debug('Link %s', li)
             yield li
@@ -197,8 +200,11 @@ def graph_links_with_subgraphs(*starting_records, graph=None, engine='dot',
 
     if subgraph_attrs is None:
         subgraph_attrs = {'graph': {'rankdir': 'TB',
-                                    'rank': 'same'},
-                          'node': {'shape': 'record'},
+                                    'rank': 'same',
+                                    'style': 'bold',
+                                    },
+                          'node': {'shape': 'record',
+                                   'style': 'filled'},
                           'edge': {},
                           }
 
@@ -245,7 +251,21 @@ def graph_links_with_subgraphs(*starting_records, graph=None, engine='dot',
             logger.debug('New edge %s -> %s', li.record1.prefix,
                          li.record2.prefix)
 
-        edges.append((src, dest))
+        edge_kw = {}
+
+        process_passive = (('PP' in li.link_info) or
+                           ('CPP' in li.link_info) or
+                           ('CP' in li.link_info))
+        if process_passive:
+            edge_kw['style'] = 'bold'
+
+        maximize_severity = (('MS' in li.link_info) or
+                             ('MSS' in li.link_info) or
+                             ('MSI' in li.link_info))
+        if maximize_severity:
+            edge_kw['color'] = 'red'
+
+        edges.append((src, dest, edge_kw))
 
     # add the subgraphs to the main graph
     for sgraph_info in graphs.values():
@@ -259,8 +279,8 @@ def graph_links_with_subgraphs(*starting_records, graph=None, engine='dot',
         # weight=100 ensures they're aligned nicely
 
     # add all of the edges between graphs
-    for src, dest in edges:
-        graph.edge(src, dest)
+    for src, dest, options in edges:
+        graph.edge(src, dest, **options)
 
     return graph
 
