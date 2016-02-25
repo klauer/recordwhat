@@ -58,6 +58,7 @@ class RecordBase(Device):
     priority = FieldCpt(EpicsSignal, '.PRIO')
     process_record = FieldCpt(EpicsSignal, '.PROC')
     dbputfield_process = FieldCpt(EpicsSignalRO, '.PUTF')
+    record_type = FieldCpt(EpicsSignalRO, '.RTYP')
     reprocess = FieldCpt(EpicsSignalRO, '.RPRO')
     scanning_rate = FieldCpt(EpicsSignal, '.SCAN')
     scan_disable_input_link = FieldCpt(EpicsSignal, '.SDIS$')

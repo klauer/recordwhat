@@ -217,7 +217,8 @@ def graph_links_with_subgraphs(*starting_records, graph=None, engine='dot',
 
                 for key, attrs in subgraph_attrs.items():
                     sgraph.attr(key, **attrs)
-                sgraph.graph_attr['label'] = rec.prefix
+                sgraph.graph_attr['label'] = '\n'.join((rec.prefix,
+                                                        rec.record_type.get()))
 
                 graphs[rec.prefix] = {'graph': sgraph,
                                       'nodes': {}
