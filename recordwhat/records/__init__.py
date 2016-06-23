@@ -1,7 +1,3 @@
-# NOTE: 3 record exceed 255 components and are not imported here
-# CPython limitation that there can only be 255 arguments to a function,
-# so NamedTuple creation for devices fails for: mca, sscan
-
 from .aai import AaiRecord
 from .aao import AaoRecord
 from .acalcout import AcalcoutRecord
