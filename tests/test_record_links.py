@@ -15,7 +15,7 @@ single_records = [
 
 record_groups = [('XF:31IDA-OP{Tbl-Ax:FakeMtr}-SP',
                   'XF:31IDA-OP{Tbl-Ax:FakeMtr}-SP_',
-                  'XF:31IDA-OP{Tbl-Ax:FakeMtr}Mtr',),
+                  'XF:31IDA-OP{Tbl-Ax:X1}Mtr',),
                  ('Py:mylinker', 'Py:wave_test'),
                  ]
 
