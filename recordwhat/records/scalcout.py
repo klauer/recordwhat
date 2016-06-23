@@ -1,38 +1,50 @@
-from ophyd import (EpicsSignal, EpicsSignalRO)
+from collections import OrderedDict
+from ophyd import (EpicsSignal, EpicsSignalRO, Device,
+                   DynamicDeviceComponent as DDC)
 
 from .. import (RecordBase, _register_record_type,
-                FieldComponent as Cpt)
+                FieldComponent as Cpt,
+                FormattedFieldComponent as FCpt)
+
+
+class ScalcoutNumericInput(Device):
+    pv_status = FCpt(EpicsSignalRO, '{self.prefix}.IN{self.input_name}V')
+    previous_value = FCpt(EpicsSignalRO, '{self.prefix}.PA')
+    link = FCpt(EpicsSignal, '{self.prefix}.INP{self.input_name}$')
+    value = FCpt(EpicsSignal, '{self.prefix}.{self.input_name}')
+
+    def __init__(self, prefix='', *, input_name, **kwargs):
+        self.input_name = input_name
+        super().__init__(prefix, **kwargs)
+
+
+class ScalcoutStringInput(Device):
+    pv_status = FCpt(EpicsSignalRO, '{self.prefix}.I{self.input_name}V')
+    link = FCpt(EpicsSignal, '{self.prefix}.IN{self.input_name}$')
+    value = FCpt(EpicsSignal, '{self.prefix}.{self.input_name}$')
+
+    def __init__(self, prefix='', *, input_name, **kwargs):
+        self.input_name = input_name
+        super().__init__(prefix, **kwargs)
+
+
+def _make_inputs(input_names, cls):
+    return OrderedDict(('input_{}'.format(inp.lower()),
+                        (cls, '', dict(input_name=inp)))
+                       for inp in input_names)
 
 
 @_register_record_type('scalcout')
 class ScalcoutRecord(RecordBase):
+    numeric_inputs = DDC(_make_inputs('ABCDEFGHIJKL', ScalcoutNumericInput))
+    string_inputs = DDC(_make_inputs(['AA', 'BB', 'CC', 'DD', 'EE', 'FF', 'GG',
+                                      'HH', 'II', 'JJ', 'KK', 'LL'],
+                                     ScalcoutStringInput)
+                        )
+
     alarm_status = Cpt(EpicsSignalRO, '.STAT')
     calc_valid = Cpt(EpicsSignal, '.CLCV')
     code_version = Cpt(EpicsSignalRO, '.VERS')
-    inaa_pv_status = Cpt(EpicsSignalRO, '.IAAV')
-    inbb_pv_status = Cpt(EpicsSignalRO, '.IBBV')
-    incc_pv_status = Cpt(EpicsSignalRO, '.ICCV')
-    indd_pv_status = Cpt(EpicsSignalRO, '.IDDV')
-    inee_pv_status = Cpt(EpicsSignalRO, '.IEEV')
-    inff_pv_status = Cpt(EpicsSignalRO, '.IFFV')
-    ingg_pv_status = Cpt(EpicsSignalRO, '.IGGV')
-    inhh_pv_status = Cpt(EpicsSignalRO, '.IHHV')
-    inii_pv_status = Cpt(EpicsSignalRO, '.IIIV')
-    injj_pv_status = Cpt(EpicsSignalRO, '.IJJV')
-    inkk_pv_status = Cpt(EpicsSignalRO, '.IKKV')
-    inll_pv_status = Cpt(EpicsSignalRO, '.ILLV')
-    inpa_pv_status = Cpt(EpicsSignalRO, '.INAV')
-    inpb_pv_status = Cpt(EpicsSignalRO, '.INBV')
-    inpc_pv_status = Cpt(EpicsSignalRO, '.INCV')
-    inpd_pv_status = Cpt(EpicsSignalRO, '.INDV')
-    inpe_pv_status = Cpt(EpicsSignalRO, '.INEV')
-    inpf_pv_status = Cpt(EpicsSignalRO, '.INFV')
-    inpg_pv_status = Cpt(EpicsSignalRO, '.INGV')
-    inph_pv_status = Cpt(EpicsSignalRO, '.INHV')
-    inpi_pv_status = Cpt(EpicsSignalRO, '.INIV')
-    inpj_pv_status = Cpt(EpicsSignalRO, '.INJV')
-    inpk_pv_status = Cpt(EpicsSignalRO, '.INKV')
-    inpl_pv_status = Cpt(EpicsSignalRO, '.INLV')
     last_val_monitored = Cpt(EpicsSignalRO, '.MLST')
     last_value_alarmed = Cpt(EpicsSignalRO, '.LALM')
     last_value_archived = Cpt(EpicsSignalRO, '.ALST')
@@ -41,19 +53,7 @@ class ScalcoutRecord(RecordBase):
     output_delay_active = Cpt(EpicsSignalRO, '.DLYA')
     output_value = Cpt(EpicsSignal, '.OVAL')
     output_string_value = Cpt(EpicsSignal, '.OSV$')
-    prev_value_of_a = Cpt(EpicsSignalRO, '.PA')
-    prev_value_of_b = Cpt(EpicsSignalRO, '.PB')
-    prev_value_of_c = Cpt(EpicsSignalRO, '.PC')
-    prev_value_of_d = Cpt(EpicsSignalRO, '.PD')
-    prev_value_of_e = Cpt(EpicsSignalRO, '.PE')
-    prev_value_of_f = Cpt(EpicsSignalRO, '.PF')
-    prev_value_of_g = Cpt(EpicsSignalRO, '.PG')
-    prev_value_of_h = Cpt(EpicsSignalRO, '.PH')
-    prev_value_of_i = Cpt(EpicsSignalRO, '.PI')
-    prev_value_of_j = Cpt(EpicsSignalRO, '.PJ')
-    prev_value_of_k = Cpt(EpicsSignalRO, '.PK')
-    prev_value_of_l = Cpt(EpicsSignalRO, '.PL')
-    prev_value_of_oval = Cpt(EpicsSignal, '.POVL')
+    previous_ovalue = Cpt(EpicsSignal, '.POVL')
     previous_value = Cpt(EpicsSignal, '.PVAL')
     previous_output_string_value = Cpt(EpicsSignalRO, '.POSV$')
     previous_string_result = Cpt(EpicsSignalRO, '.PSVL$')
@@ -74,62 +74,12 @@ class ScalcoutRecord(RecordBase):
 
     # - calc
     calculation = Cpt(EpicsSignal, '.CALC$')
-    input_a = Cpt(EpicsSignal, '.INPA$')
-    input_b = Cpt(EpicsSignal, '.INPB$')
-    input_c = Cpt(EpicsSignal, '.INPC$')
-    input_d = Cpt(EpicsSignal, '.INPD$')
-    input_e = Cpt(EpicsSignal, '.INPE$')
-    input_f = Cpt(EpicsSignal, '.INPF$')
-    input_g = Cpt(EpicsSignal, '.INPG$')
-    input_h = Cpt(EpicsSignal, '.INPH$')
-    input_i = Cpt(EpicsSignal, '.INPI$')
-    input_j = Cpt(EpicsSignal, '.INPJ$')
-    input_k = Cpt(EpicsSignal, '.INPK$')
-    input_l = Cpt(EpicsSignal, '.INPL$')
     output_calculation = Cpt(EpicsSignal, '.OCAL$')
     output_data_opt = Cpt(EpicsSignal, '.DOPT')
     output_execute_opt = Cpt(EpicsSignal, '.OOPT')
-    string_input_aa = Cpt(EpicsSignal, '.INAA$')
-    string_input_bb = Cpt(EpicsSignal, '.INBB$')
-    string_input_cc = Cpt(EpicsSignal, '.INCC$')
-    string_input_dd = Cpt(EpicsSignal, '.INDD$')
-    string_input_ee = Cpt(EpicsSignal, '.INEE$')
-    string_input_ff = Cpt(EpicsSignal, '.INFF$')
-    string_input_gg = Cpt(EpicsSignal, '.INGG$')
-    string_input_hh = Cpt(EpicsSignal, '.INHH$')
-    string_input_ii = Cpt(EpicsSignal, '.INII$')
-    string_input_jj = Cpt(EpicsSignal, '.INJJ$')
-    string_input_kk = Cpt(EpicsSignal, '.INKK$')
-    string_input_ll = Cpt(EpicsSignal, '.INLL$')
 
     # - clock
     event_to_issue = Cpt(EpicsSignal, '.OEVT')
-
-    # - common
-    value_of_input_a = Cpt(EpicsSignal, '.A')
-    value_of_input_b = Cpt(EpicsSignal, '.B')
-    value_of_input_c = Cpt(EpicsSignal, '.C')
-    value_of_input_d = Cpt(EpicsSignal, '.D')
-    value_of_input_e = Cpt(EpicsSignal, '.E')
-    value_of_input_f = Cpt(EpicsSignal, '.F')
-    value_of_input_g = Cpt(EpicsSignal, '.G')
-    value_of_input_h = Cpt(EpicsSignal, '.H')
-    value_of_input_i = Cpt(EpicsSignal, '.I')
-    value_of_input_j = Cpt(EpicsSignal, '.J')
-    value_of_input_k = Cpt(EpicsSignal, '.K')
-    value_of_input_l = Cpt(EpicsSignal, '.L')
-    value_of_string_input_aa = Cpt(EpicsSignal, '.AA$')
-    value_of_string_input_bb = Cpt(EpicsSignal, '.BB$')
-    value_of_string_input_cc = Cpt(EpicsSignal, '.CC$')
-    value_of_string_input_dd = Cpt(EpicsSignal, '.DD$')
-    value_of_string_input_ee = Cpt(EpicsSignal, '.EE$')
-    value_of_string_input_ff = Cpt(EpicsSignal, '.FF$')
-    value_of_string_input_gg = Cpt(EpicsSignal, '.GG$')
-    value_of_string_input_hh = Cpt(EpicsSignal, '.HH$')
-    value_of_string_input_ii = Cpt(EpicsSignal, '.II$')
-    value_of_string_input_jj = Cpt(EpicsSignal, '.JJ$')
-    value_of_string_input_kk = Cpt(EpicsSignal, '.KK$')
-    value_of_string_input_ll = Cpt(EpicsSignal, '.LL$')
 
     # - display
     archive_deadband = Cpt(EpicsSignal, '.ADEL')
