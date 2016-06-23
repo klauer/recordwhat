@@ -1,5 +1,5 @@
 from ophyd import (Device, EpicsSignal, EpicsSignalRO, Component,
-                   DynamicDeviceComponent as DDC)
+                   FormattedComponent, DynamicDeviceComponent as DDC)
 from .record_info import load_info_file
 
 
@@ -31,6 +31,10 @@ class FieldComponent(Component):
 
         cpt_inst.metadata = metadata.get(self.attr, None)
         return cpt_inst
+
+
+class FormattedFieldComponent(FormattedComponent, FieldComponent):
+    pass
 
 
 FieldCpt = FieldComponent

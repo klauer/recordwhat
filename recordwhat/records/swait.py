@@ -1,7 +1,28 @@
-from ophyd import (EpicsSignal, EpicsSignalRO)
+from collections import OrderedDict
 
+from ophyd import (EpicsSignal, EpicsSignalRO,
+                   Device, DynamicDeviceComponent as DDC)
 from .. import (RecordBase, _register_record_type,
-                FieldComponent as Cpt)
+                FieldComponent as Cpt,
+                FormattedFieldComponent as FCpt)
+
+
+class SwaitInput(Device):
+    pv_status = FCpt(EpicsSignalRO, '{self.prefix}.IN{self.input_name}V')
+    last_value = FCpt(EpicsSignal, '{self.prefix}.L{self.input_name}')
+    value = FCpt(EpicsSignal, '{self.prefix}.{self.input_name}')
+    pv_name = FCpt(EpicsSignal, '{self.prefix}.IN{self.input_name}N$')
+    causes_io_intr = FCpt(EpicsSignal, '{self.prefix}.IN{self.input_name}P')
+
+    def __init__(self, prefix='', *, input_name, **kwargs):
+        self.input_name = input_name
+        super().__init__(prefix, **kwargs)
+
+
+def _make_inputs(input_names):
+    return OrderedDict(('input_{}'.format(inp.lower()),
+                        (SwaitInput, '', dict(input_name=inp)))
+                       for inp in input_names)
 
 
 @_register_record_type('swait')
@@ -10,49 +31,16 @@ class SwaitRecord(RecordBase):
     calc_valid = Cpt(EpicsSignal, '.CLCV')
     code_version = Cpt(EpicsSignalRO, '.VERS')
     dol_pv_status = Cpt(EpicsSignalRO, '.DOLV')
-    inpa_pv_status = Cpt(EpicsSignalRO, '.INAV')
-    inpb_pv_status = Cpt(EpicsSignalRO, '.INBV')
-    inpc_pv_status = Cpt(EpicsSignalRO, '.INCV')
-    inpd_pv_status = Cpt(EpicsSignalRO, '.INDV')
-    inpe_pv_status = Cpt(EpicsSignalRO, '.INEV')
-    inpf_pv_status = Cpt(EpicsSignalRO, '.INFV')
-    inpg_pv_status = Cpt(EpicsSignalRO, '.INGV')
-    inph_pv_status = Cpt(EpicsSignalRO, '.INHV')
-    inpi_pv_status = Cpt(EpicsSignalRO, '.INIV')
-    inpj_pv_status = Cpt(EpicsSignalRO, '.INJV')
-    inpk_pv_status = Cpt(EpicsSignalRO, '.INKV')
-    inpl_pv_status = Cpt(EpicsSignalRO, '.INLV')
+
+    inputs = DDC(_make_inputs(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
+                               'J', 'K', 'L']))
     initialized = Cpt(EpicsSignalRO, '.INIT')
     last_val_monitored = Cpt(EpicsSignalRO, '.MLST')
-    last_val_of_input_a = Cpt(EpicsSignal, '.LA')
-    last_val_of_input_b = Cpt(EpicsSignal, '.LB')
-    last_val_of_input_c = Cpt(EpicsSignal, '.LC')
-    last_val_of_input_d = Cpt(EpicsSignal, '.LD')
-    last_val_of_input_e = Cpt(EpicsSignal, '.LE')
-    last_val_of_input_f = Cpt(EpicsSignal, '.LF')
-    last_val_of_input_g = Cpt(EpicsSignal, '.LG')
-    last_val_of_input_h = Cpt(EpicsSignal, '.LH')
-    last_val_of_input_i = Cpt(EpicsSignal, '.LI')
-    last_val_of_input_j = Cpt(EpicsSignal, '.LJ')
-    last_val_of_input_k = Cpt(EpicsSignal, '.LK')
-    last_val_of_input_l = Cpt(EpicsSignal, '.LL')
     last_value_archived = Cpt(EpicsSignalRO, '.ALST')
     out_pv_status = Cpt(EpicsSignalRO, '.OUTV')
     old_value = Cpt(EpicsSignal, '.OVAL')
     simulation_mode = Cpt(EpicsSignal, '.SIMM')
     simulation_value = Cpt(EpicsSignal, '.SVAL')
-    value_of_input_a = Cpt(EpicsSignal, '.A')
-    value_of_input_b = Cpt(EpicsSignal, '.B')
-    value_of_input_c = Cpt(EpicsSignal, '.C')
-    value_of_input_d = Cpt(EpicsSignal, '.D')
-    value_of_input_e = Cpt(EpicsSignal, '.E')
-    value_of_input_f = Cpt(EpicsSignal, '.F')
-    value_of_input_g = Cpt(EpicsSignal, '.G')
-    value_of_input_h = Cpt(EpicsSignal, '.H')
-    value_of_input_i = Cpt(EpicsSignal, '.I')
-    value_of_input_j = Cpt(EpicsSignal, '.J')
-    value_of_input_k = Cpt(EpicsSignal, '.K')
-    value_of_input_l = Cpt(EpicsSignal, '.L')
 
     # - alarms
     high_operating_range = Cpt(EpicsSignal, '.HOPR')
@@ -63,30 +51,6 @@ class SwaitRecord(RecordBase):
 
     # - calc
     dol_pv_name = Cpt(EpicsSignal, '.DOLN$')
-    inpa_pv_name = Cpt(EpicsSignal, '.INAN$')
-    inpa_causes_i_o_intr = Cpt(EpicsSignal, '.INAP')
-    inpb_pv_name = Cpt(EpicsSignal, '.INBN$')
-    inpb_causes_i_o_intr = Cpt(EpicsSignal, '.INBP')
-    inpc_pv_name = Cpt(EpicsSignal, '.INCN$')
-    inpc_causes_i_o_intr = Cpt(EpicsSignal, '.INCP')
-    inpd_pv_name = Cpt(EpicsSignal, '.INDN$')
-    inpd_causes_i_o_intr = Cpt(EpicsSignal, '.INDP')
-    inpe_pv_name = Cpt(EpicsSignal, '.INEN$')
-    inpe_causes_i_o_intr = Cpt(EpicsSignal, '.INEP')
-    inpf_pv_name = Cpt(EpicsSignal, '.INFN$')
-    inpf_causes_i_o_intr = Cpt(EpicsSignal, '.INFP')
-    inpg_pv_name = Cpt(EpicsSignal, '.INGN$')
-    inpg_causes_i_o_intr = Cpt(EpicsSignal, '.INGP')
-    inph_pv_name = Cpt(EpicsSignal, '.INHN$')
-    inph_causes_i_o_intr = Cpt(EpicsSignal, '.INHP')
-    inpi_pv_name = Cpt(EpicsSignal, '.ININ$')
-    inpi_causes_i_o_intr = Cpt(EpicsSignal, '.INIP')
-    inpj_pv_name = Cpt(EpicsSignal, '.INJN$')
-    inpj_causes_i_o_intr = Cpt(EpicsSignal, '.INJP')
-    inpk_pv_name = Cpt(EpicsSignal, '.INKN$')
-    inpk_causes_i_o_intr = Cpt(EpicsSignal, '.INKP')
-    inpl_pv_name = Cpt(EpicsSignal, '.INLN$')
-    inpl_causes_i_o_intr = Cpt(EpicsSignal, '.INLP')
     out_pv_name = Cpt(EpicsSignal, '.OUTN$')
     output_data_option = Cpt(EpicsSignal, '.DOPT')
     output_execute_opt = Cpt(EpicsSignal, '.OOPT')
