@@ -1,11 +1,51 @@
-from ophyd import (EpicsSignal, EpicsSignalRO)
+from collections import OrderedDict
+from ophyd import (EpicsSignal, EpicsSignalRO, Device,
+                   DynamicDeviceComponent as DDC)
 
 from .. import (RecordBase, _register_record_type,
-                FieldComponent as Cpt)
+                FieldComponent as Cpt,
+                FormattedFieldComponent as FCpt)
+
+
+class AcalcoutArrayInput(Device):
+    pv_status = FCpt(EpicsSignalRO, '{self.prefix}.I{self.input_name}')
+    pv_name = FCpt(EpicsSignal, '{self.prefix}.IN{self.input_name}$')
+
+    def __init__(self, prefix='', *, input_name, **kwargs):
+        self.input_name = input_name
+        super().__init__(prefix, **kwargs)
+
+
+class AcalcoutInput(Device):
+    pv_status = FCpt(EpicsSignalRO, '{self.prefix}.IN{self.input_name}V')
+    previous_value = FCpt(EpicsSignalRO, '{self.prefix}.P{self.input_name}')
+    value = FCpt(EpicsSignalRO, '{self.prefix}.{self.input_name}')
+    pv_name = FCpt(EpicsSignal, '{self.prefix}.INP{self.input_name}$')
+
+    def __init__(self, prefix='', *, input_name, **kwargs):
+        self.input_name = input_name
+        super().__init__(prefix, **kwargs)
+
+
+def _make_inputs(input_names, cls):
+    return OrderedDict(('input_{}'.format(inp.lower()),
+                        (cls, '', dict(input_name=inp)))
+                       for inp in input_names)
 
 
 @_register_record_type('acalcout')
 class AcalcoutRecord(RecordBase):
+    array_inputs = DDC(_make_inputs(['AA', 'BB', 'CC', 'DD', 'EE', 'FF', 'GG',
+                                     'HH', 'II', 'JJ', 'KK', 'LL'],
+                                    AcalcoutArrayInput)
+                       )
+    inputs = DDC(_make_inputs(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
+                               'J', 'K', 'L'],
+                              AcalcoutInput)
+                 )
+
+
+
     alarm_status = Cpt(EpicsSignalRO, '.STAT')
     array_mod = Cpt(EpicsSignalRO, '.AMASK')
     array_size_reported_to_clients = Cpt(EpicsSignal, '.SIZE')
@@ -13,30 +53,7 @@ class AcalcoutRecord(RecordBase):
     calc_active = Cpt(EpicsSignalRO, '.CACT')
     calc_status = Cpt(EpicsSignalRO, '.CSTAT')
     code_version = Cpt(EpicsSignalRO, '.VERS')
-    inaa_pv_status = Cpt(EpicsSignalRO, '.IAAV')
-    inbb_pv_status = Cpt(EpicsSignalRO, '.IBBV')
-    incc_pv_status = Cpt(EpicsSignalRO, '.ICCV')
-    indd_pv_status = Cpt(EpicsSignalRO, '.IDDV')
-    inee_pv_status = Cpt(EpicsSignalRO, '.IEEV')
-    inff_pv_status = Cpt(EpicsSignalRO, '.IFFV')
-    ingg_pv_status = Cpt(EpicsSignalRO, '.IGGV')
-    inhh_pv_status = Cpt(EpicsSignalRO, '.IHHV')
-    inii_pv_status = Cpt(EpicsSignalRO, '.IIIV')
-    injj_pv_status = Cpt(EpicsSignalRO, '.IJJV')
-    inkk_pv_status = Cpt(EpicsSignalRO, '.IKKV')
-    inll_pv_status = Cpt(EpicsSignalRO, '.ILLV')
-    inpa_pv_status = Cpt(EpicsSignalRO, '.INAV')
-    inpb_pv_status = Cpt(EpicsSignalRO, '.INBV')
-    inpc_pv_status = Cpt(EpicsSignalRO, '.INCV')
-    inpd_pv_status = Cpt(EpicsSignalRO, '.INDV')
-    inpe_pv_status = Cpt(EpicsSignalRO, '.INEV')
-    inpf_pv_status = Cpt(EpicsSignalRO, '.INFV')
-    inpg_pv_status = Cpt(EpicsSignalRO, '.INGV')
-    inph_pv_status = Cpt(EpicsSignalRO, '.INHV')
-    inpi_pv_status = Cpt(EpicsSignalRO, '.INIV')
-    inpj_pv_status = Cpt(EpicsSignalRO, '.INJV')
-    inpk_pv_status = Cpt(EpicsSignalRO, '.INKV')
-    inpl_pv_status = Cpt(EpicsSignalRO, '.INLV')
+
     last_val_monitored = Cpt(EpicsSignalRO, '.MLST')
     last_value_alarmed = Cpt(EpicsSignalRO, '.LALM')
     last_value_archived = Cpt(EpicsSignalRO, '.ALST')
@@ -44,32 +61,9 @@ class AcalcoutRecord(RecordBase):
     out_pv_status = Cpt(EpicsSignalRO, '.OUTV')
     output_delay_active = Cpt(EpicsSignalRO, '.DLYA')
     output_value = Cpt(EpicsSignal, '.OVAL')
-    prev_value_of_a = Cpt(EpicsSignalRO, '.PA')
-    prev_value_of_b = Cpt(EpicsSignalRO, '.PB')
-    prev_value_of_c = Cpt(EpicsSignalRO, '.PC')
-    prev_value_of_d = Cpt(EpicsSignalRO, '.PD')
-    prev_value_of_e = Cpt(EpicsSignalRO, '.PE')
-    prev_value_of_f = Cpt(EpicsSignalRO, '.PF')
-    prev_value_of_g = Cpt(EpicsSignalRO, '.PG')
-    prev_value_of_h = Cpt(EpicsSignalRO, '.PH')
-    prev_value_of_i = Cpt(EpicsSignalRO, '.PI')
-    prev_value_of_j = Cpt(EpicsSignalRO, '.PJ')
-    prev_value_of_k = Cpt(EpicsSignalRO, '.PK')
-    prev_value_of_l = Cpt(EpicsSignalRO, '.PL')
+
     prev_value_of_oval = Cpt(EpicsSignal, '.POVL')
     previous_value = Cpt(EpicsSignal, '.PVAL')
-    value_of_input_a = Cpt(EpicsSignal, '.A')
-    value_of_input_b = Cpt(EpicsSignal, '.B')
-    value_of_input_c = Cpt(EpicsSignal, '.C')
-    value_of_input_d = Cpt(EpicsSignal, '.D')
-    value_of_input_e = Cpt(EpicsSignal, '.E')
-    value_of_input_f = Cpt(EpicsSignal, '.F')
-    value_of_input_g = Cpt(EpicsSignal, '.G')
-    value_of_input_h = Cpt(EpicsSignal, '.H')
-    value_of_input_i = Cpt(EpicsSignal, '.I')
-    value_of_input_j = Cpt(EpicsSignal, '.J')
-    value_of_input_k = Cpt(EpicsSignal, '.K')
-    value_of_input_l = Cpt(EpicsSignal, '.L')
     wait_for_completion = Cpt(EpicsSignal, '.WAIT')
     new_array_value_mask = Cpt(EpicsSignalRO, '.NEWM')
 
@@ -86,31 +80,7 @@ class AcalcoutRecord(RecordBase):
     output_execute_delay = Cpt(EpicsSignal, '.ODLY')
 
     # - calc
-    array_input_aa = Cpt(EpicsSignal, '.INAA$')
-    array_input_bb = Cpt(EpicsSignal, '.INBB$')
-    array_input_cc = Cpt(EpicsSignal, '.INCC$')
-    array_input_dd = Cpt(EpicsSignal, '.INDD$')
-    array_input_ee = Cpt(EpicsSignal, '.INEE$')
-    array_input_ff = Cpt(EpicsSignal, '.INFF$')
-    array_input_gg = Cpt(EpicsSignal, '.INGG$')
-    array_input_hh = Cpt(EpicsSignal, '.INHH$')
-    array_input_ii = Cpt(EpicsSignal, '.INII$')
-    array_input_jj = Cpt(EpicsSignal, '.INJJ$')
-    array_input_kk = Cpt(EpicsSignal, '.INKK$')
-    array_input_ll = Cpt(EpicsSignal, '.INLL$')
     calculation = Cpt(EpicsSignal, '.CALC$')
-    input_a = Cpt(EpicsSignal, '.INPA$')
-    input_b = Cpt(EpicsSignal, '.INPB$')
-    input_c = Cpt(EpicsSignal, '.INPC$')
-    input_d = Cpt(EpicsSignal, '.INPD$')
-    input_e = Cpt(EpicsSignal, '.INPE$')
-    input_f = Cpt(EpicsSignal, '.INPF$')
-    input_g = Cpt(EpicsSignal, '.INPG$')
-    input_h = Cpt(EpicsSignal, '.INPH$')
-    input_i = Cpt(EpicsSignal, '.INPI$')
-    input_j = Cpt(EpicsSignal, '.INPJ$')
-    input_k = Cpt(EpicsSignal, '.INPK$')
-    input_l = Cpt(EpicsSignal, '.INPL$')
     output_calculation = Cpt(EpicsSignal, '.OCAL$')
     output_data_opt = Cpt(EpicsSignal, '.DOPT')
     output_execute_opt = Cpt(EpicsSignal, '.OOPT')
