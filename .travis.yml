@@ -25,7 +25,7 @@ before_install:
   - export CONDA_ENV="testenv"
 
   - perl --version
-  - git fetch --unshallow
+  # - git fetch --unshallow || /usr/bin/true
   - docker pull ${DOCKERIMAGE}
   - docker images
   - docker ps -a
@@ -55,7 +55,7 @@ before_install:
   - source activate $CONDA_ENV
 
 install:
-  - conda install numpy pyepics prettytable filestore ipython pyolog ophyd
+  - conda install numpy pyepics prettytable filestore ipython pyolog ophyd pandas
   - pip install pytest pytest-cov codecov graphviz pygraphviz
   - python setup.py develop
 
