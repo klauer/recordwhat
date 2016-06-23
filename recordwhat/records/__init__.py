@@ -35,7 +35,7 @@ from .scaler import ScalerRecord
 from .scanparm import ScanparmRecord
 from .sel import SelRecord
 from .seq import SeqRecord
-# from .sscan import SscanRecord
+from .sscan import SscanRecord
 from .sseq import SseqRecord
 from .state import StateRecord
 from .stringin import StringinRecord
