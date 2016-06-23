@@ -27,7 +27,7 @@ from .mbbidirect import MbbidirectRecord
 from .mbbi import MbbiRecord
 from .mbbodirect import MbbodirectRecord
 from .mbbo import MbboRecord
-# from .mca import McaRecord
+from .mca import McaRecord
 from .motor import MotorRecord
 from .permissive import PermissiveRecord
 from .scalcout import ScalcoutRecord
