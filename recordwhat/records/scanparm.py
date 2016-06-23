@@ -14,8 +14,8 @@ class ScanparmRecord(RecordBase):
     stepsize = Cpt(EpicsSignalRO, '.STEP')
 
     # - common
-    aft_outlink = Cpt(EpicsSignalRO, '.OAFT$')
-    aqt_outlink = Cpt(EpicsSignalRO, '.OAQT$')
+    after_outlink = Cpt(EpicsSignalRO, '.OAFT$')
+    acquire_time_outlink = Cpt(EpicsSignalRO, '.OAQT$')
     ar_outlink = Cpt(EpicsSignalRO, '.OAR$')
     after = Cpt(EpicsSignal, '.AFT')
     d1pv_outlink = Cpt(EpicsSignalRO, '.ODPV$')

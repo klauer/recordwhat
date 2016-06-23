@@ -41,7 +41,7 @@ class MotorRecord(RecordBase):
     raw_low_limit_switch = Cpt(EpicsSignalRO, '.RLLS')
     raw_motor_position = Cpt(EpicsSignalRO, '.RMP')
     raw_readback_value = Cpt(EpicsSignalRO, '.RRBV')
-    raw_cmnd_direction = Cpt(EpicsSignalRO, '.CDIR')
+    raw_command_direction = Cpt(EpicsSignalRO, '.CDIR')
     relative_value_egu = Cpt(EpicsSignal, '.RLV')
     retry_count = Cpt(EpicsSignalRO, '.RCNT')
     set_set_mode = Cpt(EpicsSignal, '.SSET')

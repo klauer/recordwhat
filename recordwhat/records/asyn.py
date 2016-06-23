@@ -29,7 +29,7 @@ class AsynRecord(RecordBase):
     asynuser_reason = Cpt(EpicsSignal, '.REASON')
 
     # - display
-    trace_i_o_mask = Cpt(EpicsSignal, '.TIOM')
+    trace_io_mask = Cpt(EpicsSignal, '.TIOM')
     trace_io_ascii = Cpt(EpicsSignal, '.TIB0')
     trace_io_device = Cpt(EpicsSignal, '.TB1')
     trace_io_driver = Cpt(EpicsSignal, '.TB3')

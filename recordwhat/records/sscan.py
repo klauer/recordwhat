@@ -134,11 +134,11 @@ class SscanRecord(RecordBase):
     data_state = Cpt(EpicsSignalRO, '.DSTATE')
 
     # - inputs
-    a1_cmnd = Cpt(EpicsSignal, '.A1CD')
-    after_scan_cmnd = Cpt(EpicsSignal, '.ASCD')
+    a1_command = Cpt(EpicsSignal, '.A1CD')
+    after_scan_command = Cpt(EpicsSignal, '.ASCD')
     array_post_time_period = Cpt(EpicsSignal, '.ATIME')
     autowait_for_data_storage_client = Cpt(EpicsSignal, '.AAWAIT')
-    before_scan_cmnd = Cpt(EpicsSignal, '.BSCD')
+    before_scan_command = Cpt(EpicsSignal, '.BSCD')
     detector_settling_delay = Cpt(EpicsSignal, '.DDLY')
     pause_resume_delay = Cpt(EpicsSignal, '.RDLY')
     positioner_settling_delay = Cpt(EpicsSignal, '.PDLY')
