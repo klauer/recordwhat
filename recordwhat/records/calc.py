@@ -1,39 +1,36 @@
-from ophyd import (EpicsSignal, EpicsSignalRO)
+from collections import OrderedDict
+from ophyd import (EpicsSignal, EpicsSignalRO, Device,
+                   DynamicDeviceComponent as DDC)
 
 from .. import (RecordBase, _register_record_type,
-                FieldComponent as Cpt)
+                FieldComponent as Cpt,
+                FormattedFieldComponent as FCpt)
+
+
+class CalcInput(Device):
+    previous_value = FCpt(EpicsSignalRO, '{self.prefix}.L{self.input_name}')
+    value = FCpt(EpicsSignalRO, '{self.prefix}.{self.input_name}')
+    link = FCpt(EpicsSignalRO, '{self.prefix}.INP{self.input_name}$')
+
+    def __init__(self, prefix='', *, input_name, **kwargs):
+        self.input_name = input_name
+        super().__init__(prefix, **kwargs)
+
+
+def _make_inputs(input_names, cls=CalcInput):
+    return OrderedDict(('input_{}'.format(inp.lower()),
+                        (cls, '', dict(input_name=inp)))
+                       for inp in input_names)
 
 
 @_register_record_type('calc')
 class CalcRecord(RecordBase):
+    inputs = DDC(_make_inputs('ABCDEFGHIJKL'))
+
     alarm_status = Cpt(EpicsSignalRO, '.STAT')
     last_val_monitored = Cpt(EpicsSignalRO, '.MLST')
     last_value_alarmed = Cpt(EpicsSignalRO, '.LALM')
     last_value_archived = Cpt(EpicsSignalRO, '.ALST')
-    prev_value_of_a = Cpt(EpicsSignalRO, '.LA')
-    prev_value_of_b = Cpt(EpicsSignalRO, '.LB')
-    prev_value_of_c = Cpt(EpicsSignalRO, '.LC')
-    prev_value_of_d = Cpt(EpicsSignalRO, '.LD')
-    prev_value_of_e = Cpt(EpicsSignalRO, '.LE')
-    prev_value_of_f = Cpt(EpicsSignalRO, '.LF')
-    prev_value_of_g = Cpt(EpicsSignalRO, '.LG')
-    prev_value_of_h = Cpt(EpicsSignalRO, '.LH')
-    prev_value_of_i = Cpt(EpicsSignalRO, '.LI')
-    prev_value_of_j = Cpt(EpicsSignalRO, '.LJ')
-    prev_value_of_k = Cpt(EpicsSignalRO, '.LK')
-    prev_value_of_l = Cpt(EpicsSignalRO, '.LL')
-    value_of_input_a = Cpt(EpicsSignal, '.A')
-    value_of_input_b = Cpt(EpicsSignal, '.B')
-    value_of_input_c = Cpt(EpicsSignal, '.C')
-    value_of_input_d = Cpt(EpicsSignal, '.D')
-    value_of_input_e = Cpt(EpicsSignal, '.E')
-    value_of_input_f = Cpt(EpicsSignal, '.F')
-    value_of_input_g = Cpt(EpicsSignal, '.G')
-    value_of_input_h = Cpt(EpicsSignal, '.H')
-    value_of_input_i = Cpt(EpicsSignal, '.I')
-    value_of_input_j = Cpt(EpicsSignal, '.J')
-    value_of_input_k = Cpt(EpicsSignal, '.K')
-    value_of_input_l = Cpt(EpicsSignal, '.L')
 
     # - alarms
     alarm_deadband = Cpt(EpicsSignal, '.HYST')
@@ -48,18 +45,6 @@ class CalcRecord(RecordBase):
 
     # - calc
     calculation = Cpt(EpicsSignal, '.CALC$')
-    input_a = Cpt(EpicsSignal, '.INPA$')
-    input_b = Cpt(EpicsSignal, '.INPB$')
-    input_c = Cpt(EpicsSignal, '.INPC$')
-    input_d = Cpt(EpicsSignal, '.INPD$')
-    input_e = Cpt(EpicsSignal, '.INPE$')
-    input_f = Cpt(EpicsSignal, '.INPF$')
-    input_g = Cpt(EpicsSignal, '.INPG$')
-    input_h = Cpt(EpicsSignal, '.INPH$')
-    input_i = Cpt(EpicsSignal, '.INPI$')
-    input_j = Cpt(EpicsSignal, '.INPJ$')
-    input_k = Cpt(EpicsSignal, '.INPK$')
-    input_l = Cpt(EpicsSignal, '.INPL$')
 
     # - display
     archive_deadband = Cpt(EpicsSignal, '.ADEL')
