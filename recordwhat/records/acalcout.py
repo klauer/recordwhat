@@ -39,11 +39,7 @@ class AcalcoutRecord(RecordBase):
                                      'HH', 'II', 'JJ', 'KK', 'LL'],
                                     AcalcoutArrayInput)
                        )
-    inputs = DDC(_make_inputs(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
-                               'J', 'K', 'L'],
-                              AcalcoutInput)
-                 )
-
+    inputs = DDC(_make_inputs('ABCDEFGHIJKL', AcalcoutInput))
 
 
     alarm_status = Cpt(EpicsSignalRO, '.STAT')

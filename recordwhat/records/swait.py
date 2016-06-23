@@ -32,8 +32,7 @@ class SwaitRecord(RecordBase):
     code_version = Cpt(EpicsSignalRO, '.VERS')
     dol_pv_status = Cpt(EpicsSignalRO, '.DOLV')
 
-    inputs = DDC(_make_inputs(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
-                               'J', 'K', 'L']))
+    inputs = DDC(_make_inputs('ABCDEFGHIJKL'))
     initialized = Cpt(EpicsSignalRO, '.INIT')
     last_val_monitored = Cpt(EpicsSignalRO, '.MLST')
     last_value_archived = Cpt(EpicsSignalRO, '.ALST')
