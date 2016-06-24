@@ -1,41 +1,39 @@
-from ophyd import (EpicsSignal, EpicsSignalRO)
+from collections import OrderedDict
+from ophyd import (EpicsSignal, EpicsSignalRO, Device,
+                   DynamicDeviceComponent as DDC)
 
 from .. import (RecordBase, _register_record_type,
-                FieldComponent as Cpt)
+                FieldComponent as Cpt,
+                FormattedFieldComponent as FCpt)
+
+
+class SelInput(Device):
+    previous_value = FCpt(EpicsSignalRO, '{self.prefix}.L{self.input_name}')
+    value = FCpt(EpicsSignalRO, '{self.prefix}.{self.input_name}')
+    link = FCpt(EpicsSignalRO, '{self.prefix}.INP{self.input_name}$',
+                string=True)
+
+    def __init__(self, prefix='', *, input_name, **kwargs):
+        self.input_name = input_name
+        super().__init__(prefix, **kwargs)
+
+
+def _make_inputs(input_names, cls=SelInput):
+    return OrderedDict(('input_{}'.format(inp.lower()),
+                        (cls, '', dict(input_name=inp)))
+                       for inp in input_names)
 
 
 @_register_record_type('sel')
 class SelRecord(RecordBase):
+    inputs = DDC(_make_inputs('ABCDEFGHIJKL'))
+
     alarm_status = Cpt(EpicsSignalRO, '.STAT')
     index_value = Cpt(EpicsSignal, '.SELN')
     last_index_monitored = Cpt(EpicsSignalRO, '.NLST')
     last_val_monitored = Cpt(EpicsSignalRO, '.MLST')
     last_value_alarmed = Cpt(EpicsSignalRO, '.LALM')
     last_value_archived = Cpt(EpicsSignalRO, '.ALST')
-    prev_value_of_a = Cpt(EpicsSignalRO, '.LA')
-    prev_value_of_b = Cpt(EpicsSignalRO, '.LB')
-    prev_value_of_c = Cpt(EpicsSignalRO, '.LC')
-    prev_value_of_d = Cpt(EpicsSignalRO, '.LD')
-    prev_value_of_e = Cpt(EpicsSignalRO, '.LE')
-    prev_value_of_f = Cpt(EpicsSignalRO, '.LF')
-    prev_value_of_g = Cpt(EpicsSignalRO, '.LG')
-    prev_value_of_h = Cpt(EpicsSignalRO, '.LH')
-    prev_value_of_i = Cpt(EpicsSignalRO, '.LI')
-    prev_value_of_j = Cpt(EpicsSignalRO, '.LJ')
-    prev_value_of_k = Cpt(EpicsSignalRO, '.LK')
-    prev_value_of_l = Cpt(EpicsSignalRO, '.LL')
-    value_of_input_a = Cpt(EpicsSignal, '.A')
-    value_of_input_b = Cpt(EpicsSignal, '.B')
-    value_of_input_c = Cpt(EpicsSignal, '.C')
-    value_of_input_d = Cpt(EpicsSignal, '.D')
-    value_of_input_e = Cpt(EpicsSignal, '.E')
-    value_of_input_f = Cpt(EpicsSignal, '.F')
-    value_of_input_g = Cpt(EpicsSignal, '.G')
-    value_of_input_h = Cpt(EpicsSignal, '.H')
-    value_of_input_i = Cpt(EpicsSignal, '.I')
-    value_of_input_j = Cpt(EpicsSignal, '.J')
-    value_of_input_k = Cpt(EpicsSignal, '.K')
-    value_of_input_l = Cpt(EpicsSignal, '.L')
 
     # - alarms
     alarm_deadband = Cpt(EpicsSignal, '.HYST')
@@ -59,17 +57,3 @@ class SelRecord(RecordBase):
     # - inputs
     index_value_location = Cpt(EpicsSignal, '.NVL$', string=True)
     select_mechanism = Cpt(EpicsSignal, '.SELM')
-
-    # - select
-    input_a = Cpt(EpicsSignal, '.INPA$', string=True)
-    input_b = Cpt(EpicsSignal, '.INPB$', string=True)
-    input_c = Cpt(EpicsSignal, '.INPC$', string=True)
-    input_d = Cpt(EpicsSignal, '.INPD$', string=True)
-    input_e = Cpt(EpicsSignal, '.INPE$', string=True)
-    input_f = Cpt(EpicsSignal, '.INPF$', string=True)
-    input_g = Cpt(EpicsSignal, '.INPG$', string=True)
-    input_h = Cpt(EpicsSignal, '.INPH$', string=True)
-    input_i = Cpt(EpicsSignal, '.INPI$', string=True)
-    input_j = Cpt(EpicsSignal, '.INPJ$', string=True)
-    input_k = Cpt(EpicsSignal, '.INPK$', string=True)
-    input_l = Cpt(EpicsSignal, '.INPL$', string=True)
