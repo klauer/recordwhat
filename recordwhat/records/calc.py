@@ -10,7 +10,8 @@ from .. import (RecordBase, _register_record_type,
 class CalcInput(Device):
     previous_value = FCpt(EpicsSignalRO, '{self.prefix}.L{self.input_name}')
     value = FCpt(EpicsSignalRO, '{self.prefix}.{self.input_name}')
-    link = FCpt(EpicsSignalRO, '{self.prefix}.INP{self.input_name}$', string=True)
+    link = FCpt(EpicsSignalRO, '{self.prefix}.INP{self.input_name}$',
+                string=True)
 
     def __init__(self, prefix='', *, input_name, **kwargs):
         self.input_name = input_name
