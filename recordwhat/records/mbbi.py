@@ -1,11 +1,16 @@
-from ophyd import (EpicsSignal, EpicsSignalRO)
+from ophyd import (EpicsSignal, EpicsSignalRO, Device)
 
 from .. import (RecordBase, _register_record_type,
                 FieldComponent as Cpt)
 
 
-@_register_record_type('mbbi')
-class MbbiRecord(RecordBase):
+class MbbBit(Device):
+    severity = Cpt(EpicsSignal, 'SV')
+    string = Cpt(EpicsSignal, 'ST$')
+    value = Cpt(EpicsSignal, 'VL')
+
+
+class MbbRecordBase(RecordBase):
     alarm_status = Cpt(EpicsSignalRO, '.STAT')
     hardware_mask = Cpt(EpicsSignalRO, '.MASK')
     last_value_alarmed = Cpt(EpicsSignalRO, '.LALM')
@@ -13,67 +18,49 @@ class MbbiRecord(RecordBase):
     prev_raw_value = Cpt(EpicsSignalRO, '.ORAW')
     raw_value = Cpt(EpicsSignal, '.RVAL')
     simulation_mode = Cpt(EpicsSignal, '.SIMM')
-    simulation_value = Cpt(EpicsSignal, '.SVAL')
     states_defined = Cpt(EpicsSignalRO, '.SDEF')
 
     # - bits1
-    five_string = Cpt(EpicsSignal, '.FVST$')
-    five_value = Cpt(EpicsSignal, '.FVVL')
-    four_string = Cpt(EpicsSignal, '.FRST$')
-    four_value = Cpt(EpicsSignal, '.FRVL')
-    one_string = Cpt(EpicsSignal, '.ONST$')
-    one_value = Cpt(EpicsSignal, '.ONVL')
-    seven_string = Cpt(EpicsSignal, '.SVST$')
-    seven_value = Cpt(EpicsSignal, '.SVVL')
-    six_string = Cpt(EpicsSignal, '.SXST$')
-    six_value = Cpt(EpicsSignal, '.SXVL')
-    state_five_severity = Cpt(EpicsSignal, '.FVSV')
-    state_four_severity = Cpt(EpicsSignal, '.FRSV')
-    state_one_severity = Cpt(EpicsSignal, '.ONSV')
-    state_seven_severity = Cpt(EpicsSignal, '.SVSV')
-    state_six_severity = Cpt(EpicsSignal, '.SXSV')
-    state_three_severity = Cpt(EpicsSignal, '.THSV')
-    state_two_severity = Cpt(EpicsSignal, '.TWSV')
-    state_zero_severity = Cpt(EpicsSignal, '.ZRSV')
-    three_string = Cpt(EpicsSignal, '.THST$')
-    three_value = Cpt(EpicsSignal, '.THVL')
-    two_string = Cpt(EpicsSignal, '.TWST$')
-    two_value = Cpt(EpicsSignal, '.TWVL')
-    zero_string = Cpt(EpicsSignal, '.ZRST$')
-    zero_value = Cpt(EpicsSignal, '.ZRVL')
+    bit00 = Cpt(MbbBit, '.ZR')
+    bit01 = Cpt(MbbBit, '.ON')
+    bit02 = Cpt(MbbBit, '.TW')
+    bit03 = Cpt(MbbBit, '.TH')
+    bit04 = Cpt(MbbBit, '.FR')
+    bit05 = Cpt(MbbBit, '.FV')
+    bit06 = Cpt(MbbBit, '.SX')
+    bit07 = Cpt(MbbBit, '.SV')
 
     # - bits2
-    eight_string = Cpt(EpicsSignal, '.EIST$')
-    eight_value = Cpt(EpicsSignal, '.EIVL')
-    eleven_string = Cpt(EpicsSignal, '.ELST$')
-    eleven_value = Cpt(EpicsSignal, '.ELVL')
-    fifteen_string = Cpt(EpicsSignal, '.FFST$')
-    fifteen_value = Cpt(EpicsSignal, '.FFVL')
-    fourteen_string = Cpt(EpicsSignal, '.FTST$')
-    fourteen_value = Cpt(EpicsSignal, '.FTVL')
-    nine_string = Cpt(EpicsSignal, '.NIST$')
-    nine_value = Cpt(EpicsSignal, '.NIVL')
-    state_eight_severity = Cpt(EpicsSignal, '.EISV')
-    state_eleven_severity = Cpt(EpicsSignal, '.ELSV')
-    state_fifteen_severity = Cpt(EpicsSignal, '.FFSV')
-    state_fourteen_sevr = Cpt(EpicsSignal, '.FTSV')
-    state_nine_severity = Cpt(EpicsSignal, '.NISV')
-    state_ten_severity = Cpt(EpicsSignal, '.TESV')
-    state_thirteen_sevr = Cpt(EpicsSignal, '.TTSV')
-    state_twelve_severity = Cpt(EpicsSignal, '.TVSV')
-    ten_string = Cpt(EpicsSignal, '.TEST$')
-    ten_value = Cpt(EpicsSignal, '.TEVL')
-    thirteen_string = Cpt(EpicsSignal, '.TTST$')
-    thirteen_value = Cpt(EpicsSignal, '.TTVL')
-    twelve_string = Cpt(EpicsSignal, '.TVST$')
-    twelve_value = Cpt(EpicsSignal, '.TVVL')
+    bit08 = Cpt(MbbBit, '.EI')
+    bit09 = Cpt(MbbBit, '.NI')
+    bit10 = Cpt(MbbBit, '.TE')
+    bit11 = Cpt(MbbBit, '.EL')
+    bit12 = Cpt(MbbBit, '.TV')
+    bit13 = Cpt(MbbBit, '.TT')
+    bit14 = Cpt(MbbBit, '.FT')
+    bit15 = Cpt(MbbBit, '.FF')
 
     # - mbb
-    change_of_state_svr = Cpt(EpicsSignal, '.COSV')
-    input_specification = Cpt(EpicsSignal, '.INP$')
+    change_of_state_severity = Cpt(EpicsSignal, '.COSV')
     number_of_bits = Cpt(EpicsSignalRO, '.NOBT')
     shift = Cpt(EpicsSignal, '.SHFT')
-    sim_input_specifctn = Cpt(EpicsSignal, '.SIOL$')
-    sim_mode_location = Cpt(EpicsSignal, '.SIML$')
-    sim_mode_alarm_svrty = Cpt(EpicsSignal, '.SIMS')
+    sim_mode_alarm_severity = Cpt(EpicsSignal, '.SIMS')
     unknown_state_severity = Cpt(EpicsSignal, '.UNSV')
+
+    def __init__(self, prefix, **kwargs):
+        super().__init__(prefix, **kwargs)
+
+        self.bits  = [self.bit00, self.bit01, self.bit02, self.bit03,
+                      self.bit04, self.bit05, self.bit06,
+                      self.bit07,
+
+                      self.bit08, self.bit09, self.bit10, self.bit11,
+                      self.bit12, self.bit13, self.bit14, self.bit15,
+                      ]
+
+
+@_register_record_type('mbbi')
+class MbbiRecord(MbbRecordBase):
+    input_specification = Cpt(EpicsSignal, '.INP$')
+    sim_input_specification = Cpt(EpicsSignal, '.SIOL$')
+    simulation_value = Cpt(EpicsSignal, '.SVAL')
