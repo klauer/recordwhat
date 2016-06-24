@@ -10,12 +10,12 @@ from .. import (RecordBase, _register_record_type,
 class SscanDetector(Device):
     current_value = Cpt(EpicsSignalRO, 'CV')
     display_precision = Cpt(EpicsSignal, 'PR')
-    engineering_units = Cpt(EpicsSignal, 'EU$')
+    engineering_units = Cpt(EpicsSignal, 'EU$', string=True)
     high_oper_range = Cpt(EpicsSignal, 'HR')
     last_value = Cpt(EpicsSignalRO, 'LV')
     low_oper_range = Cpt(EpicsSignal, 'LR')
     num_of_elements = Cpt(EpicsSignalRO, 'NE')
-    pv_name = Cpt(EpicsSignal, 'PV$')
+    pv_name = Cpt(EpicsSignal, 'PV$', string=True)
     pv_status = Cpt(EpicsSignalRO, 'NV')
 
 
@@ -38,7 +38,7 @@ class SscanPositioner(Device):
     desired_value = Cpt(EpicsSignal, 'DV')
     last_value_posted = Cpt(EpicsSignalRO, 'LV')
     previous_position = Cpt(EpicsSignalRO, 'PP')
-    pv_name = Cpt(EpicsSignal, 'PV$')
+    pv_name = Cpt(EpicsSignal, 'PV$', string=True)
     pv_status = Cpt(EpicsSignalRO, 'NV')
 
     center_position = Cpt(EpicsSignal, 'CP')
@@ -48,7 +48,7 @@ class SscanPositioner(Device):
     step_increment = Cpt(EpicsSignal, 'SI')
 
     display_precision = Cpt(EpicsSignal, 'PR')
-    engineering_units = Cpt(EpicsSignal, 'EU$')
+    engineering_units = Cpt(EpicsSignal, 'EU$', string=True)
     low_operating_range = Cpt(EpicsSignal, 'LR')
     high_operating_range = Cpt(EpicsSignal, 'HR')
 
@@ -61,7 +61,7 @@ def _make_positioners(low, high):
 
 
 class SscanReadback(Device):
-    readback_pv_name = Cpt(EpicsSignal, 'PV$')
+    readback_pv_name = Cpt(EpicsSignal, 'PV$', string=True)
     pv_status = Cpt(EpicsSignalRO, 'NV')
     rdbk_last_val_pst = Cpt(EpicsSignalRO, 'LV')
     readback_value = Cpt(EpicsSignalRO, 'CV')
@@ -77,7 +77,7 @@ def _make_readbacks(low, high):
 class SscanTrigger(Device):
     command = Cpt(EpicsSignal, 'CD')
     pv_status = Cpt(EpicsSignalRO, 'NV')
-    pv_name = Cpt(EpicsSignal, 'PV$')
+    pv_name = Cpt(EpicsSignal, 'PV$', string=True)
 
 
 def _make_triggers(low, high):
@@ -112,7 +112,7 @@ class SscanRecord(RecordBase):
     operator_alert = Cpt(EpicsSignalRO, '.ALRT')
     point_oflast_posting = Cpt(EpicsSignalRO, '.PCPT')
     previous_xscan = Cpt(EpicsSignalRO, '.PXSC')
-    record_state_msg = Cpt(EpicsSignal, '.SMSG$')
+    record_state_msg = Cpt(EpicsSignal, '.SMSG$', string=True)
     reference_detector = Cpt(EpicsSignal, '.REFD')
     scan_data_ready = Cpt(EpicsSignalRO, '.DATA')
     scan_in_progress = Cpt(EpicsSignalRO, '.BUSY')
@@ -123,9 +123,9 @@ class SscanRecord(RecordBase):
     waiting_for_data_storage_client = Cpt(EpicsSignal, '.AWAIT')
 
     # - calc
-    after_scan_pv_name = Cpt(EpicsSignal, '.ASPV$')
-    array_read_trigger_1_pv_name = Cpt(EpicsSignal, '.A1PV$')
-    before_scan_pv_name = Cpt(EpicsSignal, '.BSPV$')
+    after_scan_pv_name = Cpt(EpicsSignal, '.ASPV$', string=True)
+    array_read_trigger_1_pv_name = Cpt(EpicsSignal, '.A1PV$', string=True)
+    before_scan_pv_name = Cpt(EpicsSignal, '.BSPV$', string=True)
 
     # - common
     acquisition_mode = Cpt(EpicsSignal, '.ACQM')

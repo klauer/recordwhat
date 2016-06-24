@@ -45,18 +45,18 @@ class AoRecord(RecordBase):
     # - display
     archive_deadband = Cpt(EpicsSignal, '.ADEL')
     display_precision = Cpt(EpicsSignal, '.PREC')
-    engineering_units = Cpt(EpicsSignal, '.EGU$')
+    engineering_units = Cpt(EpicsSignal, '.EGU$', string=True)
     high_operating_range = Cpt(EpicsSignal, '.HOPR')
     low_operating_range = Cpt(EpicsSignal, '.LOPR')
     monitor_deadband = Cpt(EpicsSignal, '.MDEL')
 
     # - inputs
-    sim_mode_location = Cpt(EpicsSignal, '.SIML$')
-    sim_output_specifctn = Cpt(EpicsSignal, '.SIOL$')
+    sim_mode_location = Cpt(EpicsSignal, '.SIML$', string=True)
+    sim_output_specifctn = Cpt(EpicsSignal, '.SIOL$', string=True)
     sim_mode_alarm_svrty = Cpt(EpicsSignal, '.SIMS')
 
     # - output
-    desired_output_loc = Cpt(EpicsSignal, '.DOL$')
+    desired_output_loc = Cpt(EpicsSignal, '.DOL$', string=True)
     drive_high_limit = Cpt(EpicsSignal, '.DRVH')
     drive_low_limit = Cpt(EpicsSignal, '.DRVL')
     invalid_output_action = Cpt(EpicsSignal, '.IVOA')
@@ -64,4 +64,4 @@ class AoRecord(RecordBase):
     out_full_incremental = Cpt(EpicsSignal, '.OIF')
     output_mode_select = Cpt(EpicsSignal, '.OMSL')
     output_rate_of_chang = Cpt(EpicsSignal, '.OROC')
-    output_specification = Cpt(EpicsSignal, '.OUT$')
+    output_specification = Cpt(EpicsSignal, '.OUT$', string=True)

@@ -29,22 +29,22 @@ class DfanoutRecord(RecordBase):
     high_operating_range = Cpt(EpicsSignal, '.HOPR')
     low_operating_range = Cpt(EpicsSignal, '.LOPR')
     monitor_deadband = Cpt(EpicsSignal, '.MDEL')
-    units_name = Cpt(EpicsSignal, '.EGU$')
+    units_name = Cpt(EpicsSignal, '.EGU$', string=True)
 
     # - inputs
-    desired_output_loc = Cpt(EpicsSignal, '.DOL$')
+    desired_output_loc = Cpt(EpicsSignal, '.DOL$', string=True)
 
     # - links
-    link_selection_loc = Cpt(EpicsSignal, '.SELL$')
+    link_selection_loc = Cpt(EpicsSignal, '.SELL$', string=True)
     select_mechanism = Cpt(EpicsSignal, '.SELM')
 
     # - output
     output_mode_select = Cpt(EpicsSignal, '.OMSL')
-    output_spec_a = Cpt(EpicsSignal, '.OUTA$')
-    output_spec_b = Cpt(EpicsSignal, '.OUTB$')
-    output_spec_c = Cpt(EpicsSignal, '.OUTC$')
-    output_spec_d = Cpt(EpicsSignal, '.OUTD$')
-    output_spec_e = Cpt(EpicsSignal, '.OUTE$')
-    output_spec_f = Cpt(EpicsSignal, '.OUTF$')
-    output_spec_g = Cpt(EpicsSignal, '.OUTG$')
-    output_spec_h = Cpt(EpicsSignal, '.OUTH$')
+    output_spec_a = Cpt(EpicsSignal, '.OUTA$', string=True)
+    output_spec_b = Cpt(EpicsSignal, '.OUTB$', string=True)
+    output_spec_c = Cpt(EpicsSignal, '.OUTC$', string=True)
+    output_spec_d = Cpt(EpicsSignal, '.OUTD$', string=True)
+    output_spec_e = Cpt(EpicsSignal, '.OUTE$', string=True)
+    output_spec_f = Cpt(EpicsSignal, '.OUTF$', string=True)
+    output_spec_g = Cpt(EpicsSignal, '.OUTG$', string=True)
+    output_spec_h = Cpt(EpicsSignal, '.OUTH$', string=True)

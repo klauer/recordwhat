@@ -25,13 +25,13 @@ class BiRecord(RecordBase):
     change_of_state_svr = Cpt(EpicsSignal, '.COSV')
 
     # - calc
-    zero_name = Cpt(EpicsSignal, '.ZNAM$')
+    zero_name = Cpt(EpicsSignal, '.ZNAM$', string=True)
 
     # - clock
-    one_name = Cpt(EpicsSignal, '.ONAM$')
+    one_name = Cpt(EpicsSignal, '.ONAM$', string=True)
 
     # - inputs
-    input_specification = Cpt(EpicsSignal, '.INP$')
-    sim_input_specifctn = Cpt(EpicsSignal, '.SIOL$')
-    sim_mode_location = Cpt(EpicsSignal, '.SIML$')
+    input_specification = Cpt(EpicsSignal, '.INP$', string=True)
+    sim_input_specifctn = Cpt(EpicsSignal, '.SIOL$', string=True)
+    sim_mode_location = Cpt(EpicsSignal, '.SIML$', string=True)
     sim_mode_alarm_svrty = Cpt(EpicsSignal, '.SIMS')

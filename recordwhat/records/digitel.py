@@ -105,16 +105,16 @@ class DigitelRecord(RecordBase):
     mode = Cpt(EpicsSignal, '.MODS')
 
     # - common
-    device_specification = Cpt(EpicsSignalRO, '.INP$')
+    device_specification = Cpt(EpicsSignalRO, '.INP$', string=True)
 
     # - display
     log_pres_display_hi = Cpt(EpicsSignal, '.HLPR')
     log_pres_display_lo = Cpt(EpicsSignal, '.LLPR')
-    sim_location_current = Cpt(EpicsSignalRO, '.SLCR$')
-    sim_location_mode = Cpt(EpicsSignalRO, '.SLMO$')
-    sim_location_sp1 = Cpt(EpicsSignalRO, '.SLS1$')
-    sim_location_sp2 = Cpt(EpicsSignalRO, '.SLS2$')
-    sim_mode_location = Cpt(EpicsSignalRO, '.SIML$')
+    sim_location_current = Cpt(EpicsSignalRO, '.SLCR$', string=True)
+    sim_location_mode = Cpt(EpicsSignalRO, '.SLMO$', string=True)
+    sim_location_sp1 = Cpt(EpicsSignalRO, '.SLS1$', string=True)
+    sim_location_sp2 = Cpt(EpicsSignalRO, '.SLS2$', string=True)
+    sim_mode_location = Cpt(EpicsSignalRO, '.SIML$', string=True)
 
     # - hist
     sp1_mode = Cpt(EpicsSignal, '.S1MS')

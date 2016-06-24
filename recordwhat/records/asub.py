@@ -8,7 +8,7 @@ from .. import (RecordBase, _register_record_type,
 
 
 class AsubOutput(Device):
-    link = FCpt(EpicsSignal, '{self.prefix}.OUT{self.output_name}$')
+    link = FCpt(EpicsSignal, '{self.prefix}.OUT{self.output_name}$', string=True)
     type_ = FCpt(EpicsSignalRO, '{self.prefix}.FTV{self.output_name}')
     max_elements = FCpt(EpicsSignalRO, '{self.prefix}.NOV{self.output_name}')
     num_elements = FCpt(EpicsSignalRO, '{self.prefix}.NEV{self.output_name}')
@@ -27,7 +27,7 @@ def _make_outputs(output_names):
 
 
 class AsubInput(Device):
-    link = FCpt(EpicsSignal, '{self.prefix}.INP{self.input_name}$')
+    link = FCpt(EpicsSignal, '{self.prefix}.INP{self.input_name}$', string=True)
     type_ = FCpt(EpicsSignalRO, '{self.prefix}.FT{self.input_name}')
     max_elements = FCpt(EpicsSignalRO, '{self.prefix}.NO{self.input_name}')
     num_elements = FCpt(EpicsSignalRO, '{self.prefix}.NE{self.input_name}')
@@ -59,8 +59,8 @@ class AsubRecord(RecordBase):
 
     # - sub
     bad_return_severity = Cpt(EpicsSignal, '.BRSV')
-    initialize_subroutine_name = Cpt(EpicsSignalRO, '.INAM$')
-    old_subroutine_name = Cpt(EpicsSignalRO, '.ONAM$')
-    process_subroutine_name = Cpt(EpicsSignal, '.SNAM$')
+    initialize_subroutine_name = Cpt(EpicsSignalRO, '.INAM$', string=True)
+    old_subroutine_name = Cpt(EpicsSignalRO, '.ONAM$', string=True)
+    process_subroutine_name = Cpt(EpicsSignal, '.SNAM$', string=True)
     subroutine_input_enable = Cpt(EpicsSignal, '.LFLG')
-    subroutine_name_link = Cpt(EpicsSignalRO, '.SUBL$')
+    subroutine_name_link = Cpt(EpicsSignalRO, '.SUBL$', string=True)

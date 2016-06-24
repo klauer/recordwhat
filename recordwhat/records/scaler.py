@@ -33,8 +33,8 @@ class ScalerRecord(RecordBase):
     # - common
     auto_display_rate_hz = Cpt(EpicsSignal, '.RAT1')
     auto_mode_delay = Cpt(EpicsSignal, '.DLY1')
-    cnt_output = Cpt(EpicsSignal, '.COUT$')
-    cnt_output_prompt = Cpt(EpicsSignal, '.COUTP$')
+    cnt_output = Cpt(EpicsSignal, '.COUT$', string=True)
+    cnt_output_prompt = Cpt(EpicsSignal, '.COUTP$', string=True)
     channels = DDC(_scaler_fields('chan', '.S', range(1, NUM_CH + 1)))
     presets = DDC(_scaler_fields('preset', '.PR', range(1, NUM_CH + 1)))
     gates = DDC(_scaler_fields('gate', '.G', range(1, NUM_CH + 1)))
@@ -46,9 +46,9 @@ class ScalerRecord(RecordBase):
     display_precision = Cpt(EpicsSignal, '.PREC')
     display_rate_hz = Cpt(EpicsSignal, '.RATE')
 
-    output_specification = Cpt(EpicsSignalRO, '.OUT$')
+    output_specification = Cpt(EpicsSignalRO, '.OUT$', string=True)
 
     time_preset = Cpt(EpicsSignal, '.TP')
     time_preset_tp1 = Cpt(EpicsSignal, '.TP1')
     time_base_freq = Cpt(EpicsSignal, '.FREQ')
-    units_name = Cpt(EpicsSignal, '.EGU$')
+    units_name = Cpt(EpicsSignal, '.EGU$', string=True)

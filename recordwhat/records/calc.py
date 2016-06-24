@@ -10,7 +10,7 @@ from .. import (RecordBase, _register_record_type,
 class CalcInput(Device):
     previous_value = FCpt(EpicsSignalRO, '{self.prefix}.L{self.input_name}')
     value = FCpt(EpicsSignalRO, '{self.prefix}.{self.input_name}')
-    link = FCpt(EpicsSignalRO, '{self.prefix}.INP{self.input_name}$')
+    link = FCpt(EpicsSignalRO, '{self.prefix}.INP{self.input_name}$', string=True)
 
     def __init__(self, prefix='', *, input_name, **kwargs):
         self.input_name = input_name
@@ -44,7 +44,7 @@ class CalcRecord(RecordBase):
     low_severity = Cpt(EpicsSignal, '.LSV')
 
     # - calc
-    calculation = Cpt(EpicsSignal, '.CALC$')
+    calculation = Cpt(EpicsSignal, '.CALC$', string=True)
 
     # - display
     archive_deadband = Cpt(EpicsSignal, '.ADEL')
@@ -52,4 +52,4 @@ class CalcRecord(RecordBase):
     high_operating_rng = Cpt(EpicsSignal, '.HOPR')
     low_operating_range = Cpt(EpicsSignal, '.LOPR')
     monitor_deadband = Cpt(EpicsSignal, '.MDEL')
-    units_name = Cpt(EpicsSignal, '.EGU$')
+    units_name = Cpt(EpicsSignal, '.EGU$', string=True)

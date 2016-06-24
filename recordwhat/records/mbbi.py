@@ -6,7 +6,7 @@ from .. import (RecordBase, _register_record_type,
 
 class MbbBit(Device):
     severity = Cpt(EpicsSignal, 'SV')
-    string = Cpt(EpicsSignal, 'ST$')
+    string = Cpt(EpicsSignal, 'ST$', string=True)
     value = Cpt(EpicsSignal, 'VL')
 
 
@@ -61,6 +61,6 @@ class MbbRecordBase(RecordBase):
 
 @_register_record_type('mbbi')
 class MbbiRecord(MbbRecordBase):
-    input_specification = Cpt(EpicsSignal, '.INP$')
-    sim_input_specification = Cpt(EpicsSignal, '.SIOL$')
+    input_specification = Cpt(EpicsSignal, '.INP$', string=True)
+    sim_input_specification = Cpt(EpicsSignal, '.SIOL$', string=True)
     simulation_value = Cpt(EpicsSignal, '.SVAL')

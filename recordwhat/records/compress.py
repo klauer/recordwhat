@@ -21,12 +21,12 @@ class CompressRecord(RecordBase):
     # - compress
     init_high_interest_lim = Cpt(EpicsSignal, '.IHIL')
     init_low_interest_lim = Cpt(EpicsSignal, '.ILIL')
-    input_specification = Cpt(EpicsSignal, '.INP$')
+    input_specification = Cpt(EpicsSignal, '.INP$', string=True)
     n_to_1_compression = Cpt(EpicsSignal, '.N')
     number_of_values = Cpt(EpicsSignalRO, '.NSAM')
 
     # - display
     display_precision = Cpt(EpicsSignal, '.PREC')
-    engineeringunits = Cpt(EpicsSignal, '.EGU$')
+    engineeringunits = Cpt(EpicsSignal, '.EGU$', string=True)
     high_operating_range = Cpt(EpicsSignal, '.HOPR')
     low_operating_range = Cpt(EpicsSignal, '.LOPR')

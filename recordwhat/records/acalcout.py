@@ -9,7 +9,7 @@ from .. import (RecordBase, _register_record_type,
 
 class AcalcoutArrayInput(Device):
     pv_status = FCpt(EpicsSignalRO, '{self.prefix}.I{self.input_name}')
-    pv_name = FCpt(EpicsSignal, '{self.prefix}.IN{self.input_name}$')
+    pv_name = FCpt(EpicsSignal, '{self.prefix}.IN{self.input_name}$', string=True)
 
     def __init__(self, prefix='', *, input_name, **kwargs):
         self.input_name = input_name
@@ -20,7 +20,7 @@ class AcalcoutInput(Device):
     pv_status = FCpt(EpicsSignalRO, '{self.prefix}.IN{self.input_name}V')
     previous_value = FCpt(EpicsSignalRO, '{self.prefix}.P{self.input_name}')
     value = FCpt(EpicsSignalRO, '{self.prefix}.{self.input_name}')
-    pv_name = FCpt(EpicsSignal, '{self.prefix}.INP{self.input_name}$')
+    pv_name = FCpt(EpicsSignal, '{self.prefix}.INP{self.input_name}$', string=True)
 
     def __init__(self, prefix='', *, input_name, **kwargs):
         self.input_name = input_name
@@ -76,8 +76,8 @@ class AcalcoutRecord(RecordBase):
     output_execute_delay = Cpt(EpicsSignal, '.ODLY')
 
     # - calc
-    calculation = Cpt(EpicsSignal, '.CALC$')
-    output_calculation = Cpt(EpicsSignal, '.OCAL$')
+    calculation = Cpt(EpicsSignal, '.CALC$', string=True)
+    output_calculation = Cpt(EpicsSignal, '.OCAL$', string=True)
     output_data_opt = Cpt(EpicsSignal, '.DOPT')
     output_execute_opt = Cpt(EpicsSignal, '.OOPT')
 
@@ -90,12 +90,12 @@ class AcalcoutRecord(RecordBase):
     high_operating_rng = Cpt(EpicsSignal, '.HOPR')
     low_operating_range = Cpt(EpicsSignal, '.LOPR')
     monitor_deadband = Cpt(EpicsSignal, '.MDEL')
-    units_name = Cpt(EpicsSignal, '.EGU$')
+    units_name = Cpt(EpicsSignal, '.EGU$', string=True)
 
     # - output
     invalid_output_action = Cpt(EpicsSignal, '.IVOA')
     invalid_output_value = Cpt(EpicsSignal, '.IVOV')
-    output_link = Cpt(EpicsSignal, '.OUT$')
+    output_link = Cpt(EpicsSignal, '.OUT$', string=True)
 
     # - wave
     elem_s_in_use = Cpt(EpicsSignal, '.NUSE')

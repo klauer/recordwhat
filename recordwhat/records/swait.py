@@ -11,7 +11,7 @@ class SwaitInput(Device):
     pv_status = FCpt(EpicsSignalRO, '{self.prefix}.IN{self.input_name}V')
     last_value = FCpt(EpicsSignal, '{self.prefix}.L{self.input_name}')
     value = FCpt(EpicsSignal, '{self.prefix}.{self.input_name}')
-    pv_name = FCpt(EpicsSignal, '{self.prefix}.IN{self.input_name}N$')
+    pv_name = FCpt(EpicsSignal, '{self.prefix}.IN{self.input_name}N$', string=True)
     causes_io_intr = FCpt(EpicsSignal, '{self.prefix}.IN{self.input_name}P')
 
     def __init__(self, prefix='', *, input_name, **kwargs):
@@ -49,14 +49,14 @@ class SwaitRecord(RecordBase):
     low_operating_range = Cpt(EpicsSignal, '.LOPR')
 
     # - calc
-    dol_pv_name = Cpt(EpicsSignal, '.DOLN$')
-    out_pv_name = Cpt(EpicsSignal, '.OUTN$')
+    dol_pv_name = Cpt(EpicsSignal, '.DOLN$', string=True)
+    out_pv_name = Cpt(EpicsSignal, '.OUTN$', string=True)
     output_data_option = Cpt(EpicsSignal, '.DOPT')
     output_execute_opt = Cpt(EpicsSignal, '.OOPT')
 
     # - clock
     archive_deadband = Cpt(EpicsSignal, '.ADEL')
-    calculation = Cpt(EpicsSignal, '.CALC$')
+    calculation = Cpt(EpicsSignal, '.CALC$', string=True)
     desired_output_data = Cpt(EpicsSignal, '.DOLD')
     event_to_issue = Cpt(EpicsSignal, '.OEVT')
     monitor_deadband = Cpt(EpicsSignal, '.MDEL')
@@ -65,8 +65,8 @@ class SwaitRecord(RecordBase):
     display_precision = Cpt(EpicsSignal, '.PREC')
 
     # - pulse
-    sim_input_specifctn = Cpt(EpicsSignal, '.SIOL$')
-    sim_mode_location = Cpt(EpicsSignal, '.SIML$')
+    sim_input_specifctn = Cpt(EpicsSignal, '.SIOL$', string=True)
+    sim_mode_location = Cpt(EpicsSignal, '.SIML$', string=True)
 
     # - select
     sim_mode_alarm_svrty = Cpt(EpicsSignal, '.SIMS')

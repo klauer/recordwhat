@@ -37,13 +37,13 @@ class MbbodirectRecord(RecordBase):
     bit_9 = Cpt(EpicsSignal, '.B9')
 
     # - mbb
-    desired_output_loc = Cpt(EpicsSignal, '.DOL$')
+    desired_output_loc = Cpt(EpicsSignal, '.DOL$', string=True)
     invalid_outpt_action = Cpt(EpicsSignal, '.IVOA')
     invalid_output_value = Cpt(EpicsSignal, '.IVOV')
     number_of_bits = Cpt(EpicsSignalRO, '.NOBT')
     output_mode_select = Cpt(EpicsSignal, '.OMSL')
-    output_specification = Cpt(EpicsSignal, '.OUT$')
+    output_specification = Cpt(EpicsSignal, '.OUT$', string=True)
     shift = Cpt(EpicsSignal, '.SHFT')
-    sim_mode_location = Cpt(EpicsSignal, '.SIML$')
-    sim_output_specifctn = Cpt(EpicsSignal, '.SIOL$')
+    sim_mode_location = Cpt(EpicsSignal, '.SIML$', string=True)
+    sim_output_specifctn = Cpt(EpicsSignal, '.SIOL$', string=True)
     sim_mode_alarm_svrty = Cpt(EpicsSignal, '.SIMS')

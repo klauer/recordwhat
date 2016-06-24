@@ -10,11 +10,11 @@ class FanoutRecord(RecordBase):
     link_selection = Cpt(EpicsSignal, '.SELN')
 
     # - links
-    forward_link_1 = Cpt(EpicsSignal, '.LNK1$')
-    forward_link_2 = Cpt(EpicsSignal, '.LNK2$')
-    forward_link_3 = Cpt(EpicsSignal, '.LNK3$')
-    forward_link_4 = Cpt(EpicsSignal, '.LNK4$')
-    forward_link_5 = Cpt(EpicsSignal, '.LNK5$')
-    forward_link_6 = Cpt(EpicsSignal, '.LNK6$')
-    link_selection_loc = Cpt(EpicsSignal, '.SELL$')
+    forward_link_1 = Cpt(EpicsSignal, '.LNK1$', string=True)
+    forward_link_2 = Cpt(EpicsSignal, '.LNK2$', string=True)
+    forward_link_3 = Cpt(EpicsSignal, '.LNK3$', string=True)
+    forward_link_4 = Cpt(EpicsSignal, '.LNK4$', string=True)
+    forward_link_5 = Cpt(EpicsSignal, '.LNK5$', string=True)
+    forward_link_6 = Cpt(EpicsSignal, '.LNK6$', string=True)
+    link_selection_loc = Cpt(EpicsSignal, '.SELL$', string=True)
     select_mechanism = Cpt(EpicsSignal, '.SELM')

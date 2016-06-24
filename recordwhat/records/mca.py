@@ -15,7 +15,7 @@ class McaRegion(Device):
     high_channel = Cpt(EpicsSignal, 'HI')
     is_preset = Cpt(EpicsSignal, 'IP')
     low_channel = Cpt(EpicsSignal, 'LO')
-    name_of_region = Cpt(EpicsSignal, 'NM$')
+    name_of_region = Cpt(EpicsSignal, 'NM$', string=True)
 
 
 def _make_regions(low, high):
@@ -85,14 +85,14 @@ class McaRecord(RecordBase):
     two_theta = Cpt(EpicsSignal, '.TTH')
 
     # - display
-    acquisition_stop_time = Cpt(EpicsSignalRO, '.STIM$')
-    calibration_units_name = Cpt(EpicsSignal, '.EGU$')
+    acquisition_stop_time = Cpt(EpicsSignalRO, '.STIM$', string=True)
+    calibration_units_name = Cpt(EpicsSignal, '.EGU$', string=True)
     display_precision = Cpt(EpicsSignal, '.PREC')
     high_operating_range = Cpt(EpicsSignal, '.HOPR')
     low_operating_range = Cpt(EpicsSignal, '.LOPR')
 
     # - inputs
-    input_specification = Cpt(EpicsSignalRO, '.INP$')
-    sim_input_specifctn = Cpt(EpicsSignalRO, '.SIOL$')
-    sim_mode_location = Cpt(EpicsSignalRO, '.SIML$')
+    input_specification = Cpt(EpicsSignalRO, '.INP$', string=True)
+    sim_input_specifctn = Cpt(EpicsSignalRO, '.SIOL$', string=True)
+    sim_mode_location = Cpt(EpicsSignalRO, '.SIML$', string=True)
     sim_mode_alarm_severity = Cpt(EpicsSignal, '.SIMS')

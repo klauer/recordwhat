@@ -29,10 +29,10 @@ class LonginRecord(RecordBase):
     high_operating_range = Cpt(EpicsSignal, '.HOPR')
     low_operating_range = Cpt(EpicsSignal, '.LOPR')
     monitor_deadband = Cpt(EpicsSignal, '.MDEL')
-    units_name = Cpt(EpicsSignal, '.EGU$')
+    units_name = Cpt(EpicsSignal, '.EGU$', string=True)
 
     # - inputs
-    input_specification = Cpt(EpicsSignal, '.INP$')
-    sim_input_specifctn = Cpt(EpicsSignal, '.SIOL$')
-    sim_mode_location = Cpt(EpicsSignal, '.SIML$')
+    input_specification = Cpt(EpicsSignal, '.INP$', string=True)
+    sim_input_specifctn = Cpt(EpicsSignal, '.SIOL$', string=True)
+    sim_mode_location = Cpt(EpicsSignal, '.SIML$', string=True)
     sim_mode_alarm_svrty = Cpt(EpicsSignal, '.SIMS')

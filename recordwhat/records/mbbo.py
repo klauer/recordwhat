@@ -16,10 +16,10 @@ class MbboRecord(MbbRecordBase):
     states_defined = Cpt(EpicsSignalRO, '.SDEF')
 
     # - mbb
-    desired_output_loc = Cpt(EpicsSignal, '.DOL$')
+    desired_output_location = Cpt(EpicsSignal, '.DOL$', string=True)
     invalid_outpt_action = Cpt(EpicsSignal, '.IVOA')
     invalid_output_value = Cpt(EpicsSignal, '.IVOV')
 
     output_mode_select = Cpt(EpicsSignal, '.OMSL')
-    output_specification = Cpt(EpicsSignal, '.OUT$')
-    sim_output_specifctn = Cpt(EpicsSignal, '.SIOL$')
+    output_specification = Cpt(EpicsSignal, '.OUT$', string=True)
+    sim_output_specification = Cpt(EpicsSignal, '.SIOL$', string=True)

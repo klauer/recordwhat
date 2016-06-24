@@ -28,7 +28,7 @@ class HistogramRecord(RecordBase):
     upper_signal_limit = Cpt(EpicsSignal, '.ULIM')
 
     # - inputs
-    signal_value_location = Cpt(EpicsSignal, '.SVL$')
-    sim_input_specifctn = Cpt(EpicsSignal, '.SIOL$')
-    sim_mode_location = Cpt(EpicsSignal, '.SIML$')
+    signal_value_location = Cpt(EpicsSignal, '.SVL$', string=True)
+    sim_input_specifctn = Cpt(EpicsSignal, '.SIOL$', string=True)
+    sim_mode_location = Cpt(EpicsSignal, '.SIML$', string=True)
     sim_mode_alarm_svrty = Cpt(EpicsSignal, '.SIMS')
