@@ -74,6 +74,8 @@ class dbdField:
     size = attr.ib(default='', repr=False)
     extra = attr.ib(default='', repr=False)
     menu = attr.ib(default='', repr=False)
+    # this is undocumented, but in lots of dbd in epics-base
+    prop = attr.ib(default='', repr=False)
 
 
 @attr.s(frozen=True)
