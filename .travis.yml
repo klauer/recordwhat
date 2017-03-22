@@ -56,7 +56,7 @@ before_install:
 
 install:
   - conda install numpy pyepics prettytable filestore ipython pyolog ophyd pandas
-  - pip install pytest pytest-cov codecov graphviz pygraphviz
+  - pip install pytest pytest-cov codecov graphviz pygraphviz parsimonious
   - python setup.py develop
 
   # setup some path environment variables for epics
