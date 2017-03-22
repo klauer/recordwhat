@@ -320,9 +320,7 @@ _IMPORTS = '''\
 from ophyd import (EpicsSignal, EpicsSignalRO)
 
 from recordwhat import (RecordBase, _register_record_type,
-                        FieldComponent as Cpt)
-
-'''
+                        FieldComponent as Cpt)'''
 
 
 def generate_all(recs):
@@ -333,3 +331,17 @@ def generate_all(recs):
         yield from generate(rec_name, load_from_objs(rec),
                             super_='RecordBase', skip_fields=_BASE_FIELDS,
                             record_type=nm)
+
+
+def stream_dbd(rec, indent='    '):
+    yield 'recordtype({}) {{'.format(rec.name)
+    for f in rec.fields.values():
+        yield indent + 'field({},{}) {{'.format(f.name, f.dbf_type)
+        for k, v in attr.asdict(f).items():
+            if k in {'name', 'dbf_type'}:
+                continue
+            if not v:
+                continue
+            yield indent*2 + '{}({})'.format(k, v)
+        yield indent + '}'
+    yield '}'
