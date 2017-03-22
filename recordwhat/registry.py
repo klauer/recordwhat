@@ -31,3 +31,7 @@ def get_record_by_name(record_name, *, timeout=1.0, **kwargs):
 
     record_class = get_record_class(record_type)
     return record_class(record_name, **kwargs)
+
+
+def get_known_records():
+    return set(_record_classes)
