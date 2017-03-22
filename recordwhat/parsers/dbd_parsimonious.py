@@ -218,6 +218,18 @@ class RecordWalker(NodeVisitor):
 
 
 def write_table(out_path, record):
+    '''Write file of meta-data as created by dbd.py
+
+    Creates a file called NAME.txt
+
+    Parameters
+    ----------
+    out_path : str
+        Path to write the file to
+
+    record : dbdRecordType
+        The record to write to disk
+    '''
     columns = ['field', 'type', 'asl', 'initial', 'promptgroup',
                'prompt', 'special', 'pp', 'interest', 'base', 'size',
                'extra', 'menu']
