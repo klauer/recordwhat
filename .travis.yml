@@ -53,9 +53,10 @@ before_install:
   - source activate $CONDA_ENV
 
 install:
-  - conda install numpy pyepics prettytable pandas epics-base
+  - conda install epics-base
+  - pip install pytest pytest-cov codecov graphviz pygraphviz parsimonious attrs networkx pyepics prettytable pandas numpy
   - 'pip install https://github.com/NSLS-II/ophyd/zipball/master#egg=ophyd'
-  - pip install pytest pytest-cov codecov graphviz pygraphviz parsimonious attrs
+
   - python setup.py develop
 
   # setup some path environment variables for epics
