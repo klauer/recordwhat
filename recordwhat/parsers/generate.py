@@ -6,7 +6,6 @@ import textwrap
 
 from functools import partial
 
-import pandas as pd
 
 from .. import record_info
 from .. import records
@@ -32,6 +31,7 @@ from .. import (RecordBase, _register_record_type,
 
 def load_dbd_derived(fn):
     '''Load field information (tsv derived from the database definitions)'''
+    import pandas as pd
 
     df = pd.read_csv(fn, sep='\t', encoding='latin1', comment='#',
                      na_filter=False)
@@ -70,6 +70,8 @@ def load_dbd_derived(fn):
 
 def load_wiki_derived(fn):
     '''Load field information (tsv derived from the database definitions)'''
+    import pandas as pd
+
     df = pd.read_csv(fn, sep='\t', encoding='latin1', index_col='Field',
                      comment='#', na_filter=False)
     for field, info in sorted(df.iterrows()):
