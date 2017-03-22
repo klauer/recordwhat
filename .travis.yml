@@ -13,8 +13,8 @@ cache:
 matrix:
   include:
     #  - python: 2.7  # ophyd is python 3+ only at the moment
-  - python: 3.4
-  # - python: 3.5
+  - python: 3.5
+  - python: 3.6
 
 before_install:
   - export DOCKER0_IP=$(/sbin/ifconfig docker0 |grep 'inet addr' | sed -e 's/.*addr:\([^ ]*\).*/\1/')
@@ -56,7 +56,7 @@ before_install:
 
 install:
   - conda install numpy pyepics prettytable filestore ipython pyolog ophyd pandas
-  - pip install pytest pytest-cov codecov graphviz pygraphviz parsimonious
+  - pip install pytest pytest-cov codecov graphviz pygraphviz parsimonious attrs
   - python setup.py develop
 
   # setup some path environment variables for epics
