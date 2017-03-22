@@ -215,14 +215,14 @@ class RecordWalker(NodeVisitor):
         return visited_children
 
 
-def write_table(out_path, name, fields):
+def write_table(out_path, record):
     columns = ['field', 'type', 'asl', 'initial', 'promptgroup',
                'prompt', 'special', 'pp', 'interest', 'base', 'size',
                'extra', 'menu']
 
-    fn = os.path.join(out_path, '{}.txt'.format(name))
+    fn = os.path.join(out_path, '{}.txt'.format(record.name))
     with open(fn, 'w') as fout:
         print('\t'.join(columns), file=fout)
-        for nm, typ, md in fields:
-            row = [nm, typ] + [md[k] for k in columns[2:]]
+        for f in record.fields.values():
+            row = [f.name, f.dbf_type] + [getattr(f, k) for k in columns[2:]]
             print('\t'.join(row), file=fout)
