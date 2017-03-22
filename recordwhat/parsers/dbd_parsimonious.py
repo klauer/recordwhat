@@ -67,7 +67,8 @@ class TableMaker(NodeVisitor):
         (_ws, _kw, f_name, _cm, _ws, f_type, _rp, _ws, _lc,
          fp, _ws, _rc) = visited_children
         return (f_name, f_type,
-                defaultdict(str, {k: v for ((k, v),) in fp}))
+                defaultdict(str, {k: v for ((k, v),) in
+                                  [_ for _ in fp if _[0] is not None]}))
 
     def visit_f_name(self, node, visited_children):
         return node.text
