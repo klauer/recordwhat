@@ -1,11 +1,13 @@
 from parsimonious.grammar import Grammar, NodeVisitor
-from collections import defaultdict
+from collections import OrderedDict
 import os.path
+import attr
 
 dbd_grammar = Grammar(r"""
-dbd = (comment / cimport / field / menu / record_type /
-       variable / device / include / registrar /
-       function / driver / "\n")+
+dbd = db_entry*
+db_entry = (comment / cimport / field / menu / record_type /
+            variable / device / include / registrar /
+            function / driver / "\n")
 
 field = _ "field(" f_name "," _ f_type ")" _ "{" field_body _  "}"
 field_body = fp*
@@ -56,19 +58,49 @@ comment = ~"\s*#[^\r\n]*"
 """)
 
 
-class TableMaker(NodeVisitor):
+@attr.s(frozen=True)
+class dbdField:
+    name = attr.ib()
+    dbf_type = attr.ib()
+
+    asl = attr.ib(default='', repr=False)
+    initial = attr.ib(default='', repr=False)
+    promptgroup = attr.ib(default='', repr=False)
+    prompt = attr.ib(default='', repr=False)
+    special = attr.ib(default='', repr=False)
+    pp = attr.ib(default='', repr=False)
+    interest = attr.ib(default='', repr=False)
+    base = attr.ib(default='', repr=False)
+    size = attr.ib(default='', repr=False)
+    extra = attr.ib(default='', repr=False)
+    menu = attr.ib(default='', repr=False)
+
+
+@attr.s(frozen=True)
+class dbdRecordType:
+    name = attr.ib()
+    fields = attr.ib()
+
+
+class RecordWalker(NodeVisitor):
     def __init__(self, *, out_path='/tmp'):
         self.out_path = out_path
 
     def visit_dbd(self, node, visited_children):
-        ...
+        records = [c for c in visited_children
+                   if isinstance(c, dbdRecordType)]
+
+        return {r.name: r for r in records}
+
+    def visit_db_entry(self, node, visited_children):
+        return visited_children[0]
 
     def visit_field(self, node, visited_children):
         (_ws, _kw, f_name, _cm, _ws, f_type, _rp, _ws, _lc,
          fp, _ws, _rc) = visited_children
-        return (f_name, f_type,
-                defaultdict(str, {k: v for ((k, v),) in
-                                  [_ for _ in fp if _[0] is not None]}))
+        fp = [c[0] for c in fp if c[0] is not None]
+        return dbdField(name=f_name, dbf_type=f_type,
+                        **{k: v for (k, v) in fp})
 
     def visit_f_name(self, node, visited_children):
         return node.text
@@ -137,19 +169,11 @@ class TableMaker(NodeVisitor):
 
     def visit_record_type(self, node, visited_children):
         _kw, name, _rp, _ws, _lc, innards, _rc = visited_children
-        fields = sorted([_[0] for _ in innards
-                         if _[0] is not None and len(_[0])])
+        fields = [c[0] for c in innards
+                  if isinstance(c[0], dbdField)]
+        fields = OrderedDict((f.name, f) for f in fields)
 
-        columns = ['field', 'type', 'asl', 'initial', 'promptgroup',
-                   'prompt', 'special', 'pp', 'interest', 'base', 'size',
-                   'extra', 'menu']
-
-        fn = os.path.join(self.out_path, '{}.txt'.format(name))
-        with open(fn, 'w') as fout:
-            print('\t'.join(columns), file=fout)
-            for nm, typ, md in fields:
-                row = [nm, typ] + [md[k] for k in columns[2:]]
-                print('\t'.join(row), file=fout)
+        return dbdRecordType(name=name, fields=fields)
 
     def visit_include(self, node, visited_children):
         ...
@@ -189,3 +213,16 @@ class TableMaker(NodeVisitor):
 
     def visit_(self, node, visited_children):
         return visited_children
+
+
+def write_table(out_path, name, fields):
+    columns = ['field', 'type', 'asl', 'initial', 'promptgroup',
+               'prompt', 'special', 'pp', 'interest', 'base', 'size',
+               'extra', 'menu']
+
+    fn = os.path.join(out_path, '{}.txt'.format(name))
+    with open(fn, 'w') as fout:
+        print('\t'.join(columns), file=fout)
+        for nm, typ, md in fields:
+            row = [nm, typ] + [md[k] for k in columns[2:]]
+            print('\t'.join(row), file=fout)
