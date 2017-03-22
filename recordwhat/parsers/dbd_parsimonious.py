@@ -85,8 +85,6 @@ class dbdRecordType:
 
 
 class RecordWalker(NodeVisitor):
-    def __init__(self, *, out_path='/tmp'):
-        self.out_path = out_path
 
     def visit_dbd(self, node, visited_children):
         records = [c for c in visited_children
@@ -240,3 +238,27 @@ def write_table(out_path, record):
         for f in record.fields.values():
             row = [f.name, f.dbf_type] + [getattr(f, k) for k in columns[2:]]
             print('\t'.join(row), file=fout)
+
+
+def prettytable_summary(record, sort=False):
+    '''Create a 'pretty' table summarizing the record
+
+    Parameters
+    ----------
+    record : dbdRecordType
+        The record of interest
+
+    sort : bool, optional
+        If the table should be sorted by field name (default False)
+
+    '''
+    import prettytable
+    pt = prettytable.PrettyTable(field_names=['name', 'prompt', 'dbf_type'])
+    pt.align = 'l'
+    if sort:
+        pt.sortby = 'name'
+    for f in record.fields.values():
+        if f.dbf_type == 'DBF_NOACCESS':
+            continue
+        pt.add_row([f.name, f.prompt, f.dbf_type])
+    return pt
