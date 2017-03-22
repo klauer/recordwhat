@@ -2,6 +2,9 @@ from parsimonious.grammar import Grammar, NodeVisitor
 from collections import OrderedDict
 import os.path
 import attr
+import re
+
+from recordwhat.parsers.generate import generate
 
 dbd_grammar = Grammar(r"""
 dbd = db_entry*
@@ -57,6 +60,15 @@ comment = ~"\s*#[^\r\n]*"
 
 """)
 
+
+_BASE_FIELDS = {'ACKS', 'ACKT', 'ASG', 'ASP', 'BKLNK', 'BKPT',
+                'DESC', 'DISA', 'DISP', 'DISS', 'DISV', 'DPVT',
+                'DSET', 'DTYP', 'EVNT', 'FLNK', 'LCNT', 'LSET',
+                'MLIS', 'MLOK', 'NAME', 'NSEV', 'NSTA', 'PACT',
+                'PHAS', 'PINI', 'PPN', 'PPNR', 'PRIO', 'PROC',
+                'PUTF', 'RDES', 'RPRO', 'RSET', 'SCAN', 'SDIS',
+                'SEVR', 'SPVT', 'STAT', 'TIME', 'TPRO', 'TSE',
+                'TSEL', 'UDF', 'UDFS'}
 
 @attr.s(frozen=True)
 class dbdField:
@@ -240,7 +252,7 @@ def write_table(out_path, record):
             print('\t'.join(row), file=fout)
 
 
-def prettytable_summary(record, sort=False):
+def prettytable_summary(record, sort=False, skip_fields=None):
     '''Create a 'pretty' table summarizing the record
 
     Parameters
@@ -253,6 +265,11 @@ def prettytable_summary(record, sort=False):
 
     '''
     import prettytable
+
+    if skip_fields is None:
+        # the field is dbCommon.dbd
+        skip_fields = _BASE_FIELDS
+
     pt = prettytable.PrettyTable(field_names=['name', 'prompt', 'dbf_type'])
     pt.align = 'l'
     if sort:
@@ -260,5 +277,59 @@ def prettytable_summary(record, sort=False):
     for f in record.fields.values():
         if f.dbf_type == 'DBF_NOACCESS':
             continue
+        if f.name in skip_fields:
+            continue
         pt.add_row([f.name, f.prompt, f.dbf_type])
     return pt
+
+
+def load_from_objs(rec):
+    order = [k for k, _ in sorted([(f.name, (f.promptgroup, f.prompt)) for f in
+                                   rec.fields.values()], key=lambda x: x[1])]
+    for k in order:
+        f = rec.fields[k]
+        if f.dbf_type == 'DBF_NOACCESS':
+            continue
+
+        prompt = f.prompt
+        short_desc = prompt
+        attr_name = short_desc.lower()
+        attr_name = re.sub('[^A-Za-z_0-9]', '_', attr_name)
+        attr_name = re.sub('_+', '_', attr_name)
+        attr_name = re.sub('^_', '', attr_name)
+        attr_name = re.sub('_$', '', attr_name)
+
+        group = f.promptgroup.replace('GUI_', '')
+        group = group.lower()
+
+        if 'SPC_NOMOD' in f.special:
+            cls = 'EpicsSignalRO'
+        else:
+            cls = 'EpicsSignal'
+
+        yield dict(cls=cls,
+                   field=k,
+                   short_desc=short_desc,
+                   attr_name=attr_name,
+                   doc=prompt,
+                   group=group,
+                   type=f.dbf_type)
+
+
+_IMPORTS = '''\
+from ophyd import (EpicsSignal, EpicsSignalRO)
+
+from recordwhat import (RecordBase, _register_record_type,
+                        FieldComponent as Cpt)
+
+'''
+
+
+def generate_all(recs):
+    yield _IMPORTS
+    for rec in recs:
+        nm = rec.name
+        rec_name = nm.capitalize() + 'Record'
+        yield from generate(rec_name, load_from_objs(rec),
+                            super_='RecordBase', skip_fields=_BASE_FIELDS,
+                            record_type=nm)
