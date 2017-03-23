@@ -63,7 +63,7 @@ def load_dbd_derived(fn):
                    short_desc=short_desc,
                    attr_name=attr_name,
                    doc=prompt,
-                   group=group,
+                   group='"{}"'.format(group),
                    type=info['type'],
                    )
 
