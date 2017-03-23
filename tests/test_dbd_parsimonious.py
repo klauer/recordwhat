@@ -1,8 +1,11 @@
 from recordwhat.parsers.dbd_parsimonious import (
     dbd_grammar, dbdField, dbdRecordType, RecordWalker,
     stream_dbd, generate_all)
+from recordwhat.util import read_file
 from collections import OrderedDict
 import pytest
+from tempfile import NamedTemporaryFile
+import os.path
 
 
 @pytest.fixture
@@ -23,11 +26,24 @@ def test_rec():
 
 def test_round_trip(test_rec):
     rec = test_rec
-    test_str = '\n'.join(stream_dbd(rec))
-    p = dbd_grammar.parse(test_str)
-    rec2 = RecordWalker().visit(p)['test']
+    dbd_str = '\n'.join(stream_dbd(rec))
 
-    assert rec == rec2
+    with NamedTemporaryFile(suffix='.dbd', mode='wt',
+                            encoding='utf-8') as f1, \
+        NamedTemporaryFile(suffix='.dbd', mode='wt',
+                           encoding='utf-8') as f2:
+        f1.write(dbd_str)
+        fn = os.path.basename(f1.name)
+        f2.write('include "{}"'.format(fn))
+        f1.flush()
+        f2.flush()
+        test_str = read_file(f2.name)
+
+    p = dbd_grammar.parse(test_str)
+
+    rec2 = RecordWalker().visit(p)
+
+    assert rec == rec2['test']
 
 
 _target_code = """\

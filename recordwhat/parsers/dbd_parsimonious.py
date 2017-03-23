@@ -70,6 +70,7 @@ _BASE_FIELDS = {'ACKS', 'ACKT', 'ASG', 'ASP', 'BKLNK', 'BKPT',
                 'SEVR', 'SPVT', 'STAT', 'TIME', 'TPRO', 'TSE',
                 'TSEL', 'UDF', 'UDFS'}
 
+
 @attr.s(frozen=True)
 class dbdField:
     name = attr.ib()
@@ -218,9 +219,6 @@ class RecordWalker(NodeVisitor):
         ...
 
     def visit_comment(self, node, visited_children):
-        ...
-
-    def visit_catchall(self, node, visited_children):
         ...
 
     def visit_(self, node, visited_children):
