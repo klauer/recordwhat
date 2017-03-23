@@ -47,7 +47,7 @@ class MotorRecord(RecordBase):
     set_set_mode = Cpt(EpicsSignal, '.SSET')
     set_use_mode = Cpt(EpicsSignal, '.SUSE')
     set_use_switch = Cpt(EpicsSignal, '.SET')
-    stop = Cpt(EpicsSignal, '.STOP')
+    motor_stop = Cpt(EpicsSignal, '.STOP')
     stop_pause_move_go = Cpt(EpicsSignal, '.SPMG')
     sync_position = Cpt(EpicsSignal, '.SYNC')
     tweak_motor_forward = Cpt(EpicsSignal, '.TWF')
