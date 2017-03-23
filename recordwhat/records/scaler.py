@@ -9,6 +9,7 @@ from ophyd.scaler import _scaler_fields
 
 NUM_CH = 64
 
+
 def _string_scaler_fields(*args, **kwargs):
     '''Use _scaler_fields, but append $ to suffixes to allow long strings'''
     info = _scaler_fields(*args, **kwargs)
@@ -35,12 +36,17 @@ class ScalerRecord(RecordBase):
     auto_mode_delay = Cpt(EpicsSignal, '.DLY1')
     cnt_output = Cpt(EpicsSignal, '.COUT$', string=True)
     cnt_output_prompt = Cpt(EpicsSignal, '.COUTP$', string=True)
-    channels = DDC(_scaler_fields('chan', '.S', range(1, NUM_CH + 1)))
-    presets = DDC(_scaler_fields('preset', '.PR', range(1, NUM_CH + 1)))
-    gates = DDC(_scaler_fields('gate', '.G', range(1, NUM_CH + 1)))
-    count_directions = DDC(_scaler_fields('direction', '.D',
+
+    channels = DDC(_scaler_fields(EpicsSignalRO, 'chan', '.S',
+                                  range(1, NUM_CH + 1)))
+    presets = DDC(_scaler_fields(EpicsSignal, 'preset', '.PR',
+                                 range(1, NUM_CH + 1)))
+    gates = DDC(_scaler_fields(EpicsSignal, 'gate', '.G',
+                               range(1, NUM_CH + 1)))
+    count_directions = DDC(_scaler_fields(EpicsSignal, 'direction', '.D',
                                           range(1, NUM_CH + 1)))
-    names = DDC(_string_scaler_fields('name', '.NM', range(1, NUM_CH + 1)))
+    names = DDC(_string_scaler_fields(EpicsSignal, 'name', '.NM',
+                                      range(1, NUM_CH + 1)))
 
     delay = Cpt(EpicsSignal, '.DLY')
     display_precision = Cpt(EpicsSignal, '.PREC')
