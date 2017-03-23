@@ -1,11 +1,12 @@
 from recordwhat.parsers.dbd_parsimonious import (
     dbd_grammar, dbdField, dbdRecordType, RecordWalker,
-    stream_dbd, generate_all, stream_table, _BASE_FIELDS, _IMPORTS)
+    stream_dbd, generate_all, stream_table, _BASE_FIELDS, _IMPORTS,
+    prettytable_summary)
 from recordwhat.parsers.generate import (load_dbd_derived, generate)
 from recordwhat.util import read_file
 from collections import OrderedDict
 import pytest
-from tempfile import NamedTemporaryFile
+from tempfile import NamedTemporaryFile, TemporaryFile
 import os.path
 
 
@@ -95,3 +96,31 @@ def test_table_gen(test_rec):
                                   skip_fields=_BASE_FIELDS,
                                   record_type=test_rec.name))
     assert _IMPORTS + '\n' + code == _target_code
+
+
+_pt_target = """\
++------+------------+----------+
+| name | prompt     | dbf_type |
++------+------------+----------+
+| AA0  | "test p 0" | DBF_CHAR |
+| AA1  | "test p 1" | DBF_CHAR |
+| AA2  | "test p 2" | DBF_CHAR |
+| AA3  | "test p 3" | DBF_CHAR |
+| AA4  | "test p 4" | DBF_CHAR |
+| BB0  | "test p 0" | DBF_CHAR |
+| BB1  | "test p 1" | DBF_CHAR |
+| BB2  | "test p 2" | DBF_CHAR |
+| BB3  | "test p 3" | DBF_CHAR |
+| BB4  | "test p 4" | DBF_CHAR |
++------+------------+----------+
+"""
+
+
+def test_pretty_table(test_rec):
+    pt = prettytable_summary(test_rec, sort=True)
+    with TemporaryFile(mode='w+t') as fout:
+        print(pt, file=fout)
+        fout.seek(0)
+        tb = fout.read()
+
+    assert tb == _pt_target
