@@ -225,29 +225,29 @@ class RecordWalker(NodeVisitor):
         return visited_children
 
 
-def write_table(out_path, record):
+def stream_table(record):
     '''Write file of meta-data as created by dbd.py
 
     Creates a file called NAME.txt
 
     Parameters
     ----------
-    out_path : str
-        Path to write the file to
-
     record : dbdRecordType
         The record to write to disk
+
+    Yields
+    ------
+    row : str
+       Table row
     '''
     columns = ['field', 'type', 'asl', 'initial', 'promptgroup',
                'prompt', 'special', 'pp', 'interest', 'base', 'size',
                'extra', 'menu']
 
-    fn = os.path.join(out_path, '{}.txt'.format(record.name))
-    with open(fn, 'w') as fout:
-        print('\t'.join(columns), file=fout)
-        for f in record.fields.values():
-            row = [f.name, f.dbf_type] + [getattr(f, k) for k in columns[2:]]
-            print('\t'.join(row), file=fout)
+    yield '\t'.join(columns)
+    for f in record.fields.values():
+        row = [f.name, f.dbf_type] + [getattr(f, k) for k in columns[2:]]
+        yield '\t'.join(row)
 
 
 def prettytable_summary(record, sort=False, skip_fields=None):
