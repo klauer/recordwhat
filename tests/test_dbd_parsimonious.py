@@ -11,14 +11,17 @@ import os.path
 @pytest.fixture
 def test_rec():
     fields = OrderedDict()
-    for pg in ('AA', 'BB'):
+    for pg, special in zip(('AA', 'BB'), ('', 'SPC_NOMOD')):
         for j in range(5):
             nm = '{}{}'.format(pg, j)
             fields[nm] = dbdField(
                 nm,
                 'DBF_CHAR',
                 prompt='"test p {}"'.format(j),
-                promptgroup='"{}"'.format(pg))
+                promptgroup='"{}"'.format(pg),
+                special=special)
+        fields['SEC'] = dbdField('SEC',
+                                 'DBF_NOACCESS')
 
     return dbdRecordType(name='test',
                          fields=fields)
@@ -34,6 +37,7 @@ def test_round_trip(test_rec):
                            encoding='utf-8') as f2:
         f1.write(dbd_str)
         fn = os.path.basename(f1.name)
+        f2.write('#somecomment\ninclude "aardvark.dbd"\n')
         f2.write('include "{}"'.format(fn))
         f1.flush()
         f2.flush()
@@ -65,11 +69,11 @@ class TestRecord(RecordBase):
     test_p_4 = Cpt(EpicsSignal, '.AA4')
 
     # - "bb"
-    test_p_0_bb0 = Cpt(EpicsSignal, '.BB0')
-    test_p_1_bb1 = Cpt(EpicsSignal, '.BB1')
-    test_p_2_bb2 = Cpt(EpicsSignal, '.BB2')
-    test_p_3_bb3 = Cpt(EpicsSignal, '.BB3')
-    test_p_4_bb4 = Cpt(EpicsSignal, '.BB4')"""
+    test_p_0_bb0 = Cpt(EpicsSignalRO, '.BB0')
+    test_p_1_bb1 = Cpt(EpicsSignalRO, '.BB1')
+    test_p_2_bb2 = Cpt(EpicsSignalRO, '.BB2')
+    test_p_3_bb3 = Cpt(EpicsSignalRO, '.BB3')
+    test_p_4_bb4 = Cpt(EpicsSignalRO, '.BB4')"""
 
 
 def test_python_gen(test_rec):
