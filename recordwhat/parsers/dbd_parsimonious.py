@@ -1,6 +1,5 @@
 from parsimonious.grammar import Grammar, NodeVisitor
 from collections import OrderedDict
-import os.path
 import attr
 import re
 
