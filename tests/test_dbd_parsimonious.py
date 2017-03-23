@@ -1,6 +1,7 @@
 from recordwhat.parsers.dbd_parsimonious import (
     dbd_grammar, dbdField, dbdRecordType, RecordWalker,
-    stream_dbd, generate_all)
+    stream_dbd, generate_all, stream_table, _BASE_FIELDS, _IMPORTS)
+from recordwhat.parsers.generate import (load_dbd_derived, generate)
 from recordwhat.util import read_file
 from collections import OrderedDict
 import pytest
@@ -79,3 +80,18 @@ class TestRecord(RecordBase):
 def test_python_gen(test_rec):
     code = '\n'.join(generate_all([test_rec]))
     assert code == _target_code
+
+
+def test_table_gen(test_rec):
+
+    with NamedTemporaryFile(suffix='.dbd', mode='wt',
+                            encoding='utf-8') as f1:
+        f1.write('\n'.join(stream_table(test_rec)))
+        f1.flush()
+        dd = load_dbd_derived(f1.name)
+        rec_name = test_rec.name.capitalize() + 'Record'
+        code = '\n'.join(generate(rec_name, dd,
+                                  super_='RecordBase',
+                                  skip_fields=_BASE_FIELDS,
+                                  record_type=test_rec.name))
+    assert _IMPORTS + '\n' + code == _target_code
