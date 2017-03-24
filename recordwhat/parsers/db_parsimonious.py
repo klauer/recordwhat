@@ -52,8 +52,7 @@ class TemplateWalker(NodeVisitor):
 
 db_grammar = Grammar(r"""
 db = (comment / record / include / free_alias / "\n")+
-record = (("grecord" / "record") _ "(" _ ) rtype "," _ pv_name ")" \
-          _ "{" r_entry* "}"
+record = (("grecord" / "record") _ "(" _ ) rtype "," _ pv_name ")" _ "{" r_entry* "}"
 rtype = ~"[a-z]*"i
 r_entry = (field / alias / info / comment / include / "\n" / _)
 
