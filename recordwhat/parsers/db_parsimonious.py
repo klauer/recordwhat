@@ -10,7 +10,7 @@ template = tmp_l tmp_c tmp_r
 tmp_l = "$" !"$" "("
 tmp_c =  ~"[^)]*"
 tmp_r = ")"
-literal = ('$$' / ~"[^$]*")
+literal = ( ~"[^$]*")
 """)
 
 
