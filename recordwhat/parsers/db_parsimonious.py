@@ -10,7 +10,7 @@ template = tmp_l tmp_c tmp_r
 tmp_l = "$" !"$" "("
 tmp_c =  ~"[^)]*"
 tmp_r = ")"
-literal = ('$$' / ~".*")
+literal = ('$$' / ~"[^$]*")
 """)
 
 
@@ -56,20 +56,20 @@ record = (("grecord" / "record") _ "(" _ ) rtype "," _ pv_name ")" _ "{" r_entry
 rtype = ~"[a-z]*"i
 r_entry = (field / alias / info / comment / include / "\n" / _)
 
-field = _ ("field" _ "(") f_name (_ ",") _ f_val (")" _ comment?)
+field = _ ("field" _ "(") f_name (_ ",") _ f_val (_ ")" _ comment?)
 alias = _ ("alias" _ "(") a_name ")"
-info = _ ("info" _ "(") i_name "," _ i_val ")"
+info = _ ("info" _ "(") i_name "," _ i_val (_ ")")
 
 free_alias = _ ("alias" _ "(") a_name (_ "," _ ) a_name ")"
 
 f_val = (~'"[^"]*"' / ~'[^)]*')
-i_val = ~'"[^"]*"'
+i_val = ~'[^)]*'
 
 pv_name = (~'"[^"]*"' / ~'[^)]*')
 
 f_name = ~"[A-Z0-9]*"i
 a_name = (~'"[^"]*"' / ~'[^)]*')
-i_name = ~"[A-Z0-9]*"i
+i_name = (~"[A-Z0-9]*"i / ~'"[^"]*"')
 
 comment = ~"#[^\r\n]*"
 
@@ -169,3 +169,9 @@ class dbWalker(NodeVisitor):
 
     def visit_(self, node, visited_children):
         return visited_children
+
+    def visit_include_fname(self, node, visited_children):
+        return node.text
+
+    def visit_include(self, node, visited_children):
+        ...
