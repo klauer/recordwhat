@@ -56,9 +56,9 @@ record = (("grecord" / "record") _ "(" _ ) rtype "," _ pv_name ")" _ "{" r_entry
 rtype = ~"[a-z]*"i
 r_entry = (field / alias / info / comment / include / "\n" / _)
 
-field = _ ("field" _ "(") f_name (_ ",") _ f_val (_ ")" _ comment?)
-alias = _ ("alias" _ "(") a_name ")"
-info = _ ("info" _ "(") i_name "," _ i_val (_ ")")
+field = _ ("field" _ "(" _) f_name (_ ",") _ f_val (_ ")" _ comment?)
+alias = _ ("alias" _ "(" _) a_name ")"
+info = _ ("info" _ "(" _) i_name "," _ i_val (_ ")")
 
 free_alias = _ ("alias" _ "(") a_name (_ "," _ ) a_name ")"
 
@@ -69,7 +69,7 @@ pv_name = (~'"[^"]*"' / ~'[^)]*')
 
 f_name = ~"[A-Z0-9]*"i
 a_name = (~'"[^"]*"' / ~'[^)]*')
-i_name = (~"[A-Z0-9]*"i / ~'"[^"]*"')
+i_name = (~"[A-Z0-9_]*"i / ~'"[^"]*"')
 
 comment = ~"#[^\r\n]*"
 
