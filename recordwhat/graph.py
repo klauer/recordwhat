@@ -37,6 +37,13 @@ def get_link_str(link_str):
         # 0 or 1 usually and not a string
         raise ValueError('integral link')
 
+    try:
+        float(link_str)
+    except Exception:
+        pass
+    else:
+        raise ValueError('float link')
+
     return link_str, tuple(additional_info.split(' '))
 
 
@@ -147,11 +154,14 @@ def find_record_links(*starting_records):
 
             rec2 = get_record_by_name(rec2, read_attrs=[])
             attr2 = rec2.field_to_attr(field2)
+            if attr2 is None:
+                attr2 = field2
+
             li = LinkInfo(record1=rec1, attr1=attr1,
                           record2=rec2, attr2=attr2,
                           type_=type_, link_info=link_info)
 
-            # logger.debug('Link %s', li)
+            logger.debug('Link %s', li)
             yield li
 
 
