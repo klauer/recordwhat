@@ -197,9 +197,10 @@ def graph_links_with_subgraphs(*starting_records, graph=None, engine='dot',
     graphs = {}
     edges = []
     all_nodes = {}
+    existing_edges = set()
 
     if graph is None:
-        graph = gv.Digraph(format='svg')
+        graph = gv.Digraph(format='pdf')
         # graph.graph_attr['rankdir'] = 'TB'
         # graph.graph_attr['rank'] = 'same'
 
@@ -276,7 +277,9 @@ def graph_links_with_subgraphs(*starting_records, graph=None, engine='dot',
         if maximize_severity:
             edge_kw['color'] = 'red'
 
-        edges.append((src, dest, edge_kw))
+        if (src, dest) not in existing_edges:
+            edges.append((src, dest, edge_kw))
+            existing_edges.add((src, dest))
 
     # add the subgraphs to the main graph
     for sgraph_info in graphs.values():
@@ -284,9 +287,10 @@ def graph_links_with_subgraphs(*starting_records, graph=None, engine='dot',
 
         # create invisible subgraph nodes to organize fields inside clusters
         nodes = [node for attr, node in
-                 sorted(sgraph_info['nodes'].items())]
+                 sorted(sgraph_info['nodes'].items(),
+                        key=lambda item: item[0])]
         for n1, n2 in zip(nodes, nodes[1:]):
-            graph.edge(n1, n2, style='invis', weight='100')
+            graph.edge(n1, n2, style='invis', weight='1000')
         # weight=100 ensures they're aligned nicely
 
     # add all of the edges between graphs
