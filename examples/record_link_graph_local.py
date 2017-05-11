@@ -10,8 +10,7 @@ import ophyd.signal
 from recordwhat.util import read_file
 from recordwhat.graph import graph_links_with_subgraphs
 from recordwhat import registry
-from recordwhat.parsers.db_parsimonious import (dbWalker,  # TemplateWalker
-                                                db_grammar)
+from recordwhat.parsers.db_parsimonious import (dbWalker, db_grammar)
 
 
 class LocalRecordRegistry:
@@ -56,7 +55,7 @@ class LocalPV:
             else:
                 value = 0
 
-        print('get(', self.pvname, ') = ', value)
+        # print('get(', self.pvname, ') = ', value)
         return value
 
     def add_callback(self, *args, **kwargs):
@@ -108,7 +107,7 @@ def load_st_cmd(
         if not line:
             continue
 
-        print(line_no + 1, ') ', line)
+        # print(line_no + 1, ') ', line)
         if line.startswith('chdir'):
             path = line.partition('chdir')[-1]
             path = path.strip('()"')
@@ -132,8 +131,8 @@ def load_st_cmd(
             print('DB file', full_db_path, macros)
             if not os.path.exists(full_db_path):
                 raise ValueError('missing {}'.format(full_db_path))
-            recs = injest_db_file(full_db_path)
-            for rec in recs:
+            records = injest_db_file(full_db_path)
+            for rec in records:
                 recname = expand_macros(rec.pvname.strip('"'), macros)
                 rec.fields['RTYP'] = rec.rtype
                 if 'VAL' not in rec.fields:
@@ -160,17 +159,45 @@ def load_st_cmd(
     return pv_dict
 
 
-import logging
-logging.getLogger('recordwhat.graph').setLevel(logging.DEBUG)
-logging.basicConfig()
+def main(records, *, graph_fn='graph',
+         st_cmd='/Users/klauer/iocs/hgvpu-current/iocBoot/ioc-und1-uc01/st.cmd',
+         start_path='/Users/klauer/iocs/hgvpu-current/iocBoot/ioc-und1-uc01/'):
+    import logging
+    logging.getLogger('recordwhat.graph').setLevel(logging.DEBUG)
+    logging.basicConfig()
 
-reg = LocalRecordRegistry(load_st_cmd())
-LocalPV.registry = reg
+    reg = LocalRecordRegistry(load_st_cmd(fn=st_cmd, start_path=start_path))
+    LocalPV.registry = reg
 
-print('total loaded', len(reg.pvs), 'records', len(list(reg.records)))
+    print('total loaded', len(reg.pvs), 'records', len(list(reg.records)))
+    print()
+    print()
 
-graph = graph_links_with_subgraphs(*tuple(rec for rec in reg.records
-                                          if not (':SR_' in rec)))
-# *[rec for rec in reg.records if '' in rec])
+    # if len(sys.argv) == 1:
+    #     records = tuple(rec for rec in reg.records if not (':SR_' in rec))
+    # else:
 
-print('rendered graph to', graph.render('graph'))
+    records = list(records)
+    added = True
+    while added:
+        added = False
+        for pv, value in reg.pvs.items():
+            if pv in records:
+                continue
+
+            if any(rec in str(value) for rec in records):
+                print('adding', pv)
+                added = True
+                records.append(pv)
+                continue
+
+    import graphviz
+    graph = graphviz.Digraph(format='pdf')
+    graph = graph_links_with_subgraphs(*records)
+    print('rendered graph to', graph.render(graph_fn))
+    return graph
+
+
+if __name__ == '__main__':
+    records = list(sys.argv[1:])
+    main(records)
