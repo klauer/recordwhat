@@ -77,7 +77,7 @@ ophyd.signal.PV = LocalPV
 ophyd.signal.epics = LocalEpics
 
 
-def injest_db_file(fname):
+def ingest_db_file(fname):
     dw = dbWalker()
     return dw.visit(db_grammar.parse(read_file(fname)))
 
@@ -131,7 +131,7 @@ def load_st_cmd(
             print('DB file', full_db_path, macros)
             if not os.path.exists(full_db_path):
                 raise ValueError('missing {}'.format(full_db_path))
-            records = injest_db_file(full_db_path)
+            records = ingest_db_file(full_db_path)
             for rec in records:
                 recname = expand_macros(rec.pvname.strip('"'), macros)
                 rec.fields['RTYP'] = rec.rtype
