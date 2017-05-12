@@ -1,0 +1,5 @@
+chdir('..')
+chdir('test_ioc')
+dbLoadRecords("test.db", "P=PREFIX,VAL=1")
+dbLoadRecords("test.db", "P=PREFIX,VAL=0")
+chdir('/')
