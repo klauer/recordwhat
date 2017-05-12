@@ -3,7 +3,6 @@ import logging
 
 from . import (get_record_by_name, RecordBase)
 from .record_info import link_types
-from ophyd import EpicsSignalRO
 
 import graphviz as gv
 
