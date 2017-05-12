@@ -30,6 +30,7 @@ def load_records(fn, start_path, *, db_paths=None):
         lines = [line.strip() for line in f.readlines()]
 
     working_dir = start_path
+    arg_strip = ''.join(("'", '"()'))
 
     for line_no, line in enumerate(lines):
         if '#' in line:
@@ -41,7 +42,7 @@ def load_records(fn, start_path, *, db_paths=None):
         # print(line_no + 1, ') ', line)
         if line.startswith('chdir'):
             path = line.partition('chdir')[-1]
-            path = path.strip('()"')
+            path = path.strip(arg_strip)
             if path.startswith('/'):
                 print('! Absolute path', line, path)
             else:
@@ -49,7 +50,7 @@ def load_records(fn, start_path, *, db_paths=None):
                 print('* Path changed to', working_dir)
         elif line.startswith('dbLoadRecords'):
             records = line.partition('dbLoadRecords')[-1]
-            records = records.strip('()"')
+            records = records.strip(arg_strip)
             db_file, _, macros = records.partition(',')
             db_file = db_file.strip('" ')
             macros = macros.strip('" ')

@@ -3,12 +3,11 @@ from collections import OrderedDict
 
 import graphviz
 
-from recordwhat.graph import graph_links_with_subgraphs
-from recordwhat.graph import graph_links_with_text
+from recordwhat.graph import (graph_links_with_subgraphs,
+                              graph_links_with_text)
 from recordwhat.parsers.st_cmd import load_records
 
-from recordwhat.util import fake_epics_environment
-from recordwhat.util import LocalRecordRegistry
+from recordwhat.util import (fake_epics_environment, LocalRecordRegistry)
 
 
 def main(pvs, *, graph_fn='graph',
