@@ -300,9 +300,8 @@ def graph_links_with_subgraphs(*starting_records, graph=None, engine='dot',
 
 def graph_links_with_text(*starting_records, graph=None, engine='dot',
                           field_format='field({field}, {value!r})',
-                          sort_fields=True,
-                          text_format=None,
-                          show_empty=False):
+                          sort_fields=True, text_format=None, show_empty=False,
+                          font_name='Courier'):
     '''Create a graphviz digraph of record links
 
     All starting records will be included, along with any other records that
@@ -315,7 +314,17 @@ def graph_links_with_text(*starting_records, graph=None, engine='dot',
     graph : graphviz.Graph, optional
         Graph instance to use. New one created if not specified.
     engine : str, optional
-        Defaults to dot (see note above)
+        Graphviz engine (dot, fdp, etc)
+    field_format : str, optional
+        Format string for fields (keys: field, value, attr)
+    sort_fields : bool, optional
+        Sort list of fields
+    text_format : str, optional
+        Text format for full node (keys: header, field_lines)
+    show_empty : bool, optional
+        Show empty fields
+    font_name : str, optional
+        Font name to use for all nodes and edges
 
     Returns
     -------
@@ -328,6 +337,11 @@ def graph_links_with_text(*starting_records, graph=None, engine='dot',
 
     if graph is None:
         graph = gv.Digraph(format='pdf')
+
+    if font_name is not None:
+        graph.attr('graph', dict(fontname=font_name))
+        graph.attr('node', dict(fontname=font_name))
+        graph.attr('edge', dict(fontname=font_name))
 
     if engine is not None:
         graph.engine = engine
