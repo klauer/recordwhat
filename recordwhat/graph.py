@@ -364,12 +364,24 @@ def graph_links_with_text(*starting_records, graph=None, engine='dot',
 
         src, dest = nodes[li.record1.prefix], nodes[li.record2.prefix]
 
-        field1 = li.record1.attr_to_field(li.attr1)
-        field2 = li.record2.attr_to_field(li.attr2)
+        try:
+            field1 = li.record1.attr_to_field(li.attr1)
+        except KeyError:
+            field1 = li.attr1
+
+        try:
+            field2 = li.record2.attr_to_field(li.attr2)
+        except KeyError:
+            field2 = li.attr2
+
         for attr, field, record, text in [
                 (li.attr1, field1, li.record1, src['text']),
                 (li.attr2, field2, li.record2, dest['text'])]:
-            value = getattr(record, attr).get()
+            try:
+                value = getattr(record, attr).get()
+            except Exception as ex:
+                value = '({})'.format(ex)
+
             if value or show_empty:
                 text_line = field_format.format(attr=attr,
                                                 field=field.rstrip('$'),
