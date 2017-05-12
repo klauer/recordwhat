@@ -4,6 +4,7 @@ from collections import OrderedDict
 import graphviz
 
 from recordwhat.graph import graph_links_with_subgraphs
+from recordwhat.graph import graph_links_with_text
 from recordwhat.parsers.st_cmd import load_records
 
 from recordwhat.util import fake_epics_environment
@@ -27,7 +28,8 @@ def main(pvs, *, graph_fn='graph',
         pvs.append(related)
 
     with fake_epics_environment(reg):
-        graph = graph_links_with_subgraphs(*pvs)
+        # graph = graph_links_with_subgraphs(*pvs)
+        graph = graph_links_with_text(*pvs)
 
     print('rendered graph to', graph.render(graph_fn))
     return graph

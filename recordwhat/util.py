@@ -127,6 +127,9 @@ class LocalPV:
         self.known_string = pvname.endswith('$')
         self.kwargs = kwargs
         self.connected = True
+        self.auto_monitor = True
+        self.timestamp = 0
+        self.precision = 3
 
     def get(self, **kwargs):
         try:
