@@ -4,7 +4,8 @@ import os
 from collections import OrderedDict
 
 from ..util import read_file
-from .db_parsimonious import (dbWalker, db_grammar)
+from .db_parsimonious import (dbWalker, db_grammar,
+                              template_grammar, TemplateWalker)
 
 
 def ingest_db_file(fname):
@@ -13,11 +14,9 @@ def ingest_db_file(fname):
 
 
 def expand_macros(s, macros):
-    for mname, mvalue in macros.items():
-        s = s.replace('$({})'.format(mname), mvalue)
-        s = s.replace('$({},undefined)'.format(mname), mvalue)
-
-    return s
+    T = TemplateWalker().visit(template_grammar.parse(s))
+    macros = {k: v for k, v in macros.items() if k in T.sig.parameters}
+    return T.fmt_func(**macros)
 
 
 def load_records(fn, start_path, *, db_paths=None):
