@@ -5,13 +5,19 @@ from inspect import Parameter, Signature
 
 template_grammar = Grammar(r"""
 str = part*
-part = (template / literal)
+part = (template / template_curly / literal)
 template = tmp_l tmp_c tmp_r
+template_curly = tmp_l_curly tmp_c_curly tmp_r_curly
 tmp_l = "$" !"$" "("
+tmp_l_curly = "$" !"$" "{"
 tmp_c = tmp_name tmp_dflt
+tmp_c_curly = tmp_name_curly tmp_dflt_curly
 tmp_name =  ~"[^),=]*"
 tmp_dflt = ~"[,=][^)]*"?
+tmp_name_curly =  ~"[^},=]*"
+tmp_dflt_curly = ~"[,=][^}]*"?
 tmp_r = ")"
+tmp_r_curly = "}"
 literal = ( ~"[^$]*")
 """)
 
@@ -53,18 +59,26 @@ class TemplateWalker(NodeVisitor):
         _, (name, dflt), _ = visited_children
         return 'T', '{{{}}}'.format(name), (name, dflt)
 
+    visit_template_curly = visit_template
+
     def _base(self, node, visited_children):
         return node.text
 
-    visit_tmp_l = visit_tmp_r = visit_tmp_name = _base
+    visit_tmp_l = visit_tmp_r = _base
+    visit_tmp_name = visit_tmp_name_curly = _base
+    visit_tmp_l_curly = visit_tmp_r_curly = _base
 
     def visit_tmp_dflt(self, node, visited_children):
         if node.text:
             return node.text[1:]
         return Parameter.empty
 
+    visit_tmp_dflt_curly = visit_tmp_dflt
+
     def visit_tmp_c(self, node, visited_children):
         return visited_children
+
+    visit_tmp_c_curly = visit_tmp_c
 
     def visit_literal(self, node, visited_children):
         return 'L', node.text.replace('{', '{{').replace('}', '}}'), None
