@@ -9,8 +9,8 @@ part = (template / literal)
 template = tmp_l tmp_c tmp_r
 tmp_l = "$" !"$" "("
 tmp_c = tmp_name tmp_dflt
-tmp_name =  ~"[^),]*"
-tmp_dflt = ~",[^)]*"?
+tmp_name =  ~"[^),=]*"
+tmp_dflt = ~"[,=][^)]*"?
 tmp_r = ")"
 literal = ( ~"[^$]*")
 """)

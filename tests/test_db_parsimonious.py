@@ -16,6 +16,8 @@ def tw():
     # default values
     ('abc$(foo,def)', {}, 'abcdef'),
     ('abc$(foo,)', {}, 'abc'),
+    ('abc$(foo=def)', {}, 'abcdef'),
+    ('abc$(foo=)', {}, 'abc'),
 ])
 def test_templates(tw, template, kwargs, expected):
     T = tw.visit(template_grammar.parse(template))
