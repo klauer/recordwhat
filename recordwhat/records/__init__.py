@@ -16,6 +16,7 @@ from .digitel import DigitelRecord
 from .epid import EpidRecord
 from .event import EventRecord
 from .fanout import FanoutRecord
+from .gensub import GensubRecord
 from .histogram import HistogramRecord
 from .longin import LonginRecord
 from .longout import LongoutRecord

@@ -1,0 +1,7 @@
+record(ai, "$(P):ai-$(VAL,undefined)") {
+    field(VAL, "$(VAL,undefined)")
+    field(FLNK, "$(P)bi-$(VAL)")
+}
+record(bi, "$(P):bi-$(VAL)") {
+    field(VAL, "$(VAL)")
+}

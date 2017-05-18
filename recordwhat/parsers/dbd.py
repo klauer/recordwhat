@@ -215,8 +215,9 @@ record = brace_group(RECORDTYPE, field | include | c_code, types=(RTYP, ))
 device_line = paren_group(DEVICE, RTYP, link_type, dset_name, quotedString)
 driver_line = paren_group(DRIVER, c_identifier)
 registrar_line = paren_group(REGISTRAR, c_identifier)
+function_line = paren_group(FUNCTION, c_identifier)
 variable_line = paren_group(VARIABLE, c_identifier, Optional(c_identifier, default='int'))
-top_level = Group(record | menu | device_line | driver_line | registrar_line | variable_line)
+top_level = Group(record | menu | device_line | driver_line | registrar_line | variable_line | function_line)
 dbd = ZeroOrMore(top_level)
 dbd.ignore(pythonStyleComment)
 
@@ -337,15 +338,13 @@ DBD_PATH = '/usr/lib/epics/dbd'
 #assert('FLNK' in rec['ai']['fields'])
 #pprint.pprint(rec['ai'])
 
-if 0:
-    get_rtypes(parse_dbd_file('post_include_busyRecord.dbd.dbd'))
-    sys.exit(0)
-
-
-for fn in os.listdir(DBD_PATH):
-    if fn.endswith('.dbd') and 'Record' in fn:
-        print('-------------%s--------------' % fn)
-        get_rtypes(parse_dbd_file(fn))
+if True:
+    get_rtypes(parse_dbd_file(os.path.expanduser('~/iocs/hgvpu-current/dbd/ucmIoc.dbd')))
+else:
+    for fn in os.listdir(DBD_PATH):
+        if fn.endswith('.dbd') and 'Record' in fn:
+            print('-------------%s--------------' % fn)
+            get_rtypes(parse_dbd_file(fn))
 
 columns = ['field', 'type', 'asl', 'initial', 'promptgroup', 'prompt', 'special', 'pp', 'interest', 'base', 'size', 'extra', 'menu']
 path = 'output'

@@ -1,15 +1,23 @@
 from collections import OrderedDict
 from parsimonious.grammar import Grammar, NodeVisitor
 import attr
-
+from inspect import Parameter, Signature
 
 template_grammar = Grammar(r"""
 str = part*
-part = (template / literal)
+part = (template / template_curly / literal)
 template = tmp_l tmp_c tmp_r
+template_curly = tmp_l_curly tmp_c_curly tmp_r_curly
 tmp_l = "$" !"$" "("
-tmp_c =  ~"[^)]*"
+tmp_l_curly = "$" !"$" "{"
+tmp_c = tmp_name tmp_dflt
+tmp_c_curly = tmp_name_curly tmp_dflt_curly
+tmp_name =  ~"[^),=]*"
+tmp_dflt = ~"[,=][^)]*"?
+tmp_name_curly =  ~"[^},=]*"
+tmp_dflt_curly = ~"[,=][^}]*"?
 tmp_r = ")"
+tmp_r_curly = "}"
 literal = ( ~"[^$]*")
 """)
 
@@ -17,31 +25,60 @@ literal = ( ~"[^$]*")
 @attr.s
 class Template:
     val = attr.ib()
-    keys = attr.ib()
+    sig = attr.ib()
+    fmt_func = attr.ib()
 
 
 class TemplateWalker(NodeVisitor):
     def visit_str(self, node, visited_children):
-        keys = set()
+        parameters = []
         out = []
         for typ, val, key in visited_children:
             if typ == 'T':
-                keys.add(key)
+                key, dflt = key
+                parameters.append(Parameter(name=key,
+                                            kind=Parameter.KEYWORD_ONLY,
+                                            default=dflt, annotation=str))
             out.append(val)
-        return Template(val=''.join(out), keys=keys)
+
+        template = ''.join(out)
+        sig = Signature(parameters, return_annotation=str)
+
+        def format(**kwargs):
+            b = sig.bind(**kwargs)
+            b.apply_defaults()
+            return template.format(**b.kwargs)
+
+        return Template(val=template, sig=sig, fmt_func=format)
 
     def visit_part(self, node, visited_children):
         child, = visited_children
         return child
 
     def visit_template(self, node, visited_children):
-        _, tmp, _ = visited_children
-        return 'T', '{{{}}}'.format(tmp), tmp
+        _, (name, dflt), _ = visited_children
+        return 'T', '{{{}}}'.format(name), (name, dflt)
+
+    visit_template_curly = visit_template
 
     def _base(self, node, visited_children):
         return node.text
 
-    visit_tmp_l = visit_tmp_r = visit_tmp_c = _base
+    visit_tmp_l = visit_tmp_r = _base
+    visit_tmp_name = visit_tmp_name_curly = _base
+    visit_tmp_l_curly = visit_tmp_r_curly = _base
+
+    def visit_tmp_dflt(self, node, visited_children):
+        if node.text:
+            return node.text[1:]
+        return Parameter.empty
+
+    visit_tmp_dflt_curly = visit_tmp_dflt
+
+    def visit_tmp_c(self, node, visited_children):
+        return visited_children
+
+    visit_tmp_c_curly = visit_tmp_c
 
     def visit_literal(self, node, visited_children):
         return 'L', node.text.replace('{', '{{').replace('}', '}}'), None
@@ -52,7 +89,7 @@ class TemplateWalker(NodeVisitor):
 
 db_grammar = Grammar(r"""
 db = (comment / record / include / free_alias / "\n")+
-record = (_ ("grecord" / "record") _ "(" _ ) rtype "," _ pv_name ")" _ "{" r_entry* "}"
+record = ( _ ("grecord" / "record") _ "(" _ ) rtype "," _ pv_name ")" _ "{" r_entry* "}"
 rtype = ~"[a-z]*"i
 r_entry = (field / alias / info / comment / include / "\n" / _)
 
@@ -71,7 +108,7 @@ f_name = ~"[A-Z0-9]*"i
 a_name = (~'"[^"]*"' / ~'[^)]*')
 i_name = (~"[A-Z0-9_]*"i / ~'"[^"]*"')
 
-comment = ~"#[^\r\n]*"
+comment = ~"\s*#[^\r\n]*"
 
 include = _ "include" _ include_fname _
 include_fname = ~'"[^"]*"'

@@ -1,0 +1,309 @@
+field	type	asl	initial	promptgroup	prompt	special	pp	interest	base	size	extra	menu
+A	DBF_NOACCESS	ASL0			"Value of Input A"	SPC_DBADDR		1			"void *a"	
+ACKS	DBF_MENU				"Alarm Ack Severity"	SPC_NOMOD		2				menuAlarmSevr
+ACKT	DBF_MENU		"YES"	GUI_ALARMS	"Alarm Ack Transient"	SPC_NOMOD		2				menuYesNo
+ASG	DBF_STRING			GUI_COMMON	"Access Security Group"	SPC_AS				29		
+ASP	DBF_NOACCESS				"Access Security Pvt"	SPC_NOMOD		4			"struct asgMember *asp"	
+B	DBF_NOACCESS	ASL0			"Value of Input B"	SPC_DBADDR		1			"void *b"	
+BKPT	DBF_NOACCESS				"Break Point"	SPC_NOMOD		1			"char bkpt"	
+BRSV	DBF_MENU			GUI_SUB	"Bad Return Severity"		TRUE	1				menuAlarmSevr
+C	DBF_NOACCESS	ASL0			"Value of Input C"	SPC_DBADDR		1			"void *c"	
+D	DBF_NOACCESS	ASL0			"Value of Input D"	SPC_DBADDR		1			"void *d"	
+DESC	DBF_STRING			GUI_COMMON	"Descriptor"					41		
+DISA	DBF_SHORT				"Disable"							
+DISP	DBF_UCHAR				"Disable putField"							
+DISS	DBF_MENU			GUI_SCAN	"Disable Alarm Sevrty"			1				menuAlarmSevr
+DISV	DBF_SHORT		"1"	GUI_SCAN	"Disable Value"							
+DPVT	DBF_NOACCESS				"Device Private"	SPC_NOMOD		4			"void             *dpvt"	
+DSET	DBF_NOACCESS				"DSET address"	SPC_NOMOD		4			"struct dset      *dset"	
+DTYP	DBF_DEVICE			GUI_LINKS	"Device Type"			1				
+E	DBF_NOACCESS	ASL0			"Value of Input E"	SPC_DBADDR		1			"void *e"	
+EFLG	DBF_MENU			GUI_OUTPUT	"Event Flag"			1				genSubEFLG
+EVNT	DBF_SHORT			GUI_SCAN	"Event Number"	SPC_SCAN		1				
+F	DBF_NOACCESS	ASL0			"Value of Input F"	SPC_DBADDR		1			"void *f"	
+FLNK	DBF_FWDLINK			GUI_LINKS	"Forward Process Link"			1				
+FTA	DBF_MENU			GUI_WAVE	"Type of A"	SPC_NOMOD		1				menuFtype
+FTB	DBF_MENU			GUI_WAVE	"Type of B"	SPC_NOMOD		1				menuFtype
+FTC	DBF_MENU			GUI_WAVE	"Type of C"	SPC_NOMOD		1				menuFtype
+FTD	DBF_MENU			GUI_WAVE	"Type of D"	SPC_NOMOD		1				menuFtype
+FTE	DBF_MENU			GUI_WAVE	"Type of E"	SPC_NOMOD		1				menuFtype
+FTF	DBF_MENU			GUI_WAVE	"Type of F"	SPC_NOMOD		1				menuFtype
+FTG	DBF_MENU			GUI_WAVE	"Type of G"	SPC_NOMOD		1				menuFtype
+FTH	DBF_MENU			GUI_WAVE	"Type of H"	SPC_NOMOD		1				menuFtype
+FTI	DBF_MENU			GUI_WAVE	"Type of I"	SPC_NOMOD		1				menuFtype
+FTJ	DBF_MENU			GUI_WAVE	"Type of J"	SPC_NOMOD		1				menuFtype
+FTK	DBF_MENU			GUI_WAVE	"Type of K"	SPC_NOMOD		1				menuFtype
+FTL	DBF_MENU			GUI_WAVE	"Type of L"	SPC_NOMOD		1				menuFtype
+FTM	DBF_MENU			GUI_WAVE	"Type of M"	SPC_NOMOD		1				menuFtype
+FTN	DBF_MENU			GUI_WAVE	"Type of N"	SPC_NOMOD		1				menuFtype
+FTO	DBF_MENU			GUI_WAVE	"Type of O"	SPC_NOMOD		1				menuFtype
+FTP	DBF_MENU			GUI_WAVE	"Type of P"	SPC_NOMOD		1				menuFtype
+FTQ	DBF_MENU			GUI_WAVE	"Type of Q"	SPC_NOMOD		1				menuFtype
+FTR	DBF_MENU			GUI_WAVE	"Type of R"	SPC_NOMOD		1				menuFtype
+FTS	DBF_MENU			GUI_WAVE	"Type of S"	SPC_NOMOD		1				menuFtype
+FTT	DBF_MENU			GUI_WAVE	"Type of T"	SPC_NOMOD		1				menuFtype
+FTU	DBF_MENU			GUI_WAVE	"Type of U"	SPC_NOMOD		1				menuFtype
+FTVA	DBF_MENU			GUI_WAVE	"Type of VALA"	SPC_NOMOD		1				menuFtype
+FTVB	DBF_MENU			GUI_WAVE	"Type of VALB"	SPC_NOMOD		1				menuFtype
+FTVC	DBF_MENU			GUI_WAVE	"Type of VALC"	SPC_NOMOD		1				menuFtype
+FTVD	DBF_MENU			GUI_WAVE	"Type of VALD"	SPC_NOMOD		1				menuFtype
+FTVE	DBF_MENU			GUI_WAVE	"Type of VALE"	SPC_NOMOD		1				menuFtype
+FTVF	DBF_MENU			GUI_WAVE	"Type of VALF"	SPC_NOMOD		1				menuFtype
+FTVG	DBF_MENU			GUI_WAVE	"Type of VALG"	SPC_NOMOD		1				menuFtype
+FTVH	DBF_MENU			GUI_WAVE	"Type of VALH"	SPC_NOMOD		1				menuFtype
+FTVI	DBF_MENU			GUI_WAVE	"Type of VALI"	SPC_NOMOD		1				menuFtype
+FTVJ	DBF_MENU			GUI_WAVE	"Type of VALJ"	SPC_NOMOD		1				menuFtype
+FTVK	DBF_MENU			GUI_WAVE	"Type of VALK"	SPC_NOMOD		1				menuFtype
+FTVL	DBF_MENU			GUI_WAVE	"Type of VALL"	SPC_NOMOD		1				menuFtype
+FTVM	DBF_MENU			GUI_WAVE	"Type of VALM"	SPC_NOMOD		1				menuFtype
+FTVN	DBF_MENU			GUI_WAVE	"Type of VALN"	SPC_NOMOD		1				menuFtype
+FTVO	DBF_MENU			GUI_WAVE	"Type of VALO"	SPC_NOMOD		1				menuFtype
+FTVP	DBF_MENU			GUI_WAVE	"Type of VALP"	SPC_NOMOD		1				menuFtype
+FTVQ	DBF_MENU			GUI_WAVE	"Type of VALQ"	SPC_NOMOD		1				menuFtype
+FTVR	DBF_MENU			GUI_WAVE	"Type of VALR"	SPC_NOMOD		1				menuFtype
+FTVS	DBF_MENU			GUI_WAVE	"Type of VALS"	SPC_NOMOD		1				menuFtype
+FTVT	DBF_MENU			GUI_WAVE	"Type of VALT"	SPC_NOMOD		1				menuFtype
+FTVU	DBF_MENU			GUI_WAVE	"Type of VALU"	SPC_NOMOD		1				menuFtype
+G	DBF_NOACCESS	ASL0			"Value of Input G"	SPC_DBADDR		1			"void *g"	
+H	DBF_NOACCESS	ASL0			"Value of Input H"	SPC_DBADDR		1			"void *h"	
+I	DBF_NOACCESS	ASL0			"Value of Input I"	SPC_DBADDR		1			"void *i"	
+INAM	DBF_STRING			GUI_SUB	"Init Routine Name"	SPC_NOMOD		1		40		
+INPA	DBF_INLINK			GUI_INPUTS	"Input Link A"	SPC_NOMOD		1				
+INPB	DBF_INLINK			GUI_INPUTS	"Input Link B"	SPC_NOMOD		1				
+INPC	DBF_INLINK			GUI_INPUTS	"Input Link C"	SPC_NOMOD		1				
+INPD	DBF_INLINK			GUI_INPUTS	"Input Link D"	SPC_NOMOD		1				
+INPE	DBF_INLINK			GUI_INPUTS	"Input Link E"	SPC_NOMOD		1				
+INPF	DBF_INLINK			GUI_INPUTS	"Input Link F"	SPC_NOMOD		1				
+INPG	DBF_INLINK			GUI_INPUTS	"Input Link G"	SPC_NOMOD		1				
+INPH	DBF_INLINK			GUI_INPUTS	"Input Link H"	SPC_NOMOD		1				
+INPI	DBF_INLINK			GUI_INPUTS	"Input Link I"	SPC_NOMOD		1				
+INPJ	DBF_INLINK			GUI_INPUTS	"Input Link J"	SPC_NOMOD		1				
+INPK	DBF_INLINK			GUI_INPUTS	"Input Link K"	SPC_NOMOD		1				
+INPL	DBF_INLINK			GUI_INPUTS	"Input Link L"	SPC_NOMOD		1				
+INPM	DBF_INLINK			GUI_INPUTS	"Input Link M"	SPC_NOMOD		1				
+INPN	DBF_INLINK			GUI_INPUTS	"Input Link N"	SPC_NOMOD		1				
+INPO	DBF_INLINK			GUI_INPUTS	"Input Link O"	SPC_NOMOD		1				
+INPP	DBF_INLINK			GUI_INPUTS	"Input Link P"	SPC_NOMOD		1				
+INPQ	DBF_INLINK			GUI_INPUTS	"Input Link Q"	SPC_NOMOD		1				
+INPR	DBF_INLINK			GUI_INPUTS	"Input Link R"	SPC_NOMOD		1				
+INPS	DBF_INLINK			GUI_INPUTS	"Input Link S"	SPC_NOMOD		1				
+INPT	DBF_INLINK			GUI_INPUTS	"Input Link T"	SPC_NOMOD		1				
+INPU	DBF_INLINK			GUI_INPUTS	"Input Link U"	SPC_NOMOD		1				
+J	DBF_NOACCESS	ASL0			"Value of Input J"	SPC_DBADDR	TRUE	1			"void *j"	
+K	DBF_NOACCESS	ASL0			"Value of Input K"	SPC_DBADDR		1			"void *k"	
+L	DBF_NOACCESS	ASL0			"Value of Input L"	SPC_DBADDR		1			"void *l"	
+LCNT	DBF_UCHAR				"Lock Count"	SPC_NOMOD		2				
+LFLG	DBF_MENU			GUI_OUTPUT	"Link Flag"			1				genSubLFLG
+LSET	DBF_NOACCESS				"Lock Set"	SPC_NOMOD		4			"struct lockRecord *lset"	
+M	DBF_NOACCESS	ASL0			"Value of Input M"	SPC_DBADDR		1			"void *m"	
+MLIS	DBF_NOACCESS				"Monitor List"	SPC_NOMOD		4			"ELLLIST          mlis"	
+MLOK	DBF_NOACCESS				"Monitor lock"	SPC_NOMOD		4			"epicsMutexId     mlok"	
+N	DBF_NOACCESS	ASL0			"Value of Input N"	SPC_DBADDR		1			"void *n"	
+NAME	DBF_STRING				"Record Name"	SPC_NOMOD				61		
+NOA	DBF_ULONG		"1"	GUI_WAVE	"No. in A"	SPC_NOMOD		1				
+NOB	DBF_ULONG		"1"	GUI_WAVE	"No. in B"	SPC_NOMOD		1				
+NOC	DBF_ULONG		"1"	GUI_WAVE	"No. in C"	SPC_NOMOD		1				
+NOD	DBF_ULONG		"1"	GUI_WAVE	"No. in D"	SPC_NOMOD		1				
+NOE	DBF_ULONG		"1"	GUI_WAVE	"No. in E"	SPC_NOMOD		1				
+NOF	DBF_ULONG		"1"	GUI_WAVE	"No. in F"	SPC_NOMOD		1				
+NOG	DBF_ULONG		"1"	GUI_WAVE	"No. in G"	SPC_NOMOD		1				
+NOH	DBF_ULONG		"1"	GUI_WAVE	"No. in H"	SPC_NOMOD		1				
+NOI	DBF_ULONG		"1"	GUI_WAVE	"No. in I"	SPC_NOMOD		1				
+NOJ	DBF_ULONG		"1"	GUI_WAVE	"No. in J"	SPC_NOMOD		1				
+NOK	DBF_ULONG		"1"	GUI_WAVE	"No. in K"	SPC_NOMOD		1				
+NOL	DBF_ULONG		"1"	GUI_WAVE	"No. in L"	SPC_NOMOD		1				
+NOM	DBF_ULONG		"1"	GUI_WAVE	"No. in M"	SPC_NOMOD		1				
+NON	DBF_ULONG		"1"	GUI_WAVE	"No. in N"	SPC_NOMOD		1				
+NOO	DBF_ULONG		"1"	GUI_WAVE	"No. in O"	SPC_NOMOD		1				
+NOP	DBF_ULONG		"1"	GUI_WAVE	"No. in P"	SPC_NOMOD		1				
+NOQ	DBF_ULONG		"1"	GUI_WAVE	"No. in Q"	SPC_NOMOD		1				
+NOR	DBF_ULONG		"1"	GUI_WAVE	"No. in R"	SPC_NOMOD		1				
+NOS	DBF_ULONG		"1"	GUI_WAVE	"No. in S"	SPC_NOMOD		1				
+NOT	DBF_ULONG		"1"	GUI_WAVE	"No. in T"	SPC_NOMOD		1				
+NOU	DBF_ULONG		"1"	GUI_WAVE	"No. in U"	SPC_NOMOD		1				
+NOVA	DBF_ULONG		"1"	GUI_WAVE	"No. in VALA"	SPC_NOMOD		1				
+NOVB	DBF_ULONG		"1"	GUI_WAVE	"No. in VALB"	SPC_NOMOD		1				
+NOVC	DBF_ULONG		"1"	GUI_WAVE	"No. in VALC"	SPC_NOMOD		1				
+NOVD	DBF_ULONG		"1"	GUI_WAVE	"No. in VALD"	SPC_NOMOD		1				
+NOVE	DBF_ULONG		"1"	GUI_WAVE	"No. in VALE"	SPC_NOMOD		1				
+NOVF	DBF_ULONG		"1"	GUI_WAVE	"No. in VALF"	SPC_NOMOD		1				
+NOVG	DBF_ULONG		"1"	GUI_WAVE	"No. in VALG"	SPC_NOMOD		1				
+NOVH	DBF_ULONG		"1"	GUI_WAVE	"No. in VAlH"	SPC_NOMOD		1				
+NOVI	DBF_ULONG		"1"	GUI_WAVE	"No. in VALI"	SPC_NOMOD		1				
+NOVJ	DBF_ULONG		"1"	GUI_WAVE	"No. in VALJ"	SPC_NOMOD		1				
+NOVK	DBF_ULONG		"1"	GUI_WAVE	"No. in VALK"	SPC_NOMOD		1				
+NOVL	DBF_ULONG		"1"	GUI_WAVE	"No. in VALL"	SPC_NOMOD		1				
+NOVM	DBF_ULONG		"1"	GUI_WAVE	"No. in VALM"	SPC_NOMOD		1				
+NOVN	DBF_ULONG		"1"	GUI_WAVE	"No. in VALN"	SPC_NOMOD		1				
+NOVO	DBF_ULONG		"1"	GUI_WAVE	"No. in VALO"	SPC_NOMOD		1				
+NOVP	DBF_ULONG		"1"	GUI_WAVE	"No. in VALP"	SPC_NOMOD		1				
+NOVQ	DBF_ULONG		"1"	GUI_WAVE	"No. in VALQ"	SPC_NOMOD		1				
+NOVR	DBF_ULONG		"1"	GUI_WAVE	"No. in VALR"	SPC_NOMOD		1				
+NOVS	DBF_ULONG		"1"	GUI_WAVE	"No. in VALS"	SPC_NOMOD		1				
+NOVT	DBF_ULONG		"1"	GUI_WAVE	"No. in VALT"	SPC_NOMOD		1				
+NOVU	DBF_ULONG		"1"	GUI_WAVE	"No. in VALU"	SPC_NOMOD		1				
+NSEV	DBF_MENU				"New Alarm Severity"	SPC_NOMOD		2				menuAlarmSevr
+NSTA	DBF_MENU				"New Alarm Status"	SPC_NOMOD		2				menuAlarmStat
+O	DBF_NOACCESS	ASL0			"Value of Input O"	SPC_DBADDR		1			"void *o"	
+ONAM	DBF_STRING			GUI_SUB	"Old Subroutine Name"	SPC_NOMOD		1		40		
+OSAD	DBF_LONG				"Old Subr. Address"	SPC_NOMOD		1				
+OUTA	DBF_OUTLINK			GUI_OUTPUT	"Output Link A"	SPC_NOMOD		1				
+OUTB	DBF_OUTLINK			GUI_OUTPUT	"Output Link B"	SPC_NOMOD		1				
+OUTC	DBF_OUTLINK			GUI_OUTPUT	"Output Link C"	SPC_NOMOD		1				
+OUTD	DBF_OUTLINK			GUI_OUTPUT	"Output Link D"	SPC_NOMOD		1				
+OUTE	DBF_OUTLINK			GUI_OUTPUT	"Output Link E"	SPC_NOMOD		1				
+OUTF	DBF_OUTLINK			GUI_OUTPUT	"Output Link F"	SPC_NOMOD		1				
+OUTG	DBF_OUTLINK			GUI_OUTPUT	"Output Link G"	SPC_NOMOD		1				
+OUTH	DBF_OUTLINK			GUI_OUTPUT	"Output Link H"	SPC_NOMOD		1				
+OUTI	DBF_OUTLINK			GUI_OUTPUT	"Output Link I"	SPC_NOMOD		1				
+OUTJ	DBF_OUTLINK			GUI_OUTPUT	"Output Link J"	SPC_NOMOD		1				
+OUTK	DBF_OUTLINK			GUI_OUTPUT	"Output Link K"	SPC_NOMOD		1				
+OUTL	DBF_OUTLINK			GUI_OUTPUT	"Output Link L"	SPC_NOMOD		1				
+OUTM	DBF_OUTLINK			GUI_OUTPUT	"Output Link M"	SPC_NOMOD		1				
+OUTN	DBF_OUTLINK			GUI_OUTPUT	"Output Link N"	SPC_NOMOD		1				
+OUTO	DBF_OUTLINK			GUI_OUTPUT	"Output Link O"	SPC_NOMOD		1				
+OUTP	DBF_OUTLINK			GUI_OUTPUT	"Output Link P"	SPC_NOMOD		1				
+OUTQ	DBF_OUTLINK			GUI_OUTPUT	"Output Link Q"	SPC_NOMOD		1				
+OUTR	DBF_OUTLINK			GUI_OUTPUT	"Output Link R"	SPC_NOMOD		1				
+OUTS	DBF_OUTLINK			GUI_OUTPUT	"Output Link S"	SPC_NOMOD		1				
+OUTT	DBF_OUTLINK			GUI_OUTPUT	"Output Link T"	SPC_NOMOD		1				
+OUTU	DBF_OUTLINK			GUI_OUTPUT	"Output Link U"	SPC_NOMOD		1				
+OVAL	DBF_LONG				"Old return value"	SPC_NOMOD		1				
+OVLA	DBF_NOACCESS	ASL0			"Old Output A"	SPC_NOMOD		1			"void *ovla"	
+OVLB	DBF_NOACCESS	ASL0			"Old Output B"	SPC_NOMOD		1			"void *ovlb"	
+OVLC	DBF_NOACCESS	ASL0			"Old Output C"	SPC_NOMOD		1			"void *ovlc"	
+OVLD	DBF_NOACCESS	ASL0			"Old Output D"	SPC_NOMOD		1			"void *ovld"	
+OVLE	DBF_NOACCESS	ASL0			"Old Output E"	SPC_NOMOD		1			"void *ovle"	
+OVLF	DBF_NOACCESS	ASL0			"Old Output F"	SPC_NOMOD		1			"void *ovlf"	
+OVLG	DBF_NOACCESS	ASL0			"Old Output G"	SPC_NOMOD		1			"void *ovlg"	
+OVLH	DBF_NOACCESS	ASL0			"Old Output H"	SPC_NOMOD		1			"void *ovlh"	
+OVLI	DBF_NOACCESS	ASL0			"Old Output I"	SPC_NOMOD		1			"void *ovli"	
+OVLJ	DBF_NOACCESS	ASL0			"Old Output J"	SPC_NOMOD		1			"void *ovlj"	
+OVLK	DBF_NOACCESS	ASL0			"Old Output K"	SPC_NOMOD		1			"void *ovlk"	
+OVLL	DBF_NOACCESS	ASL0			"Old Output L"	SPC_NOMOD		1			"void *ovll"	
+OVLM	DBF_NOACCESS	ASL0			"Old Output M"	SPC_NOMOD		1			"void *ovlm"	
+OVLN	DBF_NOACCESS	ASL0			"Old Output N"	SPC_NOMOD		1			"void *ovln"	
+OVLO	DBF_NOACCESS	ASL0			"Old Output O"	SPC_NOMOD		1			"void *ovlo"	
+OVLP	DBF_NOACCESS	ASL0			"Old Output P"	SPC_NOMOD		1			"void *ovlp"	
+OVLQ	DBF_NOACCESS	ASL0			"Old Output Q"	SPC_NOMOD		1			"void *ovlq"	
+OVLR	DBF_NOACCESS	ASL0			"Old Output R"	SPC_NOMOD		1			"void *ovlr"	
+OVLS	DBF_NOACCESS	ASL0			"Old Output S"	SPC_NOMOD		1			"void *ovls"	
+OVLT	DBF_NOACCESS	ASL0			"Old Output T"	SPC_NOMOD		1			"void *ovlt"	
+OVLU	DBF_NOACCESS	ASL0			"Old Output U"	SPC_NOMOD		1			"void *ovlu"	
+P	DBF_NOACCESS	ASL0			"Value of Input P"	SPC_DBADDR		1			"void *p"	
+PACT	DBF_UCHAR				"Record active"	SPC_NOMOD		1				
+PHAS	DBF_SHORT			GUI_SCAN	"Scan Phase"	SPC_SCAN		1				
+PINI	DBF_MENU			GUI_SCAN	"Process at iocInit"			1				menuPini
+PPN	DBF_NOACCESS				"addr of PUTNOTIFY"	SPC_NOMOD		4			"struct putNotify *ppn"	
+PPNR	DBF_NOACCESS				"pputNotifyRecord"	SPC_NOMOD		4			"struct putNotifyRecord *ppnr"	
+PREC	DBF_SHORT			GUI_DISPLAY	"Display Precision"			1				
+PRIO	DBF_MENU			GUI_SCAN	"Scheduling Priority"	SPC_SCAN		1				menuPriority
+PROC	DBF_UCHAR				"Force Processing"		TRUE	3				
+PUTF	DBF_UCHAR				"dbPutField process"	SPC_NOMOD		1				
+Q	DBF_NOACCESS	ASL0			"Value of Input Q"	SPC_DBADDR		1			"void *q"	
+R	DBF_NOACCESS	ASL0			"Value of Input R"	SPC_DBADDR		1			"void *r"	
+RDES	DBF_NOACCESS				"Address of dbRecordType"	SPC_NOMOD		4			"struct dbRecordType *rdes"	
+RPRO	DBF_UCHAR				"Reprocess "	SPC_NOMOD		1				
+RSET	DBF_NOACCESS				"Address of RSET"	SPC_NOMOD		4			"struct rset      *rset"	
+S	DBF_NOACCESS	ASL0			"Value of Input S"	SPC_DBADDR		1			"void *s"	
+SADR	DBF_LONG				"Subroutine Address"	SPC_NOMOD		1				
+SCAN	DBF_MENU			GUI_SCAN	"Scan Mechanism"	SPC_SCAN		1				menuScan
+SDIS	DBF_INLINK			GUI_SCAN	"Scanning Disable"			1				
+SEVR	DBF_MENU		"INVALID"		"Alarm Severity"	SPC_NOMOD						menuAlarmSevr
+SNAM	DBF_STRING			GUI_SUB	"Process Subr. Name"	100		1		40		
+SPVT	DBF_NOACCESS				"Scan Private"	SPC_NOMOD		4			"struct scan_element *spvt"	
+STAT	DBF_MENU		"UDF"		"Alarm Status"	SPC_NOMOD						menuAlarmStat
+SUBL	DBF_INLINK			GUI_INPUTS	"Subroutine Input Link"	SPC_NOMOD		1				
+T	DBF_NOACCESS	ASL0			"Value of Input T"	SPC_DBADDR		1			"void *t"	
+TIME	DBF_NOACCESS				"Time"	SPC_NOMOD		2			"epicsTimeStamp   time"	
+TOVA	DBF_ULONG		"1"	GUI_WAVE	"Total bytes for VALA"	SPC_NOMOD		1				
+TOVB	DBF_ULONG		"1"	GUI_WAVE	"Total bytes for VALB"	SPC_NOMOD		1				
+TOVC	DBF_ULONG		"1"	GUI_WAVE	"Total bytes for VALC"	SPC_NOMOD		1				
+TOVD	DBF_ULONG		"1"	GUI_WAVE	"Total bytes for VALD"	SPC_NOMOD		1				
+TOVE	DBF_ULONG		"1"	GUI_WAVE	"Total bytes for VALE"	SPC_NOMOD		1				
+TOVF	DBF_ULONG		"1"	GUI_WAVE	"Total bytes for VALF"	SPC_NOMOD		1				
+TOVG	DBF_ULONG		"1"	GUI_WAVE	"Total bytes for VALG"	SPC_NOMOD		1				
+TOVH	DBF_ULONG		"1"	GUI_WAVE	"Total bytes for VAlH"	SPC_NOMOD		1				
+TOVI	DBF_ULONG		"1"	GUI_WAVE	"Total bytes for VALI"	SPC_NOMOD		1				
+TOVJ	DBF_ULONG		"1"	GUI_WAVE	"Total bytes for VALJ"	SPC_NOMOD		1				
+TOVK	DBF_ULONG		"1"	GUI_WAVE	"Total bytes for VALK"	SPC_NOMOD		1				
+TOVL	DBF_ULONG		"1"	GUI_WAVE	"Total bytes for VALL"	SPC_NOMOD		1				
+TOVM	DBF_ULONG		"1"	GUI_WAVE	"Total bytes for VALM"	SPC_NOMOD		1				
+TOVN	DBF_ULONG		"1"	GUI_WAVE	"Total bytes for VALN"	SPC_NOMOD		1				
+TOVO	DBF_ULONG		"1"	GUI_WAVE	"Total bytes for VALO"	SPC_NOMOD		1				
+TOVP	DBF_ULONG		"1"	GUI_WAVE	"Total bytes for VALP"	SPC_NOMOD		1				
+TOVQ	DBF_ULONG		"1"	GUI_WAVE	"Total bytes for VALQ"	SPC_NOMOD		1				
+TOVR	DBF_ULONG		"1"	GUI_WAVE	"Total bytes for VALR"	SPC_NOMOD		1				
+TOVS	DBF_ULONG		"1"	GUI_WAVE	"Total bytes for VALS"	SPC_NOMOD		1				
+TOVT	DBF_ULONG		"1"	GUI_WAVE	"Total bytes for VALT"	SPC_NOMOD		1				
+TOVU	DBF_ULONG		"1"	GUI_WAVE	"Total bytes for VALU"	SPC_NOMOD		1				
+TPRO	DBF_UCHAR				"Trace Processing"							
+TSE	DBF_SHORT			GUI_SCAN	"Time Stamp Event"			1				
+TSEL	DBF_INLINK			GUI_SCAN	"Time Stamp Link"			1				
+U	DBF_NOACCESS	ASL0			"Value of Input U"	SPC_DBADDR		1			"void *u"	
+UDF	DBF_UCHAR		"1"	GUI_COMMON	"Undefined"		TRUE	1				
+UFA	DBF_STRING			GUI_SUB	"Input Structure A"	SPC_NOMOD		1		40		
+UFB	DBF_STRING			GUI_SUB	"Input Structure B"	SPC_NOMOD		1		40		
+UFC	DBF_STRING			GUI_SUB	"Input Structure C"	SPC_NOMOD		1		40		
+UFD	DBF_STRING			GUI_SUB	"Input Structure D"	SPC_NOMOD		1		40		
+UFE	DBF_STRING			GUI_SUB	"Input Structure E"	SPC_NOMOD		1		40		
+UFF	DBF_STRING			GUI_SUB	"Input Structure F"	SPC_NOMOD		1		40		
+UFG	DBF_STRING			GUI_SUB	"Input Structure G"	SPC_NOMOD		1		40		
+UFH	DBF_STRING			GUI_SUB	"Input Structure H"	SPC_NOMOD		1		40		
+UFI	DBF_STRING			GUI_SUB	"Input Structure I"	SPC_NOMOD		1		40		
+UFJ	DBF_STRING			GUI_SUB	"Input Structure J"	SPC_NOMOD		1		40		
+UFK	DBF_STRING			GUI_SUB	"Input Structure K"	SPC_NOMOD		1		40		
+UFL	DBF_STRING			GUI_SUB	"Input Structure L"	SPC_NOMOD		1		40		
+UFM	DBF_STRING			GUI_SUB	"Input Structure M"	SPC_NOMOD		1		40		
+UFN	DBF_STRING			GUI_SUB	"Input Structure N"	SPC_NOMOD		1		40		
+UFO	DBF_STRING			GUI_SUB	"Input Structure O"	SPC_NOMOD		1		40		
+UFP	DBF_STRING			GUI_SUB	"Input Structure P"	SPC_NOMOD		1		40		
+UFQ	DBF_STRING			GUI_SUB	"Input Structure Q"	SPC_NOMOD		1		40		
+UFR	DBF_STRING			GUI_SUB	"Input Structure R"	SPC_NOMOD		1		40		
+UFS	DBF_STRING			GUI_SUB	"Input Structure S"	SPC_NOMOD		1		40		
+UFT	DBF_STRING			GUI_SUB	"Input Structure T"	SPC_NOMOD		1		40		
+UFU	DBF_STRING			GUI_SUB	"Input Structure U"	SPC_NOMOD		1		40		
+UFVA	DBF_STRING			GUI_SUB	"Output Structure A"	SPC_NOMOD		1		40		
+UFVB	DBF_STRING			GUI_SUB	"Output Structure B"	SPC_NOMOD		1		40		
+UFVC	DBF_STRING			GUI_SUB	"Output Structure C"	SPC_NOMOD		1		40		
+UFVD	DBF_STRING			GUI_SUB	"Output Structure D"	SPC_NOMOD		1		40		
+UFVE	DBF_STRING			GUI_SUB	"Output Structure E"	SPC_NOMOD		1		40		
+UFVF	DBF_STRING			GUI_SUB	"Output Structure F"	SPC_NOMOD		1		40		
+UFVG	DBF_STRING			GUI_SUB	"Output Structure G"	SPC_NOMOD		1		40		
+UFVH	DBF_STRING			GUI_SUB	"Output Structure H"	SPC_NOMOD		1		40		
+UFVI	DBF_STRING			GUI_SUB	"Output Structure I"	SPC_NOMOD		1		40		
+UFVJ	DBF_STRING			GUI_SUB	"Output Structure J"	SPC_NOMOD		1		40		
+UFVK	DBF_STRING			GUI_SUB	"Output Structure K"	SPC_NOMOD		1		40		
+UFVL	DBF_STRING			GUI_SUB	"Output Structure L"	SPC_NOMOD		1		40		
+UFVM	DBF_STRING			GUI_SUB	"Output Structure M"	SPC_NOMOD		1		40		
+UFVN	DBF_STRING			GUI_SUB	"Output Structure N"	SPC_NOMOD		1		40		
+UFVO	DBF_STRING			GUI_SUB	"Output Structure O"	SPC_NOMOD		1		40		
+UFVP	DBF_STRING			GUI_SUB	"Output Structure P"	SPC_NOMOD		1		40		
+UFVQ	DBF_STRING			GUI_SUB	"Output Structure Q"	SPC_NOMOD		1		40		
+UFVR	DBF_STRING			GUI_SUB	"Output Structure R"	SPC_NOMOD		1		40		
+UFVS	DBF_STRING			GUI_SUB	"Output Structure S"	SPC_NOMOD		1		40		
+UFVT	DBF_STRING			GUI_SUB	"Output Structure T"	SPC_NOMOD		1		40		
+UFVU	DBF_STRING			GUI_SUB	"Output Structure U"	SPC_NOMOD		1		40		
+VAL	DBF_LONG	ASL0			"Subr. return value"							
+VALA	DBF_NOACCESS	ASL0			"Value of Output A"	SPC_DBADDR		1			"void *vala"	
+VALB	DBF_NOACCESS	ASL0			"Value of Output B"	SPC_DBADDR		1			"void *valb"	
+VALC	DBF_NOACCESS	ASL0			"Value of Output C"	SPC_DBADDR		1			"void *valc"	
+VALD	DBF_NOACCESS	ASL0			"Value of Output D"	SPC_DBADDR		1			"void *vald"	
+VALE	DBF_NOACCESS	ASL0			"Value of Output E"	SPC_DBADDR		1			"void *vale"	
+VALF	DBF_NOACCESS	ASL0			"Value of Output F"	SPC_DBADDR		1			"void *valf"	
+VALG	DBF_NOACCESS	ASL0			"Value of Output G"	SPC_DBADDR		1			"void *valg"	
+VALH	DBF_NOACCESS	ASL0			"Value of Output H"	SPC_DBADDR		1			"void *valh"	
+VALI	DBF_NOACCESS	ASL0			"Value of Output I"	SPC_DBADDR		1			"void *vali"	
+VALJ	DBF_NOACCESS	ASL0			"Value of Output J"	SPC_DBADDR		1			"void *valj"	
+VALK	DBF_NOACCESS	ASL0			"Value of Output K"	SPC_DBADDR		1			"void *valk"	
+VALL	DBF_NOACCESS	ASL0			"Value of Output L"	SPC_DBADDR		1			"void *vall"	
+VALM	DBF_NOACCESS	ASL0			"Value of Output M"	SPC_DBADDR		1			"void *valm"	
+VALN	DBF_NOACCESS	ASL0			"Value of Output N"	SPC_DBADDR		1			"void *valn"	
+VALO	DBF_NOACCESS	ASL0			"Value of Output O"	SPC_DBADDR		1			"void *valo"	
+VALP	DBF_NOACCESS	ASL0			"Value of Output P"	SPC_DBADDR		1			"void *valp"	
+VALQ	DBF_NOACCESS	ASL0			"Value of Output Q"	SPC_DBADDR		1			"void *valq"	
+VALR	DBF_NOACCESS	ASL0			"Value of Output R"	SPC_DBADDR		1			"void *valr"	
+VALS	DBF_NOACCESS	ASL0			"Value of Output S"	SPC_DBADDR		1			"void *vals"	
+VALT	DBF_NOACCESS	ASL0			"Value of Output T"	SPC_DBADDR		1			"void *valt"	
+VALU	DBF_NOACCESS	ASL0			"Value of Output U"	SPC_DBADDR		1			"void *valu"	
+VERS	DBF_DOUBLE			GUI_DISPLAY	"Version Number"	SPC_NOMOD		1				
