@@ -12,9 +12,9 @@ cache:
 
 matrix:
   include:
-    #  - python: 2.7  # ophyd is python 3+ only at the moment
   - python: 3.5
   - python: 3.6
+  - python: "nightly"
 
 before_install:
   - export DOCKER0_IP=$(/sbin/ifconfig docker0 |grep 'inet addr' | sed -e 's/.*addr:\([^ ]*\).*/\1/')
