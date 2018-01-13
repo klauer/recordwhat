@@ -54,8 +54,7 @@ before_install:
 
 install:
   - conda install epics-base
-  - pip install pytest pytest-cov codecov graphviz pygraphviz parsimonious attrs networkx pyepics prettytable pandas numpy ipython
-  - 'pip install https://github.com/NSLS-II/ophyd/zipball/master#egg=ophyd'
+  - pip install pytest pytest-cov codecov graphviz pygraphviz parsimonious attrs networkx pyepics prettytable pandas numpy ipython ophyd
 
   - python setup.py develop
 
