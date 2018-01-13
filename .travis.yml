@@ -53,8 +53,11 @@ before_install:
   - source activate $CONDA_ENV
 
 install:
+  - export NOLIBCA=1
   - conda install epics-base
-  - pip install pytest pytest-cov codecov graphviz pygraphviz parsimonious attrs networkx pyepics prettytable pandas numpy ipython ophyd
+  - NOLIBCA=1 pip install --no-binary pyepics
+  - pip install pytest-cov codecov graphviz pygraphviz parsimonious attrs networkx pyepics prettytable pandas numpy ipython ophyd
+
 
   - python setup.py develop
 
