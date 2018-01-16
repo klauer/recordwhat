@@ -23,4 +23,5 @@ def stream_components(recs, nm_maker):
 
 root = Path('epics/areadetector/areaDetector/ADCore/ADApp/Db')
 recs = ingest_db_file(root / 'NDArrayBase.template', root)
-print(list(stream_components(recs, str.lower)))
+for l in stream_components(recs, str.lower):
+    print(f'    {l}')
