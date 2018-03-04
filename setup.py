@@ -9,5 +9,6 @@ setup(name='recordwhat',
       install_requires=['ophyd', 'parsimonious', 'graphviz', 'attrs', 'pandas',
                         'pyepics',
                         ],
+      package_data={'recordwhat': ['record_info/*.txt']},
       license='BSD',
       packages=find_packages())
