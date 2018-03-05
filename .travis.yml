@@ -12,9 +12,9 @@ cache:
 
 matrix:
   include:
-    #  - python: 2.7  # ophyd is python 3+ only at the moment
   - python: 3.5
   - python: 3.6
+  - python: "nightly"
 
 before_install:
   - export DOCKER0_IP=$(/sbin/ifconfig docker0 |grep 'inet addr' | sed -e 's/.*addr:\([^ ]*\).*/\1/')
@@ -53,9 +53,11 @@ before_install:
   - source activate $CONDA_ENV
 
 install:
+  - export NOLIBCA=1
   - conda install epics-base
-  - pip install pytest pytest-cov codecov graphviz pygraphviz parsimonious attrs networkx pyepics prettytable pandas numpy ipython
-  - 'pip install https://github.com/NSLS-II/ophyd/zipball/master#egg=ophyd'
+  - NOLIBCA=1 pip install --no-binary pyepics
+  - pip install pytest-cov codecov graphviz pygraphviz parsimonious attrs networkx pyepics prettytable pandas numpy ipython ophyd
+
 
   - python setup.py develop
 
