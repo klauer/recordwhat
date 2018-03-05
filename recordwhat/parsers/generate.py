@@ -223,6 +223,38 @@ def generate_all(info_path=record_info_path, dest_path=record_source_path):
                 print(line, file=f)
 
 
+def generate_menu(menu):
+    enum_name = menu.name
+    yield f'class {enum_name}(enum.IntEnum):'
+
+    remove_prefix = ''
+    for remove_prefix in [menu.name + '_', menu.name]:
+        for i, choice in enumerate(menu.choices):
+            name, text = choice.enum_name, choice.text
+            if (not name.startswith(remove_prefix) or
+                    name[len(remove_prefix)] in '0123456789_'):
+                break
+        else:
+            # found a prefix we can remove consistently
+            break
+    else:
+        remove_prefix = ''
+
+    choices = []
+    for i, choice in enumerate(menu.choices):
+        name, text = choice.enum_name, choice.text
+        name = name[len(remove_prefix):]
+        choices.append((name, text))
+        yield f'    {name} = {i}  # {text!r}'
+
+    yield f''
+
+    yield f'{enum_name}._strings = dict('
+    for name, text in choices:
+        yield f'    {name}={text!r},'
+    yield ')'
+
+
 if __name__ == '__main__':
     if input('Re-generate all records? [yn]') in ('Y', 'y'):
         generate_all()
