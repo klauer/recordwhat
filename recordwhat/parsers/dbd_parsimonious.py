@@ -368,23 +368,6 @@ def stream_dbd(rec, indent='    '):
                 continue
             if not v:
                 continue
-            yield indent*2 + '{}({})'.format(k, v)
+            yield indent * 2 + '{}({})'.format(k, v)
         yield indent + '}'
     yield '}'
-
-
-if __name__ == '__main__':
-    import os
-    from pprint import pprint
-    dbd_path = '~/.cache/epics/R3.15.5/base/dbd/softIoc.dbd'
-    with open(os.path.expanduser(dbd_path), 'rt') as f:
-        dbd_text = f.read()
-    p = dbd_grammar.parse(dbd_text)
-    records_and_menus = RecordWalker().visit(p)
-    menus = records_and_menus['menus']
-
-    from recordwhat.parsers.generate import generate_menu
-    for name, menu in menus.items():
-        print()
-        for line in generate_menu(menu):
-            print(line)
