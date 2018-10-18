@@ -12,8 +12,6 @@ cache:
 
 matrix:
   include:
-    #  - python: 2.7  # ophyd is python 3+ only at the moment
-  - python: 3.5
   - python: 3.6
 
 before_install:
@@ -23,12 +21,11 @@ before_install:
   - export EPICS_CA_MAX_ARRAY_BYTES=10000000
   - export DOCKERIMAGE="klauer/epics-docker"
   - export CONDA_ENV="testenv"
+  - export NOLIBCA=1
 
   - perl --version
-  # - git fetch --unshallow || /usr/bin/true
   - docker pull ${DOCKERIMAGE}
   - docker images
-  - docker ps -a
   - docker run -d -p $DOCKER0_IP:5064:5064/tcp -p $DOCKER0_IP:5065:5065/udp --name epics_iocs ${DOCKERIMAGE}
   - docker ps -a
 
@@ -47,19 +44,19 @@ before_install:
   - conda config --add channels conda-forge
   - conda config --add channels soft-matter
 
-
-  # MAKE THE CONDA RECIPE
   - conda create -n $CONDA_ENV python=$TRAVIS_PYTHON_VERSION
   - source activate $CONDA_ENV
 
 install:
+  - NOLIBCA=1 pip install --no-binary pyepics
   - conda install epics-base
-  - pip install pytest pytest-cov codecov graphviz pygraphviz parsimonious attrs networkx pyepics prettytable pandas numpy ipython
+  - pip install pytest pytest-cov codecov graphviz pygraphviz parsimonious attrs networkx prettytable pandas numpy ipython
   - 'pip install https://github.com/NSLS-II/ophyd/zipball/master#egg=ophyd'
+  # _really_, pyepics, we don't want your binaries...
+  - rm -rf $HOME/mc/envs/$CONDA_ENV/lib/python*/site-packages/epics/clibs/linux*
 
   - python setup.py develop
 
-  # setup some path environment variables for epics
   - export PATH=$PATH:$EPICS_BASE/bin/$EPICS_HOST_ARCH
   - export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$EPICS_BASE/lib/$EPICS_HOST_ARCH"
   - echo "PATH=$PATH"

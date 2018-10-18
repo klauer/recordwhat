@@ -223,6 +223,72 @@ def generate_all(info_path=record_info_path, dest_path=record_source_path):
                 print(line, file=f)
 
 
+def generate_menu(menu, *, base_class='enum.IntEnum'):
+    enum_name = menu.name
+    yield f'class {enum_name}({base_class}):'
+
+    remove_prefix = ''
+    for remove_prefix in [menu.name + '_', menu.name]:
+        for i, choice in enumerate(menu.choices):
+            name, text = choice.enum_name, choice.text
+            if (not name.startswith(remove_prefix) or
+                    name[len(remove_prefix)] in '0123456789_'):
+                break
+        else:
+            # found a prefix we can remove consistently
+            break
+    else:
+        remove_prefix = ''
+
+    choices = []
+    for i, choice in enumerate(menu.choices):
+        name, text = choice.enum_name, choice.text
+        name = name[len(remove_prefix):]
+        choices.append((name, text))
+        yield f'    {name} = {i}  # {text!r}'
+
+    yield f''
+    yield f''
+
+    yield f'{enum_name}._set_strings('
+    yield '    {'
+    for name, text in choices:
+        yield f'        {enum_name}.{name}: {text!r},'
+    yield '    }'
+    yield ')'
+
+
+def generate_menus(dbd_path='~/.cache/epics/R3.15.5/base/dbd/softIoc.dbd'):
+    with open(os.path.expanduser(dbd_path), 'rt') as f:
+        dbd_text = f.read()
+
+    from .dbd_parsimonious import dbd_grammar, RecordWalker
+    p = dbd_grammar.parse(dbd_text)
+    records_and_menus = RecordWalker().visit(p)
+    menus = records_and_menus['menus']
+
+    yield 'class Menu(enum.IntEnum):'
+    yield '    @classmethod'
+    yield '    def _set_strings(cls, value_to_string):'
+    yield '        cls._string_dict = value_to_string'
+    yield '        cls._string_tuple = tuple(value_to_string.values())'
+    yield ''
+    yield '    @classmethod'
+    yield '    def get_string_dict(cls):'
+    yield '        "Dict of menu_item to display_string"'
+    yield '        return cls._string_dict'
+    yield ''
+    yield '    @classmethod'
+    yield '    def get_string_tuple(cls):'
+    yield '        "Ordered tuple of menu display strings"'
+    yield '        return cls._string_tuple'
+
+    for name, menu in sorted(menus.items()):
+        yield ''
+        yield ''
+        yield from generate_menu(menu, base_class='Menu')
+
+
 if __name__ == '__main__':
     if input('Re-generate all records? [yn]') in ('Y', 'y'):
         generate_all()

@@ -38,7 +38,9 @@ special_val = ~'[^)]*'
 size_val = ~'[0-9]*'
 
 menu = "menu(" menu_name ")" _ "{" (choice / comment / "\n")* "}" "\n"
-choice = _ "choice(" ~"[^,]*" "," _ ~'"[^"]*"' ")\n"
+choice = _ "choice(" _ choice_enum_name _ "," _ choice_display _ ")\n"
+choice_enum_name = ~"[^,]*"
+choice_display = ~'"[^"]*"'
 menu_name = ~"[a-z0-9]*"i
 
 record_type = "recordtype(" rec_name ")" _ "{" (field / include /
@@ -96,13 +98,28 @@ class dbdRecordType:
     fields = attr.ib()
 
 
+@attr.s(frozen=True)
+class dbdMenuType:
+    name = attr.ib()
+    choices = attr.ib()
+
+
+@attr.s(frozen=True)
+class dbdMenuChoice:
+    enum_name = attr.ib()
+    text = attr.ib()
+
+
 class RecordWalker(NodeVisitor):
 
     def visit_dbd(self, node, visited_children):
         records = [c for c in visited_children
                    if isinstance(c, dbdRecordType)]
-
-        return {r.name: r for r in records}
+        menus = [c for c in visited_children
+                 if isinstance(c, dbdMenuType)]
+        return {'records': {r.name: r for r in records},
+                'menus': {m.name: m for m in menus},
+                }
 
     def visit_db_entry(self, node, visited_children):
         return visited_children[0]
@@ -171,13 +188,25 @@ class RecordWalker(NodeVisitor):
         ...
 
     def visit_menu(self, node, visited_children):
-        ...
+        choices = [choice_list[0]
+                   for choice_list in visited_children[5]
+                   if choice_list and isinstance(choice_list[0],
+                                                 dbdMenuChoice)]
+        name = visited_children[1]
+        return dbdMenuType(name=name, choices=choices)
 
     def visit_choice(self, node, visited_children):
-        ...
+        enum_name, text = [visited_children[i] for i in (3, -3)]
+        return dbdMenuChoice(enum_name=enum_name, text=text)
+
+    def visit_choice_enum_name(self, node, visited_children):
+        return node.text
+
+    def visit_choice_display(self, node, visited_children):
+        return node.text.strip('"')
 
     def visit_menu_name(self, node, visited_children):
-        ...
+        return node.text
 
     def visit_record_type(self, node, visited_children):
         _kw, name, _rp, _ws, _lc, innards, _rc = visited_children
@@ -339,6 +368,6 @@ def stream_dbd(rec, indent='    '):
                 continue
             if not v:
                 continue
-            yield indent*2 + '{}({})'.format(k, v)
+            yield indent * 2 + '{}({})'.format(k, v)
         yield indent + '}'
     yield '}'

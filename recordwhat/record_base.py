@@ -75,10 +75,14 @@ class RecordBase(Device):
 
     @classmethod
     def field_metadata(cls):
-        if not hasattr(cls, '_rtyp'):
+        if cls is RecordBase:
+            rtyp = 'base'  # field metadata recorded in base.txt
+        elif not hasattr(cls, '_rtyp'):
             raise ValueError('No associated record type')
-
-        rtyp = cls._rtyp
+        else:
+            # TODO class hierarchy could be more complex
+            yield from RecordBase.field_metadata()
+            rtyp = cls._rtyp
 
         field_to_md = load_info_file(rtyp)
         for attr, suffix, cpt in cls._record_attr_components():

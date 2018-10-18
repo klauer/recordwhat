@@ -1,24 +1,30 @@
 """
 Simple EPICS DBD parser that uses pyparsing
 
-NOTE: it would have been easier just to write a custom parser for the dbd files -- this
-      was just to try out pyparsing, really.
+NOTE: it would have been easier just to write a custom parser for the dbd files
+      -- this was just to try out pyparsing, really.
 
 Grabs all record information from dbd files and dumps them out into a text file
 with one field per line along with its associated properties
 
-Though it parses all of the dbds in base and synapps, it probably won't parse everything.
+Though it parses all of the dbds in base and synapps, it probably won't parse
+everything.
 
 TODO: breaktable syntax
 """
 
 from __future__ import print_function
 import os
-import sys
 import re
-from pyparsing import *
+# import pprint
+from pyparsing import (Group, Keyword, LineEnd, Optional, ParseException,
+                       Regex, SkipTo, Suppress, Word, ZeroOrMore, alphanums,
+                       alphas, pythonStyleComment, quotedString)
 
-LPAR,RPAR,LBRACK,RBRACK,LBRACE,RBRACE,SEMI,COMMA = [Suppress(c) for c in r"()[]{};,"]
+
+suppress_items = [Suppress(c) for c in r"()[]{};,"]
+LPAR, RPAR, LBRACK, RBRACK, LBRACE, RBRACE, SEMI, COMMA = suppress_items
+
 PERCENT = Regex(r'%')
 RECORDTYPE = Keyword("recordtype")
 DQUOTE = Regex(r'"')
@@ -28,7 +34,7 @@ integer = Regex(r"[+-]?\d+")
 char = Regex(r"'.'")
 float_ = Regex(r'\d+(\.\d*)?([eE]\d+)?')
 string_ = quotedString
-c_identifier = Word(alphas+"_", alphanums+"_") # valid C identifier
+c_identifier = Word(alphas+"_", alphanums+"_")  # valid C identifier
 PV = Word(alphanums + '_-:.[]<>;')
 RTYP = Word(alphanums)
 MENU_NAME = Word(alphanums + '_')
@@ -48,7 +54,7 @@ FUNCTION = Keyword('function')
 VARIABLE = Keyword('variable')
 BREAKTABLE = Keyword('breaktable')
 RECORD = Keyword('record')
-GRECORD = Keyword('grecord') # TODO not handled
+GRECORD = Keyword('grecord')  # TODO not handled
 INFO = Keyword('info')
 ALIAS = Keyword('alias')
 
@@ -112,7 +118,7 @@ GUI_TIMER = Keyword('GUI_TIMER')
 GUI_WAVE = Keyword('GUI_WAVE')
 GUI_SCAN = Keyword('GUI_SCAN')
 
-spc_int_greater_102 = integer # TODO
+spc_int_greater_102 = integer  # TODO
 SPC_NOMOD = Keyword('SPC_NOMOD')
 SPC_SCAN = Keyword('SPC_SCAN')
 SPC_ALARMACK = Keyword('SPC_ALARMACK')
@@ -143,15 +149,29 @@ FALSE = Keyword('FALSE')
 DECIMAL = Keyword('DECIMAL')
 HEX = Keyword('HEX')
 
-keyword = Group(RECORDTYPE | DEVICE | DRIVER | REGISTRAR | VARIABLE | BREAKTABLE)
-gui_group = Group(GUI_COMMON | GUI_ALARMS | GUI_BITS1 | GUI_BITS2 | GUI_CALC | GUI_CLOCK | GUI_COMPRESS | GUI_CONVERT | GUI_DISPLAY | GUI_HIST | GUI_INPUTS | GUI_LINKS | GUI_MBB | GUI_MOTOR | GUI_OUTPUT | GUI_PID | GUI_PULSE | GUI_SELECT | GUI_SEQ1 | GUI_SEQ2 | GUI_SEQ3 | GUI_SUB | GUI_TIMER | GUI_WAVE | GUI_SCAN)
-field_type = Group(DBF_STRING | DBF_CHAR | DBF_UCHAR | DBF_SHORT | DBF_USHORT | DBF_LONG | DBF_ULONG | DBF_FLOAT | DBF_DOUBLE | DBF_ENUM | DBF_MENU | DBF_DEVICE | DBF_INLINK | DBF_OUTLINK | DBF_FWDLINK | DBF_NOACCESS)
-rules = Group(ASL | INITIAL | PROMPTGROUP | PROMPT | SPECIAL | PP | INTEREST | BASE | SIZE | EXTRA | MENU)
-special_value = Group(SPC_NOMOD | SPC_SCAN | SPC_ALARMACK | SPC_AS | SPC_DBADDR | SPC_MOD | SPC_RESET | SPC_LINCONV | SPC_CALC | spc_int_greater_102)
+keyword = Group(RECORDTYPE | DEVICE | DRIVER | REGISTRAR | VARIABLE |
+                BREAKTABLE)
+gui_group = Group(GUI_COMMON | GUI_ALARMS | GUI_BITS1 | GUI_BITS2 | GUI_CALC |
+                  GUI_CLOCK | GUI_COMPRESS | GUI_CONVERT | GUI_DISPLAY |
+                  GUI_HIST | GUI_INPUTS | GUI_LINKS | GUI_MBB | GUI_MOTOR |
+                  GUI_OUTPUT | GUI_PID | GUI_PULSE | GUI_SELECT | GUI_SEQ1 |
+                  GUI_SEQ2 | GUI_SEQ3 | GUI_SUB | GUI_TIMER | GUI_WAVE |
+                  GUI_SCAN)
+field_type = Group(DBF_STRING | DBF_CHAR | DBF_UCHAR | DBF_SHORT | DBF_USHORT |
+                   DBF_LONG | DBF_ULONG | DBF_FLOAT | DBF_DOUBLE | DBF_ENUM |
+                   DBF_MENU | DBF_DEVICE | DBF_INLINK | DBF_OUTLINK |
+                   DBF_FWDLINK | DBF_NOACCESS)
+rules = Group(ASL | INITIAL | PROMPTGROUP | PROMPT | SPECIAL | PP | INTEREST |
+              BASE | SIZE | EXTRA | MENU)
+special_value = Group(SPC_NOMOD | SPC_SCAN | SPC_ALARMACK | SPC_AS | SPC_DBADDR
+                      | SPC_MOD | SPC_RESET | SPC_LINCONV | SPC_CALC |
+                      spc_int_greater_102)
 pp_value = Group(NO | YES | TRUE | FALSE)
 base_type = Group(DECIMAL | HEX)
-link_type = Group(CONSTANT | PV_LINK | VME_IO | CAMAC_IO | AB_IO | GPIB_IO | BITBUS_IO | INST_IO | BBGPIB_IO | RF_IO | VXI_IO)
+link_type = Group(CONSTANT | PV_LINK | VME_IO | CAMAC_IO | AB_IO | GPIB_IO |
+                  BITBUS_IO | INST_IO | BBGPIB_IO | RF_IO | VXI_IO)
 dset_name = c_identifier
+
 
 def brace_group(name, entries, types=None):
     if types is not None:
@@ -168,6 +188,7 @@ def brace_group(name, entries, types=None):
 
     return Group(ret + LBRACE + ZeroOrMore(entries) + RBRACE)
 
+
 def paren_group(name, *entries):
     # name(entry1, entry2, ...)
     ret = name + LPAR
@@ -178,11 +199,15 @@ def paren_group(name, *entries):
     ret += entries[-1]
     ret += RPAR
     return Group(ret)
-#types = [Keyword(k) for k in ('prompt', 'field', 'recordtype', 'promptgroup', 'asl', 'pp')]
-#TYPE = Group(reduce(lambda x, y: x | y, types))
+
+
+# types = [Keyword(k) for k in ('prompt', 'field', 'recordtype', 'promptgroup',
+# 'asl', 'pp')]
+# TYPE = Group(reduce(lambda x, y: x | y, types))
 
 def optionally_quoted(token):
     return Group((DQUOTE + token + DQUOTE) | token)
+
 
 # -- fields --
 asl = paren_group(ASL, ASLS)
@@ -201,7 +226,8 @@ field_menu = paren_group(MENU, optionally_quoted(MENU_NAME))
 c_code = Group(PERCENT + Optional(c_declaration))
 
 # -- record subgroups
-field_rule = Group(asl | initial | promptgroup | prompt | special | pp | interest | base | size | extra | field_menu)
+field_rule = Group(asl | initial | promptgroup | prompt | special | pp |
+                   interest | base | size | extra | field_menu)
 field = brace_group(FIELD, field_rule, types=(FIELD_NAME, field_type))
 choice = paren_group(CHOICE, c_identifier, quotedString)
 menu = brace_group(MENU, choice, types=(c_identifier, ))
@@ -216,14 +242,17 @@ device_line = paren_group(DEVICE, RTYP, link_type, dset_name, quotedString)
 driver_line = paren_group(DRIVER, c_identifier)
 registrar_line = paren_group(REGISTRAR, c_identifier)
 function_line = paren_group(FUNCTION, c_identifier)
-variable_line = paren_group(VARIABLE, c_identifier, Optional(c_identifier, default='int'))
-top_level = Group(record | menu | device_line | driver_line | registrar_line | variable_line | function_line)
+variable_line = paren_group(VARIABLE, c_identifier, Optional(c_identifier,
+                                                             default='int'))
+top_level = Group(record | menu | device_line | driver_line | registrar_line |
+                  variable_line | function_line)
 dbd = ZeroOrMore(top_level)
 dbd.ignore(pythonStyleComment)
 
 # -- include files (supported only for including additional fields)
 dbd_include = ZeroOrMore(field | include | c_code)
 dbd_include.ignore(pythonStyleComment)
+
 
 def iter_results(info):
     check = [info]
@@ -237,12 +266,15 @@ def iter_results(info):
                     if isinstance(other, list):
                         check.append(other)
 
-import pprint
+
 record_info = {}
+
+
 def parse_rule(rule):
     if isinstance(rule[1], list):
         return rule[0], rule[1][0]
     return rule
+
 
 def parse_field(info):
     ret = {}
@@ -251,13 +283,14 @@ def parse_field(info):
 
     for rule in info[3:]:
         rule = rule[0]
-        #print('rule', rule)
+        # print('rule', rule)
         name, value = parse_rule(rule)
         ret[name] = value
     return ret
 
+
 def parse_record(info):
-    ret = { 'fields' : {}}
+    ret = {'fields': {}}
     ret['type'] = info[1]
 
     for i, line in enumerate(info):
@@ -267,8 +300,9 @@ def parse_record(info):
 
     return ret
 
+
 def parse_includes(line):
-    ret = []
+    'Preprocess and insert includes'
     while 'include' in line:
         i = line.index('include')
         include_file = line[i + 1].strip('"')
@@ -278,9 +312,12 @@ def parse_includes(line):
         line[i] = 'include_done'
         line.extend(dbd_incl)
 
+
 record_info = {}
+
+
 def get_rtypes(data):
-    #pprint.pprint(data.asList())
+    # pprint.pprint(data.asList())
     for line in iter_results(data):
         if line[0] == 'recordtype':
             if 'include' in line:
@@ -296,11 +333,13 @@ def get_rtypes(data):
 
     print('done')
 
+
 def find_file(fn):
     if not os.path.exists(fn):
         if os.path.exists(os.path.join(DBD_PATH, fn)):
             fn = os.path.join(DBD_PATH, fn)
     return fn
+
 
 def fix_includes(fn, text):
     while True:
@@ -314,8 +353,9 @@ def fix_includes(fn, text):
         insert_text = open(find_file(include_file), 'rt').read()
         text = text.replace(full_line, insert_text)
 
-    #open('post_include_%s.dbd' % fn, 'wt').write(text)
+    # open('post_include_%s.dbd' % fn, 'wt').write(text)
     return text
+
 
 def parse_dbd_file(fn, include_file=False):
     text = open(find_file(fn), 'rt').read()
@@ -333,34 +373,52 @@ def parse_dbd_file(fn, include_file=False):
     else:
         return parsed.asList()
 
-DBD_PATH = '/usr/lib/epics/dbd'
-#rec = get_rtypes(parse_dbd_file('aiRecord.dbd'))
-#assert('FLNK' in rec['ai']['fields'])
-#pprint.pprint(rec['ai'])
 
-if True:
-    get_rtypes(parse_dbd_file(os.path.expanduser('~/iocs/hgvpu-current/dbd/ucmIoc.dbd')))
-else:
-    for fn in os.listdir(DBD_PATH):
-        if fn.endswith('.dbd') and 'Record' in fn:
-            print('-------------%s--------------' % fn)
-            get_rtypes(parse_dbd_file(fn))
+if __name__ == '__main__':
+    DBD_PATH = '/usr/lib/epics/dbd'
+    # rec = get_rtypes(parse_dbd_file('aiRecord.dbd'))
+    # assert('FLNK' in rec['ai']['fields'])
+    # pprint.pprint(rec['ai'])
 
-columns = ['field', 'type', 'asl', 'initial', 'promptgroup', 'prompt', 'special', 'pp', 'interest', 'base', 'size', 'extra', 'menu']
-path = 'output'
-for rtype, info in record_info.items():
-    with open(os.path.join(path, '%s.txt' % (rtype, )), 'wt') as f:
-        print('\t'.join(columns), file=f)
-        fields = info['fields']
-        for name, field in sorted(fields.items()):
-            row = [field[col] if col in field else ''
-                   for col in columns]
-            row[0] = name
-            # Adding the optionally_quoted onto the above put those into a separate list
-            # -- I'm tired of modifying the above, so just fix it up here:
-            for i, entry in enumerate(row):
-                while isinstance(entry, list):
-                    row[i] = entry[0]
-                    entry = row[i]
+    if True:
+        get_rtypes(parse_dbd_file(
+            os.path.expanduser('~/iocs/hgvpu-current/dbd/ucmIoc.dbd')))
+    else:
+        for fn in os.listdir(DBD_PATH):
+            if fn.endswith('.dbd') and 'Record' in fn:
+                print('-------------%s--------------' % fn)
+                get_rtypes(parse_dbd_file(fn))
 
-            print('\t'.join(row), file=f)
+    columns = ['field', 'type', 'asl', 'initial', 'promptgroup', 'prompt',
+               'special', 'pp', 'interest', 'base', 'size', 'extra', 'menu']
+    path = 'output'
+
+    base_fields = set(
+        'ACKS ACKT ASG ASP BKPT DESC DISA DISP DISS DISV DPVT DSET DTYP EVNT '
+        'FLNK LCNT LSET MLIS MLOK NAME NSEV NSTA PACT PHAS PINI PPN PPNR PRIO '
+        'PROC PUTF RDES RPRO RSET SCAN SDIS SEVR SPVT TIME TPRO TSEL TSE '
+        'UDF'.split(' '))
+
+    base_fields -= set(['ASP', 'BKPT', 'DPVT', 'DSET', 'LSET', 'MLIS', 'MLOK',
+                        'PPN', 'PPNR', 'RDES', 'RSET', 'SPVT', 'TIME'])
+
+    record_info['base'] = dict(fields={field: record_info['ai']['fields'][field]
+                                       for field in base_fields})
+
+    for rtype, info in record_info.items():
+        with open(os.path.join(path, '%s.txt' % (rtype, )), 'wt') as f:
+            print('\t'.join(columns), file=f)
+            fields = info['fields']
+            for name, field in sorted(fields.items()):
+                row = [field[col] if col in field else ''
+                       for col in columns]
+                row[0] = name
+                # Adding the optionally_quoted onto the above put those into a
+                # separate list
+                # -- I'm tired of modifying the above, so just fix it up here:
+                for i, entry in enumerate(row):
+                    while isinstance(entry, list):
+                        row[i] = entry[0]
+                        entry = row[i]
+
+                print('\t'.join(row), file=f)
