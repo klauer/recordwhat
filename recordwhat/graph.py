@@ -122,7 +122,7 @@ def find_record_links(*starting_records):
     while records_to_check:
         to_check = records_to_check.pop()
         if not isinstance(to_check, RecordBase):
-            rec1 = get_record_by_name(to_check, read_attrs=[])
+            rec1 = get_record_by_name(to_check, read_attrs=[], name=to_check)
         else:
             rec1 = to_check
 
