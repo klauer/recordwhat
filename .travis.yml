@@ -48,7 +48,7 @@ before_install:
   - source activate $CONDA_ENV
 
 install:
-  - NOLIBCA=1 pip install --no-binary pyepics
+  - "NOLIBCA=1 pip install --no-binary :all: pyepics"
   - conda install epics-base
   - pip install pytest pytest-cov codecov graphviz pygraphviz parsimonious attrs networkx prettytable pandas numpy ipython
   - 'pip install https://github.com/NSLS-II/ophyd/zipball/master#egg=ophyd'
