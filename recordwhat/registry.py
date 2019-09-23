@@ -30,6 +30,8 @@ def get_record_by_name(record_name, *, timeout=1.0, **kwargs):
         raise TimeoutError('Timed out requesting record type')
 
     record_class = get_record_class(record_type)
+    if 'name' not in kwargs:
+        kwargs['name'] = record_name
     return record_class(record_name, **kwargs)
 
 
