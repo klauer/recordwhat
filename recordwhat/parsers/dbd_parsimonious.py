@@ -9,7 +9,7 @@ dbd_grammar = Grammar(r"""
 dbd = db_entry*
 db_entry = (comment / cimport / field / menu / record_type /
             variable / device / include / registrar /
-            function / driver / link / "\n")
+            function / driver / link / processpassive / "\n")
 
 field = _ "field(" f_name "," _ f_type ")" _ "{" field_body _  "}"
 field_body = fp*
@@ -18,7 +18,7 @@ f_type = ("DBF_STRING" / "DBF_CHAR" / "DBF_UCHAR" /
           "DBF_SHORT" / "DBF_USHORT" / "DBF_LONG" / "DBF_ULONG" /
           "DBF_FLOAT" / "DBF_DOUBLE" / "DBF_ENUM" / "DBF_MENU" /
           "DBF_DEVICE" / "DBF_INLINK" / "DBF_OUTLINK" / "DBF_FWDLINK" /
-          "DBF_NOACCESS")
+          "DBF_NOACCESS" / "DBF_INT64" )
 fp = _ (g_field / prompt / special / size / promptgroup /
         comment / extra / initial / interest / "\n")
 g_field = g_f_name "(" g_f_body ")\n"
@@ -30,6 +30,7 @@ extra = "extra(" extra_val ")\n"
 initial = "initial(" initial_val ")\n"
 interest = "interest(" interest_val ")\n"
 promptgroup = "promptgroup(" promptgroup_val ")\n"
+processpassive = "pp(" true_or_false ")\n"
 
 g_f_name = ~"[a-z]*"
 g_f_body = ~"[^)]*"
@@ -40,6 +41,7 @@ initial_val = ~'"[^"]*"'
 special_val = ~'[^)]*'
 size_val = ~'[0-9]*'
 interest_val = ~'[0-9]*'
+true_or_false = ("TRUE" / "FALSE")
 
 menu = "menu(" menu_name ")" _ "{" (choice / comment / "\n")* "}" "\n"
 choice = _ "choice(" _ choice_enum_name _ "," _ choice_display _ ")\n"
