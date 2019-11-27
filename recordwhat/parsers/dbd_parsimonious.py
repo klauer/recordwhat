@@ -9,7 +9,7 @@ dbd_grammar = Grammar(r"""
 dbd = db_entry*
 db_entry = (comment / cimport / field / menu / record_type /
             variable / device / include / registrar /
-            function / driver / "\n")
+            function / driver / link / "\n")
 
 field = _ "field(" f_name "," _ f_type ")" _ "{" field_body _  "}"
 field_body = fp*
@@ -20,13 +20,15 @@ f_type = ("DBF_STRING" / "DBF_CHAR" / "DBF_UCHAR" /
           "DBF_DEVICE" / "DBF_INLINK" / "DBF_OUTLINK" / "DBF_FWDLINK" /
           "DBF_NOACCESS")
 fp = _ (g_field / prompt / special / size / promptgroup /
-        comment / extra / "\n")
+        comment / extra / initial / interest / "\n")
 g_field = g_f_name "(" g_f_body ")\n"
 
 prompt = "prompt(" prompt_val ")\n"
 special = "special(" special_val ")\n"
 size = "size(" size_val ")\n"
 extra = "extra(" extra_val ")\n"
+initial = "initial(" initial_val ")\n"
+interest = "interest(" interest_val ")\n"
 promptgroup = "promptgroup(" promptgroup_val ")\n"
 
 g_f_name = ~"[a-z]*"
@@ -34,8 +36,10 @@ g_f_body = ~"[^)]*"
 prompt_val = ~'"[^"]*"'
 extra_val = ~'"[^"]*"'
 promptgroup_val = ~'"[^"]*"'
+initial_val = ~'"[^"]*"'
 special_val = ~'[^)]*'
 size_val = ~'[0-9]*'
+interest_val = ~'[0-9]*'
 
 menu = "menu(" menu_name ")" _ "{" (choice / comment / "\n")* "}" "\n"
 choice = _ "choice(" _ choice_enum_name _ "," _ choice_display _ ")\n"
@@ -43,11 +47,12 @@ choice_enum_name = ~"[^,]*"
 choice_display = ~'"[^"]*"'
 menu_name = ~"[a-z0-9]*"i
 
-record_type = "recordtype(" rec_name ")" _ "{" (field / include /
+record_type = "recordtype(" rec_name ")" _ "{" (field / include / cinclude /
                                                 cimport / comment / "\n")* "}"
 include = _ "include" _ include_fname _
+cinclude = _ "%include" _ include_fname _
 include_fname = ~'"[^"]*"'
-rec_name = ~"[a-z]*"i
+rec_name = ~"[a-z0-9_]*"i
 _ = ~r"\s*"
 
 variable = "variable("  ~"[^)]*" ")"
@@ -55,10 +60,12 @@ device = "device" _ "(" ~"[^)]*" ")"
 registrar = "registrar(" ~"[^)]*" ")"
 function = "function" _ "(" ~"[^)]*" ")"
 driver = "driver(" ~"[^)]*" ")"
+link = "link(" linkarg "," linkarg ")"
+
+linkarg = _ ~"[a-z0-9_]*"i _
 
 cimport = ~"\s*%[^\r\n]*"
 comment = ~"\s*#[^\r\n]*"
-
 """)
 
 
@@ -248,6 +255,13 @@ class RecordWalker(NodeVisitor):
 
     def visit_comment(self, node, visited_children):
         ...
+
+    def visit_link(self, node, visited_children):
+        _, link_a, _, link_b, _ = visited_children
+        return link_a, link_b
+
+    def visit_linkarg(self, node, visited_children):
+        return node.text.strip()
 
     def visit_(self, node, visited_children):
         return visited_children
