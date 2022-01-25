@@ -29,7 +29,7 @@ class FieldComponent(Component):
             else:
                 FieldComponent._cls_metadata[record_cls] = metadata
 
-        cpt_inst.metadata = metadata.get(self.attr, None)
+        cpt_inst.dbd_metadata = metadata.get(self.attr, None)
         return cpt_inst
 
 

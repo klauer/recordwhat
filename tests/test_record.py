@@ -46,7 +46,7 @@ def smoke_test_motor(motor_rec):
     print('description field type', metadata['description'].type)
     print('derivative gain metadata', metadata['derivative_gain'])
 
-    print('description metadata', rec.description.metadata)
+    print('description metadata', rec.description.dbd_metadata)
 
     print('in links', list(rec.attrs_of_type('DBF_INLINK')))
     print('all links', list(rec.attrs_of_type(['DBF_INLINK', 'DBF_OUTLINK',
@@ -62,7 +62,7 @@ def test_records(rtyp, record):
     metadata = dict(rec.field_metadata())
     print('metadata', metadata)
 
-    print('description metadata', rec.description.metadata)
+    print('description metadata', rec.description.dbd_metadata)
 
     print('in links', list(rec.attrs_of_type('DBF_INLINK')))
     print('all links', list(rec.attrs_of_type(['DBF_INLINK', 'DBF_OUTLINK',
