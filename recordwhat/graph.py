@@ -137,7 +137,7 @@ def find_record_links(*starting_records):
                 continue
 
             try:
-                type_ = getattr(rec1, attr1).metadata.type
+                type_ = getattr(rec1, attr1).dbd_metadata.type
             except AttributeError:
                 type_ = 'unknown'
 
